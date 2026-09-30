@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Search Titles & SEO Keywords -->
+    <title>Free QR Code Generator Online | URL, Text & Link to QR Code Maker</title>
+    <meta name="description" content="Free Online QR Code Generator. Create custom QR codes for Website Links, YouTube, Text, and UPI instantly. Download high quality PNG image for free.">
+    <meta name="keywords" content="qr code generator, online qr code maker, free qr code creator, link to qr code, text to qr code, upi qr code, qr code download png">
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card { background: #ffffff; max-width: 480px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; }
+        h1 { font-size: 22px; color: #1a202c; margin-top: 0; margin-bottom: 6px; }
+        p.subtitle { color: #4a5568; font-size: 13px; margin-top: 0; margin-bottom: 20px; }
+        
+        label { display: block; text-align: left; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #2d3748; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; margin-bottom: 15px; outline: none; }
+        input[type="text"]:focus { border-color: #3182ce; }
+
+        button.btn-generate { width: 100%; background: #3182ce; color: white; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.btn-generate:hover { background: #2b6cb0; }
+
+        #qrcode-container { margin: 25px auto 15px; display: flex; justify-content: center; }
+        #qrcode img { border: 4px solid #edf2f7; border-radius: 8px; padding: 6px; }
+
+        .btn-download { display: none; width: 100%; background: #38a169; color: white; border: none; border-radius: 8px; padding: 10px; font-size: 14px; font-weight: bold; text-decoration: none; cursor: pointer; margin-top: 10px; }
+        .btn-download:hover { background: #2f855a; }
+
+        .seo-text { text-align: left; font-size: 12px; color: #718096; margin-top: 25px; border-top: 1px solid #edf2f7; padding-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>QR Code Generator</h1>
+    <p class="subtitle">किसी भी लिंक (URL), टेक्स्ट या नंबर का तुरंत QR कोड बनाएँ</p>
+
+    <label for="text-input">यहाँ लिंक या टेक्स्ट डालें:</label>
+    <input type="text" id="text-input" placeholder="जैसे: https://example.com या कोई मैसेज">
+
+    <button class="btn-generate" onclick="generateQR()">QR Code बनाएँ</button>
+
+    <div id="qrcode-container">
+        <div id="qrcode"></div>
+    </div>
+
+    <a id="download-btn" class="btn-download" download="qrcode.png">QR Code डाउनलोड करें (PNG)</a>
+
+    <div class="seo-text">
+        <strong>फीचर्स:</strong>
+        <ul>
+            <li>मुफ़्त और तेज़ QR कोड जनरेटर</li>
+            <li>हाई क्वालिटी PNG इमेज डाउनलोड</li>
+            <li>मोबाइल और कंप्यूटर दोनों के लिए सुरक्षित</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    let qrcode = null;
+
+    function generateQR() {
+        const text = document.getElementById("text-input").value.trim();
+        const qrContainer = document.getElementById("qrcode");
+        const downloadBtn = document.getElementById("download-btn");
+
+        if (!text) {
+            alert("कृपया कोई लिंक या टेक्स्ट लिखें!");
+            return;
+        }
+
+        qrContainer.innerHTML = "";
+
+        qrcode = new QRCode(qrContainer, {
+            text: text,
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        setTimeout(() => {
+            const qrImg = qrContainer.querySelector("img");
+            if (qrImg && qrImg.src) {
+                downloadBtn.href = qrImg.src;
+                downloadBtn.style.display = "block";
+            }
+        }, 300);
+    }
+</script>
+
+</body>
+</html>
