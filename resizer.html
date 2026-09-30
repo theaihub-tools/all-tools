@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Resizer Online - Resize & Compress Photo to KB | The AI Hub Tools</title>
+  <meta name="description" content="Free online image resizer and KB compressor. Resize photo dimensions and compress file size to 20KB, 50KB, 100KB online for free.">
+<meta name="google-site-verification" content="Zt_zuXrMQGXkicpxdp2vDyP-_nFVCCobj8sgqF_XFJQ" />
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #f0f2f5; margin: 0; padding: 20px; display: flex; justify-content: center; }
+    .card { background: #ffffff; max-width: 500px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    h1 { font-size: 22px; text-align: center; color: #1a202c; margin-top: 0; margin-bottom: 6px; }
+    p.sub { text-align: center; color: #4a5568; font-size: 13px; margin-top: 0; margin-bottom: 20px; }
+    
+    label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #2d3748; }
+    input[type="file"] { width: 100%; padding: 12px; border: 2px dashed #3182ce; border-radius: 8px; background: #ebf8ff; cursor: pointer; margin-bottom: 15px; }
+    
+    .quick-kb { display: flex; gap: 6px; margin-bottom: 15px; }
+    .quick-kb button { flex: 1; padding: 6px; font-size: 12px; background: #edf2f7; border: 1px solid #cbd5e0; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .quick-kb button:hover { background: #e2e8f0; }
+
+    .grid { display: flex; gap: 10px; margin-bottom: 15px; }
+    .grid div { flex: 1; }
+    input[type="number"] { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; }
+    
+    .btn-submit { width: 100%; padding: 12px; background: #3182ce; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .btn-submit:hover { background: #2b6cb0; }
+
+    #previewArea { margin-top: 20px; text-align: center; display: none; background: #f7fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+    #previewImg { max-width: 100%; height: auto; border-radius: 6px; margin: 12px 0; border: 1px solid #cbd5e0; }
+    .download-btn { display: inline-block; padding: 10px 20px; background: #38a169; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; }
+    .download-btn:hover { background: #2f855a; }
+    .info { font-size: 14px; font-weight: bold; color: #2b6cb0; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Image Resizer & Compressor</h1>
+  <p class="sub">फोटो को 20KB, 50KB, 100KB या मनचाहे साइज में बदलें</p>
+
+  <label>1. फोटो चुनें:</label>
+  <input type="file" id="imageInput" accept="image/*">
+
+  <label>2. टारगेट साइज चुनें (KB में):</label>
+  <div class="quick-kb">
+    <button onclick="setKb(20)">20 KB</button>
+    <button onclick="setKb(50)">50 KB</button>
+    <button onclick="setKb(100)">100 KB</button>
+    <button onclick="setKb(200)">200 KB</button>
+  </div>
+  <input type="number" id="targetKb" placeholder="साइज KB में (जैसे: 50)" value="50" style="margin-bottom: 15px;">
+
+  <label>3. पिक्सल साइज (वैकल्पिक / Optional):</label>
+  <div class="grid">
+    <div>
+      <input type="number" id="targetWidth" placeholder="चौड़ाई (Width px)">
+    </div>
+    <div>
+      <input type="number" id="targetHeight" placeholder="ऊंचाई (Height px)">
+    </div>
+  </div>
+
+  <button class="btn-submit" onclick="resizePhoto()">Resize & Download</button>
+
+  <div id="previewArea">
+    <div id="fileStats" class="info"></div>
+    <img id="previewImg" src="">
+    <br>
+    <a id="downloadBtn" class="download-btn" download="resized-photo.jpg">Download Resized Photo</a>
+  </div>
+</div>
+
+<script>
+  let loadedImg = new Image();
+
+  document.getElementById('imageInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        loadedImg.src = evt.target.result;
+        loadedImg.onload = function() {
+          document.getElementById('targetWidth').value = loadedImg.width;
+          document.getElementById('targetHeight').value = loadedImg.height;
+        };
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  function setKb(val) {
+    document.getElementById('targetKb').value = val;
+  }
+
+  function resizePhoto() {
+    if (!loadedImg.src) {
+      alert("कृपया पहले अपनी फोटो चुनें!");
+      return;
+    }
+
+    const targetKb = parseFloat(document.getElementById('targetKb').value) || 50;
+    const reqWidth = parseInt(document.getElementById('targetWidth').value) || loadedImg.width;
+    const reqHeight = parseInt(document.getElementById('targetHeight').value) || loadedImg.height;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = reqWidth;
+    canvas.height = reqHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(loadedImg, 0, 0, reqWidth, reqHeight);
+
+    let quality = 0.95;
+    let dataUrl = canvas.toDataURL('image/jpeg', quality);
+    let currentKb = (dataUrl.length * (3/4)) / 1024;
+
+    let loops = 0;
+    while (currentKb > targetKb && quality > 0.05 && loops < 20) {
+      quality -= 0.05;
+      dataUrl = canvas.toDataURL('image/jpeg', quality);
+      currentKb = (dataUrl.length * (3/4)) / 1024;
+      loops++;
+    }
+
+    document.getElementById('previewImg').src = dataUrl;
+    document.getElementById('downloadBtn').href = dataUrl;
+    document.getElementById('fileStats').innerText = "साइज: " + Math.round(currentKb) + " KB (" + reqWidth + "x" + reqHeight + " px)";
+    document.getElementById('previewArea').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
