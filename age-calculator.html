@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Age Calculator Online | Calculate Exact Age from Date of Birth</title>
+    <meta name="description" content="Calculate your exact age in years, months, and days online for free. Fast, accurate, and easy-to-use Date of Birth (DOB) Age Calculator.">
+    <meta name="keywords" content="age calculator, calculate age online, free age calculator, date of birth calculator, dob age calculator, find my age">
+
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card { background: #ffffff; max-width: 480px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; }
+        h1 { font-size: 22px; color: #1a202c; margin-top: 0; margin-bottom: 6px; }
+        p.subtitle { color: #4a5568; font-size: 13px; margin-top: 0; margin-bottom: 20px; }
+        
+        label { display: block; text-align: left; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #2d3748; }
+        input[type="date"] { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 15px; margin-bottom: 15px; outline: none; }
+        input[type="date"]:focus { border-color: #3182ce; }
+
+        button.btn-calc { width: 100%; background: #3182ce; color: white; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.btn-calc:hover { background: #2b6cb0; }
+
+        #result { display: none; margin-top: 20px; padding: 15px; background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 8px; text-align: left; }
+        .res-title { font-size: 14px; color: #2b6cb0; font-weight: bold; margin-bottom: 8px; }
+        .res-value { font-size: 16px; color: #2d3748; line-height: 1.6; }
+
+        .seo-text { text-align: left; font-size: 12px; color: #718096; margin-top: 25px; border-top: 1px solid #edf2f7; padding-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Age Calculator</h1>
+    <p class="subtitle">अपनी जन्मतिथि से सटीक उम्र (साल, महीने, दिन) निकालें</p>
+
+    <label for="dob">अपनी जन्मतिथि (Date of Birth) चुनें:</label>
+    <input type="date" id="dob">
+
+    <button class="btn-calc" onclick="calculateAge()">उम्र की गणना करें</button>
+
+    <div id="result">
+        <div class="res-title">आपकी कुल उम्र:</div>
+        <div class="res-value" id="ageOutput"></div>
+    </div>
+
+    <div class="seo-text">
+        <strong>खासियत:</strong>
+        <ul>
+            <li>सटीक साल, महीने और दिन की गिनती</li>
+            <li>सरकारी नौकरी और फॉर्म भरने के लिए उपयोगी</li>
+            <li>सुरक्षित और 100% मुफ़्त टूल</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function calculateAge() {
+        const dobInput = document.getElementById("dob").value;
+        const resultDiv = document.getElementById("result");
+        const output = document.getElementById("ageOutput");
+
+        if (!dobInput) {
+            alert("कृपया अपनी जन्मतिथि चुनें!");
+            return;
+        }
+
+        const dob = new Date(dobInput);
+        const today = new Date();
+
+        if (dob > today) {
+            alert("जन्मतिथि आज की तारीख से आगे की नहीं हो सकती!");
+            return;
+        }
+
+        let years = today.getFullYear() - dob.getFullYear();
+        let months = today.getMonth() - dob.getMonth();
+        let days = today.getDate() - dob.getDate();
+
+        if (days < 0) {
+            months--;
+            const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+            days += lastMonth.getDate();
+        }
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        output.innerHTML = `<strong>${years}</strong> साल, <strong>${months}</strong> महीने, और <strong>${days}</strong> दिन`;
+        resultDiv.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
