@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WEQE82X4L0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-MEQE82X4L0');
+  gtag('config', 'G-WEQE82X4L0');
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -165,6 +165,7 @@
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
     let isListening = false;
+    let finalTranscript = '';
 
     const micBtn = document.getElementById('micBtn');
     const statusText = document.getElementById('status');
@@ -185,11 +186,18 @@
       };
 
       recognition.onresult = (event) => {
-        let transcript = '';
-        for (let i = 0; i < event.results.length; i++) {
-          transcript += event.results[i][0].transcript;
+        let interimTranscript = '';
+
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            finalTranscript += transcript + ' ';
+          } else {
+            interimTranscript += transcript;
+          }
         }
-        outputArea.value = transcript;
+
+        outputArea.value = finalTranscript + interimTranscript;
       };
 
       recognition.onerror = (event) => {
@@ -234,6 +242,7 @@
     }
 
     function clearSpeechText() {
+      finalTranscript = '';
       outputArea.value = '';
     }
   </script>
