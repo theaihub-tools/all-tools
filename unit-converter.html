@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>यूनिट कनवर्टर | Unit Converter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .converter-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 24px;
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #58a6ff;
+      font-size: 22px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #8b949e;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #f0f6fc;
+      outline: none;
+    }
+    input:focus, select:focus {
+      border-color: #58a6ff;
+    }
+    .grid-row {
+      display: flex;
+      gap: 10px;
+    }
+    .grid-row .form-group {
+      flex: 1;
+    }
+    .result-box {
+      margin-top: 20px;
+      padding: 16px;
+      background-color: #21262d;
+      border: 1px solid #388bfd40;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .result-box p {
+      font-size: 13px;
+      color: #8b949e;
+      margin-bottom: 6px;
+    }
+    .result-box h3 {
+      font-size: 20px;
+      color: #3fb950;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="converter-card">
+    <h2>यूनिट कनवर्टर (Unit Converter)</h2>
+
+    <div class="form-group">
+      <label for="category">श्रेणी (Category):</label>
+      <select id="category" onchange="updateUnits()">
+        <option value="length">लंबाई (Length)</option>
+        <option value="weight">वजन (Weight)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="inputValue">मान दर्ज करें (Value):</label>
+      <input type="number" id="inputValue" value="1" placeholder="संख्या दर्ज करें" oninput="convert()">
+    </div>
+
+    <div class="grid-row">
+      <div class="form-group">
+        <label for="fromUnit">से (From):</label>
+        <select id="fromUnit" onchange="convert()"></select>
+      </div>
+      <div class="form-group">
+        <label for="toUnit">में (To):</label>
+        <select id="toUnit" onchange="convert()"></select>
+      </div>
+    </div>
+
+    <div class="result-box">
+      <p>परिणाम (Result)</p>
+      <h3 id="resultText">--</h3>
+    </div>
+  </div>
+
+  <script>
+    const conversionFactors = {
+      length: {
+        'मीटर (m)': 1,
+        'किलोमीटर (km)': 1000,
+        'सेंटीमीटर (cm)': 0.01,
+        'मिलीमीटर (mm)': 0.001,
+        'मील (Mile)': 1609.34,
+        'फुट (Foot)': 0.3048,
+        'इंच (Inch)': 0.0254
+      },
+      weight: {
+        'ग्राम (g)': 1,
+        'किलोग्राम (kg)': 1000,
+        'मिलीग्राम (mg)': 0.001,
+        'पाउंड (Pound)': 453.592,
+        'क्विंटल (Quintal)': 100000
+      }
+    };
+
+    function updateUnits() {
+      const category = document.getElementById('category').value;
+      const fromUnit = document.getElementById('fromUnit');
+      const toUnit = document.getElementById('toUnit');
+      const units = Object.keys(conversionFactors[category]);
+
+      fromUnit.innerHTML = '';
+      toUnit.innerHTML = '';
+
+      units.forEach((unit) => {
+        fromUnit.add(new Option(unit, unit));
+        toUnit.add(new Option(unit, unit));
+      });
+
+      if (units.length > 1) {
+        toUnit.selectedIndex = 1;
+      }
+
+      convert();
+    }
+
+    function convert() {
+      const category = document.getElementById('category').value;
+      const val = parseFloat(document.getElementById('inputValue').value);
+      const from = document.getElementById('fromUnit').value;
+      const to = document.getElementById('toUnit').value;
+      const resultElem = document.getElementById('resultText');
+
+      if (isNaN(val)) {
+        resultElem.innerText = '--';
+        return;
+      }
+
+      const inBase = val * conversionFactors[category][from];
+      const convertedVal = inBase / conversionFactors[category][to];
+
+      const cleanResult = parseFloat(convertedVal.toFixed(4));
+      resultElem.innerText = `${val} ${from.split(' ')[0]} = ${cleanResult} ${to.split(' ')[0]}`;
+    }
+
+    updateUnits();
+  </script>
+</body>
+</html>
