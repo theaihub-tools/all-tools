@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>दिनों की गणना | Days Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .calculator-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 24px;
+      border-radius: 12px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #58a6ff;
+      font-size: 22px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #8b949e;
+    }
+    input[type="date"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #f0f6fc;
+      outline: none;
+      color-scheme: dark;
+    }
+    input[type="date"]:focus {
+      border-color: #58a6ff;
+    }
+    .btn-calc {
+      width: 100%;
+      padding: 12px;
+      background-color: #238636;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s;
+    }
+    .btn-calc:hover {
+      background-color: #2ea043;
+    }
+    .result-box {
+      margin-top: 20px;
+      padding: 16px;
+      background-color: #21262d;
+      border: 1px solid #388bfd40;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+    .result-box p {
+      font-size: 13px;
+      color: #8b949e;
+      margin-bottom: 8px;
+    }
+    .result-box .days-count {
+      font-size: 28px;
+      font-weight: 700;
+      color: #3fb950;
+      margin-bottom: 8px;
+    }
+    .result-box .breakdown {
+      font-size: 14px;
+      color: #f0f6fc;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator-card">
+    <h2>दिनों की गणना (Days Calculator)</h2>
+
+    <div class="form-group">
+      <label for="startDate">प्रारंभिक तारीख (Start Date):</label>
+      <input type="date" id="startDate">
+    </div>
+
+    <div class="form-group">
+      <label for="endDate">अंतिम तारीख (End Date):</label>
+      <input type="date" id="endDate">
+    </div>
+
+    <button class="btn-calc" onclick="calculateDays()">गणना करें (Calculate)</button>
+
+    <div class="result-box" id="resultBox">
+      <p>कुल अंतर (Total Difference)</p>
+      <div class="days-count" id="totalDaysText">0 दिन</div>
+      <div class="breakdown" id="breakdownText"></div>
+    </div>
+  </div>
+
+  <script>
+    // आज की तारीख डिफ़ॉल्ट सेट करना
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').value = today;
+
+    function calculateDays() {
+      const startVal = document.getElementById('startDate').value;
+      const endVal = document.getElementById('endDate').value;
+      const resultBox = document.getElementById('resultBox');
+      const totalDaysText = document.getElementById('totalDaysText');
+      const breakdownText = document.getElementById('breakdownText');
+
+      if (!startVal || !endVal) {
+        alert('कृपया दोनों तारीखें चुनें।');
+        return;
+      }
+
+      const d1 = new Date(startVal);
+      const d2 = new Date(endVal);
+
+      // समय का अंतर मिलीसेकंड में
+      const diffTime = Math.abs(d2 - d1);
+      const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      // हफ़्ते और बचे हुए दिन
+      const weeks = Math.floor(totalDays / 7);
+      const remainingDays = totalDays % 7;
+
+      totalDaysText.innerText = `${totalDays} दिन`;
+      breakdownText.innerHTML = `या <strong>${weeks} हफ़्ते, ${remainingDays} दिन</strong>`;
+
+      resultBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
