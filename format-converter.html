@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head> <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MEQE82X4L0');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>इमेज फॉर्मेट कनवर्टर | Image Format Converter</title>
+  <!-- PDF एक्सपोर्ट के लिए jsPDF लाइब्रेरी -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .converter-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 24px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 8px;
+      color: #58a6ff;
+      font-size: 22px;
+    }
+    p.subtitle {
+      text-align: center;
+      color: #8b949e;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .drop-zone {
+      border: 2px dashed #30363d;
+      border-radius: 8px;
+      padding: 26px 16px;
+      text-align: center;
+      background: #0d1117;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+    .drop-zone:hover {
+      border-color: #58a6ff;
+    }
+    .drop-zone p {
+      font-size: 14px;
+      color: #8b949e;
+    }
+    .drop-zone span {
+      color: #58a6ff;
+      font-weight: 600;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .preview-box {
+      display: none;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .preview-box img {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+    }
+    .file-name {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 8px;
+      word-break: break-all;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #8b949e;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #f0f6fc;
+      outline: none;
+    }
+    select:focus {
+      border-color: #58a6ff;
+    }
+    .btn-convert {
+      width: 100%;
+      padding: 12px;
+      background-color: #238636;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn-convert:hover {
+      background-color: #2ea043;
+    }
+    .btn-convert:disabled {
+      background-color: #21262d;
+      color: #484f58;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="converter-card">
+    <h2>इमेज फॉर्मेट कनवर्टर (Format Converter)</h2>
+    <p class="subtitle">अपनी फ़ोटो को JPG, PNG, WebP या PDF में बदलें</p>
+
+    <!-- File Upload Area -->
+    <div class="drop-zone" onclick="document.getElementById('fileInput').click()">
+      <p>फ़ोटो चुनने के लिए यहाँ क्लिक करें या फ़ाइल ड्रैग करें<br><span>(JPG, PNG, WebP)</span></p>
+      <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)">
+    </div>
+
+    <!-- Preview Box -->
+    <div class="preview-box" id="previewBox">
+      <img id="imgPreview" src="" alt="Preview">
+      <div class="file-name" id="fileName"></div>
+    </div>
+
+    <!-- Target Format Select -->
+    <div class="form-group">
+      <label for="formatSelect">किस फॉर्मेट में बदलना है (Target Format):</label>
+      <select id="formatSelect">
+        <option value="image/png">PNG (.png)</option>
+        <option value="image/jpeg">JPG / JPEG (.jpg)</option>
+        <option value="image/webp">WebP (.webp)</option>
+        <option value="application/pdf">PDF (.pdf)</option>
+      </select>
+    </div>
+
+    <button id="convertBtn" class="btn-convert" onclick="convertAndDownload()" disabled>कन्वर्ट और डाउनलोड करें</button>
+  </div>
+
+  <canvas id="hiddenCanvas" style="display: none;"></canvas>
+
+  <script>
+    let currentImage = null;
+    let originalName = 'converted-image';
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      originalName = file.name.substring(0, file.name.lastIndexOf('.')) || 'image';
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          currentImage = img;
+          document.getElementById('imgPreview').src = img.src;
+          document.getElementById('fileName').innerText = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+          document.getElementById('previewBox').style.display = 'block';
+          document.getElementById('convertBtn').disabled = false;
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function convertAndDownload() {
+      if (!currentImage) return;
+
+      const format = document.getElementById('formatSelect').value;
+
+      // Handle PDF conversion
+      if (format === 'application/pdf') {
+        const { jsPDF } = window.jspdf;
+        const orientation = currentImage.width > currentImage.height ? 'l' : 'p';
+        const pdf = new jsPDF({
+          orientation: orientation,
+          unit: 'px',
+          format: [currentImage.width, currentImage.height]
+        });
+
+        pdf.addImage(currentImage, 'JPEG', 0, 0, currentImage.width, currentImage.height);
+        pdf.save(`${originalName}.pdf`);
+        return;
+      }
+
+      // Handle Image formats (PNG, JPG, WebP)
+      const canvas = document.getElementById('hiddenCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = currentImage.width;
+      canvas.height = currentImage.height;
+
+      // JPG ke transparent background ko white fill dena
+      if (format === 'image/jpeg') {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      ctx.drawImage(currentImage, 0, 0);
+
+      const extMap = {
+        'image/png': 'png',
+        'image/jpeg': 'jpg',
+        'image/webp': 'webp'
+      };
+
+      const dataURL = canvas.toDataURL(format, 0.95);
+      const link = document.createElement('a');
+      link.download = `${originalName}.${extMap[format]}`;
+      link.href = dataURL;
+      link.click();
+    }
+  </script>
+</body>
+</html>
