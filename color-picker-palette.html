@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MEQE82X4L0');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Picker & Palette Generator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 28px;
+      width: 100%;
+      max-width: 460px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    h2 {
+      margin-top: 0;
+      color: #58a6ff;
+      font-size: 24px;
+    }
+    p {
+      color: #8b949e;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .picker-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    input[type="color"] {
+      -webkit-appearance: none;
+      border: 2px solid #30363d;
+      border-radius: 8px;
+      width: 54px;
+      height: 54px;
+      cursor: pointer;
+      background: none;
+      padding: 0;
+    }
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    input[type="color"]::-webkit-color-swatch {
+      border: none;
+      border-radius: 6px;
+    }
+    .hex-text {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #f0f6fc;
+      background: #21262d;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+    }
+    button {
+      width: 100%;
+      background: #238636;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      margin-bottom: 20px;
+    }
+    button:hover {
+      background: #2ea043;
+    }
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .swatch {
+      height: 70px;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 6px;
+      cursor: pointer;
+      border: 1px solid #30363d;
+      transition: transform 0.15s ease;
+    }
+    .swatch:hover {
+      transform: translateY(-3px);
+    }
+    .swatch span {
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .copied-msg {
+      color: #3fb950;
+      font-size: 13px;
+      min-height: 18px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Color Picker & Palette</h2>
+    <p>Color select karein ya random 5-color palette generate karein</p>
+
+    <div class="picker-box">
+      <input type="color" id="colorPicker" value="#58a6ff" />
+      <span id="hexValue" class="hex-text">#58A6FF</span>
+    </div>
+
+    <button id="genBtn">Random Palette Generate Karein</button>
+
+    <div class="palette" id="paletteBox"></div>
+    <div class="copied-msg" id="statusMsg"></div>
+  </div>
+
+  <script>
+    const colorPicker = document.getElementById("colorPicker");
+    const hexValue = document.getElementById("hexValue");
+    const genBtn = document.getElementById("genBtn");
+    const paletteBox = document.getElementById("paletteBox");
+    const statusMsg = document.getElementById("statusMsg");
+
+    function getRandomHex() {
+      return "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
+    }
+
+    function copyToClipboard(hex) {
+      navigator.clipboard.writeText(hex);
+      statusMsg.innerText = `${hex.toUpperCase()} copy ho gaya!`;
+      setTimeout(() => {
+        statusMsg.innerText = "";
+      }, 2000);
+    }
+
+    function createPalette() {
+      paletteBox.innerHTML = "";
+      for (let i = 0; i < 5; i++) {
+        const hex = getRandomHex().toUpperCase();
+        const swatch = document.createElement("div");
+        swatch.className = "swatch";
+        swatch.style.backgroundColor = hex;
+        swatch.innerHTML = `<span>${hex}</span>`;
+        swatch.title = "Click to copy";
+        swatch.onclick = () => copyToClipboard(hex);
+        paletteBox.appendChild(swatch);
+      }
+    }
+
+    colorPicker.addEventListener("input", (e) => {
+      const selectedColor = e.target.value.toUpperCase();
+      hexValue.innerText = selectedColor;
+    });
+
+    hexValue.addEventListener("click", () => {
+      copyToClipboard(hexValue.innerText);
+    });
+
+    genBtn.addEventListener("click", createPalette);
+
+    createPalette();
+  </script>
+</body>
+</html>
