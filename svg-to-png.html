@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MEQE82X4L0');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG to PNG Converter</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body {
+      background: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 30px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    h2 { margin-top: 0; color: #58a6ff; font-size: 24px; }
+    p { color: #8b949e; font-size: 14px; margin-bottom: 24px; }
+    input[type="file"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      background: #21262d;
+      border: 1px dashed #30363d;
+      border-radius: 8px;
+      color: #8b949e;
+      cursor: pointer;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    label { font-size: 14px; }
+    select {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      padding: 6px 12px;
+      border-radius: 6px;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      background: #238636;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+    button:hover { background: #2ea043; }
+    #previewBox {
+      margin-top: 20px;
+      display: none;
+    }
+    #previewBox img {
+      max-width: 100%;
+      max-height: 150px;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      background: #0d1117;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>SVG to PNG Converter</h2>
+    <p>Convert your vector SVG files to high-quality PNG instantly</p>
+
+    <input type="file" id="fileInput" accept=".svg">
+
+    <div class="row">
+      <label for="scale">Output Quality:</label>
+      <select id="scale">
+        <option value="1">1x (Standard)</option>
+        <option value="2" selected>2x (HD)</option>
+        <option value="4">4x (Ultra HD)</option>
+      </select>
+    </div>
+
+    <button id="convertBtn">Convert & Download PNG</button>
+
+    <div id="previewBox">
+      <p style="margin: 10px 0 6px 0;">Preview:</p>
+      <img id="previewImg" alt="Preview">
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const previewBox = document.getElementById('previewBox');
+    const previewImg = document.getElementById('previewImg');
+    let svgUrl = null;
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file && file.type.includes('svg')) {
+        if (svgUrl) URL.revokeObjectURL(svgUrl);
+        svgUrl = URL.createObjectURL(file);
+        previewImg.src = svgUrl;
+        previewBox.style.display = 'block';
+      }
+    });
+
+    document.getElementById('convertBtn').addEventListener('click', () => {
+      if (!fileInput.files.length) {
+        alert("Please choose an SVG file first!");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const scale = parseFloat(document.getElementById('scale').value);
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const blob = new Blob([e.target.result], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const img = new Image();
+
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = (img.naturalWidth || 300) * scale;
+          canvas.height = (img.naturalHeight || 300) * scale;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          URL.revokeObjectURL(url);
+
+          const link = document.createElement('a');
+          link.download = file.name.replace(/\.svg$/i, '') + '.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        };
+
+        img.src = url;
+      };
+
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>
