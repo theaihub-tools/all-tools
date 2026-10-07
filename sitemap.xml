@@ -94,5 +94,11 @@
     <loc>https://theaihub-tools.github.io/all-tools/word-counter.html</loc>
     <lastmod>2026-10-05</lastmod>
     <priority>0.90</priority>
+  </url> 
+    <url>
+    <loc>https://theaihub-tools.github.io/all-tools/json-formatter.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.90</priority>
   </url>
+
 </urlset>
