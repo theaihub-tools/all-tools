@@ -1,65 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-MEQE82X4L0');
-</script>
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Color Picker & Palette Generator</title>
+
+  <!-- SEO Meta Tags -->
+  <title>Color Picker & Palette Generator Online | The AI Hub Tools</title>
+  <meta name="description" content="Free online color picker, harmonic palette generator, and WCAG contrast checker. Screen eye-dropper, export CSS, JSON, PNG, and convert HEX, RGB, HSL." />
+  <meta name="keywords" content="color picker, color palette generator, eyedropper tool, wcag contrast checker, hex to rgb, hex to hsl, css variables generator, download palette png, web design colors" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/color-picker.html" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Color Picker & Palette Generator | The AI Hub Tools" />
+  <meta property="og:description" content="Pick colors, use screen eyedropper, test WCAG contrast, generate harmonic palettes, and export CSS & PNG." />
+  <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/color-picker.html" />
+  <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/assets/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Color Picker & Palette Generator | The AI Hub Tools" />
+  <meta name="twitter:description" content="Pick colors, use screen eyedropper, test WCAG contrast, generate harmonic palettes, and export CSS & PNG." />
+  <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/assets/og-image.png" />
+
+  <!-- Schema Markup (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color Picker & Palette Generator",
+    "url": "https://theaihub-tools.github.io/all-tools/color-picker.html",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Professional web-based color picker, screen eyedropper, WCAG contrast analyzer, and color palette generator."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the EyeDropper tool work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click the 'Pick Screen Color' button to sample any pixel directly from your desktop or web screen into the tool (supported in Chromium browsers)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I export my palettes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can copy individual HEX/RGB/HSL codes, copy complete CSS custom variables, download a JSON token file, or export a high-resolution PNG card."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the WCAG Accessibility Rating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It calculates luminance ratios against pure black and white text, telling you if your shade passes official WCAG 2.1 AA or AAA web standards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I lock specific colors while generating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, click the lock icon on any swatch to keep that tone static while recalculating the rest via Spacebar or the Generate button."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
     body {
       background: #0d1117;
       color: #c9d1d9;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      padding: 20px;
+      padding: 24px 14px;
+    }
+    .container {
+      max-width: 880px;
+      width: 100%;
     }
     .card {
       background: #161b22;
       border: 1px solid #30363d;
       border-radius: 12px;
-      padding: 28px;
+      padding: 28px 24px;
       width: 100%;
-      max-width: 460px;
       text-align: center;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      margin-bottom: 24px;
+      position: relative;
     }
-    h2 {
-      margin-top: 0;
+    h1 {
+      margin: 0 0 8px 0;
       color: #58a6ff;
-      font-size: 24px;
+      font-size: 26px;
+      font-weight: 700;
     }
-    p {
+    .subtitle {
       color: #8b949e;
       font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .shortcut-hint {
+      display: inline-block;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #58a6ff;
       margin-bottom: 20px;
     }
     .picker-box {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
-      margin-bottom: 22px;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
     }
     input[type="color"] {
       -webkit-appearance: none;
       border: 2px solid #30363d;
-      border-radius: 8px;
-      width: 54px;
-      height: 54px;
+      border-radius: 10px;
+      width: 60px;
+      height: 60px;
       cursor: pointer;
       background: none;
       padding: 0;
@@ -69,144 +163,762 @@
     }
     input[type="color"]::-webkit-color-swatch {
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
     }
-    .hex-text {
-      font-size: 18px;
+    .hex-input-wrapper {
+      display: flex;
+      align-items: center;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 6px 12px;
+    }
+    .hex-input-wrapper span {
+      color: #8b949e;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .hex-input-wrapper input {
+      background: none;
+      border: none;
+      color: #f0f6fc;
+      font-size: 16px;
       font-weight: 600;
       letter-spacing: 1px;
+      width: 95px;
+      outline: none;
+      text-transform: uppercase;
+    }
+    .code-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 6px;
+    }
+    .badge {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       color: #f0f6fc;
       background: #21262d;
-      padding: 10px 16px;
+      padding: 8px 12px;
       border-radius: 6px;
       border: 1px solid #30363d;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
     }
-    button {
-      width: 100%;
+    .badge:hover {
+      background: #30363d;
+      border-color: #58a6ff;
+    }
+
+    /* Contrast Preview Box */
+    .contrast-box {
+      margin: 18px auto;
+      max-width: 600px;
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid #30363d;
+      transition: background-color 0.2s ease;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contrast-card {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .score-badge {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+    }
+
+    /* Controls Grid */
+    .palette-controls {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 20px 0 14px;
+    }
+    select {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #f0f6fc;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+    select:focus {
+      border-color: #58a6ff;
+    }
+    button.primary-btn {
       background: #238636;
       color: #ffffff;
-      border: none;
-      padding: 12px;
-      font-size: 15px;
+      border: 1px solid #238636;
+      padding: 10px 16px;
+      font-size: 14px;
       font-weight: 600;
       border-radius: 6px;
       cursor: pointer;
-      transition: 0.2s ease;
-      margin-bottom: 20px;
+      transition: all 0.2s ease;
     }
-    button:hover {
+    button.primary-btn:hover {
       background: #2ea043;
     }
+    button.util-btn {
+      background: #1f6feb;
+      color: #ffffff;
+      border: 1px solid #1f6feb;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button.util-btn:hover {
+      background: #388bfd;
+    }
+
     .palette {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 10px;
       margin-top: 15px;
     }
+    @media (max-width: 600px) {
+      .palette {
+        grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+      }
+    }
     .swatch {
-      height: 70px;
+      height: 105px;
       border-radius: 8px;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 6px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 4px;
       cursor: pointer;
       border: 1px solid #30363d;
-      transition: transform 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
     }
     .swatch:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
-    .swatch span {
+    .lock-btn {
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      padding: 3px 6px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .swatch span.hex-tag {
       font-size: 11px;
       font-weight: 700;
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      padding: 2px 4px;
+      padding: 3px 6px;
       border-radius: 4px;
+      user-select: none;
     }
-    .copied-msg {
+    .status-toast {
       color: #3fb950;
       font-size: 13px;
-      min-height: 18px;
-      margin-top: 12px;
+      font-weight: 600;
+      min-height: 20px;
+      margin-top: 14px;
+    }
+
+    /* Content & SEO */
+    .content-section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .content-section h2 {
+      color: #58a6ff;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 8px;
+    }
+    .content-section p, .content-section ol, .content-section ul {
+      color: #8b949e;
+      margin-bottom: 14px;
+    }
+    .content-section ol, .content-section ul {
+      padding-left: 20px;
+    }
+    .content-section li {
+      margin-bottom: 6px;
+    }
+    .content-section strong {
+      color: #c9d1d9;
+    }
+
+    /* FAQ Details */
+    details {
+      border-bottom: 1px solid #30363d;
+      padding: 14px 0;
+    }
+    details:last-child {
+      border-bottom: none;
+    }
+    summary {
+      font-weight: 600;
+      color: #f0f6fc;
+      cursor: pointer;
+      font-size: 1rem;
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      color: #58a6ff;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+    details p {
+      margin-top: 10px;
+      color: #8b949e;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 25px 15px;
+      border-top: 1px solid #30363d;
+      background-color: #161b22;
+      font-size: 14px;
+      line-height: 1.8;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h2>Color Picker & Palette</h2>
-    <p>Color select karein ya random 5-color palette generate karein</p>
+  <div class="container">
+    <!-- Main Tool Card -->
+    <main class="card">
+      <h1>Color Picker & Palette Generator</h1>
+      <p class="subtitle">Pick colors, test WCAG accessibility contrast, and generate professional design palettes.</p>
+      <div class="shortcut-hint">Tip: Press <strong>Spacebar</strong> to cycle random palettes</div>
 
-    <div class="picker-box">
-      <input type="color" id="colorPicker" value="#58a6ff" />
-      <span id="hexValue" class="hex-text">#58A6FF</span>
-    </div>
+      <div class="picker-box">
+        <input type="color" id="colorPicker" value="#58a6ff" title="Click to choose a color" />
+        
+        <div class="hex-input-wrapper">
+          <span>#</span>
+          <input type="text" id="hexInput" value="58A6FF" maxlength="6" title="Type or paste hex code" />
+        </div>
 
-    <button id="genBtn">Random Palette Generate Karein</button>
+        <button id="eyeDropperBtn" class="util-btn" style="display: none;" title="Pick color from any screen element">💧 Pick Screen Color</button>
+      </div>
 
-    <div class="palette" id="paletteBox"></div>
-    <div class="copied-msg" id="statusMsg"></div>
-  </div>
-<footer style="text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; margin-top: 50px; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8;">
-    <p style="margin: 0 0 10px 0; color: #555;">
+      <div class="code-badges">
+        <div class="badge" id="hexValue" title="Click to copy HEX">#58A6FF</div>
+        <div class="badge" id="rgbValue" title="Click to copy RGB">rgb(88, 166, 255)</div>
+        <div class="badge" id="hslValue" title="Click to copy HSL">hsl(212, 100%, 67%)</div>
+      </div>
+
+      <!-- Live WCAG Contrast Evaluation -->
+      <div class="contrast-box" id="contrastPreview" style="background-color: #58a6ff;">
+        <div class="contrast-card" style="color: #000000; background: rgba(255,255,255,0.4);">
+          <span>Black Text Preview</span>
+          <span class="score-badge" id="blackScore">Ratio: 8.2:1 (AAA)</span>
+        </div>
+        <div class="contrast-card" style="color: #ffffff; background: rgba(0,0,0,0.4);">
+          <span>White Text Preview</span>
+          <span class="score-badge" id="whiteScore">Ratio: 2.6:1 (Fail)</span>
+        </div>
+      </div>
+
+      <!-- Palette Controls -->
+      <div class="palette-controls">
+        <select id="paletteMode">
+          <option value="analogous">Analogous Harmony</option>
+          <option value="monochromatic">Monochromatic (Shades)</option>
+          <option value="triadic">Triadic Harmony</option>
+          <option value="complementary">Complementary Harmony</option>
+          <option value="random">Pure Random Shades</option>
+        </select>
+        <button id="genBtn" class="primary-btn">Generate Palette</button>
+        <button id="copyAllBtn" class="util-btn">Copy Colors</button>
+        <button id="copyCssBtn" class="util-btn">Copy CSS</button>
+        <button id="copyJsonBtn" class="util-btn">Export JSON</button>
+        <button id="exportPngBtn" class="util-btn">Export PNG</button>
+      </div>
+
+      <div class="palette" id="paletteBox"></div>
+      <div class="status-toast" id="statusMsg"></div>
+    </main>
+
+    <!-- SEO & How to Use Guide -->
+    <section class="content-section">
+      <h2>What is the Color Picker & Palette Generator?</h2>
+      <p>This is a complete color exploration suite designed for UI/UX designers, frontend developers, and digital creators. Whether you are building WCAG-compliant web accessibility designs, generating design tokens for CSS and Figma, extracting screen colors with an eyedropper, or exploring color theory harmonies, this utility processes everything instantly inside your browser.</p>
+
+      <h2>How to Use This Tool</h2>
+      <ol>
+        <li><strong>Pick or Sample Colors:</strong> Use the interactive color circle, type a 3/6-digit HEX code, or use the <em>Pick Screen Color</em> eyedropper tool.</li>
+        <li><strong>Check Web Accessibility:</strong> Real-time WCAG 2.1 evaluation checks whether dark or light text ensures readability.</li>
+        <li><strong>Generate Harmonious Palettes:</strong> Choose from <em>Analogous</em>, <em>Monochromatic</em>, <em>Triadic</em>, <em>Complementary</em>, or <em>Random</em> modes. Lock tones you like using the lock button.</li>
+        <li><strong>Inspect & Sync:</strong> Click any palette swatch to copy its HEX value and simultaneously load its RGB/HSL values into the main inspector.</li>
+        <li><strong>Export Assets:</strong> Copy individual values, export CSS variables, download JSON design tokens, or save a high-resolution PNG card.</li>
+      </ol>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Screen EyeDropper:</strong> Sample colors directly from external browser tabs or desktop apps.</li>
+        <li><strong>WCAG 2.1 Contrast Testing:</strong> Precise mathematical luminance analysis for black and white text.</li>
+        <li><strong>Multi-Format Exports:</strong> CSS custom variables, JSON theme tokens, and HTML5 Canvas PNG cards.</li>
+        <li><strong>Spacebar & Lock Control:</strong> Rapid iteration with keyboard control and swatch preservation.</li>
+      </ul>
+    </section>
+
+    <!-- Frequently Asked Questions (FAQs) -->
+    <section class="content-section">
+      <h2>Frequently Asked Questions (FAQs)</h2>
+
+      <details>
+        <summary>1. Is this Color Picker & Palette Generator free?</summary>
+        <p>Yes, this utility is 100% free with unlimited generations, no registration, and no installation required.</p>
+      </details>
+
+      <details>
+        <summary>2. What is a WCAG Contrast Ratio?</summary>
+        <p>The Web Content Accessibility Guidelines (WCAG) recommend a minimum contrast ratio of 4.5:1 for normal text (AA standard) and 7:1 for enhanced accessibility (AAA standard) to ensure legibility.</p>
+      </details>
+
+      <details>
+        <summary>3. Can I lock colors while generating new palettes?</summary>
+        <p>Yes, click the lock button on top of any swatch. When you generate a new palette or press spacebar, locked colors remain preserved.</p>
+      </details>
+
+      <details>
+        <summary>4. What formats can I export?</summary>
+        <p>You can copy individual HEX/RGB/HSL values, copy full comma-separated palettes, copy clean <code>:root</code> CSS variables, export design tokens as JSON, or download a PNG image card.</p>
+      </details>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p style="margin: 0 0 10px 0; color: #8b949e;">
         &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
-    </p>
-    <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
-    </p>
-</footer>
+      </p>
+      <p style="margin: 0;">
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About Us</a> | 
+        <a href="contact.html">Contact Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms & Conditions</a>
+      </p>
+    </footer>
+  </div>
 
   <script>
     const colorPicker = document.getElementById("colorPicker");
+    const hexInput = document.getElementById("hexInput");
     const hexValue = document.getElementById("hexValue");
+    const rgbValue = document.getElementById("rgbValue");
+    const hslValue = document.getElementById("hslValue");
+    const contrastPreview = document.getElementById("contrastPreview");
+    const blackScore = document.getElementById("blackScore");
+    const whiteScore = document.getElementById("whiteScore");
+    const paletteMode = document.getElementById("paletteMode");
     const genBtn = document.getElementById("genBtn");
+    const copyAllBtn = document.getElementById("copyAllBtn");
+    const copyCssBtn = document.getElementById("copyCssBtn");
+    const copyJsonBtn = document.getElementById("copyJsonBtn");
+    const exportPngBtn = document.getElementById("exportPngBtn");
+    const eyeDropperBtn = document.getElementById("eyeDropperBtn");
     const paletteBox = document.getElementById("paletteBox");
     const statusMsg = document.getElementById("statusMsg");
 
+    let currentPalette = [
+      { hex: "#58A6FF", locked: false },
+      { hex: "#388BFD", locked: false },
+      { hex: "#1F6FEB", locked: false },
+      { hex: "#238636", locked: false },
+      { hex: "#2EA043", locked: false }
+    ];
+
+    if (window.EyeDropper) {
+      eyeDropperBtn.style.display = "inline-block";
+      eyeDropperBtn.addEventListener("click", async () => {
+        try {
+          const eyeDropper = new EyeDropper();
+          const result = await eyeDropper.open();
+          const pickedHex = result.sRGBHex.toUpperCase();
+          colorPicker.value = pickedHex;
+          hexInput.value = pickedHex.replace("#", "");
+          updateColorDisplay(pickedHex);
+          generatePalette();
+          copyToClipboard(pickedHex);
+        } catch (e) {
+          // User canceled dropper
+        }
+      });
+    }
+
+    function hexToRgb(hex) {
+      let c = hex.replace("#", "");
+      if (c.length === 3) c = c.split("").map(x => x + x).join("");
+      const num = parseInt(c, 16);
+      return {
+        r: (num >> 16) & 255,
+        g: (num >> 8) & 255,
+        b: num & 255
+      };
+    }
+
+    function rgbToHex(r, g, b) {
+      return "#" + [r, g, b].map(x => {
+        const hex = Math.round(Math.min(255, Math.max(0, x))).toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      }).join("").toUpperCase();
+    }
+
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+
+      if (max === min) {
+        h = s = 0;
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return {
+        h: Math.round(h * 360),
+        s: Math.round(s * 100),
+        l: Math.round(l * 100)
+      };
+    }
+
+    function hslToRgb(h, s, l) {
+      h /= 360; s /= 100; l /= 100;
+      let r, g, b;
+      if (s === 0) {
+        r = g = b = l;
+      } else {
+        const hue2rgb = (p, q, t) => {
+          if (t < 0) t += 1;
+          if (t > 1) t -= 1;
+          if (t < 1/6) return p + (q - p) * 6 * t;
+          if (t < 1/2) return q;
+          if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+          return p;
+        };
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        const p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+      }
+      return { r: r * 255, g: g * 255, b: b * 255 };
+    }
+
+    function getLuminance(r, g, b) {
+      const a = [r, g, b].map(v => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+    }
+
+    function calculateContrastRatio(hex) {
+      const rgb = hexToRgb(hex);
+      const lum = getLuminance(rgb.r, rgb.g, rgb.b);
+      
+      const ratioBlack = (lum + 0.05) / (0.00 + 0.05);
+      const ratioWhite = (1.00 + 0.05) / (lum + 0.05);
+
+      function formatScore(ratio) {
+        const r = ratio.toFixed(1);
+        let tag = "Fail";
+        if (ratio >= 7) tag = "AAA Pass";
+        else if (ratio >= 4.5) tag = "AA Pass";
+        return `${r}:1 (${tag})`;
+      }
+
+      blackScore.innerText = `Ratio: ${formatScore(ratioBlack)}`;
+      whiteScore.innerText = `Ratio: ${formatScore(ratioWhite)}`;
+    }
+
+    function updateColorDisplay(hex) {
+      const formattedHex = hex.toUpperCase();
+      const rgb = hexToRgb(formattedHex);
+      const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+      hexValue.innerText = formattedHex;
+      rgbValue.innerText = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+      hslValue.innerText = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+      contrastPreview.style.backgroundColor = formattedHex;
+
+      calculateContrastRatio(formattedHex);
+    }
+
     function getRandomHex() {
-      return "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
+      return "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0").toUpperCase();
     }
 
-    function copyToClipboard(hex) {
-      navigator.clipboard.writeText(hex);
-      statusMsg.innerText = `${hex.toUpperCase()} copy ho gaya!`;
-      setTimeout(() => {
-        statusMsg.innerText = "";
-      }, 2000);
-    }
+    function generatePalette() {
+      const mode = paletteMode.value;
+      const baseHex = colorPicker.value;
+      const rgb = hexToRgb(baseHex);
+      const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+      let calculatedColors = [];
 
-    function createPalette() {
-      paletteBox.innerHTML = "";
+      if (mode === "random") {
+        for (let i = 0; i < 5; i++) {
+          calculatedColors.push(getRandomHex());
+        }
+      } else if (mode === "monochromatic") {
+        const steps = [25, 40, 55, 70, 85];
+        steps.forEach(l => {
+          const cRgb = hslToRgb(hsl.h, hsl.s, l);
+          calculatedColors.push(rgbToHex(cRgb.r, cRgb.g, cRgb.b));
+        });
+      } else if (mode === "analogous") {
+        const offsets = [-30, -15, 0, 15, 30];
+        offsets.forEach(off => {
+          const newH = (hsl.h + off + 360) % 360;
+          const cRgb = hslToRgb(newH, hsl.s, hsl.l);
+          calculatedColors.push(rgbToHex(cRgb.r, cRgb.g, cRgb.b));
+        });
+      } else if (mode === "triadic") {
+        const offsets = [0, 120, 240, 60, 180];
+        offsets.forEach(off => {
+          const newH = (hsl.h + off + 360) % 360;
+          const cRgb = hslToRgb(newH, hsl.s, hsl.l);
+          calculatedColors.push(rgbToHex(cRgb.r, cRgb.g, cRgb.b));
+        });
+      } else if (mode === "complementary") {
+        const offsets = [0, 180, 20, 200, 40];
+        offsets.forEach(off => {
+          const newH = (hsl.h + off + 360) % 360;
+          const cRgb = hslToRgb(newH, hsl.s, hsl.l);
+          calculatedColors.push(rgbToHex(cRgb.r, cRgb.g, cRgb.b));
+        });
+      }
+
       for (let i = 0; i < 5; i++) {
-        const hex = getRandomHex().toUpperCase();
+        if (!currentPalette[i].locked) {
+          currentPalette[i].hex = calculatedColors[i] || getRandomHex();
+        }
+      }
+
+      renderPalette();
+    }
+
+    function renderPalette() {
+      paletteBox.innerHTML = "";
+      currentPalette.forEach((item, index) => {
         const swatch = document.createElement("div");
         swatch.className = "swatch";
-        swatch.style.backgroundColor = hex;
-        swatch.innerHTML = `<span>${hex}</span>`;
-        swatch.title = "Click to copy";
-        swatch.onclick = () => copyToClipboard(hex);
+        swatch.style.backgroundColor = item.hex;
+
+        const rgb = hexToRgb(item.hex);
+        const lum = getLuminance(rgb.r, rgb.g, rgb.b);
+        const textColor = lum > 0.4 ? "#000000" : "#ffffff";
+        const badgeBg = lum > 0.4 ? "rgba(0,0,0,0.15)" : "rgba(0,0,0,0.65)";
+
+        const lockBtn = document.createElement("button");
+        lockBtn.className = "lock-btn";
+        lockBtn.style.background = item.locked ? "#238636" : badgeBg;
+        lockBtn.style.color = item.locked ? "#ffffff" : textColor;
+        lockBtn.innerText = item.locked ? "🔒" : "🔓";
+        lockBtn.title = item.locked ? "Unlock color" : "Lock color";
+        lockBtn.onclick = (e) => {
+          e.stopPropagation();
+          item.locked = !item.locked;
+          renderPalette();
+        };
+
+        const hexTag = document.createElement("span");
+        hexTag.className = "hex-tag";
+        hexTag.style.background = badgeBg;
+        hexTag.style.color = textColor;
+        hexTag.innerText = item.hex;
+
+        swatch.appendChild(lockBtn);
+        swatch.appendChild(hexTag);
+
+        swatch.title = `Click to inspect & copy ${item.hex}`;
+        swatch.onclick = () => {
+          colorPicker.value = item.hex;
+          hexInput.value = item.hex.replace("#", "");
+          updateColorDisplay(item.hex);
+          copyToClipboard(item.hex);
+        };
+
         paletteBox.appendChild(swatch);
-      }
+      });
+    }
+
+    function copyToClipboard(val) {
+      navigator.clipboard.writeText(val).then(() => {
+        statusMsg.innerText = `Copied "${val}" to clipboard! ✓`;
+        setTimeout(() => {
+          statusMsg.innerText = "";
+        }, 2200);
+      });
+    }
+
+    function exportPaletteAsPng() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1000;
+      canvas.height = 400;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#161b22";
+      ctx.fillRect(0, 0, 1000, 400);
+
+      ctx.fillStyle = "#58a6ff";
+      ctx.font = "bold 24px -apple-system, sans-serif";
+      ctx.fillText("The AI Hub Tools — Color Palette", 40, 50);
+
+      const swatchWidth = 180;
+      const swatchHeight = 260;
+      const startX = 40;
+      const startY = 80;
+
+      currentPalette.forEach((item, i) => {
+        const x = startX + i * (swatchWidth + 5);
+
+        ctx.fillStyle = item.hex;
+        ctx.fillRect(x, startY, swatchWidth, swatchHeight);
+
+        ctx.fillStyle = "rgba(0,0,0,0.75)";
+        ctx.fillRect(x + 10, startY + swatchHeight - 45, swatchWidth - 20, 32);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 15px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(item.hex, x + (swatchWidth / 2), startY + swatchHeight - 24);
+      });
+
+      const link = document.createElement("a");
+      link.download = `palette-${Date.now()}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+      copyToClipboard("Palette PNG Exported!");
     }
 
     colorPicker.addEventListener("input", (e) => {
-      const selectedColor = e.target.value.toUpperCase();
-      hexValue.innerText = selectedColor;
+      const val = e.target.value.toUpperCase();
+      hexInput.value = val.replace("#", "");
+      updateColorDisplay(val);
+      generatePalette();
     });
 
-    hexValue.addEventListener("click", () => {
-      copyToClipboard(hexValue.innerText);
+    hexInput.addEventListener("input", (e) => {
+      let val = e.target.value.replace(/[^0-9A-Fa-f]/g, "").toUpperCase();
+      hexInput.value = val;
+      if (val.length === 3) {
+        val = val.split("").map(c => c + c).join("");
+      }
+      if (val.length === 6) {
+        const fullHex = "#" + val;
+        colorPicker.value = fullHex;
+        updateColorDisplay(fullHex);
+        generatePalette();
+      }
     });
 
-    genBtn.addEventListener("click", createPalette);
+    window.addEventListener("keydown", (e) => {
+      if (e.code === "Space" && e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
+        e.preventDefault();
+        paletteMode.value = "random";
+        generatePalette();
+      }
+    });
 
-    createPalette();
+    hexValue.addEventListener("click", () => copyToClipboard(hexValue.innerText));
+    rgbValue.addEventListener("click", () => copyToClipboard(rgbValue.innerText));
+    hslValue.addEventListener("click", () => copyToClipboard(hslValue.innerText));
+
+    genBtn.addEventListener("click", generatePalette);
+    paletteMode.addEventListener("change", generatePalette);
+
+    copyAllBtn.addEventListener("click", () => {
+      const allHex = currentPalette.map(p => p.hex).join(", ");
+      copyToClipboard(allHex);
+    });
+
+    copyCssBtn.addEventListener("click", () => {
+      let css = ":root {\n";
+      currentPalette.forEach((p, idx) => {
+        css += `  --color-${idx + 1}: ${p.hex};\n`;
+      });
+      css += "}";
+      copyToClipboard(css);
+    });
+
+    copyJsonBtn.addEventListener("click", () => {
+      const tokens = {};
+      currentPalette.forEach((p, idx) => {
+        tokens[`color_${idx + 1}`] = {
+          value: p.hex,
+          type: "color"
+        };
+      });
+      copyToClipboard(JSON.stringify(tokens, null, 2));
+    });
+
+    exportPngBtn.addEventListener("click", exportPaletteAsPng);
+
+    updateColorDisplay(colorPicker.value);
+    generatePalette();
   </script>
 </body>
 </html>
