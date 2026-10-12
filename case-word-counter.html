@@ -1,73 +1,162 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-MEQE82X4L0');
-</script>
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>केस कन्वर्टर और वर्ड काउंटर | Case Converter & Word Counter</title>
+
+  <!-- SEO Meta Tags -->
+  <title>Case Converter & Word Counter Online | The AI Hub Tools</title>
+  <meta name="description" content="Free online case converter and live word counter tool. Convert text to UPPERCASE, lowercase, Title Case, Sentence case, clean spaces, and calculate words, characters, and reading time instantly.">
+  <meta name="keywords" content="case converter, word counter, text case converter, change case, title case converter, uppercase to lowercase, sentence case, slug generator, character counter online">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://theaihubtools.com/case-converter">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Case Converter & Word Counter | The AI Hub Tools">
+  <meta property="og:description" content="Effortlessly transform text cases and calculate words, characters, paragraphs, and reading time in real-time.">
+  <meta property="og:url" content="https://theaihubtools.com/case-converter">
+  <meta property="og:image" content="https://theaihubtools.com/assets/og-case-converter.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Case Converter & Word Counter | The AI Hub Tools">
+  <meta name="twitter:description" content="Effortlessly transform text cases and calculate words, characters, paragraphs, and reading time in real-time.">
+  <meta name="twitter:image" content="https://theaihubtools.com/assets/og-case-converter.png">
+
+  <!-- Schema Markup (JSON-LD for Google SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Case Converter & Word Counter",
+    "url": "https://theaihubtools.com/case-converter",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Free online text case converter and live word counting tool."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the online case converter work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply paste or type your text and click any conversion button (UPPERCASE, lowercase, Title Case, Sentence case, or slug-case) to transform your text instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my text data stored or sent to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, this tool operates 100% client-side via JavaScript. Your text never leaves your browser, ensuring complete privacy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I undo changes if I convert by mistake?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, clicking the 'Undo' button easily restores your previous text state at any time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a limit on how many words I can process?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There are no limits. You can process short snippets or long 50,000+ word articles with zero performance lag."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
     body {
       background-color: #0d1117;
       color: #c9d1d9;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 24px 14px;
+    }
+    .container {
+      max-width: 840px;
+      width: 100%;
     }
     .converter-card {
       background: #161b22;
       border: 1px solid #30363d;
       padding: 24px;
       border-radius: 12px;
-      max-width: 600px;
       width: 100%;
       box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      margin-bottom: 24px;
+      position: relative;
     }
-    h2 {
+    h1 {
       text-align: center;
       margin-bottom: 20px;
       color: #58a6ff;
-      font-size: 22px;
+      font-size: 26px;
+      font-weight: 700;
     }
     .stats-bar {
-      display: flex;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
       margin-bottom: 16px;
     }
     .stat-box {
-      flex: 1;
       background: #21262d;
       border: 1px solid #30363d;
       border-radius: 8px;
-      padding: 12px;
+      padding: 10px 6px;
       text-align: center;
     }
     .stat-box span {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: #8b949e;
+      margin-bottom: 4px;
     }
     .stat-box strong {
       font-size: 20px;
       color: #3fb950;
     }
+    .textarea-wrapper {
+      position: relative;
+    }
     textarea {
       width: 100%;
-      height: 180px;
+      height: 220px;
       padding: 14px;
       background-color: #0d1117;
       border: 1px solid #30363d;
@@ -76,19 +165,19 @@
       color: #f0f6fc;
       outline: none;
       resize: vertical;
-      line-height: 1.5;
+      line-height: 1.6;
     }
     textarea:focus {
       border-color: #58a6ff;
     }
     .btn-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 8px;
       margin-top: 14px;
     }
     button {
-      padding: 10px;
+      padding: 10px 8px;
       background-color: #21262d;
       border: 1px solid #30363d;
       border-radius: 6px;
@@ -96,7 +185,8 @@
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.2s, color 0.2s;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
     button:hover {
       background-color: #30363d;
@@ -110,6 +200,14 @@
     button.primary-btn:hover {
       background-color: #2ea043;
     }
+    button.util-btn {
+      background-color: #1f6feb;
+      border-color: #1f6feb;
+      color: #fff;
+    }
+    button.util-btn:hover {
+      background-color: #388bfd;
+    }
     button.clear-btn {
       background-color: #da3633;
       border-color: #da3633;
@@ -118,65 +216,267 @@
     button.clear-btn:hover {
       background-color: #b62324;
     }
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    /* Notification Toast */
+    #statusToast {
+      display: none;
+      text-align: center;
+      padding: 8px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .toast-success {
+      background: rgba(46, 160, 67, 0.2);
+      color: #3fb950;
+      border: 1px solid #2ea043;
+    }
+    .toast-warning {
+      background: rgba(218, 54, 51, 0.2);
+      color: #f85149;
+      border: 1px solid #da3633;
+    }
+
+    /* Content & SEO */
+    .content-section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .content-section h2 {
+      color: #58a6ff;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 8px;
+    }
+    .content-section p, .content-section ol, .content-section ul {
+      color: #8b949e;
+      margin-bottom: 14px;
+    }
+    .content-section ol, .content-section ul {
+      padding-left: 20px;
+    }
+    .content-section li {
+      margin-bottom: 6px;
+    }
+    .content-section strong {
+      color: #c9d1d9;
+    }
+
+    /* FAQ Details */
+    details {
+      border-bottom: 1px solid #30363d;
+      padding: 14px 0;
+    }
+    details:last-child {
+      border-bottom: none;
+    }
+    summary {
+      font-weight: 600;
+      color: #f0f6fc;
+      cursor: pointer;
+      font-size: 1rem;
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      color: #58a6ff;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+    details p {
+      margin-top: 10px;
+      color: #8b949e;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 25px 15px;
+      border-top: 1px solid #30363d;
+      background-color: #161b22;
+      font-size: 14px;
+      line-height: 1.8;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-  <div class="converter-card">
-    <h2>केस कन्वर्टर और वर्ड काउंटर</h2>
+  <div class="container">
+    <!-- Main Tool Card -->
+    <main class="converter-card">
+      <h1>Case Converter & Word Counter</h1>
 
-    <div class="stats-bar">
-      <div class="stat-box">
-        <span>Words</span>
-        <strong id="wordCount">0</strong>
+      <div class="stats-bar">
+        <div class="stat-box">
+          <span>Words</span>
+          <strong id="wordCount">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>Characters</span>
+          <strong id="charCount">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>No Spaces</span>
+          <strong id="charNoSpaceCount">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>Paragraphs</span>
+          <strong id="paraCount">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>Lines</span>
+          <strong id="lineCount">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>Read Time</span>
+          <strong id="readingTime">0 min</strong>
+        </div>
       </div>
-      <div class="stat-box">
-        <span>Characters</span>
-        <strong id="charCount">0</strong>
-      </div>
-      <div class="stat-box">
-        <span>Lines</span>
-        <strong id="lineCount">0</strong>
-      </div>
-    </div>
 
-    <textarea id="textInput" placeholder="यहाँ अपना टेक्स्ट पेस्ट करें या लिखें..." oninput="updateStats()"></textarea>
+      <div class="textarea-wrapper">
+        <textarea id="textInput" placeholder="Type or paste your text here..." oninput="recordHistory(); updateStats();"></textarea>
+      </div>
 
-    <div class="btn-grid">
-      <button onclick="toUpperCase()">UPPERCASE</button>
-      <button onclick="toLowerCase()">lowercase</button>
-      <button onclick="toTitleCase()">Title Case</button>
-      <button onclick="toSentenceCase()">Sentence case</button>
-      <button class="clear-btn" onclick="clearText()">Clear</button>
-      <button class="primary-btn" onclick="copyText()">Copy Text</button>
-    </div>
-  </div> 
- <section style="max-width: 850px; margin: 40px auto 20px; padding: 24px; border-radius: 12px; background: rgba(0, 0, 0, 0.03); border: 1px solid rgba(0, 0, 0, 0.08); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: inherit;">
-  <h2 style="margin-top: 0; font-size: 1.4rem;">Text Case Converter & Word Counter — The AI Hub Tools</h2>
-  <p>यह टूल आपके टेक्स्ट को अपरकेस (UPPERCASE), लोअरकेस (lowercase), टाइटल केस (Title Case) में बदलने के साथ-साथ कुल शब्दों और अक्षरों की लाइव गिनती करता है। कोडर्स और राइटर्स के लिए यह एक ऑल-इन-वन यूटिलिटी है।</p>
-  <h3 style="font-size: 1.15rem; margin-top: 18px;">उपयोग कैसे करें?</h3>
-  <ol style="padding-left: 20px;">
-    <li><strong>Enter Text:</strong> टेक्स्ट एरिया में अपना कंटेंट लिखें या पेस्ट करें।</li>
-    <li><strong>Choose Case:</strong> जिस केस में टेक्स्ट बदलना है उस बटन पर क्लिक करें।</li>
-    <li><strong>Copy:</strong> एक क्लिक में बदले हुए टेक्स्ट को कॉपी कर लें।</li>
-  </ol>
-</section>
- 
-<footer style="text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; margin-top: 50px; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8;">
-    <p style="margin: 0 0 10px 0; color: #555;">
+      <div id="statusToast"></div>
+
+      <div class="btn-grid">
+        <button onclick="applyTransform('uppercase')">UPPERCASE</button>
+        <button onclick="applyTransform('lowercase')">lowercase</button>
+        <button onclick="applyTransform('titlecase')">Title Case</button>
+        <button onclick="applyTransform('sentencecase')">Sentence case</button>
+        <button onclick="applyTransform('alternatecase')">aLtErNaTe</button>
+        <button onclick="applyTransform('slugcase')">slug-case</button>
+        <button onclick="applyTransform('cleanspaces')">Clean Spaces</button>
+        <button id="undoBtn" onclick="undo()" disabled title="Undo last change">Undo</button>
+        <button onclick="pasteText()">Paste</button>
+        <button class="clear-btn" onclick="clearText()">Clear</button>
+        <button class="util-btn" onclick="downloadText()">Download (.txt)</button>
+        <button id="copyBtn" class="primary-btn" onclick="copyText()">Copy Text</button>
+      </div>
+    </main>
+
+    <!-- SEO & How to Use Guide -->
+    <section class="content-section">
+      <h2>What is the Case Converter & Word Counter?</h2>
+      <p>This is a fast, lightweight, and completely private online text utility designed for content writers, bloggers, students, and software developers. Effortlessly switch between uppercase, lowercase, title case, sentence case, alternate case, and URL-friendly slug format while tracking words, characters, paragraphs, and reading time in real time.</p>
+
+      <h2>How to Use This Tool</h2>
+      <ol>
+        <li><strong>Input Content:</strong> Type, paste, or click the <em>Paste</em> button to populate your text in the workspace.</li>
+        <li><strong>Choose Formatting:</strong> Select any case option such as <em>UPPERCASE</em>, <em>lowercase</em>, <em>Title Case</em>, <em>Sentence case</em>, or <em>slug-case</em>.</li>
+        <li><strong>Clean Formatting:</strong> Click <em>Clean Spaces</em> to instantly eliminate unnecessary double spaces and tabs.</li>
+        <li><strong>Revert Anytime:</strong> Accidentally made an unwanted change? Use <em>Undo</em> to revert back to your previous version.</li>
+        <li><strong>Copy or Export:</strong> Click <em>Copy Text</em> to copy it directly to your clipboard or <em>Download (.txt)</em> to save it locally.</li>
+      </ol>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Live Real-time Counter:</strong> Instant calculations for words, characters without spaces, lines, and reading duration.</li>
+        <li><strong>100% Client-Side Privacy:</strong> No data is ever transmitted or stored on remote servers; all processing is local.</li>
+        <li><strong>SEO Friendly Slugs:</strong> Automatically sanitize article headers and titles into search-optimized hyphenated slugs.</li>
+        <li><strong>Undo & Redo Protection:</strong> Never lose your original draft with built-in state memory.</li>
+      </ul>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section class="content-section">
+      <h2>Frequently Asked Questions (FAQs)</h2>
+
+      <details>
+        <summary>1. Is this Case Converter & Word Counter completely free?</summary>
+        <p>Yes, this tool is 100% free with unlimited usage and requires no registration, installation, or subscription.</p>
+      </details>
+
+      <details>
+        <summary>2. What is the difference between Title Case and Sentence case?</summary>
+        <p>Title Case capitalizes the initial letter of every major word, whereas Sentence case only capitalizes the first letter of each complete sentence.</p>
+      </details>
+
+      <details>
+        <summary>3. Can I recover my draft if I make a mistake?</summary>
+        <p>Yes, simply press the <strong>Undo</strong> button to instantly restore your previous version step-by-step.</p>
+      </details>
+
+      <details>
+        <summary>4. Is my private text secure?</summary>
+        <p>Absolutely. The entire application runs inside your browser using JavaScript. Your text is never uploaded to any cloud server or database.</p>
+      </details>
+
+      <details>
+        <summary>5. Is there an input word limit?</summary>
+        <p>No, there are no character or word limitations. You can format short code snippets or lengthy 50,000-word manuscripts without delay.</p>
+      </details>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p style="margin: 0 0 10px 0; color: #8b949e;">
         &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
-    </p>
-    <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
-    </p>
-</footer>
+      </p>
+      <p style="margin: 0;">
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About Us</a> | 
+        <a href="contact.html">Contact Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms & Conditions</a>
+      </p>
+    </footer>
+  </div>
 
   <script>
     const input = document.getElementById('textInput');
+    const copyBtn = document.getElementById('copyBtn');
+    const undoBtn = document.getElementById('undoBtn');
+    const toast = document.getElementById('statusToast');
+
+    let historyStack = [];
+
+    function showToast(msg, type = 'success') {
+      toast.innerText = msg;
+      toast.className = type === 'success' ? 'toast-success' : 'toast-warning';
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2500);
+    }
+
+    function recordHistory() {
+      if (historyStack.length === 0 || historyStack[historyStack.length - 1] !== input.value) {
+        historyStack.push(input.value);
+        if (historyStack.length > 25) historyStack.shift();
+      }
+      undoBtn.disabled = historyStack.length <= 1;
+    }
 
     function updateStats() {
       const text = input.value;
@@ -184,47 +484,145 @@
       // Characters count
       document.getElementById('charCount').innerText = text.length;
 
+      // Characters without spaces
+      const charsNoSpace = text.replace(/\s+/g, '').length;
+      document.getElementById('charNoSpaceCount').innerText = charsNoSpace;
+
       // Words count
       const words = text.trim().split(/\s+/).filter(w => w.length > 0);
-      document.getElementById('wordCount').innerText = words.length;
+      const wordTotal = text.trim() === '' ? 0 : words.length;
+      document.getElementById('wordCount').innerText = wordTotal;
+
+      // Paragraphs count
+      const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0);
+      document.getElementById('paraCount').innerText = text.trim() === '' ? 0 : paragraphs.length;
 
       // Lines count
       const lines = text.length === 0 ? 0 : text.split('\n').length;
       document.getElementById('lineCount').innerText = lines;
+
+      // Reading time estimation (avg 200 WPM)
+      const minutes = Math.ceil(wordTotal / 200);
+      document.getElementById('readingTime').innerText = wordTotal === 0 ? '0 min' : `${minutes} min`;
     }
 
-    function toUpperCase() {
-      input.value = input.value.toUpperCase();
+    function applyTransform(type) {
+      if (!input.value.trim()) {
+        showToast('Please enter some text first!', 'warning');
+        return;
+      }
+      recordHistory();
+
+      switch(type) {
+        case 'uppercase':
+          input.value = input.value.toUpperCase();
+          break;
+        case 'lowercase':
+          input.value = input.value.toLowerCase();
+          break;
+        case 'titlecase':
+          input.value = input.value.toLowerCase().replace(/(^|\s)\S/g, char => char.toUpperCase());
+          break;
+        case 'sentencecase':
+          input.value = input.value.toLowerCase().replace(/(^\s*|[.!?]\s*)([a-z\u00C0-\u024F])/g, (m, p, c) => p + c.toUpperCase());
+          break;
+        case 'alternatecase':
+          input.value = input.value.split('').map((c, i) => i % 2 === 0 ? c.toLowerCase() : c.toUpperCase()).join('');
+          break;
+        case 'slugcase':
+          input.value = input.value
+            .toLowerCase()
+            .trim()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[\s_-]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+          break;
+        case 'cleanspaces':
+          input.value = input.value.replace(/[ \t]+/g, ' ').trim();
+          showToast('Extra spaces cleaned!');
+          break;
+      }
+      recordHistory();
       updateStats();
     }
 
-    function toLowerCase() {
-      input.value = input.value.toLowerCase();
-      updateStats();
+    function undo() {
+      if (historyStack.length > 1) {
+        historyStack.pop();
+        input.value = historyStack[historyStack.length - 1];
+        updateStats();
+        undoBtn.disabled = historyStack.length <= 1;
+        showToast('Action undone!');
+      }
     }
 
-    function toTitleCase() {
-      input.value = input.value.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
-      updateStats();
-    }
-
-    function toSentenceCase() {
-      const text = input.value.toLowerCase();
-      input.value = text.replace(/(^\s*\w|[.!?]\s*\w)/g, char => char.toUpperCase());
-      updateStats();
+    async function pasteText() {
+      try {
+        const clipText = await navigator.clipboard.readText();
+        if (clipText) {
+          recordHistory();
+          input.value = clipText;
+          recordHistory();
+          updateStats();
+          showToast('Text pasted successfully!');
+        } else {
+          showToast('Clipboard is empty!', 'warning');
+        }
+      } catch (err) {
+        showToast('Clipboard permission denied. Please press Ctrl+V.', 'warning');
+      }
     }
 
     function clearText() {
+      if (!input.value) return;
+      if (input.value.length > 50) {
+        if (!confirm('Are you sure you want to clear all text?')) return;
+      }
+      recordHistory();
       input.value = '';
+      recordHistory();
       updateStats();
+      showToast('Text cleared!');
+    }
+
+    function downloadText() {
+      if (!input.value.trim()) {
+        showToast('No text available to download!', 'warning');
+        return;
+      }
+      const blob = new Blob([input.value], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'converted-text.txt';
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showToast('File downloaded!');
     }
 
     function copyText() {
-      if (!input.value) return;
+      if (!input.value.trim()) {
+        showToast('No text to copy!', 'warning');
+        return;
+      }
       navigator.clipboard.writeText(input.value).then(() => {
-        alert('टेक्स्ट कॉपी हो गया है!');
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = 'Copied! ✓';
+        copyBtn.style.backgroundColor = '#1f6feb';
+        showToast('Copied to clipboard!');
+        setTimeout(() => {
+          copyBtn.innerText = originalText;
+          copyBtn.style.backgroundColor = '';
+        }, 2000);
+      }).catch(() => {
+        input.select();
+        document.execCommand('copy');
+        showToast('Copied to clipboard!');
       });
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      recordHistory();
+    });
   </script>
 </body>
 </html>
