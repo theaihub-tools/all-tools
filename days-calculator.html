@@ -1,50 +1,181 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-MEQE82X4L0');
-</script>
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>दिनों की गणना | Days Calculator</title>
+
+  <!-- Primary SEO Meta Tags -->
+  <title>Days Calculator - Calculate Duration & Add/Subtract Days | The AI Hub Tools</title>
+  <meta name="description" content="Free online Days Calculator to calculate duration between dates, working business days, or add/subtract days, weeks, and months from any date. Export .ics calendar events.">
+  <meta name="keywords" content="days calculator, date difference calculator, add days to date, subtract days from date, working days calculator, business days calculator, calendar counter, add business days">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/day-calculator.html">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Days Calculator - Calculate Duration & Add/Subtract Days | The AI Hub Tools">
+  <meta property="og:description" content="Calculate exact days, working days, weeks, months, or add/subtract days from any date instantly.">
+  <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/day-calculator.html">
+  <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Days Calculator - Calculate Duration & Add/Subtract Days | The AI Hub Tools">
+  <meta name="twitter:description" content="Calculate exact days, working days, weeks, months, or add/subtract days from any date instantly.">
+  <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/assets/og-image.png">
+
+  <!-- Schema Markup (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Days Calculator & Date Duration Suite",
+    "url": "https://theaihub-tools.github.io/all-tools/day-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Calculate date differences, business working days, and add or subtract days, weeks, or months from any date."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate days between two dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Select 'Date Difference' mode, enter your start date and target end date, and click Calculate to view total days, business working days, weeks, and months."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add only working business days to a date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, in 'Add / Subtract' mode, check the 'Business days only' box to skip Saturdays and Sundays automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add weeks or months instead of just days?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our tool provides dedicated input fields for Years, Months, Weeks, and Days so you can project complex deadlines effortlessly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I save the calculated date to my personal calendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, click 'Add to Calendar (.ics)' to download an event file compatible with Google Calendar, Apple Calendar, and Microsoft Outlook."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
     body {
       background-color: #0d1117;
       color: #c9d1d9;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 24px 14px;
+    }
+    .container {
+      max-width: 860px;
+      width: 100%;
     }
     .calculator-card {
       background: #161b22;
       border: 1px solid #30363d;
-      padding: 24px;
+      padding: 28px 24px;
       border-radius: 12px;
-      max-width: 440px;
       width: 100%;
       box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      margin-bottom: 24px;
+      position: relative;
     }
-    h2 {
+    h1 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 8px;
       color: #58a6ff;
-      font-size: 22px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .subtitle {
+      text-align: center;
+      color: #8b949e;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    /* Tabs */
+    .tabs-nav {
+      display: flex;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 20px;
+      gap: 4px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      color: #8b949e;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: #21262d;
+      color: #58a6ff;
+      border: 1px solid #30363d;
+    }
+
+    .grid-dates {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 600px) {
+      .grid-dates {
+        grid-template-columns: 1fr;
+      }
     }
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 0;
+      width: 100%;
     }
     label {
       display: block;
@@ -53,9 +184,15 @@
       margin-bottom: 6px;
       color: #8b949e;
     }
-    input[type="date"] {
+    .day-badge {
+      font-size: 12px;
+      color: #58a6ff;
+      margin-left: 6px;
+      font-weight: normal;
+    }
+    input[type="date"], input[type="number"], select {
       width: 100%;
-      padding: 12px;
+      padding: 12px 14px;
       background-color: #0d1117;
       border: 1px solid #30363d;
       border-radius: 8px;
@@ -64,121 +201,795 @@
       outline: none;
       color-scheme: dark;
     }
-    input[type="date"]:focus {
+    input[type="date"]:focus, input[type="number"]:focus, select:focus {
       border-color: #58a6ff;
+    }
+    .swap-btn {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      color: #58a6ff;
+      font-size: 16px;
+      padding: 11px 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .swap-btn:hover {
+      background: #30363d;
+      transform: scale(1.05);
+    }
+    .presets-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .preset-btn {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #8b949e;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .preset-btn:hover {
+      background: #30363d;
+      color: #58a6ff;
+      border-color: #58a6ff;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: #c9d1d9;
+      cursor: pointer;
+      user-select: none;
+    }
+    .checkbox-row input {
+      accent-color: #238636;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
     }
     .btn-calc {
       width: 100%;
       padding: 12px;
       background-color: #238636;
-      border: none;
+      border: 1px solid #238636;
       border-radius: 8px;
       color: #ffffff;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 10px;
       transition: background-color 0.2s;
     }
     .btn-calc:hover {
       background-color: #2ea043;
     }
+
+    /* Result Styling */
     .result-box {
-      margin-top: 20px;
-      padding: 16px;
+      margin-top: 22px;
+      padding: 20px;
       background-color: #21262d;
-      border: 1px solid #388bfd40;
+      border: 1px solid #30363d;
       border-radius: 8px;
       text-align: center;
-      display: none;
+      position: relative;
     }
-    .result-box p {
-      font-size: 13px;
-      color: #8b949e;
+    .status-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
       margin-bottom: 8px;
     }
+    .status-future { background: rgba(56, 139, 253, 0.2); color: #58a6ff; border: 1px solid #388bfd; }
+    .status-past { background: rgba(218, 54, 51, 0.2); color: #f85149; border: 1px solid #da3633; }
+    .status-today { background: rgba(46, 160, 67, 0.2); color: #3fb950; border: 1px solid #2ea043; }
+
     .result-box .days-count {
-      font-size: 28px;
+      font-size: 34px;
       font-weight: 700;
       color: #3fb950;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .result-box .breakdown {
-      font-size: 14px;
+    .months-breakdown {
+      font-size: 15px;
       color: #f0f6fc;
-      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    /* Progress Bar */
+    .progress-wrapper {
+      margin: 14px 0 16px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      height: 14px;
+      overflow: hidden;
+      display: flex;
+    }
+    .progress-bar {
+      background: #238636;
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .stats-breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .breakdown-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 10px 8px;
+    }
+    .breakdown-card span {
+      display: block;
+      font-size: 11px;
+      color: #8b949e;
+      margin-bottom: 4px;
+    }
+    .breakdown-card strong {
+      font-size: 15px;
+      color: #f0f6fc;
+    }
+    
+    .action-btns-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      background: #1f6feb;
+      border: 1px solid #1f6feb;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .action-btn:hover {
+      background: #388bfd;
+    }
+
+    /* Multi-Unit Add/Subtract Grid */
+    .multi-unit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 12px 0;
+    }
+    @media (max-width: 600px) {
+      .multi-unit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .unit-input-group label {
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+    .unit-input-group input {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+
+    #statusToast {
+      display: none;
+      text-align: center;
+      padding: 8px;
+      border-radius: 6px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .toast-success { background: rgba(46, 160, 67, 0.2); color: #3fb950; border: 1px solid #2ea043; }
+    .toast-warning { background: rgba(218, 54, 51, 0.2); color: #f85149; border: 1px solid #da3633; }
+
+    /* Content & SEO */
+    .content-section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .content-section h2 {
+      color: #58a6ff;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 8px;
+    }
+    .content-section p, .content-section ol, .content-section ul {
+      color: #8b949e;
+      margin-bottom: 14px;
+    }
+    .content-section ol, .content-section ul {
+      padding-left: 20px;
+    }
+    .content-section li {
+      margin-bottom: 6px;
+    }
+    .content-section strong {
+      color: #c9d1d9;
+    }
+
+    details {
+      border-bottom: 1px solid #30363d;
+      padding: 14px 0;
+    }
+    details:last-child {
+      border-bottom: none;
+    }
+    summary {
+      font-weight: 600;
+      color: #f0f6fc;
+      cursor: pointer;
+      font-size: 1rem;
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      color: #58a6ff;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+    details p {
+      margin-top: 10px;
+      color: #8b949e;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 25px 15px;
+      border-top: 1px solid #30363d;
+      background-color: #161b22;
+      font-size: 14px;
+      line-height: 1.8;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <div class="calculator-card">
-    <h2>दिनों की गणना (Days Calculator)</h2>
+  <div class="container">
+    <main class="calculator-card">
+      <h1>Days Calculator</h1>
+      <p class="subtitle">Calculate duration between dates, working days, or project future/past deadlines.</p>
 
-    <div class="form-group">
-      <label for="startDate">प्रारंभिक तारीख (Start Date):</label>
-      <input type="date" id="startDate">
-    </div>
+      <!-- Tabs Navigation -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" id="tabDiff" onclick="switchMode('diff')">Date Difference</button>
+        <button class="tab-btn" id="tabAddSub" onclick="switchMode('addsub')">Add / Subtract Days</button>
+      </div>
 
-    <div class="form-group">
-      <label for="endDate">अंतिम तारीख (End Date):</label>
-      <input type="date" id="endDate">
-    </div>
+      <!-- Mode 1: Date Difference -->
+      <div id="modeDiffSection">
+        <div class="grid-dates">
+          <div class="form-group">
+            <label for="startDate">Start Date: <span class="day-badge" id="startDayName"></span></label>
+            <input type="date" id="startDate" onchange="updateDayNames(); calculateDays();">
+          </div>
 
-    <button class="btn-calc" onclick="calculateDays()">गणना करें (Calculate)</button>
+          <button class="swap-btn" onclick="swapDates()" title="Swap dates">⇄</button>
 
-    <div class="result-box" id="resultBox">
-      <p>कुल अंतर (Total Difference)</p>
-      <div class="days-count" id="totalDaysText">0 दिन</div>
-      <div class="breakdown" id="breakdownText"></div>
-    </div>
-  </div>
-<footer style="text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; margin-top: 50px; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8;">
-    <p style="margin: 0 0 10px 0; color: #555;">
+          <div class="form-group">
+            <label for="endDate">End Date: <span class="day-badge" id="endDayName"></span></label>
+            <input type="date" id="endDate" onchange="updateDayNames(); calculateDays();">
+          </div>
+        </div>
+
+        <div class="presets-row">
+          <button class="preset-btn" onclick="setPreset(7)">+7 Days</button>
+          <button class="preset-btn" onclick="setPreset(30)">+30 Days</button>
+          <button class="preset-btn" onclick="setPreset(90)">+90 Days</button>
+          <button class="preset-btn" onclick="setEndOfMonth()">End of Month</button>
+          <button class="preset-btn" onclick="setEndOfYear()">End of Year</button>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="includeEndDay" onchange="calculateDays()"> Include End Date in calculation (adds 1 day)
+        </label>
+      </div>
+
+      <!-- Mode 2: Multi-Unit Add/Subtract -->
+      <div id="modeAddSubSection" style="display: none;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div class="form-group">
+            <label for="baseDate">Starting Date: <span class="day-badge" id="baseDayName"></span></label>
+            <input type="date" id="baseDate" onchange="updateDayNames(); calculateAddSub();">
+          </div>
+
+          <div class="form-group">
+            <label for="operationSelect">Operation:</label>
+            <select id="operationSelect" onchange="calculateAddSub()">
+              <option value="add">Add (+)</option>
+              <option value="sub">Subtract (-)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Years, Months, Weeks, Days Inputs -->
+        <div class="multi-unit-grid">
+          <div class="unit-input-group">
+            <label>Years</label>
+            <input type="number" id="addYears" value="0" min="0" oninput="calculateAddSub()">
+          </div>
+          <div class="unit-input-group">
+            <label>Months</label>
+            <input type="number" id="addMonths" value="0" min="0" oninput="calculateAddSub()">
+          </div>
+          <div class="unit-input-group">
+            <label>Weeks</label>
+            <input type="number" id="addWeeks" value="0" min="0" oninput="calculateAddSub()">
+          </div>
+          <div class="unit-input-group">
+            <label>Days</label>
+            <input type="number" id="addDays" value="30" min="0" oninput="calculateAddSub()">
+          </div>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="businessOnlyCheck" onchange="calculateAddSub()"> Business days only (Skip weekends - applies to Days input)
+        </label>
+      </div>
+
+      <button class="btn-calc" onclick="runCurrentCalculation()">Calculate</button>
+
+      <div id="statusToast"></div>
+
+      <!-- Output Results Box -->
+      <div class="result-box" id="resultBox">
+        <div id="statusTag" class="status-tag">Timeline</div>
+        <div class="days-count" id="totalDaysText">0 Days</div>
+        <div class="months-breakdown" id="calendarBreakdownText"></div>
+
+        <div id="progressContainer" style="display: none;">
+          <div style="font-size: 12px; color: #8b949e; text-align: left; margin-bottom: 4px;">
+            Elapsed Year Progress: <span id="progressPercent" style="color: #3fb950; font-weight: bold;">0%</span>
+          </div>
+          <div class="progress-wrapper">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="stats-breakdown-grid" id="statsGrid">
+          <div class="breakdown-card">
+            <span>Weeks & Days</span>
+            <strong id="weeksDaysText">0w 0d</strong>
+          </div>
+          <div class="breakdown-card">
+            <span>Business Days</span>
+            <strong id="businessDaysText">0 Days</strong>
+          </div>
+          <div class="breakdown-card">
+            <span>Weekend Days</span>
+            <strong id="weekendDaysText">0 Days</strong>
+          </div>
+          <div class="breakdown-card">
+            <span>Total Hours</span>
+            <strong id="hoursText">0 Hours</strong>
+          </div>
+        </div>
+
+        <div class="action-btns-row">
+          <button class="action-btn" id="copyResultBtn" onclick="copyFullResult()">Copy Summary</button>
+          <button class="action-btn" id="downloadIcsBtn" onclick="downloadCalendarEvent()" style="background: #238636; border-color: #238636;">Add to Calendar (.ics)</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- SEO & How to Use Guide -->
+    <section class="content-section">
+      <h2>What is the Online Days Calculator?</h2>
+      <p>The Days Calculator by The AI Hub Tools is an all-in-one date calculation platform designed for project managers, event planners, legal researchers, students, and freelancers. It lets you measure the exact span between dates or project future and past deadlines by adding or subtracting calendar days, working days, weeks, and months.</p>
+
+      <h2>How to Use This Tool</h2>
+      <ol>
+        <li><strong>Select Your Mode:</strong> Choose <em>Date Difference</em> to find the gap between two dates, or <em>Add / Subtract Days</em> to project deadlines.</li>
+        <li><strong>Choose Dates:</strong> Select start and end points. The tool automatically displays the matching Day of the Week (e.g., Monday, Friday).</li>
+        <li><strong>Business Days Mode:</strong> When projecting deadlines, check <em>Business days only</em> to skip Saturdays and Sundays automatically.</li>
+        <li><strong>Calendar Export:</strong> Click <em>Add to Calendar (.ics)</em> to export target dates straight into Google Calendar or Outlook.</li>
+      </ol>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Multi-Unit Projection:</strong> Add or subtract combinations of Years, Months, Weeks, and Days.</li>
+        <li><strong>Safe Month Calculation:</strong> Zero month-overflow errors on 28th/31st day transitions.</li>
+        <li><strong>Business Days Isolation:</strong> Accurately calculate workdays excluding weekends for sprint planning.</li>
+        <li><strong>Day of the Week Detection:</strong> Real-time display of weekday names for every selected date.</li>
+        <li><strong>Calendar (.ics) Download:</strong> One-click event creation for Google, Apple, and Outlook calendars.</li>
+        <li><strong>Timezone-Safe Engine:</strong> Native local date parsing eliminates 1-day shifting errors across global timezones.</li>
+      </ul>
+    </section>
+
+    <!-- FAQs -->
+    <section class="content-section">
+      <h2>Frequently Asked Questions (FAQs)</h2>
+
+      <details>
+        <summary>1. Is this Days Calculator completely free?</summary>
+        <p>Yes, this tool is 100% free with unlimited calculations, no subscription, and no sign-up required.</p>
+      </details>
+
+      <details>
+        <summary>2. How does the "Business Days Only" mode work?</summary>
+        <p>When enabled in Add/Subtract mode, the engine steps forward or backward one day at a time, entirely skipping Saturdays and Sundays until the specified business day count is satisfied.</p>
+      </details>
+
+      <details>
+        <summary>3. Does this calculator consider leap years?</summary>
+        <p>Yes, all leap year calculations (including February 29th) are handled accurately by browser-native Gregorian calendar parsing.</p>
+      </details>
+
+      <details>
+        <summary>4. What does the (.ics) download button do?</summary>
+        <p>It generates an industry-standard iCalendar file that automatically opens in Google Calendar, Apple Calendar, or Outlook to set a reminder for your target deadline.</p>
+      </details>
+    </section>
+
+    <footer>
+      <p style="margin: 0 0 10px 0; color: #8b949e;">
         &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
-    </p>
-    <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
-    </p>
-</footer>
+      </p>
+      <p style="margin: 0;">
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About Us</a> | 
+        <a href="contact.html">Contact Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms & Conditions</a>
+      </p>
+    </footer>
+  </div>
 
   <script>
-    // आज की तारीख डिफ़ॉल्ट सेट करना
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('startDate').value = today;
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+    const baseDateInput = document.getElementById('baseDate');
+    const toast = document.getElementById('statusToast');
+    const copyBtn = document.getElementById('copyResultBtn');
+
+    let currentMode = 'diff';
+    let targetIcsDate = null;
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    // Safe Local Date Parser
+    function parseLocalDate(dateStr) {
+      if (!dateStr) return new Date();
+      const parts = dateStr.split('-');
+      return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+    }
+
+    function formatISODate(d) {
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    // Initialize Default Dates
+    const now = new Date();
+    startDateInput.value = formatISODate(now);
+    baseDateInput.value = formatISODate(now);
+
+    const plus30 = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 30);
+    endDateInput.value = formatISODate(plus30);
+
+    function updateDayNames() {
+      if (startDateInput.value) {
+        document.getElementById('startDayName').innerText = `(${weekdays[parseLocalDate(startDateInput.value).getDay()]})`;
+      }
+      if (endDateInput.value) {
+        document.getElementById('endDayName').innerText = `(${weekdays[parseLocalDate(endDateInput.value).getDay()]})`;
+      }
+      if (baseDateInput.value) {
+        document.getElementById('baseDayName').innerText = `(${weekdays[parseLocalDate(baseDateInput.value).getDay()]})`;
+      }
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('tabDiff').className = `tab-btn ${mode === 'diff' ? 'active' : ''}`;
+      document.getElementById('tabAddSub').className = `tab-btn ${mode === 'addsub' ? 'active' : ''}`;
+
+      document.getElementById('modeDiffSection').style.display = mode === 'diff' ? 'block' : 'none';
+      document.getElementById('modeAddSubSection').style.display = mode === 'addsub' ? 'block' : 'none';
+
+      runCurrentCalculation();
+    }
+
+    function showToast(msg, type = 'success') {
+      toast.innerText = msg;
+      toast.className = type === 'success' ? 'toast-success' : 'toast-warning';
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2500);
+    }
+
+    function swapDates() {
+      const temp = startDateInput.value;
+      startDateInput.value = endDateInput.value;
+      endDateInput.value = temp;
+      updateDayNames();
+      calculateDays();
+      showToast('Dates swapped!');
+    }
+
+    function setPreset(days) {
+      const base = parseLocalDate(startDateInput.value || formatISODate(new Date()));
+      base.setDate(base.getDate() + days);
+      endDateInput.value = formatISODate(base);
+      updateDayNames();
+      calculateDays();
+    }
+
+    function setEndOfMonth() {
+      const base = parseLocalDate(startDateInput.value || formatISODate(new Date()));
+      const lastDay = new Date(base.getFullYear(), base.getMonth() + 1, 0);
+      endDateInput.value = formatISODate(lastDay);
+      updateDayNames();
+      calculateDays();
+    }
+
+    function setEndOfYear() {
+      const base = parseLocalDate(startDateInput.value || formatISODate(new Date()));
+      const lastDay = new Date(base.getFullYear(), 11, 31);
+      endDateInput.value = formatISODate(lastDay);
+      updateDayNames();
+      calculateDays();
+    }
+
+    function getExactMonthsAndDays(d1, d2) {
+      let years = d2.getFullYear() - d1.getFullYear();
+      let months = d2.getMonth() - d1.getMonth();
+      let days = d2.getDate() - d1.getDate();
+
+      if (days < 0) {
+        months -= 1;
+        const prevMonthDays = new Date(d2.getFullYear(), d2.getMonth(), 0).getDate();
+        days += prevMonthDays;
+      }
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+
+      let parts = [];
+      if (years > 0) parts.push(`${years} Year${years > 1 ? 's' : ''}`);
+      if (months > 0) parts.push(`${months} Month${months > 1 ? 's' : ''}`);
+      if (days > 0) parts.push(`${days} Day${days > 1 ? 's' : ''}`);
+      return parts.length > 0 ? `Equivalent to: ${parts.join(', ')}` : 'Same calendar day';
+    }
 
     function calculateDays() {
-      const startVal = document.getElementById('startDate').value;
-      const endVal = document.getElementById('endDate').value;
-      const resultBox = document.getElementById('resultBox');
-      const totalDaysText = document.getElementById('totalDaysText');
-      const breakdownText = document.getElementById('breakdownText');
-
-      if (!startVal || !endVal) {
-        alert('कृपया दोनों तारीखें चुनें।');
+      if (!startDateInput.value || !endDateInput.value) {
+        showToast('Please select both dates.', 'warning');
         return;
       }
 
-      const d1 = new Date(startVal);
-      const d2 = new Date(endVal);
+      let d1 = parseLocalDate(startDateInput.value);
+      let d2 = parseLocalDate(endDateInput.value);
+      targetIcsDate = d2;
+      const includeEnd = document.getElementById('includeEndDay').checked;
 
-      // समय का अंतर मिलीसेकंड में
-      const diffTime = Math.abs(d2 - d1);
-      const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const todayMidnight = new Date();
+      todayMidnight.setHours(0,0,0,0);
+      const statusTag = document.getElementById('statusTag');
+      if (d2.getTime() > todayMidnight.getTime()) {
+        statusTag.className = 'status-tag status-future';
+        statusTag.innerText = 'Future Target';
+      } else if (d2.getTime() < todayMidnight.getTime()) {
+        statusTag.className = 'status-tag status-past';
+        statusTag.innerText = 'Past Event';
+      } else {
+        statusTag.className = 'status-tag status-today';
+        statusTag.innerText = 'Target is Today';
+      }
 
-      // हफ़्ते और बचे हुए दिन
-      const weeks = Math.floor(totalDays / 7);
-      const remainingDays = totalDays % 7;
+      let early = d1;
+      let late = d2;
+      let isReversed = false;
+      if (d1 > d2) {
+        early = d2;
+        late = d1;
+        isReversed = true;
+      }
 
-      totalDaysText.innerText = `${totalDays} दिन`;
-      breakdownText.innerHTML = `या <strong>${weeks} हफ़्ते, ${remainingDays} दिन</strong>`;
+      const utc1 = Date.UTC(early.getFullYear(), early.getMonth(), early.getDate());
+      const utc2 = Date.UTC(late.getFullYear(), late.getMonth(), late.getDate());
+      let diffDays = Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
 
-      resultBox.style.display = 'block';
+      if (includeEnd) diffDays += 1;
+
+      let businessDays = 0;
+      let weekendDays = 0;
+      let cur = new Date(early.getTime());
+
+      for (let i = 0; i < diffDays; i++) {
+        const day = cur.getDay();
+        if (day === 0 || day === 6) weekendDays++;
+        else businessDays++;
+        cur.setDate(cur.getDate() + 1);
+      }
+
+      const weeks = Math.floor(diffDays / 7);
+      const remainingDays = diffDays % 7;
+      const totalHours = diffDays * 24;
+
+      // Year Progress
+      const startOfYear = new Date(d1.getFullYear(), 0, 1);
+      const endOfYear = new Date(d1.getFullYear(), 11, 31);
+      const totalYearMs = endOfYear - startOfYear;
+      const elapsedMs = Math.max(0, d1 - startOfYear);
+      const progressPct = Math.min(100, Math.round((elapsedMs / totalYearMs) * 100));
+
+      document.getElementById('progressContainer').style.display = 'block';
+      document.getElementById('progressBar').style.width = `${progressPct}%`;
+      document.getElementById('progressPercent').innerText = `${progressPct}%`;
+
+      document.getElementById('totalDaysText').innerText = `${diffDays} Day${diffDays === 1 ? '' : 's'}${isReversed ? ' (Reversed)' : ''}`;
+      document.getElementById('calendarBreakdownText').innerText = getExactMonthsAndDays(early, late);
+      document.getElementById('weeksDaysText').innerText = `${weeks}w ${remainingDays}d`;
+      document.getElementById('businessDaysText').innerText = `${businessDays} Day${businessDays === 1 ? '' : 's'}`;
+      document.getElementById('weekendDaysText').innerText = `${weekendDays} Day${weekendDays === 1 ? '' : 's'}`;
+      document.getElementById('hoursText').innerText = `${totalHours.toLocaleString()} Hours`;
+
+      document.getElementById('statsGrid').style.display = 'grid';
+      document.getElementById('resultBox').style.display = 'block';
     }
+
+    // Safe Month Addition Clamping (Fixes 31 Jan + 1 Month = March bug)
+    function addMonthsClamped(date, months) {
+      const targetMonth = date.getMonth() + months;
+      const d = new Date(date.getFullYear(), targetMonth, 1);
+      const maxDays = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+      d.setDate(Math.min(date.getDate(), maxDays));
+      return d;
+    }
+
+    function calculateAddSub() {
+      if (!baseDateInput.value) return;
+
+      const base = parseLocalDate(baseDateInput.value);
+      const op = document.getElementById('operationSelect').value;
+      const bizOnly = document.getElementById('businessOnlyCheck').checked;
+
+      const y = Math.max(0, parseInt(document.getElementById('addYears').value, 10) || 0);
+      const m = Math.max(0, parseInt(document.getElementById('addMonths').value, 10) || 0);
+      const w = Math.max(0, parseInt(document.getElementById('addWeeks').value, 10) || 0);
+      const d = Math.max(0, parseInt(document.getElementById('addDays').value, 10) || 0);
+
+      const sign = op === 'add' ? 1 : -1;
+      let resultDate = new Date(base.getTime());
+
+      // Safe Year & Month Addition
+      if (y > 0) resultDate.setFullYear(resultDate.getFullYear() + (sign * y));
+      if (m > 0) resultDate = addMonthsClamped(resultDate, sign * m);
+      if (w > 0) resultDate.setDate(resultDate.getDate() + (sign * w * 7));
+
+      // Business Days vs Normal Days Addition
+      if (bizOnly) {
+        let added = 0;
+        const maxSafetyLimit = 250000;
+        let safetyCount = 0;
+        while (added < d && safetyCount < maxSafetyLimit) {
+          safetyCount++;
+          resultDate.setDate(resultDate.getDate() + sign);
+          const day = resultDate.getDay();
+          if (day !== 0 && day !== 6) {
+            added++;
+          }
+        }
+      } else {
+        resultDate.setDate(resultDate.getDate() + (sign * d));
+      }
+
+      targetIcsDate = resultDate;
+      const dayName = weekdays[resultDate.getDay()];
+      const formatted = resultDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      const statusTag = document.getElementById('statusTag');
+      statusTag.className = 'status-tag status-future';
+      statusTag.innerText = op === 'add' ? `Target Projected Date (+)` : `Past Projected Date (-)`;
+
+      document.getElementById('progressContainer').style.display = 'none';
+      document.getElementById('totalDaysText').innerText = formatted;
+      document.getElementById('calendarBreakdownText').innerText = `Falls on: ${dayName} ${bizOnly ? '(Business Days Applied)' : ''}`;
+      document.getElementById('statsGrid').style.display = 'none';
+      document.getElementById('resultBox').style.display = 'block';
+    }
+
+    function runCurrentCalculation() {
+      if (currentMode === 'diff') calculateDays();
+      else calculateAddSub();
+    }
+
+    function copyFullResult() {
+      const summary = `Date Calculation Result:\n- Mode: ${currentMode === 'diff' ? 'Duration Difference' : 'Add/Subtract'}\n- ${document.getElementById('totalDaysText').innerText}\n- ${document.getElementById('calendarBreakdownText').innerText}\n(Calculated via The AI Hub Tools)`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.innerText = 'Copied to Clipboard! ✓';
+        copyBtn.style.backgroundColor = '#238636';
+        setTimeout(() => {
+          copyBtn.innerText = 'Copy Summary';
+          copyBtn.style.backgroundColor = '';
+        }, 2000);
+      });
+    }
+
+    // Export .ics Calendar Event
+    function downloadCalendarEvent() {
+      if (!targetIcsDate) return;
+      const d = targetIcsDate;
+      const dateStr = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
+
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//The AI Hub Tools//Days Calculator//EN',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@theaihubtools.com`,
+        `DTSTAMP:${dateStr}T090000Z`,
+        `DTSTART;VALUE=DATE:${dateStr}`,
+        `DTEND;VALUE=DATE:${dateStr}`,
+        'SUMMARY:Deadline / Event Date',
+        'DESCRIPTION:Calculated via The AI Hub Tools Days Calculator',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `date-event-${dateStr}.ics`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showToast('Calendar event (.ics) downloaded!');
+    }
+
+    updateDayNames();
+    calculateDays();
   </script>
 </body>
 </html>
