@@ -1,133 +1,313 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <!-- Google Analytics Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
 
-  gtag('config', 'G-MEQE82X4L0');
-</script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>इमेज फॉर्मेट कनवर्टर | Image Format Converter</title>
-  <!-- PDF एक्सपोर्ट के लिए jsPDF लाइब्रेरी -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <!-- Comprehensive Technical SEO Tags -->
+  <title>इमेज कनवर्टर, रीसाइज़र व कंप्रेसर ऑनलाइन | The AI Hub Tools</title>
+  <meta name="title" content="इमेज कनवर्टर, रीसाइज़र व कंप्रेसर ऑनलाइन | The AI Hub Tools">
+  <meta name="description" content="मुफ़्त ऑनलाइन इमेज कनवर्टर, एडिटर व कंप्रेसर। JPG, PNG, WebP, GIF, HEIC से PDF में बदलें। 100% प्राइवेट और सुरक्षित ब्राउज़र-बेस्ड टूल।">
+  <meta name="keywords" content="image converter online, photo converter hindi, rotate image online, resize photo online, jpg to pdf, png to webp, iphone heic to jpg, free online photo converter">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#161b22">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ऑल-इन-वन इमेज कनवर्टर और एडिटर (JPG, PNG, WebP, PDF)">
+  <meta property="og:description" content="बिना सर्वर अपलोड के अपनी फोटो कनवर्ट करें, रोटेट करें, रीसाइज़ करें और तुरंत डाउनलोड करें।">
+
+  <!-- External Libraries: Reliable Cloudflare CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js" crossorigin="anonymous"></script>
+
+  <!-- Structured Data: WebApplication + FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "The AI Hub Image Converter & Resizer",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "क्या कनवर्ट करने से पहले फोटो को रोटेट या रीसाइज़ किया जा सकता है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "हाँ, आप फोटो को 90 डिग्री घुमा सकते हैं और कस्टम चौड़ाई व ऊंचाई सेट करके पिक्सल रीसाइज़ कर सकते हैं।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "क्या यह टूल iPhone की HEIC तस्वीरों को प्रोसेस करता है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "हाँ, Apple iPhone की .heic और .heif फाइल्स बिना किसी बाहरी सॉफ्टवेयर के सीधे JPG, PNG या WebP में बदल जाती हैं।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "क्या कनवर्ट की गई इमेज को सीधे क्लिपबोर्ड पर कॉपी किया जा सकता है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "हाँ, आप बिना फाइल डाउनलोड किए सीधे 'क्लिपबोर्ड पर कॉपी करें' बटन से इमेज कॉपी करके चैट या डॉक्स में पेस्ट कर सकते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     }
     body {
       background-color: #0d1117;
       color: #c9d1d9;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       min-height: 100vh;
-      padding: 20px;
+      line-height: 1.6;
+    }
+    header {
+      padding: 16px 20px;
+      text-align: center;
+      border-bottom: 1px solid #21262d;
+      background: #161b22;
+    }
+    header h1 {
+      font-size: 22px;
+      color: #58a6ff;
+    }
+    .badge-privacy {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 2px 10px;
+      background: rgba(35, 134, 54, 0.15);
+      border: 1px solid #238636;
+      border-radius: 20px;
+      font-size: 11px;
+      color: #3fb950;
+      font-weight: 600;
+    }
+    .main-wrapper {
+      flex: 1;
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 25px 16px;
     }
     .converter-card {
       background: #161b22;
       border: 1px solid #30363d;
       padding: 24px;
       border-radius: 12px;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      max-width: 540px;
+      margin: 0 auto 30px auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
-    h2 {
+    .converter-card h2 {
       text-align: center;
-      margin-bottom: 8px;
-      color: #58a6ff;
-      font-size: 22px;
+      color: #f0f6fc;
+      font-size: 20px;
+      margin-bottom: 2px;
     }
     p.subtitle {
       text-align: center;
       color: #8b949e;
       font-size: 13px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .drop-zone {
       border: 2px dashed #30363d;
       border-radius: 8px;
-      padding: 26px 16px;
+      padding: 28px 14px;
       text-align: center;
       background: #0d1117;
       cursor: pointer;
-      margin-bottom: 16px;
-      transition: border-color 0.2s;
+      margin-bottom: 14px;
+      transition: all 0.2s ease;
+      outline: none;
     }
-    .drop-zone:hover {
+    .drop-zone:focus, .drop-zone.dragover {
       border-color: #58a6ff;
+      background: #161b22;
     }
     .drop-zone p {
-      font-size: 14px;
+      font-size: 13px;
       color: #8b949e;
     }
     .drop-zone span {
       color: #58a6ff;
       font-weight: 600;
     }
-    input[type="file"] {
-      display: none;
-    }
     .preview-box {
       display: none;
       text-align: center;
       margin-bottom: 16px;
+      padding: 14px;
+      background: #0d1117;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+    }
+    .preview-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 160px;
+      max-height: 220px;
+      overflow: hidden;
+      margin-bottom: 10px;
     }
     .preview-box img {
       max-width: 100%;
       max-height: 200px;
       border-radius: 6px;
-      border: 1px solid #30363d;
+      object-fit: contain;
+      image-orientation: from-image;
+      transition: transform 0.2s ease;
     }
-    .file-name {
-      font-size: 13px;
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 8px 0;
+    }
+    .tool-btn {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.2s;
+    }
+    .tool-btn:hover {
+      background: #30363d;
+      color: #f0f6fc;
+    }
+    .file-meta {
+      font-size: 12px;
       color: #8b949e;
+      margin-top: 4px;
+    }
+    .btn-reset {
       margin-top: 8px;
-      word-break: break-all;
+      background: none;
+      border: none;
+      color: #f85149;
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: underline;
     }
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     label {
-      display: block;
-      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
       font-weight: 600;
       margin-bottom: 6px;
       color: #8b949e;
     }
-    select {
+    input[type="text"], input[type="number"], select, input[type="range"] {
       width: 100%;
-      padding: 12px;
       background-color: #0d1117;
       border: 1px solid #30363d;
-      border-radius: 8px;
-      font-size: 15px;
+      border-radius: 6px;
       color: #f0f6fc;
       outline: none;
     }
-    select:focus {
+    input[type="text"], input[type="number"], select {
+      padding: 9px 12px;
+      font-size: 14px;
+    }
+    input[type="text"]:focus, input[type="number"]:focus, select:focus {
       border-color: #58a6ff;
+    }
+    .dimension-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+    .aspect-lock {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: #8b949e;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+    .aspect-lock input {
+      cursor: pointer;
+      width: auto;
+    }
+    .quality-control {
+      display: none;
+      margin-bottom: 14px;
+    }
+    .size-estimate-badge {
+      font-size: 11px;
+      color: #58a6ff;
+      background: rgba(88, 166, 255, 0.1);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .action-btn-group {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 8px;
     }
     .btn-convert {
       width: 100%;
       padding: 12px;
       background-color: #238636;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       color: #ffffff;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    .btn-convert:hover {
+    .btn-convert:hover:not(:disabled) {
       background-color: #2ea043;
     }
     .btn-convert:disabled {
@@ -135,124 +315,759 @@
       color: #484f58;
       cursor: not-allowed;
     }
+    .btn-copy {
+      background-color: #21262d;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover:not(:disabled) {
+      background-color: #30363d;
+      color: #ffffff;
+    }
+    .btn-copy:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .spinner {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Content & Informational Sections */
+    .content-section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    .content-section h2 {
+      color: #58a6ff;
+      font-size: 17px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 6px;
+    }
+    .steps-list {
+      padding-left: 18px;
+    }
+    .steps-list li {
+      margin-bottom: 6px;
+      color: #c9d1d9;
+      font-size: 14px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .feature-item {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      padding: 12px;
+      border-radius: 6px;
+    }
+    .feature-item h3 {
+      font-size: 14px;
+      color: #f0f6fc;
+      margin-bottom: 4px;
+    }
+    .feature-item p {
+      font-size: 12px;
+      color: #8b949e;
+      margin: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid #30363d;
+      padding: 10px 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      font-weight: 600;
+      color: #f0f6fc;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .faq-answer {
+      color: #8b949e;
+      font-size: 13px;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      padding: 24px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-content h3 {
+      color: #58a6ff;
+      margin-bottom: 12px;
+    }
+    .modal-content p {
+      font-size: 13px;
+      color: #c9d1d9;
+      margin-bottom: 14px;
+    }
+    .btn-modal-close {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      float: right;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 15px;
+      border-top: 1px solid #30363d;
+      background-color: #161b22;
+      font-size: 13px;
+    }
+    footer p {
+      margin-bottom: 8px;
+      color: #8b949e;
+    }
+    footer a, footer button {
+      background: none;
+      border: none;
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 0 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    footer a:hover, footer button:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-  <div class="converter-card">
-    <h2>इमेज फॉर्मेट कनवर्टर (Format Converter)</h2>
-    <p class="subtitle">अपनी फ़ोटो को JPG, PNG, WebP या PDF में बदलें</p>
+  <header>
+    <h1>The AI Hub Tools</h1>
+    <span class="badge-privacy">🔒 100% Client-Side • Local Execution</span>
+  </header>
 
-    <!-- File Upload Area -->
-    <div class="drop-zone" onclick="document.getElementById('fileInput').click()">
-      <p>फ़ोटो चुनने के लिए यहाँ क्लिक करें या फ़ाइल ड्रैग करें<br><span>(JPG, PNG, WebP)</span></p>
-      <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)">
+  <div class="main-wrapper">
+    <div class="converter-card">
+      <h2>इमेज कनवर्टर व एडिटर (All-In-One)</h2>
+      <p class="subtitle">फॉर्मेट बदलें, रोटेट करें, रीसाइज़ करें और कंप्रेस करें</p>
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="इमेज अपलोड करने के लिए क्लिक करें या फ़ाइल ड्रैग करें">
+        <p>फ़ोटो ड्रैग करें, क्लिक करें या <span>Ctrl + V</span> दबाकर पेस्ट करें<br><span>(JPG, PNG, WebP, GIF, HEIC/iPhone • अधिकतम 30MB)</span></p>
+        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/webp, image/gif, .heic, .heif" style="display: none;">
+      </div>
+
+      <!-- Preview Section with Toolbar -->
+      <div class="preview-box" id="previewBox">
+        <div class="preview-container">
+          <img id="imgPreview" src="" alt="Selected Preview">
+        </div>
+        <div class="toolbar">
+          <button type="button" class="tool-btn" onclick="rotateImage(90)">🔄 घुमाएँ (90°)</button>
+          <button type="button" class="tool-btn" onclick="flipImage()">↔️ पलटें (Flip)</button>
+        </div>
+        <div class="file-meta" id="fileMeta"></div>
+        <button class="btn-reset" onclick="resetFile()">दूसरी इमेज चुनें (Remove)</button>
+      </div>
+
+      <!-- Resize Dimension Controls -->
+      <div class="form-group" id="dimensionGroup" style="display: none;">
+        <label>इमेज साइज़ / पिक्सल (Dimensions):</label>
+        <div class="dimension-inputs">
+          <div>
+            <label for="imgWidth" style="margin-bottom:2px;">चौड़ाई (px)</label>
+            <input type="number" id="imgWidth" min="1" oninput="onDimensionChange('width')">
+          </div>
+          <div>
+            <label for="imgHeight" style="margin-bottom:2px;">ऊंचाई (px)</label>
+            <input type="number" id="imgHeight" min="1" oninput="onDimensionChange('height')">
+          </div>
+          <label class="aspect-lock">
+            <input type="checkbox" id="aspectLock" checked> लॉक
+          </label>
+        </div>
+      </div>
+
+      <!-- Custom File Name -->
+      <div class="form-group">
+        <label for="customFileName">आउटपुट फ़ाइल का नाम (बिना एक्सटेंशन):</label>
+        <input type="text" id="customFileName" placeholder="converted-image">
+      </div>
+
+      <!-- Target Format Selection -->
+      <div class="form-group">
+        <label for="formatSelect">टारगेट फॉर्मेट चुनें:</label>
+        <select id="formatSelect" onchange="onFormatOrQualityChange()">
+          <option value="image/png">PNG (.png) - ट्रांसपेरेंसी सपोर्ट</option>
+          <option value="image/jpeg">JPG / JPEG (.jpg) - छोटा साइज</option>
+          <option value="image/webp" selected>WebP (.webp) - बेस्ट वेब क्वालिटी</option>
+          <option value="application/pdf">PDF (.pdf) - डॉक्यूमेंट फॉर्मेट (A4 Auto-fit)</option>
+        </select>
+      </div>
+
+      <!-- Quality Slider with Live Estimate Badge -->
+      <div class="quality-control" id="qualityControl">
+        <label for="qualitySlider">
+          <span>कंप्रेशन क्वालिटी: <strong id="qualityVal">90%</strong></span>
+          <span class="size-estimate-badge" id="sizeEstimateBadge">अनुमानित: तैयार हो रहा है...</span>
+        </label>
+        <input type="range" id="qualitySlider" min="10" max="100" value="90" oninput="onFormatOrQualityChange()">
+      </div>
+
+      <div class="action-btn-group">
+        <button id="convertBtn" class="btn-convert" onclick="convertAndDownload()" disabled>
+          <span class="spinner" id="spinner"></span>
+          <span id="btnText">कन्वर्ट व डाउनलोड</span>
+        </button>
+        <button id="copyBtn" class="btn-copy" onclick="copyImageToClipboard()" disabled title="सीधे क्लिपबोर्ड पर कॉपी करें">
+          📋 कॉपी
+        </button>
+      </div>
     </div>
 
-    <!-- Preview Box -->
-    <div class="preview-box" id="previewBox">
-      <img id="imgPreview" src="" alt="Preview">
-      <div class="file-name" id="fileName"></div>
-    </div>
+    <!-- How to Use Section -->
+    <section class="content-section">
+      <h2>इमेज कैसे कन्वर्ट और एडिट करें? (How to Use)</h2>
+      <ol class="steps-list">
+        <li><strong>इमेज जोड़ें:</strong> फ़ोटो को बॉक्स में छोड़ें, क्लिक करें, या सीधे <code>Ctrl + V</code> से पेस्ट करें।</li>
+        <li><strong>एडिट करें (वैकल्पिक):</strong> आवश्यकतानुसार इमेज को 90° रोटेट करें या पिक्सल साइज़ (चौड़ाई/ऊंचाई) बदलें।</li>
+        <li><strong>फॉर्मेट और क्वालिटी चुनें:</strong> ड्रॉपडाउन से फॉर्मेट चुनें और स्लाइडर से क्वालिटी एडजस्ट करें।</li>
+        <li><strong>डाउनलोड या कॉपी करें:</strong> "कन्वर्ट व डाउनलोड" पर क्लिक करें, या सीधे चैट/डॉक्यूमेंट में पेस्ट करने के लिए "कॉपी" बटन दबाएँ।</li>
+      </ol>
+    </section>
 
-    <!-- Target Format Select -->
-    <div class="form-group">
-      <label for="formatSelect">किस फॉर्मेट में बदलना है (Target Format):</label>
-      <select id="formatSelect">
-        <option value="image/png">PNG (.png)</option>
-        <option value="image/jpeg">JPG / JPEG (.jpg)</option>
-        <option value="image/webp">WebP (.webp)</option>
-        <option value="application/pdf">PDF (.pdf)</option>
-      </select>
-    </div>
+    <!-- Key Features Section -->
+    <section class="content-section">
+      <h2>मुख्य विशेषताएँ (Key Features)</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3>🔄 रोटेट और फ्लिप टूल</h3>
+          <p>उल्टी तस्वीरों को एक क्लिक में 90 डिग्री घुमाएँ या हॉरिजॉन्टली फ्लिप करें।</p>
+        </div>
+        <div class="feature-item">
+          <h3>📐 कस्टम पिक्सल रीसाइज़र</h3>
+          <p>आस्पेक्ट रेशियो को लॉक रखते हुए मनचाही चौड़ाई और ऊंचाई में इमेज रीसाइज़ करें।</p>
+        </div>
+        <div class="feature-item">
+          <h3>📊 लाइव साइज़ प्रीव्यू</h3>
+          <p>क्वालिटी बदलते समय तुरंत देखें कि डाउनलोड फ़ाइल कितने KB की बनेगी।</p>
+        </div>
+        <div class="feature-item">
+          <h3>📋 डायरेक्ट क्लिपबोर्ड कॉपी</h3>
+          <p>बिना डाउनलोड किए सीधे इमेज को क्लिपबोर्ड में कॉपी करके कहीं भी पेस्ट करें।</p>
+        </div>
+      </div>
+    </section>
 
-    <button id="convertBtn" class="btn-convert" onclick="convertAndDownload()" disabled>कन्वर्ट और डाउनलोड करें</button>
+    <!-- FAQs Section -->
+    <section class="content-section">
+      <h2>अक्सर पूछे जाने वाले सवाल (FAQs)</h2>
+      <div class="faq-item">
+        <div class="faq-question">1. क्या कनवर्ट करने से पहले फोटो को रोटेट या रीसाइज़ किया जा सकता है?</div>
+        <div class="faq-answer">हाँ, आप फोटो को 90 डिग्री घुमा सकते हैं और मनचाही चौड़ाई व ऊंचाई सेट करके रीसाइज़ भी कर सकते हैं।</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">2. क्या डाउनलोड करने से पहले फाइल का अनुमानित साइज दिखता है?</div>
+        <div class="faq-answer">हाँ, क्वालिटी स्लाइडर बदलते ही टूल लाइव अनुमानित फाइल साइज दिखाता है ताकि आप जरूरत के अनुसार कंप्रेस कर सकें।</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">3. क्या मेरी इमेज किसी सर्वर पर अपलोड होती है?</div>
+        <div class="faq-answer">बिल्कुल नहीं। यह टूल 100% क्लाइंट-साइड है और आपकी इमेज आपके डिवाइस के ब्राउज़र के अंदर ही प्रोसेस होती है।</div>
+      </div>
+    </section>
   </div>
 
   <canvas id="hiddenCanvas" style="display: none;"></canvas>
-<footer style="text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; margin-top: 50px; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8;">
-    <p style="margin: 0 0 10px 0; color: #555;">
-        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+
+  <!-- Functional In-Page Legal Modals -->
+  <div class="modal" id="legalModal" onclick="closeModal(event)">
+    <div class="modal-content">
+      <h3 id="modalTitle">सूचना</h3>
+      <p id="modalBody"></p>
+      <button type="button" class="btn-modal-close" onclick="closeModal()">बंद करें (Close)</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.</p>
+    <p>
+      <a href="./">Home</a> | 
+      <button type="button" onclick="showModal('about')">About Us</button> | 
+      <a href="mailto:support@theaihubtools.com">Contact Us</a> | 
+      <button type="button" onclick="showModal('privacy')">Privacy Policy</button> | 
+      <button type="button" onclick="showModal('terms')">Terms & Conditions</button>
     </p>
-    <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
-    </p>
-</footer>
+  </footer>
 
   <script>
     let currentImage = null;
-    let originalName = 'converted-image';
+    let currentObjectUrl = null;
+    let rotationDegree = 0;
+    let isFlipped = false;
+    let originalAspectRatio = 1;
 
-    function handleFileSelect(event) {
-      const file = event.target.files[0];
-      if (!file) return;
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const previewBox = document.getElementById('previewBox');
+    const imgPreview = document.getElementById('imgPreview');
+    const fileMeta = document.getElementById('fileMeta');
+    const customFileName = document.getElementById('customFileName');
+    const convertBtn = document.getElementById('convertBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const formatSelect = document.getElementById('formatSelect');
+    const qualityControl = document.getElementById('qualityControl');
+    const qualitySlider = document.getElementById('qualitySlider');
+    const sizeEstimateBadge = document.getElementById('sizeEstimateBadge');
+    const dimensionGroup = document.getElementById('dimensionGroup');
+    const imgWidth = document.getElementById('imgWidth');
+    const imgHeight = document.getElementById('imgHeight');
+    const aspectLock = document.getElementById('aspectLock');
 
-      originalName = file.name.substring(0, file.name.lastIndexOf('.')) || 'image';
+    // Prevent default drag-drop behavior on window
+    window.addEventListener('dragover', (e) => e.preventDefault());
+    window.addEventListener('drop', (e) => e.preventDefault());
 
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          currentImage = img;
-          document.getElementById('imgPreview').src = img.src;
-          document.getElementById('fileName').innerText = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-          document.getElementById('previewBox').style.display = 'block';
-          document.getElementById('convertBtn').disabled = false;
-        };
-        img.src = e.target.result;
+    // Drop Zone Events
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) processFile(e.target.files[0]);
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) {
+        processFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    // Clipboard Paste (Ctrl + V)
+    window.addEventListener('paste', (e) => {
+      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+      for (const item of items) {
+        if (item.type.indexOf('image') === 0) {
+          const file = item.getAsFile();
+          processFile(file);
+          break;
+        }
+      }
+    });
+
+    async function processFile(file) {
+      const MAX_SIZE_MB = 30;
+      if (file.size > MAX_SIZE_MB * 1024 * 1024) {
+        alert(`फ़ाइल बहुत बड़ी है (${(file.size / (1024 * 1024)).toFixed(1)} MB)। कृपया 30MB से छोटी इमेज चुनें।`);
+        return;
+      }
+
+      const isHeic = file.name && (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif'));
+      const isGif = file.type === 'image/gif';
+      
+      if (!file.type.startsWith('image/') && !isHeic) {
+        alert('कृपया वैध इमेज फ़ाइल (JPG, PNG, WebP, GIF, HEIC) चुनें।');
+        return;
+      }
+
+      setLoading(true, 'प्रोसेसिंग जारी है...');
+
+      let baseName = 'image';
+      if (file.name) {
+        const lastDot = file.name.lastIndexOf('.');
+        baseName = lastDot !== -1 ? file.name.substring(0, lastDot) : file.name;
+        baseName = baseName.replace(/[^a-zA-Z0-9_\-\s]/g, '').trim();
+      }
+      customFileName.value = baseName || 'converted-image';
+
+      let processableBlob = file;
+
+      // Handle HEIC with Array Guard & 8-Second Timeout
+      if (isHeic) {
+        if (typeof heic2any === 'undefined') {
+          alert('HEIC लाइब्रेरी उपलब्ध नहीं है।');
+          setLoading(false);
+          return;
+        }
+        try {
+          const heicPromise = heic2any({
+            blob: file,
+            toType: 'image/jpeg',
+            quality: 0.92
+          });
+          const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Timeout')), 8000)
+          );
+          const converted = await Promise.race([heicPromise, timeoutPromise]);
+          processableBlob = Array.isArray(converted) ? converted[0] : converted;
+        } catch (err) {
+          alert('HEIC इमेज प्रोसेस करने में असमर्थ। कृपया सामान्य JPG/PNG चुनें।');
+          setLoading(false);
+          return;
+        }
+      }
+
+      if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+      currentObjectUrl = URL.createObjectURL(processableBlob);
+
+      const img = new Image();
+      img.onload = function() {
+        const maxDimension = 4096;
+        let naturalW = img.naturalWidth;
+        let naturalH = img.naturalHeight;
+
+        if (naturalW > maxDimension || naturalH > maxDimension) {
+          const scale = maxDimension / Math.max(naturalW, naturalH);
+          naturalW = Math.round(naturalW * scale);
+          naturalH = Math.round(naturalH * scale);
+        }
+
+        currentImage = img;
+        rotationDegree = 0;
+        isFlipped = false;
+        applyPreviewTransform();
+
+        originalAspectRatio = naturalW / naturalH;
+        imgWidth.value = naturalW;
+        imgHeight.value = naturalH;
+
+        imgPreview.src = currentObjectUrl;
+        fileMeta.innerText = `ओरिजिनल: ${img.naturalWidth}x${img.naturalHeight}px • ${(file.size / 1024).toFixed(1)} KB ${isGif ? '(GIF Static Frame)' : ''}`;
+        previewBox.style.display = 'block';
+        dimensionGroup.style.display = 'block';
+        dropZone.style.display = 'none';
+        convertBtn.disabled = false;
+        copyBtn.disabled = false;
+        
+        onFormatOrQualityChange();
+        setLoading(false);
       };
-      reader.readAsDataURL(file);
+      img.onerror = function() {
+        alert('इमेज लोड करने में विफल रही। फ़ाइल करप्ट हो सकती है।');
+        setLoading(false);
+      };
+      img.src = currentObjectUrl;
+    }
+
+    function rotateImage(deg) {
+      rotationDegree = (rotationDegree + deg) % 360;
+      applyPreviewTransform();
+      if (deg === 90) {
+        const currentW = getSanitizedDimension(imgWidth.value, currentImage.naturalWidth);
+        const currentH = getSanitizedDimension(imgHeight.value, currentImage.naturalHeight);
+        imgWidth.value = currentH;
+        imgHeight.value = currentW;
+        originalAspectRatio = 1 / originalAspectRatio;
+      }
+      estimateOutputSize();
+    }
+
+    function flipImage() {
+      isFlipped = !isFlipped;
+      applyPreviewTransform();
+      estimateOutputSize();
+    }
+
+    function applyPreviewTransform() {
+      const scaleX = isFlipped ? -1 : 1;
+      imgPreview.style.transform = `rotate(${rotationDegree}deg) scaleX(${scaleX})`;
+    }
+
+    function getSanitizedDimension(val, fallback) {
+      const parsed = parseInt(val, 10);
+      return (parsed && parsed > 0) ? parsed : fallback;
+    }
+
+    function onDimensionChange(changed) {
+      if (!aspectLock.checked) return;
+      if (changed === 'width') {
+        const w = parseInt(imgWidth.value, 10);
+        if (w > 0) imgHeight.value = Math.round(w / originalAspectRatio);
+      } else {
+        const h = parseInt(imgHeight.value, 10);
+        if (h > 0) imgWidth.value = Math.round(h * originalAspectRatio);
+      }
+      estimateOutputSize();
+    }
+
+    function onFormatOrQualityChange() {
+      const format = formatSelect.value;
+      const isCompressible = (format === 'image/jpeg' || format === 'image/webp');
+      qualityControl.style.display = isCompressible ? 'block' : 'none';
+      document.getElementById('qualityVal').innerText = `${qualitySlider.value}%`;
+      copyBtn.disabled = (format === 'application/pdf');
+      estimateOutputSize();
+    }
+
+    // Debounced Size Estimator
+    let estimateTimeout = null;
+    function estimateOutputSize() {
+      if (!currentImage) return;
+      clearTimeout(estimateTimeout);
+      estimateTimeout = setTimeout(() => {
+        const format = formatSelect.value;
+        const canvas = renderToCanvas(format === 'application/pdf');
+        const quality = parseFloat(qualitySlider.value) / 100;
+
+        if (format === 'application/pdf') {
+          const jpegData = canvas.toDataURL('image/jpeg', 0.95);
+          const estimatedPdfBytes = (jpegData.length * (3/4)) + 1500;
+          sizeEstimateBadge.innerText = `अनुमानित: ${(estimatedPdfBytes / 1024).toFixed(1)} KB (PDF)`;
+          return;
+        }
+
+        canvas.toBlob((blob) => {
+          if (blob) {
+            sizeEstimateBadge.innerText = `अनुमानित: ${(blob.size / 1024).toFixed(1)} KB`;
+          }
+        }, format, quality);
+      }, 150);
+    }
+
+    function renderToCanvas(forceOpaque = false) {
+      const canvas = document.getElementById('hiddenCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      const targetWidth = getSanitizedDimension(imgWidth.value, currentImage.naturalWidth);
+      const targetHeight = getSanitizedDimension(imgHeight.value, currentImage.naturalHeight);
+
+      const isSideways = (rotationDegree === 90 || rotationDegree === 270);
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+
+      ctx.save();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (forceOpaque || formatSelect.value === 'image/jpeg' || formatSelect.value === 'application/pdf') {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate((rotationDegree * Math.PI) / 180);
+      if (isFlipped) ctx.scale(-1, 1);
+
+      const drawW = isSideways ? canvas.height : canvas.width;
+      const drawH = isSideways ? canvas.width : canvas.height;
+
+      ctx.drawImage(currentImage, -drawW / 2, -drawH / 2, drawW, drawH);
+      ctx.restore();
+
+      return canvas;
+    }
+
+    function resetFile() {
+      if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+      currentImage = null;
+      currentObjectUrl = null;
+      fileInput.value = '';
+      customFileName.value = '';
+      previewBox.style.display = 'none';
+      dimensionGroup.style.display = 'none';
+      dropZone.style.display = 'block';
+      convertBtn.disabled = true;
+      copyBtn.disabled = true;
+      qualityControl.style.display = 'none';
+      setLoading(false);
+
+      const canvas = document.getElementById('hiddenCanvas');
+      canvas.width = 0;
+      canvas.height = 0;
+    }
+
+    function setLoading(isLoading, text = 'कन्वर्ट व डाउनलोड') {
+      if (isLoading) {
+        spinner.style.display = 'inline-block';
+        btnText.innerText = text;
+        convertBtn.disabled = true;
+        copyBtn.disabled = true;
+      } else {
+        spinner.style.display = 'none';
+        btnText.innerText = text;
+        if (currentImage) {
+          convertBtn.disabled = false;
+          copyBtn.disabled = (formatSelect.value === 'application/pdf');
+        }
+      }
+    }
+
+    async function copyImageToClipboard() {
+      if (!currentImage) return;
+
+      if (!window.isSecureContext) {
+        alert('क्लिपबोर्ड कॉपी केवल HTTPS या सुरक्षित कनेक्शन पर काम करता है। कृपया फ़ाइल डाउनलोड करें।');
+        return;
+      }
+
+      const origText = copyBtn.innerText;
+      copyBtn.innerText = 'कॉपी हो रहा है...';
+      copyBtn.disabled = true;
+
+      try {
+        const canvas = renderToCanvas();
+        canvas.toBlob(async (blob) => {
+          if (!blob) throw new Error('Blob Error');
+          await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+          copyBtn.innerText = '✅ कॉपी हुआ!';
+          setTimeout(() => {
+            copyBtn.innerText = origText;
+            copyBtn.disabled = false;
+          }, 2000);
+        }, 'image/png');
+      } catch (err) {
+        alert('क्लिपबोर्ड एक्सेस अस्वीकृत या असमर्थ। कृपया डाउनलोड बटन का उपयोग करें।');
+        copyBtn.innerText = origText;
+        copyBtn.disabled = false;
+      }
     }
 
     function convertAndDownload() {
       if (!currentImage) return;
 
-      const format = document.getElementById('formatSelect').value;
+      const format = formatSelect.value;
+      const quality = parseFloat(qualitySlider.value) / 100;
+      let rawName = customFileName.value.trim() || 'converted-image';
+      const fileName = rawName.replace(/[/\\?%*:|"<>]/g, '-').replace(/\s+/g, '_');
 
-      // Handle PDF conversion
-      if (format === 'application/pdf') {
-        const { jsPDF } = window.jspdf;
-        const orientation = currentImage.width > currentImage.height ? 'l' : 'p';
-        const pdf = new jsPDF({
-          orientation: orientation,
-          unit: 'px',
-          format: [currentImage.width, currentImage.height]
-        });
+      setLoading(true, 'फ़ाइल तैयार हो रही है...');
 
-        pdf.addImage(currentImage, 'JPEG', 0, 0, currentImage.width, currentImage.height);
-        pdf.save(`${originalName}.pdf`);
-        return;
+      setTimeout(() => {
+        try {
+          const canvas = renderToCanvas(format === 'application/pdf');
+
+          if (format === 'application/pdf') {
+            if (!window.jspdf) {
+              alert('PDF लाइब्रेरी लोड नहीं हो सकी।');
+              setLoading(false);
+              return;
+            }
+            const { jsPDF } = window.jspdf;
+            const orientation = canvas.width > canvas.height ? 'l' : 'p';
+            const pdf = new jsPDF({
+              orientation: orientation,
+              unit: 'pt',
+              format: 'a4'
+            });
+
+            const margin = 20; // 20pt safe printable border
+            const pageWidth = pdf.internal.pageSize.getWidth() - (margin * 2);
+            const pageHeight = pdf.internal.pageSize.getHeight() - (margin * 2);
+            const ratio = Math.min(pageWidth / canvas.width, pageHeight / canvas.height);
+            const finalWidth = canvas.width * ratio;
+            const finalHeight = canvas.height * ratio;
+            const x = margin + ((pageWidth - finalWidth) / 2);
+            const y = margin + ((pageHeight - finalHeight) / 2);
+
+            pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', x, y, finalWidth, finalHeight, undefined, 'FAST');
+            pdf.save(`${fileName}.pdf`);
+            setLoading(false);
+          } else {
+            const extMap = {
+              'image/png': 'png',
+              'image/jpeg': 'jpg',
+              'image/webp': 'webp'
+            };
+
+            canvas.toBlob((blob) => {
+              if (!blob) {
+                alert('इमेज रेंडरिंग विफल रही।');
+                setLoading(false);
+                return;
+              }
+              const downloadUrl = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.download = `${fileName}.${extMap[format]}`;
+              link.href = downloadUrl;
+              link.click();
+
+              setTimeout(() => URL.revokeObjectURL(downloadUrl), 2000);
+              setLoading(false);
+            }, format, quality);
+          }
+        } catch (err) {
+          alert('कन्वर्शन में कोई तकनीकी समस्या आई।');
+          setLoading(false);
+        }
+      }, 50);
+    }
+
+    // Modal Controls
+    function showModal(type) {
+      const modal = document.getElementById('legalModal');
+      const title = document.getElementById('modalTitle');
+      const body = document.getElementById('modalBody');
+
+      if (type === 'privacy') {
+        title.innerText = 'प्राइवेसी पॉलिसी (Privacy Policy)';
+        body.innerHTML = 'आपकी गोपनीयता हमारे लिए अत्यंत महत्वपूर्ण है। यह टूल पूरी तरह से आपके वेब ब्राउज़र (क्लाइंट-साइड) पर कार्य करता है। आपकी कोई भी फ़ोटो, मेटाडेटा या व्यक्तिगत जानकारी हमारे या किसी तीसरे पक्ष के सर्वर पर अपलोड नहीं की जाती है।';
+      } else if (type === 'terms') {
+        title.innerText = 'नियम व शर्तें (Terms & Conditions)';
+        body.innerHTML = 'यह सेवा पूरी तरह से मुफ़्त और बिना किसी वारंटी के प्रदान की जाती है। आप व्यक्तिगत या व्यावसायिक उपयोग के लिए असीमित संख्या में इमेज कनवर्ट कर सकते हैं।';
+      } else if (type === 'about') {
+        title.innerText = 'हमारे बारे में (About Us)';
+        body.innerHTML = 'The AI Hub Tools आधुनिक, सुरक्षित और उपयोग में आसान ऑनलाइन यूटिलिटी टूल्स प्रदान करने वाला एक समर्पित प्लेटफ़ॉर्म है। हमारा लक्ष्य उपयोगकर्ताओं को बिना किसी डेटा गोपनीयता से समझौता किए हाई-स्पीड टूल्स उपलब्ध कराना है।';
       }
+      modal.style.display = 'flex';
+    }
 
-      // Handle Image formats (PNG, JPG, WebP)
-      const canvas = document.getElementById('hiddenCanvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = currentImage.width;
-      canvas.height = currentImage.height;
-
-      // JPG ke transparent background ko white fill dena
-      if (format === 'image/jpeg') {
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function closeModal(e) {
+      if (!e || e.target.id === 'legalModal' || e.target.classList.contains('btn-modal-close')) {
+        document.getElementById('legalModal').style.display = 'none';
       }
-
-      ctx.drawImage(currentImage, 0, 0);
-
-      const extMap = {
-        'image/png': 'png',
-        'image/jpeg': 'jpg',
-        'image/webp': 'webp'
-      };
-
-      const dataURL = canvas.toDataURL(format, 0.95);
-      const link = document.createElement('a');
-      link.download = `${originalName}.${extMap[format]}`;
-      link.href = dataURL;
-      link.click();
     }
   </script>
 </body>
