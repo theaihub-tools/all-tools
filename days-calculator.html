@@ -15,26 +15,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary SEO Meta Tags -->
-  <title>Days Calculator - Calculate Duration & Add/Subtract Days | The AI Hub Tools</title>
-  <meta name="description" content="Free online Days Calculator to calculate duration between dates, working business days, or add/subtract days, weeks, and months from any date. Export .ics calendar events.">
-  <meta name="keywords" content="days calculator, date difference calculator, add days to date, subtract days from date, working days calculator, business days calculator, calendar counter, add business days">
+  <title>Days Calculator - Calculate Duration Between Dates & Business Days | The AI Hub Tools</title>
+  <meta name="description" content="Free online Days Calculator to calculate exact duration between dates, count business working days, or add/subtract days, weeks, months, and years. Export .ics calendar events.">
+  <meta name="keywords" content="days calculator, date difference calculator, date duration calculator, add days to date, subtract days from date, business days calculator, working days counter, calendar countdown, days between dates">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/day-calculator.html">
 
-  <!-- Open Graph / Social Sharing -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Days Calculator - Calculate Duration & Add/Subtract Days | The AI Hub Tools">
-  <meta property="og:description" content="Calculate exact days, working days, weeks, months, or add/subtract days from any date instantly.">
+  <meta property="og:description" content="Calculate exact days, working business days, weeks, and months or add/subtract dates effortlessly online.">
   <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/day-calculator.html">
   <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/assets/og-image.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Days Calculator - Calculate Duration & Add/Subtract Days | The AI Hub Tools">
-  <meta name="twitter:description" content="Calculate exact days, working days, weeks, months, or add/subtract days from any date instantly.">
+  <meta name="twitter:description" content="Calculate exact days, working business days, weeks, and months or add/subtract dates effortlessly online.">
   <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/assets/og-image.png">
 
-  <!-- Schema Markup (JSON-LD) -->
+  <!-- Schema Markup (WebApplication) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,10 +44,33 @@
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript",
-    "description": "Calculate date differences, business working days, and add or subtract days, weeks, or months from any date."
+    "description": "Calculate date differences, business working days, calendar countdowns, and add or subtract days, weeks, or months."
   }
   </script>
 
+  <!-- Schema Markup (BreadcrumbList) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://theaihub-tools.github.io/all-tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Days Calculator",
+        "item": "https://theaihub-tools.github.io/all-tools/day-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema Markup (FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,34 +78,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How do I calculate days between two dates?",
+        "name": "How do I calculate the total days between two dates?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Select 'Date Difference' mode, enter your start date and target end date, and click Calculate to view total days, business working days, weeks, and months."
+          "text": "Select the 'Date Difference' tab, input your starting date and ending date, and click 'Calculate'. The tool instantly displays total calendar days, week breakdown, working days, and weekend count."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I add only working business days to a date?",
+        "name": "How does the business days calculation work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, in 'Add / Subtract' mode, check the 'Business days only' box to skip Saturdays and Sundays automatically."
+          "text": "The business days calculation excludes Saturdays and Sundays from the total day count. When using the 'Add / Subtract' mode with 'Business days only' enabled, the tool automatically skips weekend days."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I add weeks or months instead of just days?",
+        "name": "Does the calculator include both start and end dates?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, our tool provides dedicated input fields for Years, Months, Weeks, and Days so you can project complex deadlines effortlessly."
+          "text": "By default, date difference calculations follow the standard convention where the starting day is counted and the end day marks the conclusion (exclusive). You can check the 'Include End Date in calculation' box to include both dates (inclusive)."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I save the calculated date to my personal calendar?",
+        "name": "Can I add years, months, weeks, and days simultaneously?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, click 'Add to Calendar (.ics)' to download an event file compatible with Google Calendar, Apple Calendar, and Microsoft Outlook."
+          "text": "Yes, switch to the 'Add / Subtract Days' tab where dedicated input fields allow you to combine years, months, weeks, and days in a single projection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I export the target date to my device calendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Once your target date is generated, click 'Add to Calendar (.ics)'. This downloads an iCalendar event file that opens directly in Google Calendar, Apple Calendar, or Microsoft Outlook."
         }
       }
     ]
@@ -108,6 +139,35 @@
     .container {
       max-width: 860px;
       width: 100%;
+    }
+    header.site-header {
+      width: 100%;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #30363d;
+    }
+    .brand-link {
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand-link:hover {
+      text-decoration: underline;
+    }
+    .header-badge {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #8b949e;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
     }
     .calculator-card {
       background: #161b22;
@@ -260,8 +320,13 @@
       height: 16px;
       cursor: pointer;
     }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+    }
     .btn-calc {
-      width: 100%;
+      flex: 1;
       padding: 12px;
       background-color: #238636;
       border: 1px solid #238636;
@@ -275,8 +340,23 @@
     .btn-calc:hover {
       background-color: #2ea043;
     }
+    .btn-reset {
+      background-color: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      color: #8b949e;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-reset:hover {
+      color: #f0f6fc;
+      border-color: #8b949e;
+    }
 
-    /* Result Styling */
+    /* Results */
     .result-box {
       margin-top: 22px;
       padding: 20px;
@@ -373,7 +453,7 @@
       background: #388bfd;
     }
 
-    /* Multi-Unit Add/Subtract Grid */
+    /* Multi-Unit Inputs */
     .multi-unit-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -406,7 +486,17 @@
     .toast-success { background: rgba(46, 160, 67, 0.2); color: #3fb950; border: 1px solid #2ea043; }
     .toast-warning { background: rgba(218, 54, 51, 0.2); color: #f85149; border: 1px solid #da3633; }
 
-    /* Content & SEO */
+    /* Ad Container Placeholder */
+    .ad-placeholder {
+      margin: 20px 0;
+      min-height: 90px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Content & Documentation */
     .content-section {
       background: #161b22;
       border: 1px solid #30363d;
@@ -418,9 +508,13 @@
     .content-section h2 {
       color: #58a6ff;
       font-size: 1.35rem;
+      margin-top: 18px;
       margin-bottom: 12px;
       border-bottom: 1px solid #30363d;
       padding-bottom: 8px;
+    }
+    .content-section h2:first-child {
+      margin-top: 0;
     }
     .content-section p, .content-section ol, .content-section ul {
       color: #8b949e;
@@ -436,6 +530,23 @@
       color: #c9d1d9;
     }
 
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .info-table th, .info-table td {
+      border: 1px solid #30363d;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .info-table th {
+      background-color: #21262d;
+      color: #f0f6fc;
+    }
+
+    /* Accordion FAQ */
     details {
       border-bottom: 1px solid #30363d;
       padding: 14px 0;
@@ -495,9 +606,14 @@
 <body>
 
   <div class="container">
+    <header class="site-header">
+      <a href="https://theaihub-tools.github.io/all-tools/" class="brand-link">← All Tools</a>
+      <span class="header-badge">The AI Hub Tools Suite</span>
+    </header>
+
     <main class="calculator-card">
       <h1>Days Calculator</h1>
-      <p class="subtitle">Calculate duration between dates, working days, or project future/past deadlines.</p>
+      <p class="subtitle">Calculate duration between dates, working days, or project future and past deadlines.</p>
 
       <!-- Tabs Navigation -->
       <div class="tabs-nav">
@@ -576,7 +692,10 @@
         </label>
       </div>
 
-      <button class="btn-calc" onclick="runCurrentCalculation()">Calculate</button>
+      <div class="btn-row">
+        <button class="btn-calc" onclick="runCurrentCalculation()">Calculate</button>
+        <button class="btn-reset" onclick="initDefaults()" title="Reset to default 30 days">Reset</button>
+      </div>
 
       <div id="statusToast"></div>
 
@@ -621,375 +740,420 @@
       </div>
     </main>
 
-    <!-- SEO & How to Use Guide -->
-    <section class="content-section">
-      <h2>What is the Online Days Calculator?</h2>
-      <p>The Days Calculator by The AI Hub Tools is an all-in-one date calculation platform designed for project managers, event planners, legal researchers, students, and freelancers. It lets you measure the exact span between dates or project future and past deadlines by adding or subtracting calendar days, working days, weeks, and months.</p>
+    <!-- Placement Slot for Advertisements -->
+    <div class="ad-placeholder" id="toolAdSlot">
+      <!-- Insert your Google AdSense Ad Unit Script here -->
+    </div>
 
-      <h2>How to Use This Tool</h2>
+    <!-- SEO & Detailed Guide Section -->
+    <section class="content-section">
+      <h2>Complete Date Calculation & Business Days Guide</h2>
+      <p>Whether you are calculating notice periods, project milestones, legal filing limits, financial billing cycles, or simply counting down days to an event, date mathematics can become complicated due to varying month lengths and leap years. This tool handles Gregorian calendar calculations directly in your browser with zero server delay.</p>
+
+      <h2>How to Use This Calculator</h2>
       <ol>
-        <li><strong>Select Your Mode:</strong> Choose <em>Date Difference</em> to find the gap between two dates, or <em>Add / Subtract Days</em> to project deadlines.</li>
-        <li><strong>Choose Dates:</strong> Select start and end points. The tool automatically displays the matching Day of the Week (e.g., Monday, Friday).</li>
-        <li><strong>Business Days Mode:</strong> When projecting deadlines, check <em>Business days only</em> to skip Saturdays and Sundays automatically.</li>
-        <li><strong>Calendar Export:</strong> Click <em>Add to Calendar (.ics)</em> to export target dates straight into Google Calendar or Outlook.</li>
+        <li><strong>Mode Selection:</strong> Use <strong>Date Difference</strong> to count time between two specific dates, or switch to <strong>Add / Subtract Days</strong> to project future deadlines.</li>
+        <li><strong>Pick Dates:</strong> Pick any calendar dates via the dropdown datepicker. The day of the week is automatically labeled beside each input.</li>
+        <li><strong>Presets:</strong> Use the one-click preset buttons (+7, +30, +90, End of Month, End of Year) for fast standard projections.</li>
+        <li><strong>Exclude Weekends:</strong> Toggle <em>Business days only</em> to remove Saturdays and Sundays from schedules.</li>
+        <li><strong>Save & Export:</strong> Copy the text summary directly to your clipboard, or click <em>Add to Calendar (.ics)</em> to generate a universal calendar import file.</li>
       </ol>
 
-      <h2>Key Features</h2>
-      <ul>
-        <li><strong>Multi-Unit Projection:</strong> Add or subtract combinations of Years, Months, Weeks, and Days.</li>
-        <li><strong>Safe Month Calculation:</strong> Zero month-overflow errors on 28th/31st day transitions.</li>
-        <li><strong>Business Days Isolation:</strong> Accurately calculate workdays excluding weekends for sprint planning.</li>
-        <li><strong>Day of the Week Detection:</strong> Real-time display of weekday names for every selected date.</li>
-        <li><strong>Calendar (.ics) Download:</strong> One-click event creation for Google, Apple, and Outlook calendars.</li>
-        <li><strong>Timezone-Safe Engine:</strong> Native local date parsing eliminates 1-day shifting errors across global timezones.</li>
-      </ul>
-    </section>
+      <h2>Comparison: Calendar Days vs. Business Working Days</h2>
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Calendar Days</th>
+            <th>Business Working Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Definition</strong></td>
+            <td>Consecutive 24-hour periods including all 7 days of the week.</td>
+            <td>Working days excluding Saturdays and Sundays.</td>
+          </tr>
+          <tr>
+            <td><strong>Common Use Case</strong></td>
+            <td>Hotel bookings, warranty durations, age calculations, rental spans.</td>
+            <td>Banking clearing windows, shipping turnaround, legal contract limits.</td>
+          </tr>
+          <tr>
+            <td><strong>Average Per Month</strong></td>
+            <td>30 to 31 days</td>
+            <td>20 to 22 business days</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <!-- FAQs -->
-    <section class="content-section">
       <h2>Frequently Asked Questions (FAQs)</h2>
-
       <details>
-        <summary>1. Is this Days Calculator completely free?</summary>
-        <p>Yes, this tool is 100% free with unlimited calculations, no subscription, and no sign-up required.</p>
+        <summary>How do I calculate days between two dates?</summary>
+        <p>Select the "Date Difference" mode, choose your start date and end date, and click "Calculate". The tool will display the exact number of days, full calendar breakdown (years, months, days), weeks, business days, and total hours.</p>
       </details>
-
       <details>
-        <summary>2. How does the "Business Days Only" mode work?</summary>
-        <p>When enabled in Add/Subtract mode, the engine steps forward or backward one day at a time, entirely skipping Saturdays and Sundays until the specified business day count is satisfied.</p>
+        <summary>Can I add only working business days to a date?</summary>
+        <p>Yes. Select the "Add / Subtract Days" tab, input your start date and number of days, and check the "Business days only" checkbox. Saturdays and Sundays will be skipped automatically.</p>
       </details>
-
       <details>
-        <summary>3. Does this calculator consider leap years?</summary>
-        <p>Yes, all leap year calculations (including February 29th) are handled accurately by browser-native Gregorian calendar parsing.</p>
+        <summary>Can I add weeks, months, or years together?</summary>
+        <p>Yes. The tool features separate inputs for Years, Months, Weeks, and Days in the "Add / Subtract" mode. You can combine any combination of these units simultaneously.</p>
       </details>
-
       <details>
-        <summary>4. What does the (.ics) download button do?</summary>
-        <p>It generates an industry-standard iCalendar file that automatically opens in Google Calendar, Apple Calendar, or Outlook to set a reminder for your target deadline.</p>
+        <summary>How do I export this deadline into Google Calendar or Outlook?</summary>
+        <p>After running your calculation, click the green "Add to Calendar (.ics)" button. A standard <code>.ics</code> file will download instantly, which you can double-click or import into Google Calendar, Apple Calendar, or Microsoft Outlook.</p>
+      </details>
+      <details>
+        <summary>Does this tool account for leap years?</summary>
+        <p>Yes. The calendar engine accurately accounts for February 29th during leap years across both historical and future calculations.</p>
       </details>
     </section>
 
+    <!-- Site Footer with Complete Policy Links -->
     <footer>
-      <p style="margin: 0 0 10px 0; color: #8b949e;">
-        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
-      </p>
-      <p style="margin: 0;">
-        <a href="index.html">Home</a> | 
-        <a href="about.html">About Us</a> | 
-        <a href="contact.html">Contact Us</a> | 
-        <a href="privacy-policy.html">Privacy Policy</a> | 
-        <a href="terms.html">Terms & Conditions</a>
-      </p>
+      <p>© 2026 The AI Hub Tools. All rights reserved.</p>
+      <div>
+        <a href="about.html">About</a> |
+        <a href="contact.html">Contact</a> |
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms of Service</a>
+      </div>
     </footer>
   </div>
 
   <script>
-    const startDateInput = document.getElementById('startDate');
-    const endDateInput = document.getElementById('endDate');
-    const baseDateInput = document.getElementById('baseDate');
-    const toast = document.getElementById('statusToast');
-    const copyBtn = document.getElementById('copyResultBtn');
-
     let currentMode = 'diff';
-    let targetIcsDate = null;
-    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let lastTargetDate = null;
 
-    // Safe Local Date Parser
-    function parseLocalDate(dateStr) {
-      if (!dateStr) return new Date();
-      const parts = dateStr.split('-');
-      return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+    const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    // UTC-safe date parser to prevent timezone shifts
+    function parseISODate(dateStr) {
+      if (!dateStr) return null;
+      const parts = dateStr.split('-').map(Number);
+      return new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
     }
 
     function formatISODate(d) {
-      const y = d.getFullYear();
-      const m = String(d.getMonth() + 1).padStart(2, '0');
-      const day = String(d.getDate()).padStart(2, '0');
-      return `${y}-${m}-${day}`;
+      const year = d.getUTCFullYear();
+      const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(d.getUTCDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
     }
 
-    // Initialize Default Dates
-    const now = new Date();
-    startDateInput.value = formatISODate(now);
-    baseDateInput.value = formatISODate(now);
+    function initDefaults() {
+      const now = new Date();
+      const today = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+      const thirtyDaysLater = new Date(today);
+      thirtyDaysLater.setUTCDate(today.getUTCDate() + 30);
 
-    const plus30 = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 30);
-    endDateInput.value = formatISODate(plus30);
+      document.getElementById('startDate').value = formatISODate(today);
+      document.getElementById('endDate').value = formatISODate(thirtyDaysLater);
+      document.getElementById('baseDate').value = formatISODate(today);
+      document.getElementById('addYears').value = 0;
+      document.getElementById('addMonths').value = 0;
+      document.getElementById('addWeeks').value = 0;
+      document.getElementById('addDays').value = 30;
+      document.getElementById('includeEndDay').checked = false;
+      document.getElementById('businessOnlyCheck').checked = false;
 
-    function updateDayNames() {
-      if (startDateInput.value) {
-        document.getElementById('startDayName').innerText = `(${weekdays[parseLocalDate(startDateInput.value).getDay()]})`;
-      }
-      if (endDateInput.value) {
-        document.getElementById('endDayName').innerText = `(${weekdays[parseLocalDate(endDateInput.value).getDay()]})`;
-      }
-      if (baseDateInput.value) {
-        document.getElementById('baseDayName').innerText = `(${weekdays[parseLocalDate(baseDateInput.value).getDay()]})`;
-      }
+      updateDayNames();
+      calculateDays();
     }
 
     function switchMode(mode) {
       currentMode = mode;
-      document.getElementById('tabDiff').className = `tab-btn ${mode === 'diff' ? 'active' : ''}`;
-      document.getElementById('tabAddSub').className = `tab-btn ${mode === 'addsub' ? 'active' : ''}`;
+      const tabDiff = document.getElementById('tabDiff');
+      const tabAddSub = document.getElementById('tabAddSub');
+      const modeDiff = document.getElementById('modeDiffSection');
+      const modeAddSub = document.getElementById('modeAddSubSection');
 
-      document.getElementById('modeDiffSection').style.display = mode === 'diff' ? 'block' : 'none';
-      document.getElementById('modeAddSubSection').style.display = mode === 'addsub' ? 'block' : 'none';
-
-      runCurrentCalculation();
+      if (mode === 'diff') {
+        tabDiff.classList.add('active');
+        tabAddSub.classList.remove('active');
+        modeDiff.style.display = 'block';
+        modeAddSub.style.display = 'none';
+        calculateDays();
+      } else {
+        tabAddSub.classList.add('active');
+        tabDiff.classList.remove('active');
+        modeAddSub.style.display = 'block';
+        modeDiff.style.display = 'none';
+        calculateAddSub();
+      }
     }
 
-    function showToast(msg, type = 'success') {
-      toast.innerText = msg;
-      toast.className = type === 'success' ? 'toast-success' : 'toast-warning';
-      toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 2500);
+    function updateDayNames() {
+      const s = parseISODate(document.getElementById('startDate').value);
+      const e = parseISODate(document.getElementById('endDate').value);
+      const b = parseISODate(document.getElementById('baseDate').value);
+
+      document.getElementById('startDayName').textContent = s ? `(${weekdayNames[s.getUTCDay()]})` : '';
+      document.getElementById('endDayName').textContent = e ? `(${weekdayNames[e.getUTCDay()]})` : '';
+      document.getElementById('baseDayName').textContent = b ? `(${weekdayNames[b.getUTCDay()]})` : '';
     }
 
     function swapDates() {
-      const temp = startDateInput.value;
-      startDateInput.value = endDateInput.value;
-      endDateInput.value = temp;
+      const s = document.getElementById('startDate').value;
+      const e = document.getElementById('endDate').value;
+      document.getElementById('startDate').value = e;
+      document.getElementById('endDate').value = s;
       updateDayNames();
       calculateDays();
-      showToast('Dates swapped!');
     }
 
     function setPreset(days) {
-      const base = parseLocalDate(startDateInput.value || formatISODate(new Date()));
-      base.setDate(base.getDate() + days);
-      endDateInput.value = formatISODate(base);
+      const s = parseISODate(document.getElementById('startDate').value) || new Date();
+      const target = new Date(s);
+      target.setUTCDate(target.getUTCDate() + days);
+      document.getElementById('endDate').value = formatISODate(target);
       updateDayNames();
       calculateDays();
     }
 
     function setEndOfMonth() {
-      const base = parseLocalDate(startDateInput.value || formatISODate(new Date()));
-      const lastDay = new Date(base.getFullYear(), base.getMonth() + 1, 0);
-      endDateInput.value = formatISODate(lastDay);
+      const s = parseISODate(document.getElementById('startDate').value) || new Date();
+      const target = new Date(Date.UTC(s.getUTCFullYear(), s.getUTCMonth() + 1, 0));
+      document.getElementById('endDate').value = formatISODate(target);
       updateDayNames();
       calculateDays();
     }
 
     function setEndOfYear() {
-      const base = parseLocalDate(startDateInput.value || formatISODate(new Date()));
-      const lastDay = new Date(base.getFullYear(), 11, 31);
-      endDateInput.value = formatISODate(lastDay);
+      const s = parseISODate(document.getElementById('startDate').value) || new Date();
+      const target = new Date(Date.UTC(s.getUTCFullYear(), 11, 31));
+      document.getElementById('endDate').value = formatISODate(target);
       updateDayNames();
       calculateDays();
     }
 
-    function getExactMonthsAndDays(d1, d2) {
-      let years = d2.getFullYear() - d1.getFullYear();
-      let months = d2.getMonth() - d1.getMonth();
-      let days = d2.getDate() - d1.getDate();
+    function calculateDays() {
+      const start = parseISODate(document.getElementById('startDate').value);
+      const end = parseISODate(document.getElementById('endDate').value);
+      const includeEnd = document.getElementById('includeEndDay').checked;
+
+      if (!start || !end) return;
+
+      lastTargetDate = end;
+
+      const diffMs = end.getTime() - start.getTime();
+      const isReverse = diffMs < 0;
+      let d1 = isReverse ? end : start;
+      let d2 = isReverse ? start : end;
+
+      const oneDay = 1000 * 60 * 60 * 24;
+      let totalDays = Math.round((d2.getTime() - d1.getTime()) / oneDay);
+      if (includeEnd) totalDays += 1;
+
+      let businessDays = 0;
+      let weekendDays = 0;
+      let cur = new Date(d1);
+      let limit = new Date(d2);
+      if (!includeEnd) {
+        limit.setUTCDate(limit.getUTCDate() - 1);
+      }
+
+      while (cur <= limit) {
+        const day = cur.getUTCDay();
+        if (day === 0 || day === 6) weekendDays++;
+        else businessDays++;
+        cur.setUTCDate(cur.getUTCDate() + 1);
+      }
+
+      const statusTag = document.getElementById('statusTag');
+      if (diffMs > 0) {
+        statusTag.textContent = 'Future Date';
+        statusTag.className = 'status-tag status-future';
+      } else if (diffMs < 0) {
+        statusTag.textContent = 'Past Date';
+        statusTag.className = 'status-tag status-past';
+      } else {
+        statusTag.textContent = 'Same Day';
+        statusTag.className = 'status-tag status-today';
+      }
+
+      document.getElementById('totalDaysText').textContent = `${totalDays} Day${totalDays === 1 ? '' : 's'}`;
+
+      const weeks = Math.floor(totalDays / 7);
+      const remDays = totalDays % 7;
+      document.getElementById('weeksDaysText').textContent = `${weeks}w ${remDays}d`;
+      document.getElementById('businessDaysText').textContent = `${businessDays} Days`;
+      document.getElementById('weekendDaysText').textContent = `${weekendDays} Days`;
+      document.getElementById('hoursText').textContent = `${(totalDays * 24).toLocaleString()} Hours`;
+
+      document.getElementById('calendarBreakdownText').textContent = getDetailedBreakdown(d1, d2);
+      updateYearProgress(end);
+    }
+
+    function getDetailedBreakdown(d1, d2) {
+      let y1 = d1.getUTCFullYear(), m1 = d1.getUTCMonth(), day1 = d1.getUTCDate();
+      let y2 = d2.getUTCFullYear(), m2 = d2.getUTCMonth(), day2 = d2.getUTCDate();
+
+      let years = y2 - y1;
+      let months = m2 - m1;
+      let days = day2 - day1;
 
       if (days < 0) {
         months -= 1;
-        const prevMonthDays = new Date(d2.getFullYear(), d2.getMonth(), 0).getDate();
-        days += prevMonthDays;
+        const prevMonthLastDay = new Date(Date.UTC(y2, m2, 0)).getUTCDate();
+        days += prevMonthLastDay;
       }
       if (months < 0) {
         years -= 1;
         months += 12;
       }
 
-      let parts = [];
+      const parts = [];
       if (years > 0) parts.push(`${years} Year${years > 1 ? 's' : ''}`);
       if (months > 0) parts.push(`${months} Month${months > 1 ? 's' : ''}`);
       if (days > 0) parts.push(`${days} Day${days > 1 ? 's' : ''}`);
-      return parts.length > 0 ? `Equivalent to: ${parts.join(', ')}` : 'Same calendar day';
-    }
 
-    function calculateDays() {
-      if (!startDateInput.value || !endDateInput.value) {
-        showToast('Please select both dates.', 'warning');
-        return;
-      }
-
-      let d1 = parseLocalDate(startDateInput.value);
-      let d2 = parseLocalDate(endDateInput.value);
-      targetIcsDate = d2;
-      const includeEnd = document.getElementById('includeEndDay').checked;
-
-      const todayMidnight = new Date();
-      todayMidnight.setHours(0,0,0,0);
-      const statusTag = document.getElementById('statusTag');
-      if (d2.getTime() > todayMidnight.getTime()) {
-        statusTag.className = 'status-tag status-future';
-        statusTag.innerText = 'Future Target';
-      } else if (d2.getTime() < todayMidnight.getTime()) {
-        statusTag.className = 'status-tag status-past';
-        statusTag.innerText = 'Past Event';
-      } else {
-        statusTag.className = 'status-tag status-today';
-        statusTag.innerText = 'Target is Today';
-      }
-
-      let early = d1;
-      let late = d2;
-      let isReversed = false;
-      if (d1 > d2) {
-        early = d2;
-        late = d1;
-        isReversed = true;
-      }
-
-      const utc1 = Date.UTC(early.getFullYear(), early.getMonth(), early.getDate());
-      const utc2 = Date.UTC(late.getFullYear(), late.getMonth(), late.getDate());
-      let diffDays = Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
-
-      if (includeEnd) diffDays += 1;
-
-      let businessDays = 0;
-      let weekendDays = 0;
-      let cur = new Date(early.getTime());
-
-      for (let i = 0; i < diffDays; i++) {
-        const day = cur.getDay();
-        if (day === 0 || day === 6) weekendDays++;
-        else businessDays++;
-        cur.setDate(cur.getDate() + 1);
-      }
-
-      const weeks = Math.floor(diffDays / 7);
-      const remainingDays = diffDays % 7;
-      const totalHours = diffDays * 24;
-
-      // Year Progress
-      const startOfYear = new Date(d1.getFullYear(), 0, 1);
-      const endOfYear = new Date(d1.getFullYear(), 11, 31);
-      const totalYearMs = endOfYear - startOfYear;
-      const elapsedMs = Math.max(0, d1 - startOfYear);
-      const progressPct = Math.min(100, Math.round((elapsedMs / totalYearMs) * 100));
-
-      document.getElementById('progressContainer').style.display = 'block';
-      document.getElementById('progressBar').style.width = `${progressPct}%`;
-      document.getElementById('progressPercent').innerText = `${progressPct}%`;
-
-      document.getElementById('totalDaysText').innerText = `${diffDays} Day${diffDays === 1 ? '' : 's'}${isReversed ? ' (Reversed)' : ''}`;
-      document.getElementById('calendarBreakdownText').innerText = getExactMonthsAndDays(early, late);
-      document.getElementById('weeksDaysText').innerText = `${weeks}w ${remainingDays}d`;
-      document.getElementById('businessDaysText').innerText = `${businessDays} Day${businessDays === 1 ? '' : 's'}`;
-      document.getElementById('weekendDaysText').innerText = `${weekendDays} Day${weekendDays === 1 ? '' : 's'}`;
-      document.getElementById('hoursText').innerText = `${totalHours.toLocaleString()} Hours`;
-
-      document.getElementById('statsGrid').style.display = 'grid';
-      document.getElementById('resultBox').style.display = 'block';
-    }
-
-    // Safe Month Addition Clamping (Fixes 31 Jan + 1 Month = March bug)
-    function addMonthsClamped(date, months) {
-      const targetMonth = date.getMonth() + months;
-      const d = new Date(date.getFullYear(), targetMonth, 1);
-      const maxDays = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
-      d.setDate(Math.min(date.getDate(), maxDays));
-      return d;
+      return parts.length ? parts.join(', ') : '0 Days';
     }
 
     function calculateAddSub() {
-      if (!baseDateInput.value) return;
+      const base = parseISODate(document.getElementById('baseDate').value);
+      if (!base) return;
 
-      const base = parseLocalDate(baseDateInput.value);
       const op = document.getElementById('operationSelect').value;
-      const bizOnly = document.getElementById('businessOnlyCheck').checked;
+      const factor = op === 'add' ? 1 : -1;
 
-      const y = Math.max(0, parseInt(document.getElementById('addYears').value, 10) || 0);
-      const m = Math.max(0, parseInt(document.getElementById('addMonths').value, 10) || 0);
-      const w = Math.max(0, parseInt(document.getElementById('addWeeks').value, 10) || 0);
-      const d = Math.max(0, parseInt(document.getElementById('addDays').value, 10) || 0);
+      const years = (parseInt(document.getElementById('addYears').value, 10) || 0) * factor;
+      const months = (parseInt(document.getElementById('addMonths').value, 10) || 0) * factor;
+      const weeks = (parseInt(document.getElementById('addWeeks').value, 10) || 0) * factor;
+      const days = (parseInt(document.getElementById('addDays').value, 10) || 0);
+      const businessOnly = document.getElementById('businessOnlyCheck').checked;
 
-      const sign = op === 'add' ? 1 : -1;
-      let resultDate = new Date(base.getTime());
+      let resultDate = new Date(base);
+      resultDate.setUTCFullYear(resultDate.getUTCFullYear() + years);
+      resultDate.setUTCMonth(resultDate.getUTCMonth() + months);
+      resultDate.setUTCDate(resultDate.getUTCDate() + (weeks * 7));
 
-      // Safe Year & Month Addition
-      if (y > 0) resultDate.setFullYear(resultDate.getFullYear() + (sign * y));
-      if (m > 0) resultDate = addMonthsClamped(resultDate, sign * m);
-      if (w > 0) resultDate.setDate(resultDate.getDate() + (sign * w * 7));
-
-      // Business Days vs Normal Days Addition
-      if (bizOnly) {
-        let added = 0;
-        const maxSafetyLimit = 250000;
-        let safetyCount = 0;
-        while (added < d && safetyCount < maxSafetyLimit) {
-          safetyCount++;
-          resultDate.setDate(resultDate.getDate() + sign);
-          const day = resultDate.getDay();
-          if (day !== 0 && day !== 6) {
-            added++;
+      if (businessOnly && days > 0) {
+        let addedDays = 0;
+        while (addedDays < days) {
+          resultDate.setUTCDate(resultDate.getUTCDate() + (1 * factor));
+          const dw = resultDate.getUTCDay();
+          if (dw !== 0 && dw !== 6) {
+            addedDays++;
           }
         }
       } else {
-        resultDate.setDate(resultDate.getDate() + (sign * d));
+        resultDate.setUTCDate(resultDate.getUTCDate() + (days * factor));
       }
 
-      targetIcsDate = resultDate;
-      const dayName = weekdays[resultDate.getDay()];
-      const formatted = resultDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      lastTargetDate = resultDate;
 
       const statusTag = document.getElementById('statusTag');
-      statusTag.className = 'status-tag status-future';
-      statusTag.innerText = op === 'add' ? `Target Projected Date (+)` : `Past Projected Date (-)`;
+      statusTag.textContent = op === 'add' ? 'Projected Future' : 'Projected Past';
+      statusTag.className = op === 'add' ? 'status-tag status-future' : 'status-tag status-past';
 
-      document.getElementById('progressContainer').style.display = 'none';
-      document.getElementById('totalDaysText').innerText = formatted;
-      document.getElementById('calendarBreakdownText').innerText = `Falls on: ${dayName} ${bizOnly ? '(Business Days Applied)' : ''}`;
-      document.getElementById('statsGrid').style.display = 'none';
-      document.getElementById('resultBox').style.display = 'block';
+      const dateString = resultDate.toUTCString().split(' ').slice(0, 4).join(' ');
+      document.getElementById('totalDaysText').textContent = dateString;
+      document.getElementById('calendarBreakdownText').textContent = `Target Date: ${formatISODate(resultDate)}`;
+
+      const oneDay = 1000 * 60 * 60 * 24;
+      const diffTotal = Math.abs(Math.round((resultDate.getTime() - base.getTime()) / oneDay));
+      const w = Math.floor(diffTotal / 7);
+      const remD = diffTotal % 7;
+
+      document.getElementById('weeksDaysText').textContent = `${w}w ${remD}d`;
+      document.getElementById('businessDaysText').textContent = `${businessOnly ? days : '-'} Working`;
+      document.getElementById('weekendDaysText').textContent = `${Math.floor(diffTotal * (2/7))} Approx`;
+      document.getElementById('hoursText').textContent = `${(diffTotal * 24).toLocaleString()} Hours`;
+
+      updateYearProgress(resultDate);
+    }
+
+    function updateYearProgress(d) {
+      const container = document.getElementById('progressContainer');
+      const startOfYear = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      const endOfYear = new Date(Date.UTC(d.getUTCFullYear() + 1, 0, 1));
+      const totalYearMs = endOfYear.getTime() - startOfYear.getTime();
+      const elapsedMs = d.getTime() - startOfYear.getTime();
+      const percent = Math.min(100, Math.max(0, Math.round((elapsedMs / totalYearMs) * 100)));
+
+      container.style.display = 'block';
+      document.getElementById('progressPercent').textContent = `${percent}%`;
+      document.getElementById('progressBar').style.width = `${percent}%`;
     }
 
     function runCurrentCalculation() {
       if (currentMode === 'diff') calculateDays();
       else calculateAddSub();
+      showToast('Calculated successfully!', 'success');
+    }
+
+    function showToast(msg, type) {
+      const toast = document.getElementById('statusToast');
+      toast.textContent = msg;
+      toast.className = type === 'success' ? 'toast-success' : 'toast-warning';
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2200);
     }
 
     function copyFullResult() {
-      const summary = `Date Calculation Result:\n- Mode: ${currentMode === 'diff' ? 'Duration Difference' : 'Add/Subtract'}\n- ${document.getElementById('totalDaysText').innerText}\n- ${document.getElementById('calendarBreakdownText').innerText}\n(Calculated via The AI Hub Tools)`;
+      const headline = document.getElementById('totalDaysText').textContent;
+      const breakdown = document.getElementById('calendarBreakdownText').textContent;
+      const weeksDays = document.getElementById('weeksDaysText').textContent;
+      const bDays = document.getElementById('businessDaysText').textContent;
 
-      navigator.clipboard.writeText(summary).then(() => {
-        copyBtn.innerText = 'Copied to Clipboard! ✓';
-        copyBtn.style.backgroundColor = '#238636';
-        setTimeout(() => {
-          copyBtn.innerText = 'Copy Summary';
-          copyBtn.style.backgroundColor = '';
-        }, 2000);
-      });
+      const text = `Calculation Summary:\n- Result: ${headline}\n- Span: ${breakdown}\n- Weeks/Days: ${weeksDays}\n- Business Days: ${bDays}\nCalculated via The AI Hub Tools (https://theaihub-tools.github.io/all-tools/day-calculator.html)`;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Summary copied to clipboard!', 'success');
+        });
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          showToast('Summary copied to clipboard!', 'success');
+        } catch (err) {
+          showToast('Failed to copy', 'warning');
+        }
+        document.body.removeChild(textArea);
+      }
     }
 
-    // Export .ics Calendar Event
     function downloadCalendarEvent() {
-      if (!targetIcsDate) return;
-      const d = targetIcsDate;
-      const dateStr = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
+      if (!lastTargetDate) return;
+      const y = lastTargetDate.getUTCFullYear();
+      const m = String(lastTargetDate.getUTCMonth() + 1).padStart(2, '0');
+      const d = String(lastTargetDate.getUTCDate()).padStart(2, '0');
+      const dtStr = `${y}${m}${d}`;
 
-      const icsContent = [
+      const ics = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//The AI Hub Tools//Days Calculator//EN',
+        'PRODID:-//The AI Hub Tools//Day Calculator//EN',
         'BEGIN:VEVENT',
-        `UID:${Date.now()}@theaihubtools.com`,
-        `DTSTAMP:${dateStr}T090000Z`,
-        `DTSTART;VALUE=DATE:${dateStr}`,
-        `DTEND;VALUE=DATE:${dateStr}`,
-        'SUMMARY:Deadline / Event Date',
-        'DESCRIPTION:Calculated via The AI Hub Tools Days Calculator',
+        `UID:${Date.now()}@theaihub-tools`,
+        `DTSTAMP:${dtStr}T000000Z`,
+        `DTSTART;VALUE=DATE:${dtStr}`,
+        `DTEND;VALUE=DATE:${dtStr}`,
+        'SUMMARY:Deadline / Event Reminder',
+        'DESCRIPTION:Scheduled with The AI Hub Tools Day Calculator.',
         'END:VEVENT',
         'END:VCALENDAR'
       ].join('\r\n');
 
-      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = `date-event-${dateStr}.ics`;
+      link.download = `event-${dtStr}.ics`;
       link.click();
-      URL.revokeObjectURL(link.href);
-      showToast('Calendar event (.ics) downloaded!');
+      showToast('Calendar (.ics) file downloaded!', 'success');
     }
 
-    updateDayNames();
-    calculateDays();
+    window.onload = initDefaults;
   </script>
 </body>
 </html>
