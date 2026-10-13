@@ -6,16 +6,79 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
     gtag('config', 'G-MEQE82X4L0');
   </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Image Prompt Generator & Enhancer - Midjourney, Stable Diffusion, Flux</title>
-  <meta name="description" content="Free AI Image Prompt Enhancer tool. Convert simple ideas into highly detailed, 8K cinematic prompts for Midjourney, Stable Diffusion, Flux, and DALL-E.">
+  <title>AI Image Prompt Generator & Enhancer | Midjourney, Flux, SDXL, DALL-E</title>
+  <meta name="description" content="Free AI Image Prompt Generator & Enhancer. Convert simple ideas into cinematic, 8K ultra-detailed prompts for Midjourney v6, Flux.1, Stable Diffusion XL, and DALL-E 3 with custom optics, lighting, and negative prompts.">
+  <meta name="keywords" content="AI prompt generator, image prompt enhancer, Midjourney prompt generator, Flux.1 prompts, Stable Diffusion negative prompts, DALL-E 3 prompt engineer, free online AI tools">
+  <meta name="author" content="The AI Hub Tools">
   <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/prompt-generator.html">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/prompt-generator.html">
+  <meta property="og:title" content="AI Image Prompt Generator & Enhancer | The AI Hub Tools">
+  <meta property="og:description" content="Turn plain text into production-ready prompts with camera lens physics, cinematic lighting, and negative filters for Midjourney, Flux, and SDXL.">
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://theaihub-tools.github.io/all-tools/prompt-generator.html">
+  <meta property="twitter:title" content="AI Image Prompt Generator & Enhancer">
+  <meta property="twitter:description" content="Generate high-detail Midjourney v6, Flux.1, and SDXL prompts with custom optics, aspect ratios, and negative filters.">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "AI Image Prompt Generator & Enhancer",
+        "url": "https://theaihub-tools.github.io/all-tools/prompt-generator.html",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "description": "Craft detailed prompts and negative filters for Midjourney v6, Flux.1, Stable Diffusion, and DALL-E 3.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the AI Image Prompt Enhancer work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool enhances simple concepts by attaching physical camera lens specifications (such as 35mm or 85mm f/1.4), lighting dynamics (chiaroscuro, volumetric rays), surface textures, and platform-specific syntax flags like Midjourney's aspect ratios (--ar 16:9) and version parameters."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a negative prompt, and when should I use one?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A negative prompt defines what the AI image model should deliberately avoid. It is primarily used in Stable Diffusion XL and Flux local setups to eliminate distorted hands, extra fingers, watermarks, blurry resolutions, and unnatural anatomy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool work with Hinglish inputs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can describe your scene in simple Hindi or Hinglish, and the enhancer will structure the output with international English terminology that global AI models process accurately."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   
   <style>
     :root {
@@ -26,10 +89,8 @@
       --accent-hover: #0284c7;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --success-bg: rgba(34, 197, 94, 0.15);
-      --success-border: #22c55e;
-      --error-bg: rgba(239, 68, 68, 0.15);
-      --error-border: #ef4444;
+      --chip-bg: #0b1120;
+      --success: #22c55e;
     }
 
     * {
@@ -46,15 +107,17 @@
       flex-direction: column;
       min-height: 100vh;
       padding: 20px;
+      line-height: 1.6;
     }
 
     .top-nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 18px;
       margin-bottom: 25px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
     }
 
     .top-nav a {
@@ -75,7 +138,7 @@
     }
 
     header h1 {
-      font-size: 1.85rem;
+      font-size: 2rem;
       font-weight: 700;
       margin-bottom: 8px;
     }
@@ -86,7 +149,9 @@
 
     header p {
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
+      max-width: 680px;
+      margin: 0 auto;
     }
 
     .container {
@@ -96,16 +161,16 @@
       flex: 1;
     }
 
-    .control-card {
+    .control-card, .output-section, .content-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 22px;
-      margin-bottom: 20px;
+      padding: 24px;
+      margin-bottom: 22px;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     label {
@@ -132,6 +197,35 @@
       border-color: var(--accent);
     }
 
+    .chips-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip-btn {
+      background: var(--chip-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chip-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: 1fr;
@@ -139,23 +233,32 @@
     }
 
     @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
       .grid-3 {
         grid-template-columns: 1fr 1fr 1fr;
       }
+    }
+
+    .model-hint {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-top: 5px;
     }
 
     .toolbar-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 15px;
+      margin-top: 20px;
     }
 
-    button {
+    button.btn {
       background: #273549;
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 10px 18px;
+      padding: 11px 18px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 0.88rem;
@@ -163,34 +266,30 @@
       transition: all 0.2s ease;
     }
 
-    button:hover {
+    button.btn:hover {
       background: var(--border);
     }
 
-    button.primary {
+    button.btn.primary {
       background: var(--accent);
       color: #04101e;
       border-color: var(--accent);
     }
 
-    button.primary:hover {
+    button.btn.primary:hover {
       background: var(--accent-hover);
     }
 
-    button.danger:hover {
-      background: #7f1d1d;
-    }
-
-    .output-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 22px;
-      margin-bottom: 25px;
+    button.btn.danger:hover {
+      background: #991b1b;
     }
 
     .output-box {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    .output-box:last-child {
+      margin-bottom: 0;
     }
 
     .output-header {
@@ -198,42 +297,154 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
     .output-header span {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--accent);
       font-weight: 600;
     }
 
+    .output-stats {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-align: right;
+    }
+
     textarea.output-area {
       height: 120px;
-      font-family: ui-monospace, Consolas, monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       resize: vertical;
+      max-width: 100%;
     }
 
-    .info-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 22px;
-    }
-
-    .info-section h2 {
-      font-size: 1.15rem;
+    .content-card h2 {
+      font-size: 1.35rem;
       color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .content-card h3 {
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      margin: 18px 0 8px;
+    }
+
+    .content-card p, .content-card li {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .content-card ul, .content-card ol {
+      margin-left: 20px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    table th, table td {
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table th {
+      background: #0b1120;
+      color: var(--accent);
+    }
+
+    table td {
+      color: var(--text-muted);
+    }
+
+    details.faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      cursor: pointer;
+    }
+
+    details.faq-item:last-child {
+      border-bottom: none;
+    }
+
+    summary.faq-question {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary.faq-question::-webkit-details-marker {
+      display: none;
+    }
+
+    summary.faq-question::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+
+    details[open] summary.faq-question::after {
+      content: "−";
+    }
+
+    details.faq-item p {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .internal-links-box {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .internal-links-box span {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      font-weight: 600;
+      display: inline-block;
       margin-bottom: 10px;
     }
 
-    .info-section p, .info-section li {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.6;
+    .internal-links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .info-section ul {
-      margin-left: 20px;
-      margin-top: 8px;
+    .internal-links-grid a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      background: #0b1120;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .internal-links-grid a:hover {
+      border-color: var(--accent);
     }
 
     footer {
@@ -268,96 +479,222 @@
 <body>
 
   <!-- Top Navigation -->
-  <nav class="top-nav">
-    <a href="index.html">Home</a>
+  <nav class="top-nav" aria-label="Main Navigation">
+    <a href="index.html">All Tools</a>
+    <a href="text-case-converter.html">Text Case Converter</a>
+    <a href="speech-to-text.html">Speech to Text</a>
+    <a href="json-formatter.html">JSON Formatter</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 
   <header>
-    <h1>AI Image Prompt <span>Enhancer</span></h1>
-    <p>Convert simple ideas into detailed, production-ready prompts for Midjourney, Stable Diffusion & Flux.</p>
+    <h1>AI Image Prompt <span>Generator & Enhancer</span></h1>
+    <p>Convert basic concepts into production-grade prompts with tailored lighting, camera optics, and syntax flags for Midjourney v6, Flux.1, Stable Diffusion XL, and DALL-E 3.</p>
   </header>
 
   <main class="container">
     
+    <!-- Tool Card -->
     <div class="control-card">
       <div class="form-group">
-        <label for="base-idea">Your Core Idea (English or Hinglish):</label>
-        <input type="text" id="base-idea" placeholder="e.g. A cybernetic cat sitting in an alleyway, or an Indian ancient temple in clouds">
+        <label for="base-idea">Core Idea or Subject (English or Hinglish):</label>
+        <input type="text" id="base-idea" placeholder="e.g., A cybernetic samurai standing in a rain-soaked neon street, or a calm meditating monk in the Himalayas" autocomplete="off">
+        
+        <!-- Quick Keyword Chips -->
+        <div class="chips-wrapper" aria-label="Quick keywords">
+          <span style="font-size:0.78rem; color:var(--text-muted); align-self:center;">Quick Add:</span>
+          <button type="button" class="chip-btn" onclick="addChip('cybernetic details')">+ Cybernetic</button>
+          <button type="button" class="chip-btn" onclick="addChip('ancient Indian temple')">+ Ancient Temple</button>
+          <button type="button" class="chip-btn" onclick="addChip('futuristic neon city')">+ Neon City</button>
+          <button type="button" class="chip-btn" onclick="addChip('snow covered mountains')">+ Snowy Peaks</button>
+          <button type="button" class="chip-btn" onclick="addChip('hyper-detailed portrait')">+ Portrait</button>
+        </div>
       </div>
 
       <div class="grid-3">
         <div class="form-group">
           <label for="ai-style">Art & Visual Style:</label>
-          <select id="ai-style">
+          <select id="ai-style" onchange="autoUpdateIfActive()">
             <option value="photorealistic">Cinematic Photorealism (8K RAW)</option>
             <option value="cyberpunk">Cyberpunk & Neon Sci-Fi</option>
-            <option value="anime">Studio Ghibli / Anime Makoto Shinkai</option>
-            <option value="fantasy">Dark Fantasy Unreal Engine 5</option>
-            <option value="oilpainting">Classic Oil Painting Masterpiece</option>
-            <option value="minimalist">3D Pixar Minimalist Vector</option>
+            <option value="anime">Studio Ghibli / Makoto Shinkai Anime</option>
+            <option value="fantasy">Epic Dark Fantasy (Unreal Engine 5)</option>
+            <option value="oilpainting">Classical Renaissance Oil Painting</option>
+            <option value="pixar">3D Pixar Character Render</option>
+            <option value="vintage">1970s Vintage Film Photography (Kodak)</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="ai-lighting">Lighting & Mood:</label>
-          <select id="ai-lighting">
+          <label for="ai-lighting">Lighting & Atmosphere:</label>
+          <select id="ai-lighting" onchange="autoUpdateIfActive()">
             <option value="golden-hour">Golden Hour Sunset Glow</option>
-            <option value="volumetric">Volumetric Cinematic Fog & Rays</option>
-            <option value="neon">Vibrant Neon Backlighting</option>
-            <option value="studio">Professional Studio Softbox Rim Light</option>
-            <option value="dramatic">Dark Chiaroscuro High Contrast</option>
+            <option value="volumetric">Volumetric God Rays & Cinematic Fog</option>
+            <option value="neon">Bioluminescent & Vivid Neon Contrast</option>
+            <option value="studio">Studio Softbox Rim Light (Commercial)</option>
+            <option value="dramatic">Moody Chiaroscuro & Deep Shadows</option>
+            <option value="overcast">Soft Diffused Overcast Daylight</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="ai-platform">Target Model:</label>
-          <select id="ai-platform">
-            <option value="midjourney">Midjourney v6 (--ar 16:9 --v 6.0)</option>
-            <option value="flux">Flux.1 / SDXL</option>
-            <option value="dalle">DALL-E 3</option>
+          <label for="ai-camera">Camera Framing & Lens:</label>
+          <select id="ai-camera" onchange="autoUpdateIfActive()">
+            <option value="portrait">Close-up Portrait (85mm f/1.4 Lens, Bokeh)</option>
+            <option value="wide">Wide-Angle Vista (24mm Lens, Deep Focus)</option>
+            <option value="cinematic">Cinematic Medium Shot (35mm Anamorphic)</option>
+            <option value="macro">Extreme Macro Close-up (Intricate Textures)</option>
+            <option value="aerial">Top-down Bird's-Eye Drone Shot</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="ai-platform">Target Generative Model:</label>
+          <select id="ai-platform" onchange="syncModelOptions()">
+            <option value="midjourney">Midjourney v6</option>
+            <option value="flux">Black Forest Labs Flux.1</option>
+            <option value="sdxl">Stable Diffusion XL (SDXL)</option>
+            <option value="dalle">OpenAI DALL-E 3</option>
+          </select>
+          <div id="model-hint" class="model-hint">Applies --v 6.0, --style raw, and --ar flags automatically.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="ai-aspect">Aspect Ratio:</label>
+          <select id="ai-aspect" onchange="autoUpdateIfActive()">
+            <option value="16:9">16:9 (Landscape / YouTube / Desktop)</option>
+            <option value="9:16">9:16 (Portrait / Reels / Shorts / TikTok)</option>
+            <option value="1:1">1:1 (Square / Instagram Post)</option>
+            <option value="4:5">4:5 (Vertical Portrait Feed)</option>
+            <option value="21:9">21:9 (Ultrawide Cinematic)</option>
           </select>
         </div>
       </div>
 
       <div class="toolbar-actions">
-        <button class="primary" onclick="enhancePrompt()">✨ Generate Enhanced Prompt</button>
-        <button onclick="loadSamplePrompt()">Try Sample</button>
-        <button class="danger" onclick="resetForm()">Clear</button>
+        <button type="button" class="btn primary" onclick="enhancePrompt()">✨ Generate Enhanced Prompt</button>
+        <button type="button" class="btn" onclick="randomizeIdea()">🎲 Surprise Me</button>
+        <button type="button" class="btn" onclick="loadSamplePrompt()">Try Sample</button>
+        <button type="button" class="btn danger" onclick="resetForm()">Clear</button>
       </div>
     </div>
 
+    <!-- Output Section -->
     <div class="output-section">
       <div class="output-box">
         <div class="output-header">
-          <span>Final Enhanced Prompt</span>
-          <button onclick="copyText('enhanced-output', this)">Copy Prompt</button>
+          <span>Enhanced Production Prompt</span>
+          <button type="button" class="btn" onclick="copyText('enhanced-output', this)">Copy Prompt</button>
         </div>
-        <textarea id="enhanced-output" class="output-area" readonly placeholder="Enhanced prompt will appear here..."></textarea>
+        <textarea id="enhanced-output" class="output-area" readonly placeholder="Your enhanced prompt with optics, lighting, and parameters will appear here..."></textarea>
+        <div class="output-stats" id="enhanced-stats" aria-live="polite">0 characters | 0 words</div>
       </div>
 
       <div class="output-box">
         <div class="output-header">
-          <span>Recommended Negative Prompt (For SD / Flux)</span>
-          <button onclick="copyText('negative-output', this)">Copy Negative Prompt</button>
+          <span id="negative-title">Recommended Negative Parameters</span>
+          <button type="button" class="btn" onclick="copyText('negative-output', this)">Copy Negative Prompt</button>
         </div>
-        <textarea id="negative-output" class="output-area" readonly placeholder="Negative prompt for filtering unwanted elements will appear here..."></textarea>
+        <textarea id="negative-output" class="output-area" readonly placeholder="Negative parameters to filter unwanted visual artifacts..."></textarea>
+        <div class="output-stats" id="negative-stats" aria-live="polite">0 characters | 0 words</div>
       </div>
     </div>
 
-    <div class="info-section">
-      <h2>How AI Image Prompt Enhancer Works</h2>
-      <p>Modern diffusion models like Midjourney and Flux excel when given explicit cues regarding camera lenses, light physics, and texture resolution. This generator automatically injects:</p>
-      <ul>
-        <li><strong>Camera & Lens Physics:</strong> 35mm f/1.4 cinematic lens depth, bokeh, and sensor fidelity.</li>
-        <li><strong>Volumetric Light Dynamics:</strong> Subsurface scattering, global illumination, and ray-traced reflections.</li>
-        <li><strong>Syntax Tuning:</strong> Tailored aspect ratios and render weight flags appropriate for your selected model.</li>
-      </ul>
-    </div>
+    <!-- How-To Guide -->
+    <section class="content-card">
+      <h2>How to Use the AI Image Prompt Enhancer</h2>
+      <p>Diffusion models require clear cues about camera perspectives, lighting physics, and surfaces. Follow these steps to produce clean generations on your first try:</p>
+      
+      <ol>
+        <li><strong>Enter the Central Subject:</strong> Type your core subject or use the quick tags above to establish the setting (e.g., <em>"A majestic royal Bengal tiger resting on ancient palace ruins"</em>).</li>
+        <li><strong>Choose Medium & Mood:</strong> Select from 35mm photographic realism, fantasy matte renders, or studio 3D animations.</li>
+        <li><strong>Set Camera Framing:</strong> Specify depth of field and focal length (like an 85mm portrait or 24mm wide vista) to prevent flat compositions.</li>
+        <li><strong>Select Target Engine:</strong> Syntax updates dynamically—<a href="https://docs.midjourney.com/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Midjourney</a> gets <code>--ar</code> flags, while <a href="https://stability.ai/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Stable Diffusion</a> gets weighted descriptive tokens.</li>
+        <li><strong>Copy and Generate:</strong> Paste the enhanced prompt into your model, and add the negative prompt to filter out duplicate limbs or distorted artifacts.</li>
+      </ol>
+    </section>
+
+    <!-- Platform Comparison Table -->
+    <section class="content-card">
+      <h2>Model Comparison: Prompting Nuances Across AI Engines</h2>
+      <p>Different neural architectures require different prompt formats. Here is how your prompt adapts across each major platform:</p>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>AI Engine</th>
+              <th>Prompt Style Preference</th>
+              <th>Negative Prompt Support</th>
+              <th>Key Syntax Flags</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Midjourney v6</strong></td>
+              <td>Descriptive natural phrases with materials, lighting, and camera details.</td>
+              <td>Supported via <code>--no</code> flag</td>
+              <td><code>--ar 16:9</code>, <code>--v 6.0</code>, <code>--style raw</code></td>
+            </tr>
+            <tr>
+              <td><strong>Flux.1 (Schnell / Dev)</strong></td>
+              <td>Natural English sentences describing complete spatial compositions.</td>
+              <td>Moderate (Depends on WebUI/ComfyUI)</td>
+              <td>Camera lens specs, ISO, color grading</td>
+            </tr>
+            <tr>
+              <td><strong>Stable Diffusion XL</strong></td>
+              <td>Comma-separated weighted keyword tokens.</td>
+              <td>Extensive (Essential for anatomical accuracy)</td>
+              <td><code>(masterpiece:1.2)</code>, CFG scale weights</td>
+            </tr>
+            <tr>
+              <td><strong>OpenAI DALL-E 3</strong></td>
+              <td>Descriptive paragraphs and explicit scene context.</td>
+              <td>Not natively supported</td>
+              <td>Natural language scene descriptions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQs Section (Interactive Details/Summary) -->
+    <section class="content-card">
+      <h2>Frequently Asked Questions (FAQs)</h2>
+
+      <details class="faq-item" open>
+        <summary class="faq-question">What makes a prompt photorealistic in AI image generators?</summary>
+        <p>Photorealism comes from specifying physical optics rather than generic buzzwords: sensor noise, shallow depth of field (f/1.4 to f/2.8), authentic lens focal lengths (35mm or 85mm), and physical lighting behaviors such as subsurface scattering on skin and volumetric shadows.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Why do I need a negative prompt for Stable Diffusion and Flux?</summary>
+        <p>Negative prompts tell the neural network which visual patterns to penalize during latent denoising steps, eliminating deformed fingers, duplicate heads, blurred details, and unwanted signatures.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Does this tool work with Hinglish inputs?</summary>
+        <p>Yes. You can describe your scene in simple Hindi or Hinglish, and the enhancer will structure the output with international English terminology that global AI models process accurately.</p>
+      </details>
+
+      <div class="internal-links-box">
+        <span>Explore More Web Tools:</span>
+        <div class="internal-links-grid">
+          <a href="text-case-converter.html">Text Case Converter</a>
+          <a href="speech-to-text.html">Speech to Text Voice Notepad</a>
+          <a href="json-formatter.html">JSON Formatter & Validator</a>
+          <a href="base64.html">Base64 Encoder / Decoder</a>
+          <a href="unit-converter.html">Online Unit Converter</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer with Policy Links -->
+  <!-- Footer with Legal Links -->
   <footer>
     <div class="footer-links">
       <a href="about.html">About Us</a>
@@ -369,11 +706,66 @@
   </footer>
 
   <script>
+    // Enter key listener
+    document.getElementById('base-idea').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        enhancePrompt();
+      }
+    });
+
+    function updateStats(text, elementId) {
+      const chars = text.length;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      document.getElementById(elementId).innerText = `${chars} characters | ${words} words`;
+    }
+
+    function addChip(keyword) {
+      const input = document.getElementById('base-idea');
+      if (input.value.trim() === '') {
+        input.value = keyword;
+      } else {
+        input.value += ', ' + keyword;
+      }
+      input.focus();
+      autoUpdateIfActive();
+    }
+
+    function autoUpdateIfActive() {
+      if (document.getElementById('enhanced-output').value.trim() !== '') {
+        enhancePrompt();
+      }
+    }
+
+    function syncModelOptions() {
+      const platform = document.getElementById('ai-platform').value;
+      const hint = document.getElementById('model-hint');
+      const negativeTitle = document.getElementById('negative-title');
+
+      if (platform === 'midjourney') {
+        hint.innerText = 'Applies --v 6.0, --style raw, and --ar flags automatically.';
+        negativeTitle.innerText = 'Midjourney Negative Flag Syntax (--no)';
+      } else if (platform === 'flux') {
+        hint.innerText = 'Optimized for Black Forest Labs Flux.1 Schnell/Dev natural descriptions.';
+        negativeTitle.innerText = 'Recommended Negative Filters (For Flux / ComfyUI)';
+      } else if (platform === 'sdxl') {
+        hint.innerText = 'Formatted as weighted token chains for Automatic1111 / ComfyUI.';
+        negativeTitle.innerText = 'Recommended Negative Prompt (For SDXL)';
+      } else if (platform === 'dalle') {
+        hint.innerText = 'Formats as descriptive natural paragraphs tailored for ChatGPT & DALL-E 3.';
+        negativeTitle.innerText = 'Negative Filters (Excluded visual instructions for DALL-E 3)';
+      }
+
+      autoUpdateIfActive();
+    }
+
     function enhancePrompt() {
       const idea = document.getElementById('base-idea').value.trim();
       const style = document.getElementById('ai-style').value;
       const lighting = document.getElementById('ai-lighting').value;
+      const camera = document.getElementById('ai-camera').value;
       const platform = document.getElementById('ai-platform').value;
+      const aspect = document.getElementById('ai-aspect').value;
 
       if (!idea) {
         alert('Please enter your idea or subject first.');
@@ -382,52 +774,101 @@
 
       let styleModifiers = "";
       if (style === "photorealistic") {
-        styleModifiers = "ultra-realistic, 8k resolution, shot on 35mm Sony A7R IV lens, photorealistic texture, hyper-detailed, depth of field";
+        styleModifiers = "ultra-realistic photographic render, authentic skin texture, subtle film grain, hyper-detailed materials, 8k resolution";
       } else if (style === "cyberpunk") {
-        styleModifiers = "cyberpunk aesthetic, high-tech dystopian city vibe, intricate circuits, octane render, vivid neon hues, sharp focus";
+        styleModifiers = "cyberpunk high-tech aesthetic, retrofuturistic dystopian environment, chrome reflections, vivid neon palette";
       } else if (style === "anime") {
-        styleModifiers = "Studio Ghibli aesthetic, anime illustration by Makoto Shinkai, lush colors, breathtaking scenery, hand-drawn detailing";
+        styleModifiers = "Studio Ghibli aesthetic, anime illustration inspired by Makoto Shinkai, lush vibrant scenery, hand-drawn warmth";
       } else if (style === "fantasy") {
-        styleModifiers = "epic dark fantasy masterpiece, intricate gothic architecture, Unreal Engine 5 render, mythological grandeur";
+        styleModifiers = "epic dark fantasy concept art, intricate gothic architecture, Unreal Engine 5 render, atmospheric scale";
       } else if (style === "oilpainting") {
-        styleModifiers = "classical baroque oil painting on canvas, visible brushstrokes, Rembrandtesque texture, museum quality";
-      } else if (style === "minimalist") {
-        styleModifiers = "Pixar 3D animated style, smooth clay render, charming vibrant character design, clean studio background";
+        styleModifiers = "classical baroque oil painting on textured canvas, visible impasto brushstrokes, Rembrandt lighting, museum archival quality";
+      } else if (style === "pixar") {
+        styleModifiers = "charming 3D animated character render, Pixar style, subsurface scattering, smooth clay finish, clean studio lighting";
+      } else if (style === "vintage") {
+        styleModifiers = "1970s analog vintage photography, shot on 35mm Kodak Portra 400, muted color grading, authentic light leaks";
       }
 
       let lightModifiers = "";
       if (lighting === "golden-hour") {
-        lightModifiers = "warm golden hour ambient lighting, long dramatic shadows, soft sunset haze";
+        lightModifiers = "warm golden hour side-lighting, long soft shadows, glowing sunset rim light";
       } else if (lighting === "volumetric") {
-        lightModifiers = "cinematic volumetric god rays, atmospheric haze, moody diffused lighting";
+        lightModifiers = "cinematic volumetric god rays, atmospheric haze, moody diffused backlighting";
       } else if (lighting === "neon") {
-        lightModifiers = "illuminated by electric cyan and magenta neon signage, reflective puddles, high contrast";
+        lightModifiers = "illuminated by cyan and magenta neon signage, high-contrast reflections on wet surfaces";
       } else if (lighting === "studio") {
-        lightModifiers = "professional studio rim lighting, dual softbox setup, clean specular highlights";
+        lightModifiers = "commercial studio key and softbox rim lighting, balanced fill, clean catchlights";
       } else if (lighting === "dramatic") {
-        lightModifiers = "chiaroscuro lighting, deep shadows, cinematic rim-lit contouring, intense mood";
+        lightModifiers = "dramatic chiaroscuro lighting, deep black shadows, cinematic edge highlights";
+      } else if (lighting === "overcast") {
+        lightModifiers = "softly diffused natural daylight, gentle shadows, true-to-life neutral color balance";
       }
 
-      let finalPrompt = `${idea}, ${styleModifiers}, ${lightModifiers}, masterpieces quality, trending on Artstation`;
+      let cameraModifiers = "";
+      if (camera === "portrait") {
+        cameraModifiers = "close-up portrait shot, 85mm f/1.4 lens, shallow depth of field, soft creamy bokeh background";
+      } else if (camera === "wide") {
+        cameraModifiers = "sweeping wide-angle vista shot, 24mm lens, sharp edge-to-edge focus, vast perspective";
+      } else if (camera === "cinematic") {
+        cameraModifiers = "cinematic medium framing, 35mm anamorphic lens, organic horizontal flares, filmic composition";
+      } else if (camera === "macro") {
+        cameraModifiers = "extreme macro lens close-up, 100mm macro optic, microscopic surface textures, sharp focal plane";
+      } else if (camera === "aerial") {
+        cameraModifiers = "top-down bird's-eye drone aerial photography, high altitude perspective, expansive composition";
+      }
+
+      let finalPrompt = "";
+      let negativePrompt = "";
 
       if (platform === "midjourney") {
-        finalPrompt += " --ar 16:9 --style raw --v 6.0";
+        finalPrompt = `${idea}, ${styleModifiers}, ${cameraModifiers}, ${lightModifiers}, photorealistic realism, cinematic color grade --ar ${aspect} --style raw --v 6.0`;
+        negativePrompt = "--no blurry, bad anatomy, deformed limbs, extra fingers, text, watermark, logo, low quality";
       } else if (platform === "flux") {
-        finalPrompt += ", raw photo format, high dynamic range";
+        finalPrompt = `${idea}. Captured in a ${styleModifiers}. ${cameraModifiers}, bathed in ${lightModifiers}. High dynamic range raw photo format, aspect ratio ${aspect}.`;
+        negativePrompt = "blurry, bad anatomy, deformed limbs, extra fingers, missing fingers, distorted faces, watermark, low quality, artifacts";
+      } else if (platform === "sdxl") {
+        finalPrompt = `masterpiece, best quality, ${idea}, ${styleModifiers}, ${cameraModifiers}, ${lightModifiers}, 8k, sharp focus, award winning`;
+        negativePrompt = "blurry, bad anatomy, deformed limbs, extra fingers, missing fingers, distorted faces, unnatural eyes, watermark, signature, artist logo, low resolution, artifacts, oversaturated, amateur sketch, cropped framing";
+      } else if (platform === "dalle") {
+        finalPrompt = `A high-resolution wide scene featuring ${idea}. Visual style: ${styleModifiers}. Camera setup: ${cameraModifiers}. Lighting environment: ${lightModifiers}. Aspect ratio: ${aspect}.`;
+        negativePrompt = "Avoid: blurry details, extra limbs, deformed facial features, watermark text, and artificial oversaturation.";
       }
 
       document.getElementById('enhanced-output').value = finalPrompt;
+      document.getElementById('negative-output').value = negativePrompt;
 
-      // Negative prompt
-      document.getElementById('negative-output').value = 
-        "blurry, bad anatomy, deformed hands, extra fingers, missing limbs, watermark, signature, low resolution, bad eyes, oversaturated, amateur sketch, cropped frame";
+      updateStats(finalPrompt, 'enhanced-stats');
+      updateStats(negativePrompt, 'negative-stats');
+    }
+
+    function randomizeIdea() {
+      const ideas = [
+        "An ancient stone temple suspended inside floating clouds, waterfalls cascading into the sky",
+        "A cyberpunk street vendor serving steaming glowing noodles in an atmospheric Tokyo alley",
+        "A majestic royal Bengal tiger resting on moss-covered marble ruins in the sunrise mist",
+        "An astronaut discovering an underground bioluminescent cave on Mars",
+        "A meditating Himalayan sadhu surrounded by swirling sacred geometry and snow peaks"
+      ];
+      const styles = ["photorealistic", "cyberpunk", "anime", "fantasy", "oilpainting"];
+      const lights = ["golden-hour", "volumetric", "neon", "dramatic"];
+      const cameras = ["portrait", "cinematic", "wide"];
+
+      document.getElementById('base-idea').value = ideas[Math.floor(Math.random() * ideas.length)];
+      document.getElementById('ai-style').value = styles[Math.floor(Math.random() * styles.length)];
+      document.getElementById('ai-lighting').value = lights[Math.floor(Math.random() * lights.length)];
+      document.getElementById('ai-camera').value = cameras[Math.floor(Math.random() * cameras.length)];
+      
+      enhancePrompt();
     }
 
     function loadSamplePrompt() {
-      document.getElementById('base-idea').value = "A majestic royal Bengal tiger resting on ancient palace ruins";
+      document.getElementById('base-idea').value = "A cybernetic Bengal tiger guarding a neon-lit ancient temple courtyard";
       document.getElementById('ai-style').value = "photorealistic";
-      document.getElementById('ai-lighting').value = "golden-hour";
+      document.getElementById('ai-lighting').value = "volumetric";
+      document.getElementById('ai-camera').value = "cinematic";
       document.getElementById('ai-platform').value = "midjourney";
+      document.getElementById('ai-aspect').value = "16:9";
+      syncModelOptions();
       enhancePrompt();
     }
 
@@ -435,19 +876,43 @@
       document.getElementById('base-idea').value = '';
       document.getElementById('enhanced-output').value = '';
       document.getElementById('negative-output').value = '';
+      updateStats('', 'enhanced-stats');
+      updateStats('', 'negative-stats');
     }
 
     function copyText(elementId, btn) {
-      const text = document.getElementById(elementId).value;
+      const textarea = document.getElementById(elementId);
+      const text = textarea.value;
       if (!text) return;
 
-      navigator.clipboard.writeText(text).then(() => {
+      const triggerSuccess = () => {
         const originalText = btn.innerText;
         btn.innerText = "Copied! ✓";
+        btn.style.color = "var(--success)";
         setTimeout(() => {
           btn.innerText = originalText;
+          btn.style.color = "";
         }, 1500);
-      });
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(triggerSuccess).catch(() => {
+          fallbackCopy(textarea, triggerSuccess);
+        });
+      } else {
+        fallbackCopy(textarea, triggerSuccess);
+      }
+    }
+
+    function fallbackCopy(textarea, callback) {
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      try {
+        document.execCommand('copy');
+        callback();
+      } catch (err) {
+        alert('Could not copy automatically. Please select and copy manually.');
+      }
     }
   </script>
 </body>
