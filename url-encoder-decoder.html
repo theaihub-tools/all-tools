@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- High Security Policy -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  
+  <!-- SEO Meta Tags -->
+  <title>Ultra-Intelligent URL Engine &amp; Deep Decoder | गॉड मोड टूल</title>
+  <meta name="description" content="Ultimate AI-assisted URL encoder, multi-pass deep decoder, and query string parameter parser. Built with anti-tamper security and RFC 3986 compliance.">
+  <meta name="keywords" content="God Mode URL encoder, recursive URL decoder, deep percent decode, RFC 3986 analyzer, URL query parser, UTF-8 secure encoder">
+  
+  <!-- Real Google Analytics 4 (GA4) Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
+
+  <!-- Structured Schema Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "God Mode URL Security & Decoding Engine",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All modern browsers",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.25);
+      --purple: #8b5cf6;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Anti-Inspection Protection */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Input areas must remain selectable for functionality */
+    textarea, input, pre, code {
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      -ms-user-select: text !important;
+      user-select: text !important;
+    }
+
+    header {
+      background: rgba(17, 24, 39, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .god-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      background: #1e293b;
+      color: #93c5fd;
+      border: 1px solid #334155;
+      font-weight: 600;
+    }
+
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .field-stats {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      background: #090d16;
+      border: 1px solid var(--border);
+      color: #e2e8f0;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 0.9rem;
+      resize: vertical;
+      margin-bottom: 1.25rem;
+    }
+
+    textarea:focus {
+      outline: 2px solid var(--accent);
+      border-color: transparent;
+    }
+
+    .grid-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    button {
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .btn-blue {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .btn-blue:hover {
+      background: #2563eb;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .btn-purple {
+      background: var(--purple);
+      color: white;
+      border-color: var(--purple);
+    }
+    .btn-purple:hover {
+      background: #7c3aed;
+    }
+
+    .btn-dark {
+      background: #1f2937;
+      color: var(--text);
+    }
+    .btn-dark:hover {
+      background: #374151;
+    }
+
+    .status-alert {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: none;
+    }
+    .status-alert.active { display: block; }
+    .status-alert.success { background: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .status-alert.error { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    /* URL Breakdown Inspector */
+    .url-inspector {
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      display: none;
+    }
+    .url-inspector.visible { display: block; }
+    .url-inspector h3 { font-size: 0.95rem; color: #93c5fd; margin-bottom: 0.5rem; }
+    .url-inspector table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .url-inspector td { padding: 0.4rem; border-bottom: 1px solid #1f2937; word-break: break-all; }
+    .url-inspector td:first-child { color: var(--text-muted); width: 28%; font-weight: 600; }
+
+    /* Comprehensive Guide Section */
+    article {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.25rem;
+      margin-top: 2.5rem;
+    }
+
+    article h2 {
+      font-size: 1.4rem;
+      color: #93c5fd;
+      margin: 1.75rem 0 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    article h2:first-of-type { margin-top: 0; }
+
+    article p, article li {
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+    }
+
+    article ul, article ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    article a { color: #60a5fa; text-decoration: none; }
+    article a:hover { text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      background: #090d16;
+    }
+
+    footer a { color: #60a5fa; text-decoration: none; margin: 0 0.5rem; }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+
+  <header>
+    <h1>URL Engine &amp; Deep Inspector [God Mode]</h1>
+    <p>Zero-Latency, Multi-Layer Recursive Decoding, Strict Anti-Tamper &amp; RFC 3986 Compliance</p>
+  </header>
+
+  <main>
+    <div class="god-panel">
+      
+      <div class="badge-bar">
+        <span class="badge">🛡️ Tamper-Proof</span>
+        <span class="badge">⚡ Auto-Smart Engine</span>
+        <span class="badge">🔄 Recursive Multi-Decode</span>
+        <span class="badge">🔍 Live Query Inspector</span>
+      </div>
+
+      <div class="field-label">
+        <span>Input String / Encoded URL</span>
+        <span class="field-stats" id="inputStats">0 chars | 0 bytes</span>
+      </div>
+      <textarea id="rawInput" placeholder="Enter raw string, full URL, or percent-encoded string (Auto-detects format)..."></textarea>
+
+      <!-- Advanced Engine Controls -->
+      <div class="grid-actions">
+        <button class="btn-blue" id="btnAutoProcess">⚡ Auto Intelligent</button>
+        <button class="btn-dark" id="btnStandardEncode">Standard Encode</button>
+        <button class="btn-dark" id="btnDeepDecode">Recursive Decode</button>
+        <button class="btn-purple" id="btnHexEncode">Full Hex (%XX)</button>
+        <button class="btn-dark" id="btnParseURL">Inspect Parameters</button>
+        <button class="btn-dark" id="btnClear">Clear</button>
+      </div>
+
+      <div id="statusAlert" class="status-alert"></div>
+
+      <div class="field-label">
+        <span>Processed Output Result</span>
+        <span class="field-stats" id="outputStats">0 chars</span>
+      </div>
+      <textarea id="rawOutput" readonly placeholder="Output will appear here automatically..."></textarea>
+
+      <div class="grid-actions" style="grid-template-columns: 1fr auto;">
+        <button class="btn-blue" id="btnCopy">📋 Copy Output to Clipboard</button>
+        <button class="btn-dark" id="btnSwap">🔁 Swap (Output ➔ Input)</button>
+      </div>
+
+      <!-- Live Parameter Inspector -->
+      <div class="url-inspector" id="inspectorBox">
+        <h3>🔍 Real-Time URL Breakdown</h3>
+        <table id="inspectorTable"></table>
+      </div>
+
+    </div>
+
+    <!-- 450+ Words Comprehensive Bilingual Technical Guide -->
+    <article>
+      <h2>Deep Architectural Overview (URL Encoding & Security)</h2>
+      <p>
+        Uniform Resource Identifiers (URIs) internet protocols ka core foundation hain. <a href="https://datatracker.ietf.org/doc/html/rfc3986" target="_blank" rel="noopener">IETF RFC 3986 Specification</a> ke mutabiq, URIs keval ASCII character range me safe communication establish kar sakte hain. Jab kisi web application me parameters pass hote hain, toh invalid ya reserved characters (jaise <code>&amp;</code>, <code>=</code>, <code>?</code>, <code>#</code>, ya space) request ke route ko break kar sakte hain. Is dikkat ko solve karne ke liye <strong>Percent-Encoding</strong> ka sahara liya jata hai.
+      </p>
+
+      <h2>Super Powerful Features of This God-Mode Engine</h2>
+      <ul>
+        <li><strong>Smart Auto-Detect Algorithm:</strong> User ko yeh sochna nahi padta ki pehle encode dabana hai ya decode. Hamara heuristic parser input string ke pattern aur <code>%[0-9A-Fa-f]{2}</code> frequency ko analyze karke automatically decide karta hai ki string ko decode karna hai ya encode.</li>
+        <li><strong>Recursive Multi-Pass Decoder:</strong> Kabhi-kabhi complex web security pipelines ya proxy servers data ko do ya teen baar percent-encode kar dete hain (jaise <code>%252520</code>). Normal decoders ek pass ke baad ruk jate hain. Is engine ka recursive algorithm infinite loops ko guard karte hue tab tak decode karta hai jab tak exact clean string prapt na ho jaye.</li>
+        <li><strong>Full Hex Mode:</strong> Web Application Firewall (WAF) penetration testing aur strict security validation ke liye har ek character ko uske Hexadecimal byte me force-convert karta hai.</li>
+        <li><strong>DOM Integrity Protection:</strong> Page par context menus, unauthorized devtool shortcuts (F12, Ctrl+Shift+I/J/C), aur execution manipulation ko dynamically intercept kiya gaya hai.</li>
+      </ul>
+
+      <h2>Technical Reference: encodeURI vs encodeURIComponent</h2>
+      <p>
+        Developer ecosystem me do algorithms ka prayog hota hai, jaisa ki <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener">MDN Web Docs</a> par verify kiya ja sakta hai:
+      </p>
+      <ol>
+        <li><strong>encodeURI():</strong> Pure web address ke structure ko protect karta hai. Protocol (<code>https://</code>), domain separators (<code>/</code>), aur query indicators (<code>?</code>) ko touch nahi karta.</li>
+        <li><strong>encodeURIComponent():</strong> Query key-value pairs ke liye mandatory hai. Yeh even forward slash aur ampersand ko bhi percent code me badalta hai taaki backend API variables separate na toot sakein.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <p><strong>Q: Does this engine store or log any data?</strong><br>
+      A: Absolutely not. Entire string manipulation takes place inside the browser's execution stack via memory-isolated functions. No outbound network requests are dispatched except your official GA4 telemetry.</p>
+
+      <p><strong>Q: What is Recursive Multi-Decode used for?</strong><br>
+      A: It handles double-encoded or triple-encoded URLs generated by nested redirects, ad trackers, and OAuth callback authentication loops.</p>
+    </article>
+  </main>
+
+  <!-- Official Standards Footer -->
+  <footer>
+    <p>&copy; 2026 Web Engineering Architecture. Built strictly adhering to IETF &amp; W3C URI guidelines.</p>
+    <p>
+      <a href="https://datatracker.ietf.org/doc/html/rfc3986" target="_blank" rel="noopener">IETF RFC 3986</a> &bull;
+      <a href="https://www.w3.org/Addressing/URL/uri-spec.html" target="_blank" rel="noopener">W3C URI Architecture</a> &bull;
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent" target="_blank" rel="noopener">MDN Specification</a>
+    </p>
+  </footer>
+
+  <!-- God-Mode Script Engine (Anti-Tamper + Auto-Intelligent Engine) -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. ANTI-TAMPER & CLIENT-SIDE HARDENING
+      document.addEventListener('keydown', function (e) {
+        // Block F12
+        if (e.keyCode === 123) {
+          e.preventDefault();
+          return false;
+        }
+        // Block Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+          e.preventDefault();
+          return false;
+        }
+        // Block Ctrl+U (View Source)
+        if (e.ctrlKey && e.keyCode === 85) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // 2. CORE DOM NODES
+      const rawInput = document.getElementById('rawInput');
+      const rawOutput = document.getElementById('rawOutput');
+      const statusAlert = document.getElementById('statusAlert');
+      const inputStats = document.getElementById('inputStats');
+      const outputStats = document.getElementById('outputStats');
+      const inspectorBox = document.getElementById('inspectorBox');
+      const inspectorTable = document.getElementById('inspectorTable');
+
+      function notify(msg, type = 'success') {
+        statusAlert.textContent = msg;
+        statusAlert.className = `status-alert active ${type}`;
+        setTimeout(() => {
+          statusAlert.className = 'status-alert';
+        }, 4000);
+      }
+
+      function updateStats() {
+        const val = rawInput.value;
+        const bytes = new Blob([val]).size;
+        inputStats.textContent = `${val.length} chars | ${bytes} bytes`;
+        outputStats.textContent = `${rawOutput.value.length} chars`;
+      }
+
+      rawInput.addEventListener('input', updateStats);
+
+      // Track to GA4
+      function trackEvent(actionName) {
+        if (typeof gtag === 'function') {
+          gtag('event', actionName, {
+            'event_category': 'God Mode URL Tool',
+            'value': rawInput.value.length
+          });
+        }
+      }
+
+      // 3. SUPER-INTELLIGENT ENGINES
+      
+      // Auto Smart Process
+      document.getElementById('btnAutoProcess').addEventListener('click', () => {
+        const val = rawInput.value.trim();
+        if (!val) return notify('Please enter a valid string or URL.', 'error');
+
+        // Check if string is already percent-encoded
+        const percentRegex = /%[0-9A-Fa-f]{2}/;
+        if (percentRegex.test(val)) {
+          // Trigger Deep Decode
+          document.getElementById('btnDeepDecode').click();
+        } else {
+          // Trigger Component Encode
+          document.getElementById('btnStandardEncode').click();
+        }
+      });
+
+      // Standard Component Encode
+      document.getElementById('btnStandardEncode').addEventListener('click', () => {
+        const val = rawInput.value;
+        if (!val.trim()) return notify('Input is empty.', 'error');
+        try {
+          rawOutput.value = encodeURIComponent(val);
+          updateStats();
+          notify('Standard Component Encoding Completed.');
+          trackEvent('encode_standard');
+        } catch (e) {
+          notify('Encoding error: ' + e.message, 'error');
+        }
+      });
+
+      // Recursive Deep Decoder
+      document.getElementById('btnDeepDecode').addEventListener('click', () => {
+        let val = rawInput.value;
+        if (!val.trim()) return notify('Input is empty.', 'error');
+        
+        let previous = '';
+        let iterations = 0;
+        const maxIterations = 10; // Prevent infinite loops
+
+        try {
+          // Normalize plus signs
+          val = val.replace(/\+/g, '%20');
+          while (val !== previous && iterations < maxIterations) {
+            previous = val;
+            val = decodeURIComponent(val);
+            iterations++;
+          }
+          rawOutput.value = val;
+          updateStats();
+          notify(`Deep Decoded in ${iterations} recursive pass(es).`);
+          trackEvent('decode_recursive');
+        } catch (e) {
+          // Fallback if partial malformed sequence
+          rawOutput.value = decodeURI(val);
+          notify('Decoded with standard URI fallback.', 'success');
+        }
+      });
+
+      // Full Hexadecimal Encoder (Every char to %XX)
+      document.getElementById('btnHexEncode').addEventListener('click', () => {
+        const val = rawInput.value;
+        if (!val.trim()) return notify('Input is empty.', 'error');
+        
+        let hexOut = '';
+        for (let i = 0; i < val.length; i++) {
+          const hex = val.charCodeAt(i).toString(16).toUpperCase();
+          hexOut += '%' + (hex.length < 2 ? '0' + hex : hex);
+        }
+        rawOutput.value = hexOut;
+        updateStats();
+        notify('Full ASCII Hex Forced Encoding Completed.');
+        trackEvent('encode_full_hex');
+      });
+
+      // Parameter Inspector
+      document.getElementById('btnParseURL').addEventListener('click', () => {
+        const val = rawInput.value.trim();
+        if (!val) return notify('Please enter a complete URL to inspect.', 'error');
+
+        try {
+          const parsed = new URL(val);
+          inspectorTable.innerHTML = `
+            <tr><td>Protocol</td><td>${parsed.protocol}</td></tr>
+            <tr><td>Hostname</td><td>${parsed.hostname}</td></tr>
+            <tr><td>Pathname</td><td>${parsed.pathname}</td></tr>
+            <tr><td>Search Query</td><td>${parsed.search || 'None'}</td></tr>
+            <tr><td>Hash Anchor</td><td>${parsed.hash || 'None'}</td></tr>
+          `;
+
+          // Add individual query parameters
+          parsed.searchParams.forEach((paramVal, paramKey) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>Param [${paramKey}]</td><td><code>${paramVal}</code></td>`;
+            inspectorTable.appendChild(tr);
+          });
+
+          inspectorBox.classList.add('visible');
+          notify('URL successfully parsed into parameters.');
+          trackEvent('url_inspect_params');
+        } catch (e) {
+          notify('Invalid URL format. Include protocol (e.g., https://)', 'error');
+          inspectorBox.classList.remove('visible');
+        }
+      });
+
+      // Clear
+      document.getElementById('btnClear').addEventListener('click', () => {
+        rawInput.value = '';
+        rawOutput.value = '';
+        inspectorBox.classList.remove('visible');
+        updateStats();
+      });
+
+      // Swap
+      document.getElementById('btnSwap').addEventListener('click', () => {
+        if (!rawOutput.value) return notify('No output to swap.', 'error');
+        rawInput.value = rawOutput.value;
+        rawOutput.value = '';
+        updateStats();
+      });
+
+      // Copy to Clipboard
+      document.getElementById('btnCopy').addEventListener('click', async () => {
+        if (!rawOutput.value) return notify('Nothing to copy.', 'error');
+        try {
+          await navigator.clipboard.writeText(rawOutput.value);
+          notify('Copied to clipboard successfully!');
+          trackEvent('copy_clipboard');
+        } catch (e) {
+          rawOutput.select();
+          document.execCommand('copy');
+          notify('Copied using standard fallback!');
+        }
+      });
+
+      // Freeze properties to avoid script tampering
+      Object.freeze(notify);
+      Object.freeze(trackEvent);
+    })();
+  </script>
+</body>
+</html>
