@@ -1,62 +1,130 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WEQE82X4L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WEQE82X4L0');
+  </script>
 
-  gtag('config', 'G-WEQE82X4L0');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>वॉइस टाइपिंग | Speech to Text</title>
+  <meta name="theme-color" content="#0d1117">
+  <title>फ्री ऑनलाइन हिंदी वॉइस टाइपिंग टूल | Ultra Fast Speech to Text AI</title>
+  
+  <meta name="description" content="सटीक और मुफ्त हिंदी वॉइस टाइपिंग टूल। बोलकर लिखें, लाइव अंतरिम टेक्स्ट प्रिव्यू, ऑटो-सेव, फुलस्क्रीन मोड और वॉयस कमांड्स के साथ।">
+  <meta name="keywords" content="hindi voice typing, speech to text hindi, bolkar likhne wala app, audio to text converter hindi, speech recognition tool online">
+  <meta name="author" content="The AI Hub Tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://theaihubtools.com/voice-typing.html">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="हिंदी वॉइस टाइपिंग - बोलकर लिखें आसानी से">
+  <meta property="og:description" content="मुफ्त और सुरक्षित वेब टूल। शुद्ध हिंदी में डिक्टेशन और ऑटो-फॉर्मेटिंग के साथ।">
+  <meta property="og:url" content="https://theaihubtools.com/voice-typing.html">
+  <meta property="og:site_name" content="The AI Hub Tools">
+
+  <!-- Rich Snippet Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "The AI Hub Smart Voice Typing Engine",
+        "operatingSystem": "All Web Platforms",
+        "applicationCategory": "ProductivityApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "क्या यह वॉइस टाइपिंग टूल बैकग्राउंड में भी चालू रहता है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "हाँ, हमारा ऑटो-रिवाइव लूप ब्राउज़र के साइलेंस टाइमआउट को बायपास करके रिकॉर्डिंग को चालू रखता है।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "क्या इसमें बोला गया टेक्स्ट अपने आप सेव होता है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "हाँ, हर एक शब्द आपके ब्राउज़र की लोकल स्टोरेज में रियल-टाइम सुरक्षित होता है, ताकि पेज रिफ्रेश होने पर भी डेटा न खोए।"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
     }
     body {
       background-color: #0d1117;
       color: #c9d1d9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      line-height: 1.6;
+      padding: 20px 15px;
+    }
+    .main-container {
+      max-width: 920px;
+      margin: 0 auto;
     }
     .voice-card {
       background: #161b22;
       border: 1px solid #30363d;
-      padding: 24px;
-      border-radius: 12px;
-      max-width: 580px;
-      width: 100%;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      padding: 26px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      margin-bottom: 30px;
+      transition: all 0.25s ease-in-out;
     }
-    h2 {
+    .voice-card.fullscreen-mode {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 9999;
+      border-radius: 0;
+      max-width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 25px;
+      margin-bottom: 0;
+    }
+    h1 {
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #58a6ff;
-      font-size: 22px;
+      font-size: 26px;
     }
     p.subtitle {
       text-align: center;
       color: #8b949e;
-      font-size: 13px;
+      font-size: 14px;
       margin-bottom: 20px;
     }
-    .settings-row {
+    .toolbar-row {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       gap: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     select {
       flex: 1;
-      padding: 10px 12px;
+      min-width: 180px;
+      padding: 10px 14px;
       background-color: #0d1117;
       border: 1px solid #30363d;
       border-radius: 8px;
@@ -64,45 +132,90 @@
       color: #f0f6fc;
       outline: none;
     }
-    select:focus {
-      border-color: #58a6ff;
+    select:focus { border-color: #58a6ff; }
+    .quick-actions {
+      display: flex;
+      gap: 6px;
+    }
+    .quick-actions button {
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+    .editor-wrapper {
+      position: relative;
+      margin-bottom: 8px;
     }
     textarea {
       width: 100%;
-      height: 180px;
-      padding: 14px;
+      height: 250px;
+      padding: 16px;
       background-color: #0d1117;
       border: 1px solid #30363d;
       border-radius: 8px;
-      font-size: 15px;
+      font-size: 16px;
       color: #f0f6fc;
       outline: none;
       resize: vertical;
-      line-height: 1.5;
+      line-height: 1.7;
+    }
+    .voice-card.fullscreen-mode textarea {
+      height: 58vh;
     }
     textarea:focus {
       border-color: #58a6ff;
     }
-    .status-text {
+    .interim-preview {
+      font-size: 13px;
+      color: #79c0ff;
+      min-height: 20px;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 13px;
       color: #8b949e;
-      margin: 10px 0 16px 0;
-      text-align: center;
+      margin: 6px 0 16px 0;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #8b949e;
+      display: inline-block;
+    }
+    .status-dot.active {
+      background: #3fb950;
+      box-shadow: 0 0 8px #3fb950;
     }
     .btn-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+      gap: 10px;
     }
     button {
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 14px;
+      padding: 11px 12px;
+      border-radius: 8px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       border: 1px solid #30363d;
       background-color: #21262d;
       color: #c9d1d9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
       transition: all 0.2s;
     }
     button:hover {
@@ -114,149 +227,399 @@
       border-color: #238636;
       color: #fff;
     }
-    .btn-mic:hover {
-      background-color: #2ea043;
-    }
+    .btn-mic:hover { background-color: #2ea043; }
     .btn-mic.listening {
       background-color: #da3633;
       border-color: #da3633;
       animation: pulse 1.5s infinite;
     }
     @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.6; }
-      100% { opacity: 1; }
+      0% { box-shadow: 0 0 0 0 rgba(218, 54, 51, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(218, 54, 51, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(218, 54, 51, 0); }
     }
-    .btn-copy {
-      background-color: #1f6feb;
-      border-color: #1f6feb;
-      color: #fff;
+    .btn-copy { background-color: #1f6feb; border-color: #1f6feb; color: #fff; }
+    .btn-copy:hover { background-color: #388bfd; }
+    .btn-wa { background-color: #128c7e; border-color: #128c7e; color: #fff; }
+    .btn-wa:hover { background-color: #25d366; }
+
+    .content-box {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 26px;
+      margin-bottom: 24px;
     }
-    .btn-copy:hover {
-      background-color: #388bfd;
+    .content-box h2 {
+      color: #58a6ff;
+      margin-bottom: 12px;
+      font-size: 20px;
     }
+    .content-box p {
+      color: #8b949e;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+    .badge-cmd {
+      background: #21262d;
+      border: 1px solid #30363d;
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: #58a6ff;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 15px;
+      border-top: 1px solid #30363d;
+      margin-top: 30px;
+      background-color: #161b22;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+    footer a { color: #58a6ff; text-decoration: none; margin: 0 8px; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <div class="voice-card">
-    <h2>वॉइस टाइपिंग (Speech to Text)</h2>
-    <p class="subtitle">माइक चालू करें और बोलकर आसानी से टाइप करें</p>
+<div class="main-container">
+  
+  <main class="voice-card" id="cardContainer">
+    <h1>वॉइस टाइपिंग (Speech to Text AI)</h1>
+    <p class="subtitle">बोलते जाएं, बिना रुके रियल-टाइम में सटीक टाइपिंग करें</p>
 
-    <div class="settings-row">
-      <select id="langSelect">
+    <div class="toolbar-row">
+      <select id="langSelect" aria-label="भाषा चुनें">
         <option value="hi-IN" selected>हिंदी (Hindi)</option>
         <option value="en-IN">English (India)</option>
-        <option value="en-US">English (US)</option>
+        <option value="en-US">English (United States)</option>
+        <option value="mr-IN">मराठी (Marathi)</option>
+        <option value="gu-IN">ગુજરાતી (Gujarati)</option>
+        <option value="bn-IN">বাংলা (Bengali)</option>
+        <option value="ta-IN">தமிழ் (Tamil)</option>
       </select>
+
+      <div class="quick-actions">
+        <button onclick="undoText()" title="Undo (Ctrl+Z)">↩ Undo</button>
+        <button onclick="redoText()" title="Redo (Ctrl+Y)">↪ Redo</button>
+        <button onclick="changeFontSize(-2)" title="फॉन्ट छोटा करें">A-</button>
+        <button onclick="changeFontSize(2)" title="फॉन्ट बड़ा करें">A+</button>
+        <button onclick="toggleFullscreen()" title="फुलस्क्रीन मोड">⛶ Focus</button>
+      </div>
     </div>
 
-    <textarea id="outputArea" placeholder="आप जो बोलेंगे वह यहाँ टाइप होगा..."></textarea>
-    <div class="status-text" id="status">माइक बंद है। शुरू करने के लिए बटन दबाएँ।</div>
+    <div class="editor-wrapper">
+      <textarea id="outputArea" placeholder="माइक चालू करें और बोलना शुरू करें... आप बीच में क्लिक करके भी कर्सर की जगह पर बोल सकते हैं।"></textarea>
+    </div>
+
+    <!-- Live words preview currently captured by speech engine -->
+    <div id="interimPreview" class="interim-preview"></div>
+
+    <div class="stats-bar">
+      <div class="status-badge">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="status">माइक बंद है। शुरू करने के लिए बटन दबाएँ।</span>
+      </div>
+      <div>
+        शब्द: <strong id="wordCount">0</strong> | वर्ण: <strong id="charCount">0</strong>
+      </div>
+    </div>
 
     <div class="btn-grid">
-      <button id="micBtn" class="btn-mic" onclick="toggleListening()">Start Mic</button>
-      <button class="btn-copy" onclick="copySpeechText()">Copy</button>
-      <button onclick="clearSpeechText()">Clear</button>
+      <button id="micBtn" class="btn-mic" onclick="toggleListening()">🎤 Start Mic</button>
+      <button class="btn-copy" onclick="copySpeechText()">📋 Copy</button>
+      <button class="btn-wa" onclick="shareOnWhatsApp()">💬 WhatsApp</button>
+      <button onclick="speakCurrentText()">🔊 Listen</button>
+      <button onclick="downloadTextFile()">💾 Save .TXT</button>
+      <button onclick="clearSpeechText()">🗑 Clear</button>
     </div>
-  </div>
-<footer style="text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; margin-top: 50px; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8;">
-    <p style="margin: 0 0 10px 0; color: #555;">
-        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+  </main>
+
+  <section class="content-box">
+    <h2>सपोर्टेड वॉइस कमांड्स (Supported Commands)</h2>
+    <p>डिक्टेशन के दौरान निम्नलिखित शब्द बोलने पर वे स्वतः उपयुक्त चिह्न में बदल जाते हैं:</p>
+    <p>
+      • <span class="badge-cmd">पूर्णविराम</span> ➔ <strong>।</strong><br>
+      • <span class="badge-cmd">कॉमा</span> या <span class="badge-cmd">अल्पविराम</span> ➔ <strong>,</strong><br>
+      • <span class="badge-cmd">प्रश्नवाचक</span> ➔ <strong>?</strong><br>
+      • <span class="badge-cmd">नई लाइन</span> या <span class="badge-cmd">पैराग्राफ</span> ➔ लाइन ब्रेक (Enter)
     </p>
-    <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+  </section>
+
+  <footer>
+    <p style="margin-bottom: 10px; color: #8b949e;">&copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.</p>
+    <p>
+      <a href="/index.html">Home</a> | 
+      <a href="/about.html">About Us</a> | 
+      <a href="/contact.html">Contact Us</a> | 
+      <a href="/privacy-policy.html">Privacy Policy</a> | 
+      <a href="/terms.html">Terms & Conditions</a>
     </p>
-</footer>
+  </footer>
 
-  <script>
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    let recognition;
-    let isListening = false;
-    let finalTranscript = '';
+</div>
 
-    const micBtn = document.getElementById('micBtn');
-    const statusText = document.getElementById('status');
-    const outputArea = document.getElementById('outputArea');
-    const langSelect = document.getElementById('langSelect');
+<script>
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognition;
+  let isListening = false;
+  let manualStop = false;
+  let currentFontSize = 16;
 
-    if (SpeechRecognition) {
-      recognition = new SpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
+  // Undo / Redo Stacks
+  let historyStack = [];
+  let redoStack = [];
 
-      recognition.onstart = () => {
-        isListening = true;
-        micBtn.innerText = 'Stop Mic';
-        micBtn.classList.add('listening');
-        statusText.innerText = 'सुन रहा हूँ... बोलिए...';
-        statusText.style.color = '#3fb950';
-      };
+  const micBtn = document.getElementById('micBtn');
+  const statusText = document.getElementById('status');
+  const statusDot = document.getElementById('statusDot');
+  const outputArea = document.getElementById('outputArea');
+  const interimPreview = document.getElementById('interimPreview');
+  const langSelect = document.getElementById('langSelect');
+  const wordCountDisplay = document.getElementById('wordCount');
+  const charCountDisplay = document.getElementById('charCount');
+  const cardContainer = document.getElementById('cardContainer');
 
-      recognition.onresult = (event) => {
-        let interimTranscript = '';
-
-        for (let i = event.resultIndex; i < event.results.length; ++i) {
-          const transcript = event.results[i][0].transcript;
-          if (event.results[i].isFinal) {
-            finalTranscript += transcript + ' ';
-          } else {
-            interimTranscript += transcript;
-          }
-        }
-
-        outputArea.value = finalTranscript + interimTranscript;
-      };
-
-      recognition.onerror = (event) => {
-        statusText.innerText = 'त्रुटि (Error): ' + event.error;
-        statusText.style.color = '#da3633';
-        stopListening();
-      };
-
-      recognition.onend = () => {
-        stopListening();
-      };
+  // Load from local storage
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('voice_text_cache');
+    if (saved) {
+      outputArea.value = saved;
+      historyStack.push(saved);
+      updateCounts();
     } else {
-      micBtn.disabled = true;
-      statusText.innerText = 'आपके ब्राउज़र में वॉइस टाइपिंग सपोर्टेड नहीं है। (Chrome/Edge इस्तेमाल करें)';
-      statusText.style.color = '#da3633';
+      historyStack.push('');
     }
+  });
 
-    function toggleListening() {
-      if (!recognition) return;
-      if (isListening) {
-        recognition.stop();
-        stopListening();
-      } else {
-        recognition.lang = langSelect.value;
-        recognition.start();
+  function pushHistory(val) {
+    if (historyStack.length > 0 && historyStack[historyStack.length - 1] === val) return;
+    if (historyStack.length > 40) historyStack.shift();
+    historyStack.push(val);
+    redoStack = []; // Clear redo on new action
+  }
+
+  function undoText() {
+    if (historyStack.length > 1) {
+      redoStack.push(historyStack.pop());
+      outputArea.value = historyStack[historyStack.length - 1];
+      updateCounts(false);
+    }
+  }
+
+  function redoText() {
+    if (redoStack.length > 0) {
+      const val = redoStack.pop();
+      historyStack.push(val);
+      outputArea.value = val;
+      updateCounts(false);
+    }
+  }
+
+  // Keyboard Shortcuts (Ctrl+Z / Ctrl+Y)
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey) {
+      if (e.key === 'z') {
+        e.preventDefault();
+        undoText();
+      } else if (e.key === 'y') {
+        e.preventDefault();
+        redoText();
       }
     }
+  });
 
-    function stopListening() {
-      isListening = false;
-      micBtn.innerText = 'Start Mic';
-      micBtn.classList.remove('listening');
-      statusText.innerText = 'माइक बंद है।';
-      statusText.style.color = '#8b949e';
+  function updateCounts(saveHistory = true) {
+    const text = outputArea.value.trim();
+    const words = text ? text.split(/\s+/).length : 0;
+    wordCountDisplay.innerText = words;
+    charCountDisplay.innerText = outputArea.value.length;
+    localStorage.setItem('voice_text_cache', outputArea.value);
+    if (saveHistory) {
+      pushHistory(outputArea.value);
     }
+  }
 
-    function copySpeechText() {
-      if (!outputArea.value) return;
-      navigator.clipboard.writeText(outputArea.value).then(() => {
-        alert('टेक्स्ट कॉपी हो गया है!');
-      });
+  outputArea.addEventListener('input', () => updateCounts(true));
+
+  function changeFontSize(delta) {
+    currentFontSize = Math.min(Math.max(12, currentFontSize + delta), 30);
+    outputArea.style.fontSize = currentFontSize + 'px';
+  }
+
+  function toggleFullscreen() {
+    cardContainer.classList.toggle('fullscreen-mode');
+  }
+
+  // Smart Voice Commands with proper spacing cleanup
+  function parseVoiceCommands(text) {
+    return text
+      .replace(/\s?पूर्णविराम/gi, '। ')
+      .replace(/\s?full stop/gi, '. ')
+      .replace(/\s?(कॉमा|अल्पविराम)/gi, ', ')
+      .replace(/\s?प्रश्नवाचक/gi, '? ')
+      .replace(/\s?(नई लाइन|पैराग्राफ|new line)/gi, '\n')
+      .replace(/\s{2,}/g, ' ');
+  }
+
+  // Accurate cursor-based text insertion
+  function insertAtCursor(text) {
+    const startPos = outputArea.selectionStart;
+    const endPos = outputArea.selectionEnd;
+    const val = outputArea.value;
+
+    const before = val.substring(0, startPos);
+    const after = val.substring(endPos, val.length);
+
+    // Prevent trailing/leading double spaces
+    const needsSpaceBefore = before.length > 0 && !before.endsWith(' ') && !before.endsWith('\n') && !text.startsWith('।') && !text.startsWith(',') && !text.startsWith('?') && !text.startsWith('\n');
+    const insertStr = (needsSpaceBefore ? ' ' : '') + text;
+
+    outputArea.value = before + insertStr + after;
+    outputArea.selectionStart = outputArea.selectionEnd = startPos + insertStr.length;
+    updateCounts(true);
+  }
+
+  if (SpeechRecognition) {
+    recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onstart = () => {
+      isListening = true;
+      micBtn.innerHTML = '⏹ Stop Mic';
+      micBtn.classList.add('listening');
+      statusText.innerText = 'सुन रहा हूँ... बोलिए';
+      statusText.style.color = '#3fb950';
+      statusDot.classList.add('active');
+    };
+
+    recognition.onresult = (event) => {
+      let interim = '';
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        let transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          transcript = parseVoiceCommands(transcript);
+          insertAtCursor(transcript);
+          interimPreview.innerText = '';
+        } else {
+          interim += transcript;
+        }
+      }
+      if (interim) {
+        interimPreview.innerText = '... ' + interim;
+      }
+    };
+
+    recognition.onerror = (event) => {
+      if (event.error !== 'no-speech') {
+        statusText.innerText = 'त्रुटि: ' + event.error;
+        statusText.style.color = '#da3633';
+      }
+    };
+
+    recognition.onend = () => {
+      interimPreview.innerText = '';
+      if (!manualStop && isListening) {
+        try { 
+          recognition.start(); 
+        } catch(e) { 
+          stopListeningUI(); 
+        }
+      } else {
+        stopListeningUI();
+      }
+    };
+  } else {
+    micBtn.disabled = true;
+    statusText.innerText = 'ब्राउज़र में Speech Recognition सपोर्ट नहीं है। कृपया Chrome इस्तेमाल करें।';
+    statusText.style.color = '#da3633';
+  }
+
+  function toggleListening() {
+    if (!recognition) return;
+    if (isListening) {
+      manualStop = true;
+      recognition.stop();
+      stopListeningUI();
+    } else {
+      manualStop = false;
+      recognition.lang = langSelect.value;
+      try {
+        recognition.start();
+      } catch (e) {
+        recognition.stop();
+        setTimeout(() => recognition.start(), 200);
+      }
     }
+  }
 
-    function clearSpeechText() {
-      finalTranscript = '';
+  function stopListeningUI() {
+    isListening = false;
+    micBtn.innerHTML = '🎤 Start Mic';
+    micBtn.classList.remove('listening');
+    statusText.innerText = 'माइक बंद है। शुरू करने के लिए बटन दबाएँ।';
+    statusText.style.color = '#8b949e';
+    statusDot.classList.remove('active');
+    interimPreview.innerText = '';
+  }
+
+  function copySpeechText() {
+    if (!outputArea.value.trim()) return;
+    navigator.clipboard.writeText(outputArea.value).then(() => {
+      const prev = statusText.innerText;
+      statusText.innerText = '✅ टेक्स्ट कॉपी हो गया!';
+      statusText.style.color = '#58a6ff';
+      setTimeout(() => { 
+        statusText.innerText = prev; 
+        statusText.style.color = '#8b949e';
+      }, 2000);
+    });
+  }
+
+  function shareOnWhatsApp() {
+    const text = outputArea.value.trim();
+    if (!text) {
+      alert('शेयर करने के लिए टेक्स्ट होना चाहिए।');
+      return;
+    }
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+  }
+
+  function clearSpeechText() {
+    if (confirm('क्या आप सचमुच पूरा टेक्स्ट मिटाना चाहते हैं?')) {
       outputArea.value = '';
+      localStorage.removeItem('voice_text_cache');
+      updateCounts(true);
     }
-  </script>
+  }
+
+  function downloadTextFile() {
+    const text = outputArea.value;
+    if (!text.trim()) {
+      alert('डाउनलोड करने के लिए पहले कुछ बोलें।');
+      return;
+    }
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `voice-typing-${Date.now()}.txt`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
+
+  function speakCurrentText() {
+    const text = outputArea.value.trim();
+    if (!text) return;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = langSelect.value;
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+</script>
 </body>
 </html>
