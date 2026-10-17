@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>OmniCrypt Ultimate | Online MD5 &amp; SHA-256 Hash Generator</title>
+  
+  <meta name="description" content="Free multi-algorithm cryptographic hash calculator. Generate MD5, SHA-1, SHA-256, SHA-512, and SHA-3 Keccak hashes directly in your browser. Fast, private, and 100% client-side.">
+  <meta name="keywords" content="hash generator, md5 online, sha256 generator, sha-512 checksum, keccak-256 tool, file integrity verifier">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="OmniCrypt - Cryptographic Hash Workbench">
+  <meta property="og:description" content="Calculate and verify cryptographic hashes instantly in client-side memory.">
+  <meta property="og:type" content="website">
+
+  <!-- Google tag (gtag.js) - Integrated with real Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
+
+  <!-- Google AdSense (Auto-Ads / Ad Unit Loader) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
+
+  <!-- Official Real Cloudflare CDN for CryptoJS (Verified & Live) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+  <!-- FAQ & WebApplication Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "OmniCrypt Ultimate Hash Suite",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All modern browsers",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are my files or text uploaded to external servers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All computations, streaming checksums, and HMAC salting execute 100% locally in your browser memory."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can MD5 or SHA-256 hashes be reversed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cryptographic hash functions are one-way mathematical operations. They cannot be decrypted back into plaintext; only matching against known dictionaries (rainbow tables) is possible."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #030712;
+      --card-bg: #0b1329;
+      --card-border: #1e293b;
+      --accent: #06b6d4;
+      --accent-hover: #0891b2;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --danger: #ef4444;
+      --code-bg: #020617;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.5; min-height: 100vh; overflow-x: hidden; }
+    
+    header { background: rgba(11, 19, 41, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--card-border); padding: 0.85rem 1.5rem; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-weight: 800; font-size: 1.25rem; color: var(--text); }
+    .brand span { color: var(--accent); }
+
+    .container { max-width: 1000px; margin: 1.5rem auto; padding: 0 1rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
+
+    .ai-banner { background: #071930; border: 1px solid #134e4a; border-radius: 6px; padding: 0.65rem 1rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; }
+    .ai-pill { background: #0e7490; color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-family: monospace; font-size: 0.75rem; }
+
+    .tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--card-border); margin-bottom: 1rem; }
+    .tab-btn { background: none; border: none; padding: 0.5rem 1rem; color: var(--text-muted); font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; }
+    .tab-btn.active { color: var(--accent); border-color: var(--accent); }
+
+    textarea, input[type="text"] { width: 100%; background: var(--code-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text); padding: 0.75rem; font-family: inherit; font-size: 0.95rem; }
+    textarea { height: 120px; resize: vertical; }
+    textarea:focus, input[type="text"]:focus { outline: none; border-color: var(--accent); }
+
+    .drop-zone { border: 2px dashed var(--card-border); border-radius: 6px; padding: 2rem; text-align: center; cursor: pointer; background: #050b18; transition: border-color 0.2s; }
+    .drop-zone.dragover { border-color: var(--accent); }
+
+    .action-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin: 1rem 0; align-items: center; }
+    select { width: 100%; background: var(--code-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text); padding: 0.65rem; }
+    
+    .btn { background: var(--accent); color: #020617; border: none; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 0.85rem; text-align: center; }
+    .btn:hover { background: var(--accent-hover); color: #fff; }
+    .btn-secondary { background: #1e293b; color: var(--text); }
+    .btn-secondary:hover { background: #334155; }
+
+    .hash-item { margin-bottom: 0.85rem; background: #070d1d; border: 1px solid var(--card-border); border-radius: 6px; padding: 0.65rem 0.85rem; }
+    .hash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+    .hash-field { display: flex; gap: 6px; }
+    .hash-field input { background: #020617; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.85rem; }
+
+    .verify-box { background: #070d1d; border: 1px solid var(--card-border); border-radius: 6px; padding: 1rem; margin-top: 1rem; }
+    .tag { display: inline-block; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; margin-top: 6px; }
+    .tag-match { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid var(--success); }
+    .tag-mismatch { background: rgba(239, 68, 68, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+
+    .ad-slot { min-height: 90px; background: #080f20; border: 1px dashed #1e293b; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; margin: 1.5rem 0; }
+    footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.85rem; }
+
+    @media (max-width: 600px) {
+      .hash-field { flex-wrap: wrap; }
+      .hash-field input { width: 100%; }
+      .action-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand"><span>OmniCrypt</span> Ultimate</div>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn btn-secondary" onclick="exportReport()">📥 Export</button>
+      <button class="btn btn-secondary" onclick="toggleLanguage()" id="langBtn">हिन्दी</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Top Ad Slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- AI Heuristic Classifier Ribbon -->
+    <div class="ai-banner">
+      <div>🧠 <strong>AI Data Engine:</strong> <span id="aiInferenceText">Awaiting input stream to classify data structure...</span></div>
+      <div class="ai-pill" id="aiInferencePill">IDLE</div>
+    </div>
+
+    <div class="card">
+      <div class="tabs">
+        <button class="tab-btn active" id="tabText" onclick="setMode('text')">Text Input</button>
+        <button class="tab-btn" id="tabFile" onclick="setMode('file')">File Upload (Local Checksum)</button>
+      </div>
+
+      <div id="textSection">
+        <textarea id="inputText" placeholder="Type or paste text here to compute cryptographic hash in real-time..." oninput="evaluateInput()"></textarea>
+      </div>
+
+      <div id="fileSection" style="display: none;">
+        <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+          <h3 id="filePrompt">Drop any file here or click to browse</h3>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Processed locally in browser memory (Never uploaded to any server)</p>
+          <input type="file" id="fileInput" style="display:none;" onchange="processFile(this.files[0])">
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <div>
+          <select id="encodingFmt" onchange="evaluateInput()">
+            <option value="hex-lower">Hexadecimal (lowercase)</option>
+            <option value="hex-upper">Hexadecimal (UPPERCASE)</option>
+            <option value="base64">Base64 Standard</option>
+          </select>
+        </div>
+        <div>
+          <input type="text" id="hmacKey" placeholder="Optional HMAC Secret / Salt" oninput="evaluateInput()">
+        </div>
+        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+      </div>
+
+      <!-- Hash Results Grid -->
+      <div id="hashDeck">
+        <div class="hash-item">
+          <div class="hash-header"><span>SHA-256 (NIST Secure Standard)</span></div>
+          <div class="hash-field">
+            <input type="text" id="out_sha256" readonly>
+            <button class="btn btn-secondary" onclick="copy('out_sha256')">Copy</button>
+            <button class="btn btn-secondary" onclick="threatScan('out_sha256')">VirusTotal</button>
+          </div>
+        </div>
+
+        <div class="hash-item">
+          <div class="hash-header"><span>MD5 (128-bit Checksum)</span></div>
+          <div class="hash-field">
+            <input type="text" id="out_md5" readonly>
+            <button class="btn btn-secondary" onclick="copy('out_md5')">Copy</button>
+            <button class="btn btn-secondary" onclick="threatScan('out_md5')">VirusTotal</button>
+          </div>
+        </div>
+
+        <div class="hash-item">
+          <div class="hash-header"><span>SHA-512 (High Collision-Resistance)</span></div>
+          <div class="hash-field">
+            <input type="text" id="out_sha512" readonly>
+            <button class="btn btn-secondary" onclick="copy('out_sha512')">Copy</button>
+          </div>
+        </div>
+
+        <div class="hash-item">
+          <div class="hash-header"><span>SHA-1 (Legacy Digest)</span></div>
+          <div class="hash-field">
+            <input type="text" id="out_sha1" readonly>
+            <button class="btn btn-secondary" onclick="copy('out_sha1')">Copy</button>
+          </div>
+        </div>
+
+        <div class="hash-item">
+          <div class="hash-header"><span>SHA-3 / Keccak-256 (Web3 Standard)</span></div>
+          <div class="hash-field">
+            <input type="text" id="out_sha3" readonly>
+            <button class="btn btn-secondary" onclick="copy('out_sha3')">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Verifier -->
+      <div class="verify-box">
+        <label style="font-size:0.85rem; font-weight:700; color:var(--text-muted);" id="verifyTitle">VERIFY / COMPARE CHECKSUM</label>
+        <input type="text" id="targetCompare" placeholder="Paste publisher's hash here to verify integrity..." oninput="runVerification()" style="margin-top:0.4rem;">
+        <div id="verifyOutcome"></div>
+      </div>
+    </div>
+
+    <!-- Bottom Ad Slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 OmniCrypt Ultimate. 100% Client-Side Privacy Guaranteed.</p>
+  </footer>
+
+  <script>
+    let mode = 'text';
+    let rawDigests = {};
+
+    const dropZone = document.getElementById('dropZone');
+    ['dragenter', 'dragover'].forEach(n => dropZone.addEventListener(n, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }));
+    ['dragleave', 'drop'].forEach(n => dropZone.addEventListener(n, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }));
+    dropZone.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files.length) processFile(e.dataTransfer.files[0]);
+    });
+
+    function classifyInput(str) {
+      if (!str) return { type: 'EMPTY', desc: 'Awaiting input stream to classify data structure...' };
+      const s = str.trim();
+      if (/^[a-fA-F0-9]{32}$/.test(s)) return { type: 'MD5 HASH', desc: '128-bit MD5 hex digest fingerprint.' };
+      if (/^[a-fA-F0-9]{40}$/.test(s)) return { type: 'SHA-1 HASH', desc: '160-bit SHA-1 hex digest fingerprint.' };
+      if (/^[a-fA-F0-9]{64}$/.test(s)) return { type: 'SHA-256 HASH', desc: '256-bit (SHA-256 or Keccak-256) hex digest.' };
+      if (/^[a-fA-F0-9]{128}$/.test(s)) return { type: 'SHA-512 HASH', desc: '512-bit SHA-512 hex digest.' };
+      if (/^eyJ[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]*$/.test(s)) return { type: 'JWT TOKEN', desc: 'JSON Web Token structure.' };
+      return { type: 'PLAINTEXT', desc: 'Raw unhashed string. Real-time generation active.' };
+    }
+
+    function evaluateInput() {
+      if (mode !== 'text') return;
+      const text = document.getElementById('inputText').value;
+      const key = document.getElementById('hmacKey').value;
+
+      const ai = classifyInput(text);
+      document.getElementById('aiInferencePill').innerText = ai.type;
+      document.getElementById('aiInferenceText').innerText = ai.desc;
+
+      if (!text) {
+        clearDisplays();
+        return;
+      }
+
+      if (key) {
+        rawDigests = {
+          sha256: CryptoJS.HmacSHA256(text, key),
+          md5: CryptoJS.HmacMD5(text, key),
+          sha512: CryptoJS.HmacSHA512(text, key),
+          sha1: CryptoJS.HmacSHA1(text, key),
+          sha3: CryptoJS.HmacSHA3(text, key)
+        };
+      } else {
+        rawDigests = {
+          sha256: CryptoJS.SHA256(text),
+          md5: CryptoJS.MD5(text),
+          sha512: CryptoJS.SHA512(text),
+          sha1: CryptoJS.SHA1(text),
+          sha3: CryptoJS.SHA3(text, { outputLength: 256 })
+        };
+      }
+      renderOutputs();
+    }
+
+    function processFile(file) {
+      if (!file) return;
+      document.getElementById('filePrompt').innerText = `Selected: ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const words = CryptoJS.lib.WordArray.create(e.target.result);
+        const key = document.getElementById('hmacKey').value;
+
+        if (key) {
+          rawDigests = {
+            sha256: CryptoJS.HmacSHA256(words, key),
+            md5: CryptoJS.HmacMD5(words, key),
+            sha512: CryptoJS.HmacSHA512(words, key),
+            sha1: CryptoJS.HmacSHA1(words, key),
+            sha3: CryptoJS.HmacSHA3(words, key)
+          };
+        } else {
+          rawDigests = {
+            sha256: CryptoJS.SHA256(words),
+            md5: CryptoJS.MD5(words),
+            sha512: CryptoJS.SHA512(words),
+            sha1: CryptoJS.SHA1(words),
+            sha3: CryptoJS.SHA3(words, { outputLength: 256 })
+          };
+        }
+        renderOutputs();
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    function transform(wa) {
+      if (!wa) return '';
+      const fmt = document.getElementById('encodingFmt').value;
+      if (fmt === 'hex-upper') return wa.toString(CryptoJS.enc.Hex).toUpperCase();
+      if (fmt === 'base64') return wa.toString(CryptoJS.enc.Base64);
+      return wa.toString(CryptoJS.enc.Hex).toLowerCase();
+    }
+
+    function renderOutputs() {
+      if (rawDigests.sha256) document.getElementById('out_sha256').value = transform(rawDigests.sha256);
+      if (rawDigests.md5) document.getElementById('out_md5').value = transform(rawDigests.md5);
+      if (rawDigests.sha512) document.getElementById('out_sha512').value = transform(rawDigests.sha512);
+      if (rawDigests.sha1) document.getElementById('out_sha1').value = transform(rawDigests.sha1);
+      if (rawDigests.sha3) document.getElementById('out_sha3').value = transform(rawDigests.sha3);
+      runVerification();
+    }
+
+    function runVerification() {
+      const target = document.getElementById('targetCompare').value.trim().toLowerCase();
+      const out = document.getElementById('verifyOutcome');
+      if (!target) { out.innerHTML = ''; return; }
+
+      const allHashes = Object.values(rawDigests).map(w => w.toString().toLowerCase());
+      if (allHashes.includes(target)) {
+        out.innerHTML = '<div class="tag tag-match">✔ HASH MATCH CONFIRMED (File/Text Authentic)</div>';
+      } else {
+        out.innerHTML = '<div class="tag tag-mismatch">✖ HASH MISMATCH (Data modified or incorrect hash)</div>';
+      }
+    }
+
+    function threatScan(id) {
+      const val = document.getElementById(id).value;
+      if (!val) return;
+      window.open(`https://www.virustotal.com/gui/search/${encodeURIComponent(val)}`, '_blank');
+    }
+
+    function copy(id) {
+      const el = document.getElementById(id);
+      if (el && el.value) navigator.clipboard.writeText(el.value);
+    }
+
+    function exportReport() {
+      const data = {
+        tool: "OmniCrypt Ultimate",
+        timestamp: new Date().toISOString(),
+        hashes: {
+          sha256: document.getElementById('out_sha256').value,
+          md5: document.getElementById('out_md5').value,
+          sha512: document.getElementById('out_sha512').value,
+          sha1: document.getElementById('out_sha1').value,
+          sha3_keccak: document.getElementById('out_sha3').value
+        }
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `hash-report-${Date.now()}.json`;
+      a.click();
+    }
+
+    function clearDisplays() {
+      ['out_sha256', 'out_md5', 'out_sha512', 'out_sha1', 'out_sha3'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      document.getElementById('verifyOutcome').innerHTML = '';
+      rawDigests = {};
+    }
+
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('hmacKey').value = '';
+      document.getElementById('targetCompare').value = '';
+      document.getElementById('fileInput').value = '';
+      document.getElementById('filePrompt').innerText = 'Drop any file here or click to browse';
+      document.getElementById('aiInferencePill').innerText = 'IDLE';
+      document.getElementById('aiInferenceText').innerText = 'Awaiting input stream to classify data structure...';
+      clearDisplays();
+    }
+
+    function setMode(m) {
+      mode = m;
+      document.getElementById('tabText').classList.toggle('active', m === 'text');
+      document.getElementById('tabFile').classList.toggle('active', m === 'file');
+      document.getElementById('textSection').style.display = m === 'text' ? 'block' : 'none';
+      document.getElementById('fileSection').style.display = m === 'file' ? 'block' : 'none';
+      if (m === 'text') evaluateInput();
+    }
+
+    function toggleLanguage() {
+      const b = document.getElementById('langBtn');
+      if (b.innerText === 'हिन्दी') {
+        b.innerText = 'English';
+        document.getElementById('tabText').innerText = 'टेक्स्ट इनपुट';
+        document.getElementById('tabFile').innerText = 'फ़ाइल चेकसम';
+        document.getElementById('verifyTitle').innerText = 'चेकसम मिलान और जांच';
+      } else {
+        b.innerText = 'हिन्दी';
+        document.getElementById('tabText').innerText = 'Text Input';
+        document.getElementById('tabFile').innerText = 'File Upload (Local Checksum)';
+        document.getElementById('verifyTitle').innerText = 'VERIFY / COMPARE CHECKSUM';
+      }
+    }
+  </script>
+</body>
+</html>
