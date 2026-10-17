@@ -1,57 +1,196 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-MEQE82X4L0');
-</script>
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>यूनिट कनवर्टर | Unit Converter</title>
+
+  <!-- SEO Meta Tags -->
+  <title>अल्टीमेट मल्टी यूनिट कनवर्टर | All-in-One Unit Converter in Hindi | The AI Hub Tools</title>
+  <meta name="title" content="अल्टीमेट मल्टी यूनिट कनवर्टर | All-in-One Unit Converter in Hindi | The AI Hub Tools">
+  <meta name="description" content="इंटरनेट का सबसे शक्तिशाली यूनिट कनवर्टर। लंबाई, वजन, भारतीय भूमि इकाइयाँ (बीघा, गज़), डेटा, गति, तापमान और माइलेज को एक साथ सभी इकाइयों में बदलें।">
+  <meta name="keywords" content="unit converter in hindi, bigha to square feet, meter to feet, kg to pound, data mb to gb converter, speed converter, the ai hub tools">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="The AI Hub Tools">
+  <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/unit-converter.html">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/unit-converter.html">
+  <meta property="og:title" content="अल्टीमेट मल्टी यूनिट कनवर्टर | The AI Hub Tools">
+  <meta property="og:description" content="एक साथ सभी इकाइयों में परिणाम देखें। भारत की भूमि इकाइयाँ, डिजिटल डेटा, गति और तापमान का लाइव रूपांतरण।">
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "1 बीघा (Bigha) में कितने वर्ग फुट (Square Feet) होते हैं?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "मानक पक्के बीघा में 27,225 वर्ग फुट होते हैं, जबकि 1 कच्चे बीघा में लगभग 9,075 वर्ग फुट होते हैं। इस टूल में 27,225 वर्ग फुट का मानक मान लिया गया है।"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "1 गज़ (Gaj) में कितने फुट या मीटर होते हैं?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "1 गज़ ठीक 3 फुट (Feet) या 0.9144 मीटर के बराबर होता है।"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "1 GB में कितने MB होते हैं?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "कंप्यूटर आर्किटेक्चर के अनुसार 1 गीगाबाइट (GB) में 1024 मेगाबाइट (MB) होते हैं।"
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     }
     body {
       background-color: #0d1117;
       color: #c9d1d9;
+      line-height: 1.6;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       min-height: 100vh;
-      padding: 20px;
     }
+    .top-nav {
+      background-color: #161b22;
+      border-bottom: 1px solid #30363d;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-nav a.brand {
+      color: #58a6ff;
+      font-size: 19px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .top-nav .nav-links a {
+      color: #8b949e;
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 16px;
+      transition: color 0.2s;
+    }
+    .top-nav .nav-links a:hover {
+      color: #58a6ff;
+    }
+    .main-wrapper {
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 0 15px;
+      flex: 1;
+      width: 100%;
+    }
+    .header-area {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .header-area h1 {
+      color: #58a6ff;
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+    .header-area p {
+      color: #8b949e;
+      font-size: 14px;
+    }
+    
+    /* Category Selector Tabs */
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #30363d #0d1117;
+    }
+    .category-pill {
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #8b949e;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .category-pill:hover {
+      border-color: #58a6ff;
+      color: #f0f6fc;
+    }
+    .category-pill.active {
+      background: #238636;
+      border-color: #2ea043;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Main Converter Box */
     .converter-card {
       background: #161b22;
       border: 1px solid #30363d;
       padding: 24px;
       border-radius: 12px;
-      max-width: 420px;
-      width: 100%;
       box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #58a6ff;
-      font-size: 22px;
-    }
-    .form-group {
+    .calc-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: center;
       margin-bottom: 16px;
     }
+    @media (max-width: 600px) {
+      .calc-row {
+        grid-template-columns: 1fr;
+      }
+      .swap-btn {
+        margin: 0 auto;
+        transform: rotate(90deg);
+      }
+    }
+    .calc-side {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
     label {
-      display: block;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 6px;
       color: #8b949e;
+      text-transform: uppercase;
     }
     input, select {
       width: 100%;
@@ -59,148 +198,659 @@
       background-color: #0d1117;
       border: 1px solid #30363d;
       border-radius: 8px;
-      font-size: 15px;
+      font-size: 16px;
       color: #f0f6fc;
       outline: none;
     }
     input:focus, select:focus {
       border-color: #58a6ff;
     }
-    .grid-row {
+    .swap-btn {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #58a6ff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
       display: flex;
-      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      margin-top: 18px;
     }
-    .grid-row .form-group {
-      flex: 1;
+    .swap-btn:hover {
+      background: #30363d;
+      border-color: #58a6ff;
+      transform: scale(1.05);
     }
-    .result-box {
-      margin-top: 20px;
-      padding: 16px;
-      background-color: #21262d;
+
+    /* Featured Big Result Box */
+    .big-result-panel {
+      background: #21262d;
       border: 1px solid #388bfd40;
-      border-radius: 8px;
+      border-radius: 10px;
+      padding: 18px;
       text-align: center;
+      margin-top: 10px;
     }
-    .result-box p {
-      font-size: 13px;
+    .big-result-panel .lead-title {
+      font-size: 12px;
       color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       margin-bottom: 6px;
     }
-    .result-box h3 {
-      font-size: 20px;
+    .big-result-panel .lead-num {
+      font-size: 26px;
+      font-weight: 700;
       color: #3fb950;
       word-break: break-all;
+    }
+    .formula-badge {
+      font-size: 13px;
+      color: #8b949e;
+      background: #161b22;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin: 10px 0 14px 0;
+      border: 1px solid #30363d;
+    }
+    .action-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-action {
+      background: #30363d;
+      border: 1px solid #484f58;
+      color: #f0f6fc;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-action:hover {
+      border-color: #58a6ff;
+      background: #21262d;
+    }
+
+    /* Multi-Unit Overview Grid (The Powerhouse Feature) */
+    .overview-section {
+      margin-top: 25px;
+    }
+    .overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .overview-header h3 {
+      font-size: 16px;
+      color: #58a6ff;
+    }
+    .overview-search {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: #f0f6fc;
+      font-size: 13px;
+      width: 180px;
+    }
+    .all-units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .unit-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .unit-card:hover {
+      border-color: #58a6ff;
+      background: #1c2128;
+    }
+    .unit-card-name {
+      font-size: 12px;
+      color: #8b949e;
+      margin-bottom: 4px;
+    }
+    .unit-card-val {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f0f6fc;
+      word-break: break-all;
+    }
+
+    /* SEO & Content Section */
+    .content-section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .content-section h2 {
+      color: #58a6ff;
+      font-size: 20px;
+      margin-top: 26px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 6px;
+    }
+    .content-section h2:first-of-type {
+      margin-top: 0;
+    }
+    .content-section p {
+      color: #c9d1d9;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+    .content-section ol, .content-section ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+    .content-section li {
+      margin-bottom: 8px;
+    }
+    .faq-item {
+      margin-bottom: 18px;
+    }
+    .faq-item h3 {
+      font-size: 16px;
+      color: #f0f6fc;
+      margin-bottom: 6px;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .tool-link-card {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #58a6ff;
+      font-size: 14px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .tool-link-card:hover {
+      border-color: #58a6ff;
+      background: #1c2128;
+    }
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      border-top: 1px solid #30363d;
+      margin-top: auto;
+      background-color: #0d1117;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #8b949e;
+    }
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <div class="converter-card">
-    <h2>यूनिट कनवर्टर (Unit Converter)</h2>
+  <nav class="top-nav">
+    <a href="index.html" class="brand">The AI Hub Tools</a>
+    <div class="nav-links">
+      <a href="index.html">All Tools</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-    <div class="form-group">
-      <label for="category">श्रेणी (Category):</label>
-      <select id="category" onchange="updateUnits()">
-        <option value="length">लंबाई (Length)</option>
-        <option value="weight">वजन (Weight)</option>
-      </select>
+  <noscript>
+    <div style="background: #ff5555; color: #fff; padding: 12px; text-align: center; font-weight: bold;">
+      ⚠️ इस टूल का उपयोग करने के लिए कृपया अपने ब्राउज़र में JavaScript सक्षम करें।
+    </div>
+  </noscript>
+
+  <div class="main-wrapper">
+    <div class="header-area">
+      <h1>अल्टीमेट मल्टी यूनिट कनवर्टर</h1>
+      <p>लंबाई, क्षेत्रफल (बीघा, गज़), वजन, डिजिटल डेटा, तापमान व गति का त्वरित रूपांतरण</p>
     </div>
 
-    <div class="form-group">
-      <label for="inputValue">मान दर्ज करें (Value):</label>
-      <input type="number" id="inputValue" value="1" placeholder="संख्या दर्ज करें" oninput="convert()">
+    <!-- Category Pills Navigation -->
+    <div class="category-pills" id="categoryPills">
+      <button class="category-pill active" onclick="selectCategory('length', this)">📏 लंबाई (Length)</button>
+      <button class="category-pill" onclick="selectCategory('area', this)">🏞️ क्षेत्रफल व भूमि (Area / Land)</button>
+      <button class="category-pill" onclick="selectCategory('weight', this)">⚖️ वजन (Weight)</button>
+      <button class="category-pill" onclick="selectCategory('data', this)">💾 डेटा (Data Storage)</button>
+      <button class="category-pill" onclick="selectCategory('speed', this)">⚡ गति (Speed)</button>
+      <button class="category-pill" onclick="selectCategory('temperature', this)">🌡️ तापमान (Temperature)</button>
+      <button class="category-pill" onclick="selectCategory('time', this)">⏱️ समय (Time)</button>
+      <button class="category-pill" onclick="selectCategory('fuel', this)">⛽ माइलेज (Fuel Economy)</button>
     </div>
 
-    <div class="grid-row">
-      <div class="form-group">
-        <label for="fromUnit">से (From):</label>
-        <select id="fromUnit" onchange="convert()"></select>
+    <div class="converter-card">
+      <div class="calc-row">
+        <!-- From Side -->
+        <div class="calc-side">
+          <label for="fromValue">मान दर्ज करें (Input Value)</label>
+          <input type="number" id="fromValue" value="1" step="any" placeholder="संख्या लिखें..." oninput="onPrimaryInput()">
+          <label for="fromUnit">से (From Unit)</label>
+          <select id="fromUnit" onchange="onFromUnitChange()"></select>
+        </div>
+
+        <!-- Swap -->
+        <button type="button" class="swap-btn" title="इकाइयां आपस में बदलें" onclick="swapUnits()">⇄</button>
+
+        <!-- To Side -->
+        <div class="calc-side">
+          <label for="toValue">रूपांतरित मान (Converted Value)</label>
+          <input type="number" id="toValue" step="any" placeholder="परिणाम..." oninput="onSecondaryInput()">
+          <label for="toUnit">में (To Unit)</label>
+          <select id="toUnit" onchange="onToUnitChange()"></select>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="toUnit">में (To):</label>
-        <select id="toUnit" onchange="convert()"></select>
+
+      <!-- Result Banner -->
+      <div class="big-result-panel">
+        <div class="lead-title">सटीक परिणाम (Formula Accurate Result)</div>
+        <div class="lead-num" id="leadResultText">--</div>
+        <div><span class="formula-badge" id="formulaBadge">गणना सूत्र लोड हो रहा है...</span></div>
+        <div class="action-row">
+          <button class="btn-action" id="copyBtn" onclick="copyLeadResult()">📋 परिणाम कॉपी करें</button>
+          <button class="btn-action" onclick="resetForm()">🔄 रीसेट</button>
+        </div>
+      </div>
+
+      <!-- Live All-Units Multi Grid -->
+      <div class="overview-section">
+        <div class="overview-header">
+          <h3>⚡ सभी संबंधित इकाइयों में एक साथ परिणाम (Live Multi-Grid):</h3>
+          <input type="text" class="overview-search" id="unitSearch" placeholder="🔍 इकाई खोजें..." oninput="renderMultiGrid()">
+        </div>
+        <div class="all-units-grid" id="allUnitsGrid">
+          <!-- Rendered by JS -->
+        </div>
       </div>
     </div>
 
-    <div class="result-box">
-      <p>परिणाम (Result)</p>
-      <h3 id="resultText">--</h3>
-    </div>
+    <!-- 500+ Words SEO Article & Land Conversion Info -->
+    <article class="content-section">
+      <h2>ऑनलाइन यूनिट कनवर्टर क्या है और यह क्यों सबसे शक्तिशाली है?</h2>
+      <p>
+        मापन और इकाइयों का रूपांतरण इंजीनियरिंग, विज्ञान, वाणिज्य और संपत्ति (Real Estate) के सौदों का आधार है। अधिकांश साधारण ऑनलाइन कनवर्टर केवल 1 से 2 इकाइयों के बीच सीमित रूपांतरण देते हैं। <strong>The AI Hub Tools</strong> का यह कनवर्टर <strong>Multi-Grid Architecture</strong> पर बनाया गया है। जब आप कोई भी संख्या दर्ज करते हैं, तो यह उस श्रेणी की सभी ज्ञात इकाइयों में सेकंड के 100वें हिस्से में एक साथ लाइव रूपांतरण दिखा देता है।
+      </p>
+      <p>
+        विशेष रूप से भारतीय उपयोगकर्ताओं और किसानों के लिए, इसमें क्षेत्रीय भूमि मापन इकाइयाँ जैसे <strong>बीघा (Bigha), बिस्वा (Biswa), गज़ (Gaj), कट्ठा (Kattha), एकड़ (Acre) और हेक्टेयर (Hectare)</strong> को वैज्ञानिक व राजस्व मानकों के अनुसार शामिल किया गया है।
+      </p>
+
+      <h2>भारतीय भूमि मापन इकाइयाँ और उनके मानक मान</h2>
+      <ul>
+        <li><strong>1 गज़ (Gaj):</strong> 9 वर्ग फुट = 0.8361 वर्ग मीटर</li>
+        <li><strong>1 पक्का बीघा (Bigha):</strong> 27,225 वर्ग फुट = 3,025 वर्ग गज़ = लगभग 2,529.28 वर्ग मीटर</li>
+        <li><strong>1 बिस्वा (Biswa):</strong> 136.125 वर्ग फुट (1 बीघा में 20 बिस्वा होते हैं)</li>
+        <li><strong>1 एकड़ (Acre):</strong> 43,560 वर्ग फुट = 4,840 वर्ग गज़ = लगभग 1.6 बीघा</li>
+        <li><strong>1 हेक्टेयर (Hectare):</strong> 107,639 वर्ग फुट = लगभग 2.471 एकड़ = 10,000 वर्ग मीटर</li>
+      </ul>
+
+      <h2>कनवर्टर का अधिकतम लाभ कैसे उठाएं?</h2>
+      <ol>
+        <li><strong>श्रेणी चुनें:</strong> ऊपर दिए गए क्षैतिज टैब में से किसी भी श्रेणी (जैसे क्षेत्रफल, गति, डेटा, आदि) पर क्लिक करें।</li>
+        <li><strong>लाइव मान भरें:</strong> किसी भी साइड (बाएं या दाएं) संख्या टाइप करें; दूसरी साइड अपने आप कैलकुलेट हो जाएगी।</li>
+        <li><strong>मल्टी-ग्रिड से तुरंत कॉपी:</strong> नीचे बनी ग्रिड में उस श्रेणी की सभी इकाइयों के मान एक साथ दिखते हैं। किसी भी कार्ड पर क्लिक करके आप सीधे उस यूनिट का मान कॉपी कर सकते हैं।</li>
+        <li><strong>यूनिट सर्च:</strong> यदि सूची लंबी है, तो 'इकाई खोजें' बॉक्स में यूनिट का नाम टाइप करके तुरंत फ़िल्टर करें।</li>
+      </ol>
+
+      <h2>अक्सर पूछे जाने वाले सवाल (FAQs)</h2>
+      <div class="faq-item">
+        <h3>प्र. क्या यह टूल बिना इंटरनेट (Offline) के काम कर सकता है?</h3>
+        <p>उत्तर: हाँ, एक बार यह पेज लोड हो जाने के बाद इसकी सभी गणनाएँ आपके ब्राउज़र के अंदर ही प्रोसेस होती हैं, इसलिए पेज खुला रहने पर बिना इंटरनेट के भी सुपर-फ़ास्ट काम करता है।</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>प्र. क्या माइलेज (Fuel Economy) में km/L और mpg दोनों समर्थित हैं?</h3>
+        <p>उत्तर: जी हाँ, ऑटोमोबाइल प्रेमियों के लिए 'माइलेज' श्रेणी में किलोमीटर प्रति लीटर (km/L) और माइल्स प्रति गैलन (US mpg) दोनों शामिल हैं।</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>प्र. कंप्यूटर स्टोरेज में 1 TB में कितने GB होते हैं?</h3>
+        <p>उत्तर: वास्तविक बाइनरी डेटा मानक (JEDEC) के अनुसार 1 TB में 1024 GB होते हैं। यह टूल इसी शुद्ध गणना का उपयोग करता है।</p>
+      </div>
+
+      <h2>The AI Hub Tools के अन्य उपयोगी टूल्स</h2>
+      <div class="tools-grid">
+        <a href="age-calculator.html" class="tool-link-card">🎂 आयु कैलकुलेटर</a>
+        <a href="qr-code.html" class="tool-link-card">📱 क्यूआर कोड जनरेटर</a>
+        <a href="word-counter.html" class="tool-link-card">📝 वर्ड काउंटर</a>
+        <a href="password-generator.html" class="tool-link-card">🔒 सिक्योर पासवर्ड जनरेटर</a>
+      </div>
+    </article>
   </div>
-<footer style="text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; margin-top: 50px; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8;">
-    <p style="margin: 0 0 10px 0; color: #555;">
-        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+
+  <footer>
+    <p style="margin: 0 0 10px 0;">
+      &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
     </p>
     <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+      <a href="index.html">Home</a> | 
+      <a href="about.html">About Us</a> | 
+      <a href="contact.html">Contact Us</a> | 
+      <a href="privacy-policy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms &amp; Conditions</a>
     </p>
-</footer>
+  </footer>
 
   <script>
-    const conversionFactors = {
+    let currentCategory = 'length';
+
+    // Comprehensive Units Database
+    const database = {
       length: {
-        'मीटर (m)': 1,
-        'किलोमीटर (km)': 1000,
-        'सेंटीमीटर (cm)': 0.01,
-        'मिलीमीटर (mm)': 0.001,
-        'मील (Mile)': 1609.34,
-        'फुट (Foot)': 0.3048,
-        'इंच (Inch)': 0.0254
+        base: 'मीटर (m)',
+        units: {
+          'मीटर (m)': 1,
+          'किलोमीटर (km)': 1000,
+          'सेंटीमीटर (cm)': 0.01,
+          'मिलीमीटर (mm)': 0.001,
+          'माइक्रोमीटर (µm)': 0.000001,
+          'फुट (Foot)': 0.3048,
+          'इंच (Inch)': 0.0254,
+          'मील (Mile)': 1609.344,
+          'गज / यार्ड (Yard)': 0.9144,
+          'नॉटिकल मील (Nautical Mile)': 1852
+        }
+      },
+      area: {
+        base: 'वर्ग मीटर (sq m)',
+        units: {
+          'वर्ग मीटर (sq m)': 1,
+          'वर्ग फुट (sq ft)': 0.09290304,
+          'वर्ग गज़ (sq Yard)': 0.836127,
+          'बीघा मानक (Bigha)': 2529.285,   // 27,225 sq ft
+          'बिस्वा (Biswa)': 126.464,        // 1/20 Bigha
+          'एकड़ (Acre)': 4046.8564224,
+          'हेक्टेयर (Hectare)': 10000,
+          'वर्ग किलोमीटर (sq km)': 1000000,
+          'वर्ग मील (sq mi)': 2589988.11
+        }
       },
       weight: {
-        'ग्राम (g)': 1,
-        'किलोग्राम (kg)': 1000,
-        'मिलीग्राम (mg)': 0.001,
-        'पाउंड (Pound)': 453.592,
-        'क्विंटल (Quintal)': 100000
+        base: 'ग्राम (g)',
+        units: {
+          'ग्राम (g)': 1,
+          'किलोग्राम (kg)': 1000,
+          'मिलीग्राम (mg)': 0.001,
+          'क्विंटल (Quintal)': 100000,
+          'मीट्रिक टन (Tonne)': 1000000,
+          'पाउंड (Pound / lb)': 453.59237,
+          'औंस (Ounce / oz)': 28.349523,
+          'तौला (Tola)': 11.6638
+        }
+      },
+      data: {
+        base: 'बाइट (Byte)',
+        units: {
+          'बिट (Bit)': 0.125,
+          'बाइट (Byte)': 1,
+          'किलोबाइट (KB)': 1024,
+          'मेगाबाइट (MB)': 1048576,
+          'गीगाबाइट (GB)': 1073741824,
+          'टेराबाइट (TB)': 1099511627776,
+          'पेटाबाइट (PB)': 1125899906842624
+        }
+      },
+      speed: {
+        base: 'मी/सेकंड (m/s)',
+        units: {
+          'मीटर/सेकंड (m/s)': 1,
+          'किमी/घंटा (km/h)': 0.277777778,
+          'मील/घंटा (mph)': 0.44704,
+          'नॉट (Knot)': 0.514444,
+          'फुट/सेकंड (ft/s)': 0.3048
+        }
+      },
+      time: {
+        base: 'सेकंड (s)',
+        units: {
+          'मिलीसेकंड (ms)': 0.001,
+          'सेकंड (s)': 1,
+          'मिनट (min)': 60,
+          'घंटा (hour)': 3600,
+          'दिन (day)': 86400,
+          'सप्ताह (week)': 604800,
+          'महीना (30 दिन)': 2592000,
+          'वर्ष (365 दिन)': 31536000
+        }
+      },
+      temperature: {
+        isSpecial: true,
+        units: ['सेल्सियस (°C)', 'फारेनहाइट (°F)', 'केल्विन (K)']
+      },
+      fuel: {
+        isSpecial: true,
+        units: ['किमी/लीटर (km/L)', 'मील/गैलन (US mpg)', 'लीटर/100किमी (L/100km)']
       }
     };
 
-    function updateUnits() {
-      const category = document.getElementById('category').value;
-      const fromUnit = document.getElementById('fromUnit');
-      const toUnit = document.getElementById('toUnit');
-      const units = Object.keys(conversionFactors[category]);
+    function selectCategory(categoryKey, elem) {
+      currentCategory = categoryKey;
+      document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
+      if (elem) elem.classList.add('active');
 
-      fromUnit.innerHTML = '';
-      toUnit.innerHTML = '';
+      const fromUnitSelect = document.getElementById('fromUnit');
+      const toUnitSelect = document.getElementById('toUnit');
+      fromUnitSelect.innerHTML = '';
+      toUnitSelect.innerHTML = '';
 
-      units.forEach((unit) => {
-        fromUnit.add(new Option(unit, unit));
-        toUnit.add(new Option(unit, unit));
+      const catData = database[categoryKey];
+      const unitList = catData.isSpecial ? catData.units : Object.keys(catData.units);
+
+      unitList.forEach(u => {
+        fromUnitSelect.add(new Option(u, u));
+        toUnitSelect.add(new Option(u, u));
       });
 
-      if (units.length > 1) {
-        toUnit.selectedIndex = 1;
+      if (unitList.length > 1) {
+        toUnitSelect.selectedIndex = 1;
       }
 
-      convert();
+      onPrimaryInput();
     }
 
-    function convert() {
-      const category = document.getElementById('category').value;
-      const val = parseFloat(document.getElementById('inputValue').value);
+    function formatNumber(num) {
+      if (num === 0) return "0";
+      const abs = Math.abs(num);
+      if (abs >= 0.0001 && abs < 100000000) {
+        return parseFloat(num.toFixed(6)).toString();
+      }
+      return num.toExponential(4);
+    }
+
+    // Special conversions handlers
+    function convertSpecial(val, from, to, cat) {
+      if (from === to) return val;
+      if (cat === 'temperature') {
+        let c;
+        if (from === 'सेल्सियस (°C)') c = val;
+        else if (from === 'फारेनहाइट (°F)') c = (val - 32) * (5/9);
+        else if (from === 'केल्विन (K)') c = val - 273.15;
+
+        if (to === 'सेल्सियस (°C)') return c;
+        if (to === 'फारेनहाइट (°F)') return (c * 9/5) + 32;
+        if (to === 'केल्विन (K)') return c + 273.15;
+      }
+      if (cat === 'fuel') {
+        if (val <= 0) return 0;
+        let kmPerL;
+        if (from === 'किमी/लीटर (km/L)') kmPerL = val;
+        else if (from === 'मील/गैलन (US mpg)') kmPerL = val * 0.425144;
+        else if (from === 'लीटर/100किमी (L/100km)') kmPerL = 100 / val;
+
+        if (to === 'किमी/लीटर (km/L)') return kmPerL;
+        if (to === 'मील/गैलन (US mpg)') return kmPerL / 0.425144;
+        if (to === 'लीटर/100किमी (L/100km)') return 100 / kmPerL;
+      }
+      return val;
+    }
+
+    function calculateResult(val, from, to) {
+      const catData = database[currentCategory];
+      if (catData.isSpecial) {
+        return convertSpecial(val, from, to, currentCategory);
+      } else {
+        const inBase = val * catData.units[from];
+        return inBase / catData.units[to];
+      }
+    }
+
+    function onPrimaryInput() {
+      const input = document.getElementById('fromValue');
+      const val = parseFloat(input.value);
       const from = document.getElementById('fromUnit').value;
       const to = document.getElementById('toUnit').value;
-      const resultElem = document.getElementById('resultText');
+      const toInput = document.getElementById('toValue');
+      const leadResult = document.getElementById('leadResultText');
+      const badge = document.getElementById('formulaBadge');
 
-      if (isNaN(val)) {
-        resultElem.innerText = '--';
+      if (isNaN(val) || input.value.trim() === '') {
+        toInput.value = '';
+        leadResult.innerText = '--';
+        badge.innerText = 'कृपया कोई मान दर्ज करें';
+        renderMultiGrid(null);
         return;
       }
 
-      const inBase = val * conversionFactors[category][from];
-      const convertedVal = inBase / conversionFactors[category][to];
+      const res = calculateResult(val, from, to);
+      toInput.value = formatNumber(res);
+      leadResult.innerText = `${val} ${from.split(' ')[0]} = ${formatNumber(res)} ${to.split(' ')[0]}`;
 
-      const cleanResult = parseFloat(convertedVal.toFixed(4));
-      resultElem.innerText = `${val} ${from.split(' ')[0]} = ${cleanResult} ${to.split(' ')[0]}`;
+      if (database[currentCategory].isSpecial) {
+        badge.innerText = `डायनेमिक सूत्र आधारित रूपांतरण`;
+      } else {
+        const ratio = database[currentCategory].units[from] / database[currentCategory].units[to];
+        badge.innerText = `1 ${from.split(' ')[0]} = ${formatNumber(ratio)} ${to.split(' ')[0]}`;
+      }
+
+      renderMultiGrid(val, from);
     }
 
-    updateUnits();
+    function onSecondaryInput() {
+      const toInput = document.getElementById('toValue');
+      const val = parseFloat(toInput.value);
+      const from = document.getElementById('fromUnit').value;
+      const to = document.getElementById('toUnit').value;
+      const fromInput = document.getElementById('fromValue');
+      const leadResult = document.getElementById('leadResultText');
+
+      if (isNaN(val) || toInput.value.trim() === '') {
+        fromInput.value = '';
+        leadResult.innerText = '--';
+        renderMultiGrid(null);
+        return;
+      }
+
+      const res = calculateResult(val, to, from);
+      fromInput.value = formatNumber(res);
+      leadResult.innerText = `${formatNumber(res)} ${from.split(' ')[0]} = ${val} ${to.split(' ')[0]}`;
+      renderMultiGrid(parseFloat(fromInput.value), from);
+    }
+
+    function onFromUnitChange() {
+      onPrimaryInput();
+    }
+
+    function onToUnitChange() {
+      onPrimaryInput();
+    }
+
+    function swapUnits() {
+      const fromSelect = document.getElementById('fromUnit');
+      const toSelect = document.getElementById('toUnit');
+      const tempIndex = fromSelect.selectedIndex;
+      fromSelect.selectedIndex = toSelect.selectedIndex;
+      toSelect.selectedIndex = tempIndex;
+      onPrimaryInput();
+    }
+
+    function resetForm() {
+      document.getElementById('fromValue').value = '1';
+      onPrimaryInput();
+    }
+
+    function renderMultiGrid(baseVal = null, fromUnitName = null) {
+      const grid = document.getElementById('allUnitsGrid');
+      const filter = document.getElementById('unitSearch').value.toLowerCase().trim();
+      grid.innerHTML = '';
+
+      if (baseVal === null) {
+        baseVal = parseFloat(document.getElementById('fromValue').value);
+      }
+      if (fromUnitName === null) {
+        fromUnitName = document.getElementById('fromUnit').value;
+      }
+
+      if (isNaN(baseVal)) {
+        grid.innerHTML = '<p style="color:#8b949e; grid-column: 1/-1;">परिणाम देखने के लिए संख्या दर्ज करें...</p>';
+        return;
+      }
+
+      const catData = database[currentCategory];
+      const unitList = catData.isSpecial ? catData.units : Object.keys(catData.units);
+
+      unitList.forEach(u => {
+        if (filter && !u.toLowerCase().includes(filter)) return;
+
+        const val = calculateResult(baseVal, fromUnitName, u);
+        const card = document.createElement('div');
+        card.className = 'unit-card';
+        card.title = 'क्लिक करके कॉपी करें';
+        card.innerHTML = `
+          <span class="unit-card-name">${u}</span>
+          <span class="unit-card-val">${formatNumber(val)}</span>
+        `;
+        card.onclick = () => {
+          navigator.clipboard.writeText(`${formatNumber(val)} ${u}`);
+          card.style.borderColor = '#3fb950';
+          setTimeout(() => card.style.borderColor = '#30363d', 1000);
+        };
+        grid.appendChild(card);
+      });
+    }
+
+    function copyLeadResult() {
+      const text = document.getElementById('leadResultText').innerText;
+      const btn = document.getElementById('copyBtn');
+      if (text === '--') return;
+
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = '✅ कॉपी हो गया!';
+        setTimeout(() => btn.innerText = '📋 परिणाम कॉपी करें', 2000);
+      });
+    }
+
+    // Initialize Default
+    selectCategory('length', document.querySelector('.category-pill.active'));
   </script>
 </body>
 </html>
