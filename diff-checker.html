@@ -4,19 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Analytics 4 (GA4) Tracking -->
-  <!-- अपनी असली GA4 Measurement ID (G-XXXXXXXXXX) से रिप्लेस करें -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX', { 'send_page_view': true });
+
+    gtag('config', 'G-MEQE82X4L0', {
+      'send_page_view': true
+    });
   </script>
   
   <!-- Primary SEO Meta Tags -->
-  <title>Ultimate Text Diff Checker Pro - दो फाइलों, कोड और टेक्स्ट की तुलना करें | The AI Hub Tools</title>
-  <meta name="description" content="इंटरनेट का सबसे शक्तिशाली मुफ्त टेक्स्ट और कोड कंपैरिजन टूल। Git Unified Patch Export, GitHub स्टाइल साइड-बाय-साइड स्प्लिट व्यू, लाइव सिंक स्क्रॉल, शेयर लिंक और 100% डेटा प्राइवेसी।">
+  <title>Online Text Diff Checker Pro - दो फाइलों, कोड और टेक्स्ट की तुलना करें | The AI Hub Tools</title>
+  <meta name="description" content="मुफ्त ऑनलाइन टेक्स्ट और कोड कंपैरिजन टूल। Git Unified Patch Export, GitHub स्टाइल साइड-बाय-साइड स्प्लिट व्यू, लाइव सिंक स्क्रॉल, शेयर लिंक और 100% डेटा प्राइवेसी।">
   <meta name="keywords" content="diff checker pro, text comparison online hindi, code diff tool, git patch generator, github style diff, compare two files online, do text me antar, line by line diff, free text compare tool, the aihub tools">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="author" content="The AI Hub Tools">
@@ -25,13 +27,13 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The AI Hub Tools">
-  <meta property="og:title" content="Ultimate Text Diff Checker Pro - दो फाइलों और कोड की सटीक तुलना">
+  <meta property="og:title" content="Online Text Diff Checker Pro - दो फाइलों और कोड की सटीक तुलना">
   <meta property="og:description" content="GitHub style side-by-side & inline text comparison with Git Patch Export, Sync Scrolling & Instant Share.">
   <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/diff-checker.html">
 
   <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ultimate Online Text Diff Checker Pro">
+  <meta name="twitter:title" content="Online Text Diff Checker Pro | The AI Hub Tools">
   <meta name="twitter:description" content="दो फाइलों, लेखों या कोड के बीच का बारीक अंतर तुरंत खोजें। Fast, accurate, and completely private.">
 
   <!-- Fonts & Icons -->
@@ -52,7 +54,7 @@
       {
         "@type": "WebApplication",
         "@id": "https://theaihub-tools.github.io/all-tools/diff-checker.html#webapp",
-        "name": "अल्टिमेट टेक्स्ट डिफ चेकर प्रो (Online Diff Checker Pro)",
+        "name": "टेक्स्ट डिफ चेकर प्रो (Online Diff Checker Pro)",
         "url": "https://theaihub-tools.github.io/all-tools/diff-checker.html",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "All",
@@ -257,21 +259,29 @@
       border-color: var(--primary);
     }
 
-    /* Ad Banner Slot */
-    .ad-slot {
-      margin: 20px auto;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.02);
-      border: 1px dashed var(--border);
-      border-radius: 8px;
-      padding: 15px;
-      min-height: 90px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 12px;
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    @media (max-width: 868px) {
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 15px 20px;
+        gap: 12px;
+      }
+      .nav-links.active-menu {
+        display: flex;
+      }
     }
 
     /* Hero */
@@ -382,9 +392,6 @@
     @media (max-width: 768px) {
       .input-grid {
         grid-template-columns: 1fr;
-      }
-      .nav-links {
-        display: none;
       }
     }
 
@@ -852,36 +859,32 @@
 </head>
 <body>
 
-  <!-- Real Website Header & Navigation -->
+  <!-- Real Website Header & Navigation with Mobile Toggle -->
   <header class="site-header">
     <div class="nav-wrapper">
-      <a href="index.html" class="brand">
+      <a href="https://theaihub-tools.github.io/all-tools/index.html" class="brand">
         <i class="fa-solid fa-code-compare"></i> The AI Hub Tools
       </a>
 
-      <ul class="nav-links">
-        <li><a href="index.html">होम (Home)</a></li>
-        <li><a href="unit-converter.html">Unit Converter</a></li>
-        <li><a href="json-formatter.html">JSON Formatter</a></li>
-        <li><a href="speech-to-text.html">Speech to Text</a></li>
-        <li><a href="prompt-generator.html">AI Prompt Tool</a></li>
-        <li><a href="diff-checker.html" class="active">Diff Checker Pro</a></li>
+      <ul class="nav-links" id="siteNavLinks">
+        <li><a href="https://theaihub-tools.github.io/all-tools/index.html">होम (Home)</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/unit-converter.html">Unit Converter</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/json-formatter.html">JSON Formatter</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/speech-to-text.html">Speech to Text</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/prompt-generator.html">AI Prompt Tool</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/diff-checker.html" class="active">Diff Checker Pro</a></li>
       </ul>
 
       <div class="nav-actions">
         <button class="icon-btn" onclick="toggleDarkMode()" title="डार्क/लाइट मोड बदलें"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
         <button class="icon-btn" onclick="toggleFullscreen()" title="फुल स्क्रीन मोड"><i class="fa-solid fa-expand" id="fullIcon"></i></button>
+        <button class="icon-btn mobile-menu-btn" onclick="toggleMobileNav()" title="Menu"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
   </header>
 
   <div class="container">
     
-    <!-- Top AdSense Unit Container -->
-    <div class="ad-slot">
-      <span>Advertisement Space (Google AdSense Responsive Unit)</span>
-    </div>
-
     <!-- Hero Title -->
     <header class="hero">
       <h1>ऑनलाइन टेक्स्ट डिफ चेकर प्रो / Ultimate Text Diff Checker</h1>
@@ -983,7 +986,7 @@
         </div>
       </div>
 
-      <!-- Output Container -->
+      <!-- Output Section -->
       <div class="output-section">
         <div class="output-header">
           <span class="pane-title"><i class="fa-solid fa-chart-simple"></i> तुलना परिणाम:</span>
@@ -1018,11 +1021,6 @@
       </div>
 
     </main>
-
-    <!-- Bottom AdSense Unit Container -->
-    <div class="ad-slot">
-      <span>Advertisement Space (Google AdSense Responsive Unit)</span>
-    </div>
 
     <!-- Bilingual (English + Hindi) SEO & Guide Section -->
     <article class="seo-section">
@@ -1125,21 +1123,21 @@
       <div class="footer-col">
         <h4>महत्वपूर्ण टूल्स</h4>
         <ul class="footer-links">
-          <li><a href="unit-converter.html">यूनिट कनवर्टर</a></li>
-          <li><a href="json-formatter.html">JSON फॉर्मेटर</a></li>
-          <li><a href="speech-to-text.html">स्पीच टू टेक्स्ट</a></li>
-          <li><a href="prompt-generator.html">AI प्रॉम्प्ट जनरेटर</a></li>
-          <li><a href="diff-checker.html">डिफ चेकर प्रो</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/unit-converter.html">यूनिट कनवर्टर</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/json-formatter.html">JSON फॉर्मेटर</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/speech-to-text.html">स्पीच टू टेक्स्ट</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/prompt-generator.html">AI प्रॉम्प्ट जनरेटर</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/diff-checker.html">डिफ चेकर प्रो</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>कानूनी और सहायता</h4>
         <ul class="footer-links">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/about.html">About Us</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/contact.html">Contact Us</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/terms.html">Terms & Conditions</a></li>
         </ul>
       </div>
     </div>
@@ -1159,6 +1157,12 @@
       if (typeof gtag === 'function') {
         gtag('event', eventName, params);
       }
+    }
+
+    // Toggle Mobile Navigation Menu
+    function toggleMobileNav() {
+      const nav = document.getElementById('siteNavLinks');
+      nav.classList.toggle('active-menu');
     }
 
     // Live Word & Line Counter
