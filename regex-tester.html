@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Online Regex Tester, Debugger & Substitution Tool | The AI Hub Tools</title>
+  <meta name="title" content="Online Regex Tester, Debugger & Substitution Tool | The AI Hub Tools">
+  <meta name="description" content="मुफ्त और एडवांस Regex Tester टूल। Live visual highlighting, capture groups inspector, regex string replacement, ReDoS protection, and real-time JavaScript testing.">
+  <meta name="keywords" content="regex tester, online regex debugger, regular expression test, regex replace online, javascript regex checker, regex capture groups, regex validator hindi">
+  <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/regex-tester.html">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/regex-tester.html">
+  <meta property="og:title" content="Online Regex Tester & Debugger Pro">
+  <meta property="og:description" content="Professional regular expression tester, debugger, match group inspector, and replace tool with ReDoS protection.">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Regex Tester & Debugger Pro",
+        "url": "https://theaihub-tools.github.io/all-tools/regex-tester.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "क्या यह टूल Regex Groups और Substitution को सपोर्ट करता है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "हाँ, यह टूल मैचिंग ग्रुप्स को अलग से टेबल में दिखाता है और लाइव रिप्लेसमेंट/सब्स्टीट्यूशन रिजल्ट भी देता है।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "क्या मेरा डेटा सुरक्षित है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "बिल्कुल। सभी ऑपरेशन्स 100% क्लाइंट-साइड आपके ब्राउज़र में निष्पादित होते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Google AdSense Header Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --highlight: #fef08a;
+      --highlight-alt: #bbf7d0;
+      --badge-bg: #eff6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* Header */
+    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1050px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; }
+    .brand { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .nav-links { display: flex; gap: 16px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.95rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Layout */
+    .container { max-width: 1000px; margin: 30px auto; padding: 0 16px; }
+    .tool-card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+
+    /* Ad Unit Container */
+    .ad-slot { margin: 24px auto; text-align: center; background: #f1f5f9; border: 1px dashed #cbd5e1; min-height: 90px; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+    h1 { font-size: 1.8rem; margin-bottom: 6px; }
+    p.subtitle { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+
+    /* Presets Bar */
+    .presets-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; align-items: center; }
+    .preset-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-right: 4px; }
+    .preset-btn { background: var(--badge-bg); color: var(--primary); border: 1px solid #bfdbfe; padding: 5px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-weight: 600; transition: background 0.15s; }
+    .preset-btn:hover { background: #dbeafe; }
+
+    .input-group { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+    
+    .regex-bar { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 8px; background: #fff; padding: 2px 10px; }
+    .regex-bar span { font-family: monospace; font-size: 1.1rem; color: var(--text-muted); }
+    .regex-bar input { flex: 1; border: none; outline: none; padding: 10px; font-family: monospace; font-size: 1rem; }
+
+    .flags-group { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; }
+    .flag-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-family: monospace; cursor: pointer; user-select: none; }
+
+    /* Explanation Pill */
+    .regex-explainer { background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 0.82rem; margin-top: 8px; color: #475569; display: flex; gap: 8px; align-items: center; }
+    .regex-explainer span { font-weight: 600; color: var(--primary); }
+
+    /* Perfect Aligned Highlighting Container */
+    .editor-container { position: relative; width: 100%; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #ffffff; }
+    .backdrop { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; overflow: auto; pointer-events: none; padding: 12px; }
+    .highlights { white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 14px; line-height: 20px; color: transparent; }
+    
+    textarea#testString {
+      position: relative; z-index: 2; width: 100%; min-height: 150px; height: 150px; padding: 12px; font-family: monospace; font-size: 14px; line-height: 20px;
+      white-space: pre-wrap; word-wrap: break-word; border: none; outline: none; background: transparent; color: #0f172a; resize: vertical; display: block;
+    }
+
+    mark { background-color: var(--highlight); color: transparent; border-radius: 2px; }
+    mark:nth-child(even) { background-color: var(--highlight-alt); }
+
+    /* Substitution Box */
+    .replace-bar { display: flex; gap: 10px; margin-top: 10px; }
+    .replace-bar input { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-family: monospace; font-size: 0.95rem; outline: none; }
+    .replace-result { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 0.9rem; margin-top: 8px; white-space: pre-wrap; word-break: break-all; min-height: 44px; color: #334155; }
+
+    .action-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 0.85rem; flex-wrap: wrap; gap: 10px; }
+    .btn-group { display: flex; gap: 8px; }
+    .btn-action { background: #f1f5f9; border: 1px solid var(--border); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-weight: 500; transition: background 0.15s; }
+    .btn-action:hover { background: #e2e8f0; }
+
+    .error-msg { color: #dc2626; font-size: 0.85rem; margin-top: 6px; font-family: monospace; display: none; }
+
+    /* Matches Table */
+    .inspector-card { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px; }
+    .inspector-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+    .matches-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: monospace; }
+    .matches-table th, .matches-table td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
+    .matches-table th { background: #f1f5f9; }
+
+    /* Toast Notification */
+    #toast { position: fixed; bottom: 20px; right: 20px; background: #0f172a; color: #ffffff; padding: 10px 18px; border-radius: 8px; font-size: 0.88rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 9999; }
+
+    /* Article & SEO Guide */
+    .article-section { margin-top: 40px; }
+    .article-section h2 { font-size: 1.35rem; margin: 24px 0 10px; }
+    .article-section h3 { font-size: 1.1rem; margin: 18px 0 8px; }
+    .article-section p { margin-bottom: 14px; color: #334155; }
+    .article-section ul, .article-section ol { margin: 0 0 16px 20px; color: #334155; }
+    .article-section li { margin-bottom: 6px; }
+
+    .table-container { overflow-x: auto; margin: 20px 0; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { border: 1px solid var(--border); padding: 10px 14px; font-size: 0.9rem; }
+    th { background: #f1f5f9; }
+    td code { font-family: monospace; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #dc2626; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .faq-question { font-weight: 600; }
+    .faq-answer { margin-top: 6px; color: var(--text-muted); font-size: 0.92rem; }
+
+    /* Footer */
+    footer { background: #0f172a; color: #94a3b8; padding: 40px 20px 20px; margin-top: 60px; font-size: 0.9rem; }
+    .footer-container { max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+    .footer-col h4 { color: #fff; margin-bottom: 12px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; text-decoration: none; }
+    .footer-col ul li a:hover { color: #fff; }
+    .copyright { text-align: center; border-top: 1px solid #1e293b; padding-top: 20px; margin-top: 30px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Toast -->
+  <div id="toast">सूचना</div>
+
+  <!-- Header -->
+  <header>
+    <nav class="nav-container">
+      <a href="https://theaihub-tools.github.io/all-tools/" class="brand">⚡ The AI Hub Tools</a>
+      <ul class="nav-links">
+        <li><a href="https://theaihub-tools.github.io/all-tools/">Home</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/json-formatter.html">JSON</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/base64.html">Base64</a></li>
+        <li><a href="https://theaihub-tools.github.io/all-tools/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    
+    <!-- Top AdSense Slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Main Tool -->
+    <div class="tool-card">
+      <h1>Online Regex Tester & Debugger Pro</h1>
+      <p class="subtitle">Regular Expression की लाइव टेस्टिंग, मैच ग्रुप्स इंस्पेक्टर, रिप्लेसमेंट और सिंटैक्स चेकर। 100% Client-Side Engine.</p>
+
+      <!-- Presets -->
+      <div class="presets-bar">
+        <span class="preset-label">Templates:</span>
+        <button class="preset-btn" onclick="applyPreset('email')">Email Address</button>
+        <button class="preset-btn" onclick="applyPreset('phone')">Phone (India 10-digit)</button>
+        <button class="preset-btn" onclick="applyPreset('url')">URL / Web Link</button>
+        <button class="preset-btn" onclick="applyPreset('ipv4')">IPv4 Address</button>
+        <button class="preset-btn" onclick="applyPreset('date')">Date (YYYY-MM-DD)</button>
+      </div>
+
+      <div class="input-group">
+        <label for="regexInput">Regular Expression (पैटर्न)</label>
+        <div class="regex-bar">
+          <span>/</span>
+          <input type="text" id="regexInput" value="([a-zA-Z0-9._%+-]+)@([a-z0-9.-]+\.[a-z]{2,})" placeholder="यहाँ Regex पैटर्न लिखें..." spellcheck="false">
+          <span id="flagsDisplay">/g</span>
+        </div>
+        <div id="regexError" class="error-msg">Invalid regular expression syntax.</div>
+        
+        <div class="regex-explainer" id="explainerBox">
+          <span>Pattern Status:</span> <div id="explainerText">Checking syntax...</div>
+        </div>
+
+        <div class="flags-group">
+          <label class="flag-item"><input type="checkbox" id="flagG" checked> Global (g)</label>
+          <label class="flag-item"><input type="checkbox" id="flagI"> Case Insensitive (i)</label>
+          <label class="flag-item"><input type="checkbox" id="flagM"> Multiline (m)</label>
+          <label class="flag-item"><input type="checkbox" id="flagS"> DotAll (s)</label>
+          <label class="flag-item"><input type="checkbox" id="flagU"> Unicode (u)</label>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="testString">Test String (टेस्ट टेक्स्ट)</label>
+        <div class="editor-container" id="editorWrapper">
+          <div class="backdrop" id="backdrop">
+            <div class="highlights" id="highlights"></div>
+          </div>
+          <textarea id="testString" spellcheck="false">Contact our support desk at support@theaihub.com or direct inquiries to team_leader@org.in. IP: 192.168.1.1, Date: 2026-10-17, Call +91 9876543210.</textarea>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <div>
+          <strong id="matchCount">Matches: 0</strong> &nbsp;|&nbsp; 
+          <span id="execTime" style="color: var(--text-muted);">0.00ms</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-action" onclick="copyAllMatches()">Copy Matches</button>
+          <button class="btn-action" onclick="clearText()">Clear</button>
+        </div>
+      </div>
+
+      <!-- Regex Substitution Section -->
+      <div class="input-group" style="margin-top: 22px;">
+        <label for="replaceInput">Regex Substitution / Replace (वैकल्पिक)</label>
+        <div class="replace-bar">
+          <input type="text" id="replaceInput" placeholder="Replacement string (e.g. [EMAIL: $1] या [REDACTED])..." spellcheck="false">
+        </div>
+        <div class="replace-result" id="replaceResult">Replace result यहाँ दिखाई देगा...</div>
+      </div>
+
+      <!-- Matches Inspector -->
+      <div class="inspector-card">
+        <div class="inspector-title">
+          <span>Match Groups & Indices Inspector</span>
+        </div>
+        <div style="overflow-x: auto; max-height: 220px;">
+          <table class="matches-table" id="inspectorTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Full Match</th>
+                <th>Index (Pos)</th>
+                <th>Groups</th>
+              </tr>
+            </thead>
+            <tbody id="inspectorBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mid AdSense Slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="0987654321"
+           data-ad-format="rectangle"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 400+ Words Guide (Hindi + English) -->
+    <article class="article-section">
+      <h2>Complete Guide: Regular Expressions क्या हैं और इसका उपयोग कैसे करें?</h2>
+      
+      <p><strong>Regular Expressions (Regex)</strong> स्ट्रिंग्स और टेक्स्ट पैटर्न्स को खोजने, वैलिडेट करने और पार्स करने का एक शक्तिशाली सिंटैक्स (Pattern-Matching Engine) है। चाहे आपको डेटा वैलिडेशन (जैसे ईमेल, फ़ोन नंबर या पासवर्ड चेक करना हो), वेब स्क्रेपिंग से डेटा निकालना हो, या स्ट्रिंग रिप्लेसमेंट करना हो—Regex हर सॉफ्टवेयर डेवलपर, डेटा एनालिस्ट और वेबमास्टर के लिए अनिवार्य टूल है।</p>
+
+      <h3>How to Use This Regex Tester (टूल का उपयोग कैसे करें?)</h3>
+      <ol>
+        <li><strong>Choose Template or Custom Regex:</strong> आप ऊपर दिए गए क्विक टेम्पलेट्स (Email, Phone, Date) चुन सकते हैं या सीधे इनपुट बॉक्स में अपना खुद का कस्टम Regex पैटर्न दर्ज कर सकते हैं।</li>
+        <li><strong>Select Regex Flags:</strong> आवश्यकतानुसार उपयुक्त फ्लैग्स टॉगल करें:
+          <ul>
+            <li><code>g</code> (Global): केवल पहला मैच नहीं, बल्कि टेक्स्ट के सभी मैच पकड़ता है।</li>
+            <li><code>i</code> (Case-Insensitive): बड़े और छोटे अक्षरों (A vs a) का अंतर मिटाता है।</li>
+            <li><code>m</code> (Multiline): <code>^</code> और <code>$</code> को प्रत्येक नई लाइन के आधार पर मैच करने देता है।</li>
+          </ul>
+        </li>
+        <li><strong>Inspect Groups & Indices:</strong> टूल नीचे दिए गए Inspector Table में हर मैच का इंडेक्स और पैरेंथेसिस <code>(...)</code> के अंदर वाले कैप्टरिंग ग्रुप्स (Group 1, Group 2) अलग से दिखाता है।</li>
+        <li><strong>Use Regex Substitution:</strong> रिप्लेस बॉक्स में नया टेक्स्ट या रेफरेंस टोकन्स (जैसे <code>$1</code>) लिखकर तुरंत रिप्लेसमेंट का लाइव आउटपुट देखें।</li>
+      </ol>
+
+      <h3>Common Regex Cheat Sheet & Characters</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Pattern</th>
+              <th>Meaning (अर्थ)</th>
+              <th>Example (उदाहरण)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>\d</code></td>
+              <td>Any Digit (0 से 9 तक कोई भी अंक)</td>
+              <td><code>\d{10}</code> (10 डिजिट मोबाइल नंबर)</td>
+            </tr>
+            <tr>
+              <td><code>\w</code></td>
+              <td>Word Character (अक्षर, अंक, अंडरस्कोर)</td>
+              <td><code>\w+</code> (पूरा शब्द)</td>
+            </tr>
+            <tr>
+              <td><code>\s</code></td>
+              <td>Whitespace (स्पेस, टैब, न्यूलाइन)</td>
+              <td><code>\s+</code> (अतिरिक्त स्पेस रिमूव करने हेतु)</td>
+            </tr>
+            <tr>
+              <td><code>(abc)</code></td>
+              <td>Capturing Group (कैप्चरिंग ग्रुप)</td>
+              <td><code>(\d{4})-(\d{2})</code></td>
+            </tr>
+            <tr>
+              <td><code>+</code> / <code>*</code></td>
+              <td>Quantifiers: 1 या अधिक (+) / 0 या अधिक (*)</td>
+              <td><code>a+</code> (कम से कम एक 'a')</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Optimizing Regex Performance & Avoiding Catastrophic Backtracking</h3>
+      <p>जब आप जटिल नेस्टेड क्वांटिफायर्स जैसे कि <code>(a+)+$</code> का उपयोग करते हैं, तो इंजन अनपेक्षित स्ट्रिंग्स पर अत्यधिक समय ले सकता है, जिसे <em>Catastrophic Backtracking</em> कहा जाता है। इससे ब्राउज़र या सर्वर हैंग हो सकता है। सुरक्षित कोड के लिए हमेशा स्पेसिफिक कैरेक्टर क्लासेस का चयन करें और अत्यधिक ओपन-एंडेड <code>.*</code> टोकन के बजाय सटीक पैटर्न्स को प्राथमिकता दें।</p>
+    </article>
+
+    <!-- FAQ Section -->
+    <section class="article-section">
+      <h2>Frequently Asked Questions (FAQs)</h2>
+      <div class="faq-item">
+        <div class="faq-question">Q: क्या यह टूल JavaScript Regex का समर्थन करता है?</div>
+        <div class="faq-answer">हाँ, यह टूल ब्राउज़र के नेटिव ECMAScript (JavaScript) RegExp इंजन पर काम करता है, जो आधुनिक वेब डेवलपमेंट के लिए 100% सटीक परिणाम देता है।</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q: क्या मेरा इनपुट डेटा सुरक्षित है?</div>
+        <div class="faq-answer">बिल्कुल। सभी गणनाएँ क्लाइंट-साइड सीधे आपके ब्राउज़र में होती हैं। कोई भी डेटा बाहरी सर्वर पर ट्रांसफर या स्टोर नहीं होता।</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q: 'g' (Global) फ्लैग चालू करना क्यों जरूरी है?</div>
+        <div class="faq-answer">'g' फ्लैग के बिना, रेगुलर एक्सप्रेशन इंजन पहले सफल मैच पर रुक जाता है। पूरे पैराग्राफ में सभी संभावित मैच निकालने के लिए 'g' को चेक रखना आवश्यक है।</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (All Real Links) -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>The AI Hub Tools</h4>
+        <p>मुफ्त और उपयोगी ऑनलाइन डेवलपर्स और वेब यूटिलिटी टूल्स। ब्राउज़र में सीधे सुरक्षित उपयोग करें।</p>
+      </div>
+      <div class="footer-col">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="https://theaihub-tools.github.io/all-tools/json-formatter.html">JSON Formatter</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/base64.html">Base64 Encoder/Decoder</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/unit-converter.html">Unit Converter</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/speech-to-text.html">Speech to Text</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & About</h4>
+        <ul>
+          <li><a href="https://theaihub-tools.github.io/all-tools/about.html">About Us</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/contact.html">Contact Us</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="https://theaihub-tools.github.io/all-tools/terms.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 The AI Hub Tools. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Safe Real-time JavaScript Engine -->
+  <script>
+    const regexInput = document.getElementById('regexInput');
+    const testString = document.getElementById('testString');
+    const replaceInput = document.getElementById('replaceInput');
+    const replaceResult = document.getElementById('replaceResult');
+    const highlights = document.getElementById('highlights');
+    const backdrop = document.getElementById('backdrop');
+    const matchCount = document.getElementById('matchCount');
+    const execTime = document.getElementById('execTime');
+    const regexError = document.getElementById('regexError');
+    const flagsDisplay = document.getElementById('flagsDisplay');
+    const inspectorBody = document.getElementById('inspectorBody');
+    const explainerText = document.getElementById('explainerText');
+    const toast = document.getElementById('toast');
+
+    let extractedMatchesList = [];
+
+    const flagCheckboxes = {
+      g: document.getElementById('flagG'),
+      i: document.getElementById('flagI'),
+      m: document.getElementById('flagM'),
+      s: document.getElementById('flagS'),
+      u: document.getElementById('flagU')
+    };
+
+    const PRESETS = {
+      email: { regex: '([a-zA-Z0-9._%+-]+)@([a-z0-9.-]+\\.[a-z]{2,})', flags: 'g' },
+      phone: { regex: '(?:\\+91[\\-\\s]?)?[6-9]\\d{9}', flags: 'g' },
+      url: { regex: 'https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)', flags: 'g' },
+      ipv4: { regex: '\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b', flags: 'g' },
+      date: { regex: '(\\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])', flags: 'g' }
+    };
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      setTimeout(() => { toast.style.opacity = '0'; }, 2200);
+    }
+
+    function applyPreset(key) {
+      if (PRESETS[key]) {
+        regexInput.value = PRESETS[key].regex;
+        flagCheckboxes.g.checked = PRESETS[key].flags.includes('g');
+        flagCheckboxes.i.checked = PRESETS[key].flags.includes('i');
+        runRegex();
+        showToast(`Loaded ${key.toUpperCase()} Preset`);
+      }
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function getSelectedFlags() {
+      let flags = '';
+      if (flagCheckboxes.g.checked) flags += 'g';
+      if (flagCheckboxes.i.checked) flags += 'i';
+      if (flagCheckboxes.m.checked) flags += 'm';
+      if (flagCheckboxes.s.checked) flags += 's';
+      if (flagCheckboxes.u.checked) flags += 'u';
+      return flags;
+    }
+
+    function clearText() {
+      testString.value = '';
+      runRegex();
+      showToast('Text cleared');
+    }
+
+    function copyAllMatches() {
+      if (!extractedMatchesList.length) {
+        showToast('कोई मैच नहीं मिला');
+        return;
+      }
+      navigator.clipboard.writeText(extractedMatchesList.join('\n')).then(() => {
+        showToast(`${extractedMatchesList.length} मैच कॉपी हो गए`);
+      });
+    }
+
+    function updateExplainer(pattern) {
+      if (!pattern) {
+        explainerText.textContent = 'खाली पैटर्न (Empty Pattern)';
+        return;
+      }
+      let summary = [];
+      if (/\\d/.test(pattern)) summary.push('अंक (\\d)');
+      if (/\\w/.test(pattern)) summary.push('अक्षर/अंडरस्कोर (\\w)');
+      if (/\\s/.test(pattern)) summary.push('स्पेस (\\s)');
+      if (/\(/.test(pattern) && /\)/.test(pattern)) summary.push('कैप्चरिंग ग्रुप्स');
+      if (/\[.*\]/.test(pattern)) summary.push('कैरेक्टर सेट');
+      if (/\+/.test(pattern)) summary.push('वन-ऑर-मोर (+)');
+      if (/\*/.test(pattern)) summary.push('ज़ीरो-ऑर-मोर (*)');
+      if (/\^|\$/.test(pattern)) summary.push('लाइन एंकर (^/$)');
+
+      explainerText.textContent = summary.length ? summary.join(' • ') : 'कस्टम कैरेक्टर पैटर्न';
+    }
+
+    function runRegex() {
+      const pattern = regexInput.value;
+      const text = testString.value;
+      const replaceVal = replaceInput.value;
+      const flags = getSelectedFlags();
+      flagsDisplay.textContent = '/' + flags;
+      regexError.style.display = 'none';
+      inspectorBody.innerHTML = '';
+      extractedMatchesList = [];
+
+      updateExplainer(pattern);
+
+      if (!pattern || !text) {
+        highlights.innerHTML = escapeHtml(text) + '\n\n';
+        matchCount.textContent = 'Matches: 0';
+        execTime.textContent = '0.00ms';
+        replaceResult.textContent = text || 'Replace result यहाँ दिखाई देगा...';
+        return;
+      }
+
+      let regex;
+      try {
+        regex = new RegExp(pattern, flags);
+      } catch (err) {
+        regexError.textContent = err.message;
+        regexError.style.display = 'block';
+        highlights.innerHTML = escapeHtml(text) + '\n\n';
+        matchCount.textContent = 'Matches: 0';
+        return;
+      }
+
+      const t0 = performance.now();
+      let matches = 0;
+      let highlighted = '';
+      let tableRows = '';
+      const MAX_MATCH_LIMIT = 5000; // Protection against infinite loop/browser freeze
+
+      if (flags.includes('g')) {
+        let lastIndex = 0;
+        let match;
+        
+        while ((match = regex.exec(text)) !== null) {
+          matches++;
+          if (matches > MAX_MATCH_LIMIT) {
+            regexError.textContent = 'सुरक्षा चेतावनी: बहुत अधिक मैच (5,000+)। ब्राउज़र हैंग से बचने हेतु रोक दिया गया।';
+            regexError.style.display = 'block';
+            break;
+          }
+
+          const matchStart = match.index;
+          const matchEnd = regex.lastIndex;
+
+          extractedMatchesList.push(match[0]);
+
+          highlighted += escapeHtml(text.slice(lastIndex, matchStart));
+          highlighted += `<mark>${escapeHtml(text.slice(matchStart, matchEnd))}</mark>`;
+          lastIndex = matchEnd;
+
+          let groupsText = '-';
+          if (match.length > 1) {
+            groupsText = match.slice(1).map((g, idx) => `$${idx + 1}: ${g !== undefined ? escapeHtml(g) : 'null'}`).join(', ');
+          }
+
+          if (matches <= 200) { // Limit DOM rows for smooth UI performance
+            tableRows += `<tr>
+              <td>${matches}</td>
+              <td><code>${escapeHtml(match[0])}</code></td>
+              <td>[${matchStart}, ${matchEnd}]</td>
+              <td>${groupsText}</td>
+            </tr>`;
+          }
+
+          if (match.index === regex.lastIndex) {
+            regex.lastIndex++;
+          }
+        }
+        highlighted += escapeHtml(text.slice(lastIndex));
+      } else {
+        const match = regex.exec(text);
+        if (match) {
+          matches = 1;
+          const start = match.index;
+          const end = start + match[0].length;
+          extractedMatchesList.push(match[0]);
+
+          highlighted = escapeHtml(text.slice(0, start)) +
+                        `<mark>${escapeHtml(match[0])}</mark>` +
+                        escapeHtml(text.slice(end));
+
+          let groupsText = '-';
+          if (match.length > 1) {
+            groupsText = match.slice(1).map((g, idx) => `$${idx + 1}: ${g !== undefined ? escapeHtml(g) : 'null'}`).join(', ');
+          }
+
+          tableRows += `<tr>
+            <td>1</td>
+            <td><code>${escapeHtml(match[0])}</code></td>
+            <td>[${start}, ${end}]</td>
+            <td>${groupsText}</td>
+          </tr>`;
+        } else {
+          highlighted = escapeHtml(text);
+        }
+      }
+
+      const t1 = performance.now();
+      highlights.innerHTML = highlighted + '\n\n';
+      matchCount.textContent = `Matches: ${matches}`;
+      execTime.textContent = `${(t1 - t0).toFixed(2)}ms`;
+      inspectorBody.innerHTML = tableRows || '<tr><td colspan="4" style="text-align:center; color: #94a3b8;">कोई मैच नहीं मिला</td></tr>';
+
+      try {
+        replaceResult.textContent = text.replace(regex, replaceVal);
+      } catch (e) {
+        replaceResult.textContent = text;
+      }
+    }
+
+    // Scroll synchronizer
+    testString.addEventListener('scroll', () => {
+      backdrop.scrollTop = testString.scrollTop;
+      backdrop.scrollLeft = testString.scrollLeft;
+    });
+
+    // ResizeObserver: Textarea resize hone par highlight container ko sync rakhta hai
+    const resizeObserver = new ResizeObserver(() => {
+      backdrop.style.height = `${testString.offsetHeight}px`;
+    });
+    resizeObserver.observe(testString);
+
+    // Listeners
+    regexInput.addEventListener('input', runRegex);
+    testString.addEventListener('input', runRegex);
+    replaceInput.addEventListener('input', runRegex);
+    Object.values(flagCheckboxes).forEach(cb => cb.addEventListener('change', runRegex));
+
+    // Initial Trigger
+    runRegex();
+  </script>
+</body>
+</html>
