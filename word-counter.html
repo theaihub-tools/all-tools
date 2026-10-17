@@ -1,84 +1,401 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-MEQE82X4L0');
-</script>
+      gtag('config', 'G-MEQE82X4L0');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Word Counter Online | Character, Word & Paragraph Counter Tool</title>
-    <meta name="description" content="Free online Word Counter and Character Counter tool. Count words, characters, sentences, and paragraphs in real time. Perfect for essays, blogs, and social media.">
-    <meta name="keywords" content="word counter, character counter, online word counter, count words online, letter counter, text length checker, free word counter tool">
+    <title>Free Word Counter Online | Character, Word & Sentence Counter Tool</title>
+    <meta name="description" content="मुफ्त ऑनलाइन Word Counter और Character Counter टूल। अपने टेक्स्ट के शब्द, अक्षर, वाक्य, पैराग्राफ और पढ़ने का समय रियल-टाइम में चेक करें। 100% सुरक्षित और तेज़।">
+    <meta name="keywords" content="word counter, character counter, online word counter, count words online, letter counter, text length checker, free word counter tool, shabd gintee tool, online text counter hindi">
+    <link rel="canonical" href="word-counter.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Tags (Social Media Previews) -->
+    <meta property="og:title" content="Free Online Word & Character Counter Tool">
+    <meta property="og:description" content="रियल-टाइम में शब्द, वर्ण, वाक्य और पैराग्राफ गिनें। ब्लॉग, असाइनमेंट और सोशल मीडिया के लिए बेस्ट।">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org Structured Data (WebApplication + FAQPage for Google Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Word and Character Counter Tool",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "क्या यह वर्ड काउंटर टूल पूरी तरह से मुफ्त है?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "हाँ, यह टूल 100% मुफ्त है। इसके लिए किसी भी तरह के रजिस्ट्रेशन या शुल्क की आवश्यकता नहीं है।"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "क्या मेरा लिखा हुआ टेक्स्ट सुरक्षित है?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "बिल्कुल, आपका टेक्स्ट पूरी तरह सुरक्षित है। यह टूल ब्राउज़र में क्लाइंट-साइड काम करता है और डेटा किसी भी सर्वर पर स्टोर नहीं किया जाता।"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "सोशल मीडिया प्लेटफॉर्म्स की कैरेक्टर लिमिट क्या है?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "X (Twitter) पर 280 अक्षर, Instagram Bio में 150 अक्षर, Meta (Facebook) पोस्ट में 63,206 अक्षर और SEO Meta Description के लिए 155-160 अक्षरों की सीमा अनुशंसित होती है।"
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f0f2f5; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background: #ffffff; max-width: 550px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; }
-        h1 { font-size: 22px; color: #1a202c; margin-top: 0; margin-bottom: 6px; }
-        p.subtitle { color: #4a5568; font-size: 13px; margin-top: 0; margin-bottom: 20px; }
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { 
+            background: #f8fafc; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            color: #1e293b;
+        }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-        .stat-box { background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 8px; padding: 12px 8px; }
-        .stat-number { font-size: 20px; font-weight: bold; color: #2b6cb0; margin-bottom: 4px; }
-        .stat-label { font-size: 12px; color: #4a5568; font-weight: 600; }
+        /* Top Navigation Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand { font-size: 18px; font-weight: 700; color: #1e3a8a; text-decoration: none; }
+        .nav-links a { color: #475569; text-decoration: none; font-size: 14px; margin-left: 15px; font-weight: 500; }
+        .nav-links a:hover { color: #2563eb; }
 
-        textarea { width: 100%; height: 180px; padding: 14px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; line-height: 1.5; outline: none; resize: vertical; margin-bottom: 12px; }
-        textarea:focus { border-color: #3182ce; }
+        .main-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 0 16px;
+            flex: 1;
+        }
 
-        .btn-clear { background: #e2e8f0; color: #4a5568; border: none; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.2s; float: right; margin-bottom: 20px; }
-        .btn-clear:hover { background: #cbd5e0; color: #2d3748; }
+        .tool-card { 
+            background: #ffffff; 
+            width: 100%; 
+            padding: 28px; 
+            border-radius: 14px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
+            border: 1px solid #e2e8f0;
+        }
+        h1 { font-size: 26px; color: #0f172a; margin-top: 0; margin-bottom: 8px; text-align: center; }
+        p.subtitle { color: #64748b; font-size: 14px; margin-top: 0; margin-bottom: 24px; text-align: center; }
 
-        .seo-text { clear: both; text-align: left; font-size: 12px; color: #718096; border-top: 1px solid #edf2f7; padding-top: 15px; }
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+            gap: 12px; 
+            margin-bottom: 20px; 
+        }
+        .stat-box { 
+            background: #f0fdf4; 
+            border: 1px solid #bbf7d0; 
+            border-radius: 10px; 
+            padding: 14px 8px; 
+            text-align: center;
+        }
+        .stat-number { font-size: 24px; font-weight: 700; color: #15803d; margin-bottom: 4px; }
+        .stat-label { font-size: 12px; color: #475569; font-weight: 600; }
+
+        textarea { 
+            width: 100%; 
+            height: 240px; 
+            padding: 16px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 10px; 
+            font-size: 15px; 
+            line-height: 1.6; 
+            outline: none; 
+            resize: vertical; 
+            margin-bottom: 16px; 
+            background: #ffffff;
+        }
+        textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+
+        .action-row {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .btn-action { 
+            border: none; 
+            border-radius: 8px; 
+            padding: 10px 20px; 
+            font-size: 14px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+        }
+        .btn-clear { background: #f1f5f9; color: #475569; }
+        .btn-clear:hover { background: #e2e8f0; color: #0f172a; }
+        .btn-copy { background: #2563eb; color: #ffffff; }
+        .btn-copy:hover { background: #1d4ed8; }
+
+        /* Notification Toast (Replaces ugly alert) */
+        #toast {
+            visibility: hidden;
+            min-width: 220px;
+            background-color: #0f172a;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px 16px;
+            position: fixed;
+            z-index: 1000;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        #toast.show { visibility: visible; animation: fadein 0.3s, fadeout 0.3s 2s; }
+        @keyframes fadein { from { bottom: 15px; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 15px; opacity: 0; } }
+
+        /* Reference Table */
+        .limit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .limit-table th, .limit-table td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        .limit-table th { background: #f8fafc; color: #334155; font-weight: 600; }
+
+        /* Content Section */
+        .content-section {
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            padding: 34px;
+            margin-top: 30px;
+            text-align: left;
+            line-height: 1.75;
+        }
+        .content-section h2 {
+            font-size: 20px;
+            color: #0f172a;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+        .content-section h2:first-of-type { margin-top: 0; }
+        .content-section p { font-size: 14px; color: #475569; margin-bottom: 14px; }
+        .content-section ul, .content-section ol { font-size: 14px; color: #475569; padding-left: 20px; margin-bottom: 16px; }
+        .content-section li { margin-bottom: 6px; }
+
+        .faq-item {
+            margin-bottom: 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            background: #f8fafc;
+        }
+        .faq-question { font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 6px; }
+        .faq-answer { font-size: 13.5px; color: #475569; margin: 0; }
+
+        footer { 
+            text-align: center; 
+            padding: 32px 15px; 
+            border-top: 1px solid #e2e8f0; 
+            margin-top: 50px; 
+            background-color: #ffffff; 
+            font-size: 13px; 
+            line-height: 1.9; 
+            color: #64748b;
+        }
+        footer a { color: #2563eb; text-decoration: none; margin: 0 8px; }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>Word & Character Counter</h1>
-    <p class="subtitle">अपने टेक्स्ट के शब्द, अक्षर और वाक्य तुरंत रियल-टाइम में गिनें</p>
+<header>
+    <a href="index.html" class="brand">The AI Hub Tools</a>
+    <div class="nav-links">
+        <a href="index.html">All Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</header>
 
-    <div class="stats-grid">
-        <div class="stat-box">
-            <div class="stat-number" id="wordCount">0</div>
-            <div class="stat-label">कुल शब्द (Words)</div>
+<div class="main-container">
+    <div class="tool-card">
+        <h1>Word & Character Counter</h1>
+        <p class="subtitle">अपने टेक्स्ट के शब्द, अक्षर, वाक्य, पैराग्राफ और पढ़ने का समय रियल-टाइम में सटीक ट्रैक करें</p>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number" id="wordCount">0</div>
+                <div class="stat-label">शब्द (Words)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="charCount">0</div>
+                <div class="stat-label">अक्षर (With Spaces)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="charNoSpaceCount">0</div>
+                <div class="stat-label">अक्षर (No Spaces)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="sentenceCount">0</div>
+                <div class="stat-label">वाक्य (Sentences)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="paraCount">0</div>
+                <div class="stat-label">पैराग्राफ (Paragraphs)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="readingTime">0 min</div>
+                <div class="stat-label">पढ़ने का समय (Read Time)</div>
+            </div>
         </div>
-        <div class="stat-box">
-            <div class="stat-number" id="charCount">0</div>
-            <div class="stat-label">कुल अक्षर (Characters)</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number" id="charNoSpaceCount">0</div>
-            <div class="stat-label">बिना स्पेस के अक्षर</div>
+
+        <textarea id="textInput" placeholder="यहाँ अपना टेक्स्ट टाइप करें या पेस्ट करें..." oninput="countText()"></textarea>
+        
+        <div class="action-row">
+            <button class="btn-action btn-copy" onclick="copyText()">टेक्स्ट कॉपी करें (Copy)</button>
+            <button class="btn-action btn-clear" onclick="clearText()">साफ़ करें (Clear All)</button>
         </div>
     </div>
 
-    <textarea id="textInput" placeholder="यहाँ अपना टेक्स्ट टाइप करें या पेस्ट करें..." oninput="countText()"></textarea>
-    <button class="btn-clear" onclick="clearText()">टेक्स्ट साफ़ करें (Clear)</button>
+    <!-- Toast Notification Element -->
+    <div id="toast">टेक्स्ट क्लिपबोर्ड में कॉपी हो गया!</div>
 
-    <div class="seo-text">
-        <strong>खासियत:</strong>
+    <!-- SEO & Detailed Guide Section (AdSense Compliance: Value Content) -->
+    <div class="content-section">
+        <h2>ऑनलाइन वर्ड काउंटर टूल क्या है और यह क्यों जरूरी है?</h2>
+        <p>
+            डिजिटल राइटिंग, ब्लॉगिंग और सोशल मीडिया मैनेजमेंट में सटीकता सबसे महत्वपूर्ण पहलू है। **The AI Hub Tools** का यह **Word & Character Counter Tool** एक हल्का, सुरक्षित और अत्यंत तीव्र टूल है, जो आपके टाइप करते ही रियल-टाइम में कुल शब्दों, वर्णों, वाक्यों और पैराग्राफों की लाइव गणना करता है।
+        </p>
+        <p>
+            सर्च इंजन ऑप्टिमाइजेशन (SEO) में Google सर्च रिजल्ट्स के लिए Meta Titles (50-60 कैरेक्टर) और Meta Descriptions (155-160 कैरेक्टर) की सख्त सीमाएं होती हैं। यदि आप तय सीमा से अधिक लिखते हैं, तो सर्च इंजन आपके वाक्य को बीच में ही काट देता है। इस टूल के माध्यम से आप सुनिश्चित कर सकते हैं कि आपका कंटेंट हर प्लेटफॉर्म के अनुकूल है।
+        </p>
+
+        <h2>सोशल मीडिया एवं SEO के लिए मानक सीमाएं (Character Limits Guide)</h2>
+        <table class="limit-table">
+            <thead>
+                <tr>
+                    <th>प्लेटफ़ॉर्म / उपयोग</th>
+                    <th>अनुशंसित सीमा (Character Limit)</th>
+                    <th>महत्वपूर्ण सुझाव</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>X (Twitter) Post</td>
+                    <td>280 Characters</td>
+                    <td>संक्षिप्त और प्रभावशाली संदेश लिखें।</td>
+                </tr>
+                <tr>
+                    <td>Instagram Bio</td>
+                    <td>150 Characters</td>
+                    <td>स्पष्ट परिचय और कॉल-टू-एक्शन (CTA) दें।</td>
+                </tr>
+                <tr>
+                    <td>Google Meta Title</td>
+                    <td>50 - 60 Characters</td>
+                    <td>मुख्य कीवर्ड शुरुआत में रखें।</td>
+                </tr>
+                <tr>
+                    <td>Google Meta Description</td>
+                    <td>150 - 160 Characters</td>
+                    <td>सटीक सारांश ताकि क्लिक-थ्रू-रेट (CTR) बढ़े।</td>
+                </tr>
+                <tr>
+                    <td>LinkedIn Post</td>
+                    <td>3,000 Characters</td>
+                    <td>पहले 140 अक्षरों में हुक बनाएं ताकि "see more" पर क्लिक हो।</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>इस टूल का उपयोग कैसे करें? (How to Use)</h2>
+        <ol>
+            <li><strong>टेक्स्ट इनपुट:</strong> टूल के टेक्स्ट एरिया में अपना पैराग्राफ टाइप करें या किसी डॉक्यूमेंट/नोट्स से कॉपी करके पेस्ट करें।</li>
+            <li><strong>तुरंत परिणाम:</strong> किसी भी बटन को दबाने की आवश्यकता नहीं है; जैसे ही आप टाइप करेंगे, ऊपर दिए गए 6 बॉक्स तुरंत अपडेट हो जाएंगे।</li>
+            <li><strong>कॉपी और रीसेट:</strong> काम पूरा होने पर "टेक्स्ट कॉपी करें" बटन पर क्लिक करके पूरे कंटेंट को एक क्लिक में क्लिपबोर्ड पर ले लें।</li>
+        </ol>
+
+        <h2>इस टूल की प्रमुख तकनीकी खूबियां</h2>
         <ul>
-            <li>लाइव रियल-टाइम गिनती (टाइप करते ही अपडेट)</li>
-            <li>ब्लॉग, निबंध और सोशल मीडिया कैप्शन के लिए बेस्ट</li>
-            <li>100% सुरक्षित और तेज़ ब्राउज़र टूल</li>
+            <li><strong>100% क्लाइंट-साइड प्राइवेसी:</strong> आपका टेक्स्ट किसी सर्वर पर अपलोड नहीं होता। सारी प्रोसेसिंग आपके लोकल ब्राउज़र के भीतर सुरक्षित जावास्क्रिप्ट द्वारा होती है।</li>
+            <li><strong>यूनिकोड और बहुभाषी सपोर्ट:</strong> यह टूल हिंदी, अंग्रेजी, संस्कृत और रीजनल स्क्रिप्ट्स के साथ-साथ इमोजी (Emojis) की भी सटीक गणना करता है।</li>
+            <li><strong>पूर्ण विराम (। / .) पहचान:</strong> हिंदी के पूर्ण विराम (।) और अंग्रेजी के फुल स्टॉप (.) दोनों को पहचान कर वाक्यों की सही संख्या निकालता है।</li>
         </ul>
+
+        <h2>अक्सर पूछे जाने वाले सवाल (Frequently Asked Questions - FAQs)</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Q1: क्या यह वर्ड काउंटर टूल पूरी तरह से मुफ्त है?</div>
+            <div class="faq-answer">हाँ, यह टूल हमेशा के लिए 100% फ्री है। किसी भी तरह के लॉगिन, अकाउंट क्रिएशन या सब्सक्रिप्शन की कोई आवश्यकता नहीं है।</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q2: क्या मेरा लिखा हुआ डेटा सुरक्षित है?</div>
+            <div class="faq-answer">बिल्कुल। आपकी गोपनीयता हमारी प्राथमिकता है। आपका डेटा किसी भी बाहरी सर्वर या डेटाबेस में सेव नहीं होता। ब्राउज़र बंद करते ही टेक्स्ट हट जाता है।</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q3: पढ़ने का समय (Reading Time) कैसे निकाला जाता है?</div>
+            <div class="faq-answer">यह टूल वैज्ञानिक रूप से स्वीकृत 200 शब्द प्रति मिनट (WPM) की औसत मानवीय पढ़ने की गति के अनुसार गणना करता है।</div>
+        </div>
     </div>
 </div>
-<footer style="text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; margin-top: 50px; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8;">
-    <p style="margin: 0 0 10px 0; color: #555;">
+
+<footer>
+    <p style="margin: 0 0 10px 0; color: #475569;">
         &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
     </p>
     <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About Us</a> | 
+        <a href="contact.html">Contact Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms & Conditions</a>
     </p>
 </footer>
 
@@ -86,21 +403,67 @@
     function countText() {
         const text = document.getElementById("textInput").value;
 
-        // कुल अक्षर
+        // 1. कुल अक्षर (With Spaces)
         document.getElementById("charCount").innerText = text.length;
 
-        // बिना स्पेस के अक्षर
+        // 2. बिना स्पेस के अक्षर
         const noSpace = text.replace(/\s+/g, '');
         document.getElementById("charNoSpaceCount").innerText = noSpace.length;
 
-        // कुल शब्द
-        const words = text.trim().split(/\s+/).filter(item => item.length > 0);
+        // 3. कुल शब्द
+        const trimmed = text.trim();
+        const words = trimmed ? trimmed.split(/\s+/).filter(item => item.length > 0) : [];
         document.getElementById("wordCount").innerText = words.length;
+
+        // 4. वाक्य गणना (Handles English ., !, ? and Hindi Purna Viram ।)
+        const sentences = trimmed ? trimmed.split(/[.!?।]+/).filter(item => item.trim().length > 0) : [];
+        document.getElementById("sentenceCount").innerText = sentences.length;
+
+        // 5. पैराग्राफ गणना (Line breaks)
+        const paragraphs = trimmed ? trimmed.split(/\n+/).filter(item => item.trim().length > 0) : [];
+        document.getElementById("paraCount").innerText = paragraphs.length;
+
+        // 6. पढ़ने का समय (200 words per minute average)
+        const readingMinutes = Math.ceil(words.length / 200);
+        document.getElementById("readingTime").innerText = words.length > 0 ? readingMinutes + " min" : "0 min";
     }
 
     function clearText() {
         document.getElementById("textInput").value = "";
         countText();
+        document.getElementById("textInput").focus();
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.className = "show";
+        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 2200);
+    }
+
+    function copyText() {
+        const text = document.getElementById("textInput").value;
+        if (!text.trim()) {
+            showToast("कॉपी करने के लिए कोई टेक्स्ट नहीं है!");
+            return;
+        }
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("टेक्स्ट क्लिपबोर्ड में कॉपी हो गया!");
+            }).catch(() => {
+                fallbackCopy(text);
+            });
+        } else {
+            fallbackCopy(text);
+        }
+    }
+
+    function fallbackCopy(text) {
+        const input = document.getElementById("textInput");
+        input.select();
+        document.execCommand("copy");
+        showToast("टेक्स्ट क्लिपबोर्ड में कॉपी हो गया!");
     }
 </script>
 
