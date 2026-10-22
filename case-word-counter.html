@@ -19,20 +19,20 @@
   <meta name="description" content="Free online case converter and live word counter tool. Convert text to UPPERCASE, lowercase, Title Case, Sentence case, clean spaces, and calculate words, characters, and reading time instantly.">
   <meta name="keywords" content="case converter, word counter, text case converter, change case, title case converter, uppercase to lowercase, sentence case, slug generator, character counter online">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://theaihubtools.com/case-converter">
+  <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/case-word-counter.html">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Case Converter & Word Counter | The AI Hub Tools">
   <meta property="og:description" content="Effortlessly transform text cases and calculate words, characters, paragraphs, and reading time in real-time.">
-  <meta property="og:url" content="https://theaihubtools.com/case-converter">
-  <meta property="og:image" content="https://theaihubtools.com/assets/og-case-converter.png">
+  <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/case-word-counter.html">
+  <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/assets/og-case-converter.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Case Converter & Word Counter | The AI Hub Tools">
   <meta name="twitter:description" content="Effortlessly transform text cases and calculate words, characters, paragraphs, and reading time in real-time.">
-  <meta name="twitter:image" content="https://theaihubtools.com/assets/og-case-converter.png">
+  <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/assets/og-case-converter.png">
 
   <!-- Schema Markup (JSON-LD for Google SEO) -->
   <script type="application/ld+json">
@@ -40,7 +40,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Case Converter & Word Counter",
-    "url": "https://theaihubtools.com/case-converter",
+    "url": "https://theaihub-tools.github.io/all-tools/case-word-counter.html",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript",
@@ -187,6 +187,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
+      user-select: none;
     }
     button:hover {
       background-color: #30363d;
@@ -221,7 +222,6 @@
       cursor: not-allowed;
     }
 
-    /* Notification Toast */
     #statusToast {
       display: none;
       text-align: center;
@@ -242,7 +242,6 @@
       border: 1px solid #da3633;
     }
 
-    /* Content & SEO */
     .content-section {
       background: #161b22;
       border: 1px solid #30363d;
@@ -272,7 +271,6 @@
       color: #c9d1d9;
     }
 
-    /* FAQ Details */
     details {
       border-bottom: 1px solid #30363d;
       padding: 14px 0;
@@ -332,7 +330,6 @@
 <body>
 
   <div class="container">
-    <!-- Main Tool Card -->
     <main class="converter-card">
       <h1>Case Converter & Word Counter</h1>
 
@@ -385,7 +382,6 @@
       </div>
     </main>
 
-    <!-- SEO & How to Use Guide -->
     <section class="content-section">
       <h2>What is the Case Converter & Word Counter?</h2>
       <p>This is a fast, lightweight, and completely private online text utility designed for content writers, bloggers, students, and software developers. Effortlessly switch between uppercase, lowercase, title case, sentence case, alternate case, and URL-friendly slug format while tracking words, characters, paragraphs, and reading time in real time.</p>
@@ -408,7 +404,6 @@
       </ul>
     </section>
 
-    <!-- Frequently Asked Questions -->
     <section class="content-section">
       <h2>Frequently Asked Questions (FAQs)</h2>
 
@@ -438,7 +433,6 @@
       </details>
     </section>
 
-    <!-- Footer -->
     <footer>
       <p style="margin: 0 0 10px 0; color: #8b949e;">
         &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
@@ -455,17 +449,18 @@
 
   <script>
     const input = document.getElementById('textInput');
-    const copyBtn = document.getElementById('copyBtn');
     const undoBtn = document.getElementById('undoBtn');
     const toast = document.getElementById('statusToast');
+    let toastTimer = null;
 
     let historyStack = [];
 
     function showToast(msg, type = 'success') {
+      if (toastTimer) clearTimeout(toastTimer);
       toast.innerText = msg;
       toast.className = type === 'success' ? 'toast-success' : 'toast-warning';
       toast.style.display = 'block';
-      setTimeout(() => {
+      toastTimer = setTimeout(() => {
         toast.style.display = 'none';
       }, 2500);
     }
@@ -481,29 +476,29 @@
     function updateStats() {
       const text = input.value;
       
-      // Characters count
       document.getElementById('charCount').innerText = text.length;
 
-      // Characters without spaces
       const charsNoSpace = text.replace(/\s+/g, '').length;
       document.getElementById('charNoSpaceCount').innerText = charsNoSpace;
 
-      // Words count
       const words = text.trim().split(/\s+/).filter(w => w.length > 0);
       const wordTotal = text.trim() === '' ? 0 : words.length;
       document.getElementById('wordCount').innerText = wordTotal;
 
-      // Paragraphs count
       const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0);
       document.getElementById('paraCount').innerText = text.trim() === '' ? 0 : paragraphs.length;
 
-      // Lines count
       const lines = text.length === 0 ? 0 : text.split('\n').length;
       document.getElementById('lineCount').innerText = lines;
 
-      // Reading time estimation (avg 200 WPM)
-      const minutes = Math.ceil(wordTotal / 200);
-      document.getElementById('readingTime').innerText = wordTotal === 0 ? '0 min' : `${minutes} min`;
+      if (wordTotal === 0) {
+        document.getElementById('readingTime').innerText = '0 min';
+      } else if (wordTotal < 60) {
+        document.getElementById('readingTime').innerText = '< 1 min';
+      } else {
+        const minutes = Math.ceil(wordTotal / 200);
+        document.getElementById('readingTime').innerText = `${minutes} min`;
+      }
     }
 
     function applyTransform(type) {
@@ -521,7 +516,7 @@
           input.value = input.value.toLowerCase();
           break;
         case 'titlecase':
-          input.value = input.value.toLowerCase().replace(/(^|\s)\S/g, char => char.toUpperCase());
+          input.value = input.value.toLowerCase().replace(/(^[a-z\u00C0-\u024F]|[\s\-_"'\(\[\{][a-z\u00C0-\u024F])/g, char => char.toUpperCase());
           break;
         case 'sentencecase':
           input.value = input.value.toLowerCase().replace(/(^\s*|[.!?]\s*)([a-z\u00C0-\u024F])/g, (m, p, c) => p + c.toUpperCase());
@@ -538,7 +533,7 @@
             .replace(/^-+|-+$/g, '');
           break;
         case 'cleanspaces':
-          input.value = input.value.replace(/[ \t]+/g, ' ').trim();
+          input.value = input.value.replace(/[ \t]+/g, ' ').replace(/\n\s*\n/g, '\n\n').trim();
           showToast('Extra spaces cleaned!');
           break;
       }
@@ -569,13 +564,16 @@
           showToast('Clipboard is empty!', 'warning');
         }
       } catch (err) {
-        showToast('Clipboard permission denied. Please press Ctrl+V.', 'warning');
+        showToast('Permission denied. Use Ctrl+V instead!', 'warning');
       }
     }
 
     function clearText() {
-      if (!input.value) return;
-      if (input.value.length > 50) {
+      if (!input.value) {
+        showToast('Workspace is already empty!', 'warning');
+        return;
+      }
+      if (input.value.length > 60) {
         if (!confirm('Are you sure you want to clear all text?')) return;
       }
       recordHistory();
@@ -599,30 +597,20 @@
       showToast('File downloaded!');
     }
 
-    function copyText() {
+    async function copyText() {
       if (!input.value.trim()) {
-        showToast('No text to copy!', 'warning');
+        showToast('Nothing to copy!', 'warning');
         return;
       }
-      navigator.clipboard.writeText(input.value).then(() => {
-        const originalText = copyBtn.innerText;
-        copyBtn.innerText = 'Copied! ✓';
-        copyBtn.style.backgroundColor = '#1f6feb';
-        showToast('Copied to clipboard!');
-        setTimeout(() => {
-          copyBtn.innerText = originalText;
-          copyBtn.style.backgroundColor = '';
-        }, 2000);
-      }).catch(() => {
+      try {
+        await navigator.clipboard.writeText(input.value);
+        showToast('Text copied to clipboard!');
+      } catch (err) {
         input.select();
         document.execCommand('copy');
-        showToast('Copied to clipboard!');
-      });
+        showToast('Text copied to clipboard!');
+      }
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      recordHistory();
-    });
   </script>
 </body>
 </html>
