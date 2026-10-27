@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://theaihub-tools.github.io/all-tools/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://theaihub-tools.github.io/all-tools/index.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
@@ -95,7 +95,7 @@
     <lastmod>2026-10-05</lastmod>
     <priority>0.90</priority>
   </url> 
-    <url>
+  <url>
     <loc>https://theaihub-tools.github.io/all-tools/json-formatter.html</loc>
     <lastmod>2026-10-07</lastmod>
     <priority>0.90</priority>
@@ -110,5 +110,34 @@
     <lastmod>2026-10-07</lastmod>
     <priority>0.90</priority>
   </url>
-
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/diff-checker.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/regex-tester.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/hash-generator.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/url-encoder-decoder.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/exif-data-remover.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/glassmorphism-generator.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
 </urlset>
