@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data: blob:;">
+  <meta name="theme-color" content="#1d4ed8">
+  
+  <title>Bulk Image Resizer Pro - Batch Resize, Compress, Background Remover, Watermark & PDF | The AI Hub Tools</title>
+  <meta name="title" content="Bulk Image Resizer Pro - Batch Resize, Compress, Background Remover, Watermark & PDF | The AI Hub Tools">
+  <meta name="description" content="Ultimate 100% client-side Bulk Image Studio. Batch resize 100+ photos by pixels, %, or exact KB (300 DPI), remove solid backgrounds, add logo/tiled watermarks, wrap browser mockups, export PDF, ZIP, and responsive HTML.">
+  <meta name="keywords" content="Bulk Image Resizer, Batch Image Resizer Online, Bulk Background Remover, Bulk Watermark Logo, Image to PDF Batch, Responsive Srcset Generator, Favicon Pack Generator, 300 DPI Converter, The AI Hub Tools">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="author" content="The AI Hub Tools">
+  <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/bulk-image-resizer.html">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The AI Hub Tools">
+  <meta property="og:title" content="Bulk Image Resizer Pro - Enterprise Client-Side Batch Image Studio">
+  <meta property="og:description" content="Batch resize, auto-trim, remove backgrounds, add logo/tiled watermarks, create A4 contact sheets & export ZIP/PDF 100% in your browser.">
+  <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/bulk-image-resizer.html">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MEQE82X4L0');
+  </script>
+
+  <!-- Security: Noindex Iframe Check -->
+  <script>
+    if (window.self !== window.top) {
+      var meta = document.createElement('meta');
+      meta.name = "robots";
+      meta.content = "noindex, nofollow";
+      document.getElementsByTagName('head')[0].appendChild(meta);
+    }
+  </script>
+
+  <!-- JSZip & jsPDF Libraries via cdnjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+      --success: #15803d;
+      --success-hover: #166534;
+      --danger: #b91c1c;
+      --accent: #7c3aed;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --radius: 14px;
+    }
+
+    [data-theme="dark"] {
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --success: #22c55e;
+      --success-hover: #16a34a;
+      --danger: #ef4444;
+      --accent: #a78bfa;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background-color 0.2s, color 0.2s; }
+    body { background-color: var(--bg); color: var(--text); margin: 0; padding: 16px 12px; line-height: 1.7; -webkit-user-select: none; user-select: none; }
+    input, select, textarea { -webkit-user-select: text; user-select: text; }
+    .container { max-width: 1020px; margin: 0 auto; }
+
+    /* Top Bar */
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+    .brand-link { font-weight: 800; color: var(--primary); font-size: 16px; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .nav-pill { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 7px 13px; border-radius: 20px; cursor: pointer; font-size: 12.5px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+    .nav-pill:hover { border-color: var(--primary); color: var(--primary); }
+
+    .tool-card { background: var(--card-bg); padding: 28px 22px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05); margin-bottom: 28px; }
+    h1 { font-size: 26px; text-align: center; color: var(--text); margin: 0 0 6px 0; font-weight: 800; }
+    .sub-title { text-align: center; color: var(--muted); font-size: 14.5px; margin: 0 0 22px 0; }
+
+    /* Drop Zone */
+    .drop-zone { border: 2px dashed #93c5fd; background: rgba(59, 130, 246, 0.05); border-radius: var(--radius); padding: 26px 16px; text-align: center; cursor: pointer; transition: 0.2s; position: relative; }
+    .drop-zone:hover, .drop-zone.dragover { background: rgba(59, 130, 246, 0.12); border-color: var(--primary); }
+    .drop-zone svg { width: 44px; height: 44px; fill: var(--primary); margin-bottom: 6px; }
+    .drop-zone strong { color: var(--primary); font-size: 16px; display: block; }
+    .drop-zone p { margin: 5px 0 0; font-size: 13px; color: var(--muted); }
+    .upload-btn-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .upload-sub-btn { padding: 7px 14px; background: var(--card-bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+    .upload-sub-btn:hover { border-color: var(--primary); color: var(--primary); }
+    #bulkInput, #folderInput, #wmLogoInput { display: none; }
+
+    .trust-badge { display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; padding: 9px 12px; margin-top: 14px; font-size: 13px; color: var(--success); font-weight: 600; text-align: center; }
+    .trust-badge svg { width: 17px; height: 17px; fill: currentColor; flex-shrink: 0; }
+
+    /* Individual File Queue Strip */
+    #queueWrapper { display: none; background: var(--bg); border: 1px solid var(--border); padding: 12px; border-radius: 10px; margin-top: 16px; }
+    .queue-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 13.5px; font-weight: 700; margin-bottom: 10px; }
+    .queue-actions { display: flex; gap: 8px; }
+    .add-more-btn { background: rgba(29, 78, 216, 0.1); color: var(--primary); border: 1px solid rgba(29, 78, 216, 0.3); padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
+    .clear-btn { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
+    .queue-strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+    .queue-chip { position: relative; flex: 0 0 74px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 4px; text-align: center; }
+    .queue-chip img { width: 64px; height: 50px; object-fit: cover; border-radius: 5px; display: block; }
+    .queue-chip span { display: block; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--muted); margin-top: 2px; }
+    .chip-del { position: absolute; top: -5px; right: -5px; width: 18px; height: 18px; border-radius: 50%; background: var(--danger); color: #fff; border: none; font-size: 10px; font-weight: 700; cursor: pointer; line-height: 18px; padding: 0; }
+
+    /* Mode Tabs (7 Modes) */
+    .control-group { margin-top: 22px; }
+    .control-label { display: block; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .mode-tabs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 16px; }
+    @media (max-width: 860px) { .mode-tabs { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .mode-tabs { grid-template-columns: repeat(2, 1fr); } }
+    .mode-tab { padding: 9px 5px; font-size: 12px; font-weight: 700; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--text); text-align: center; }
+    .mode-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+    @media (max-width: 700px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+    .input-box label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; }
+    input[type="number"], input[type="text"], input[type="color"], select, textarea { width: 100%; padding: 10px 12px; font-size: 13.5px; border: 1px solid var(--border); border-radius: 8px; outline: none; background: var(--card-bg); color: var(--text); }
+    input[type="color"] { height: 41px; padding: 4px; cursor: pointer; }
+    input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15); }
+
+    /* Range Slider */
+    .slider-wrap { background: var(--bg); border: 1px solid var(--border); padding: 12px 14px; border-radius: 10px; margin-bottom: 14px; }
+    .slider-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+
+    .checkbox-container { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--text); font-weight: 600; cursor: pointer; user-select: none; margin-top: 8px; }
+    .checkbox-container input { width: 17px; height: 17px; cursor: pointer; }
+
+    .presets-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .preset-btn { flex: 1; min-width: 75px; padding: 8px; font-size: 12.5px; font-weight: 600; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--text); }
+    .preset-btn:hover, .preset-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Pro Studio Accordion Panels */
+    .pro-panel { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-top: 12px; }
+    .info-pill-box { background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.25); padding: 12px; border-radius: 8px; font-size: 13px; color: var(--text); margin-bottom: 12px; }
+
+    .btn-action { width: 100%; padding: 15px; font-size: 16px; font-weight: 700; color: white; background: var(--primary); border: none; border-radius: 10px; cursor: pointer; transition: 0.2s; margin-top: 18px; }
+    .btn-action:hover { background: var(--primary-hover); }
+    .btn-action:disabled { background: #94a3b8; cursor: not-allowed; }
+
+    /* Progress Bar */
+    #progressWrap { display: none; margin-top: 16px; }
+    .progress-bar-bg { width: 100%; height: 10px; background: var(--border); border-radius: 10px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; width: 0%; background: var(--success); transition: width 0.2s; }
+    .progress-text { font-size: 13px; font-weight: 600; color: var(--primary); text-align: center; margin-top: 6px; }
+
+    /* Bulk Results Grid */
+    #resultSection { display: none; margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .bulk-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: var(--bg); padding: 14px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 16px; }
+    .bulk-header-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn-zip { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; background: var(--success); color: white; border: none; font-weight: 700; border-radius: 8px; font-size: 13.5px; cursor: pointer; }
+    .btn-zip:hover { background: var(--success-hover); }
+    .btn-pdf { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 15px; background: #dc2626; color: white; border: none; font-weight: 700; border-radius: 8px; font-size: 13.5px; cursor: pointer; }
+    .btn-story { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 15px; background: var(--accent); color: white; border: none; font-weight: 700; border-radius: 8px; font-size: 13.5px; cursor: pointer; }
+
+    .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+    .result-item { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+    .result-thumb-wrap { position: relative; cursor: pointer; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 8px; background: repeating-conic-gradient(#cbd5e1 0% 25%, transparent 0% 50%) 50% / 14px 14px; }
+    .result-item img { width: 100%; height: 135px; object-fit: contain; display: block; }
+    .inspect-badge { position: absolute; bottom: 5px; right: 5px; background: rgba(15, 23, 42, 0.85); color: #fff; font-size: 10.5px; padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+    .item-name { font-size: 12.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }
+    .item-meta { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
+    .item-meta span { color: var(--success); font-weight: 700; }
+    
+    /* Dominant Color Palette Swatches */
+    .palette-row { display: flex; justify-content: center; gap: 6px; margin-bottom: 8px; }
+    .swatch-dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #fff; box-shadow: 0 0 0 1px var(--border); cursor: pointer; position: relative; }
+    .swatch-dot:hover { transform: scale(1.2); }
+
+    .card-btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .btn-single-dl { display: block; padding: 7px 4px; background: var(--primary); color: #fff; text-decoration: none; border-radius: 6px; font-size: 12px; font-weight: 600; }
+    .btn-b64 { display: block; padding: 7px 4px; background: var(--card-bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .btn-b64:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Developer Responsive Picture/Srcset Box */
+    #devCodeBox { display: none; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-top: 18px; }
+    #devCodeBox textarea { font-family: monospace; font-size: 12px; height: 95px; resize: vertical; margin-top: 8px; }
+
+    /* Interactive Split-Curtain Before vs After Modal */
+    .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
+    .modal-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; max-width: 780px; width: 100%; padding: 20px; text-align: center; }
+    .split-stage { position: relative; width: 100%; max-height: 420px; overflow: hidden; border-radius: 10px; border: 1px solid var(--border); margin: 14px 0; background: repeating-conic-gradient(#cbd5e1 0% 25%, #f8fafc 0% 50%) 50% / 16px 16px; display: flex; justify-content: center; align-items: center; }
+    .split-stage img { max-width: 100%; max-height: 400px; display: block; pointer-events: none; }
+    .split-overlay { position: absolute; inset: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+    .split-divider { position: absolute; top: 0; bottom: 0; width: 3px; background: #3b82f6; box-shadow: 0 0 8px rgba(0,0,0,0.6); pointer-events: none; }
+    .split-labels { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+
+    /* Upgraded Social Share & Save Bar */
+    .share-box-container { margin: 28px auto 10px auto; padding: 20px 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); }
+    .share-title { margin: 0 0 14px 0; font-size: 15px; font-weight: 700; color: var(--text); }
+    .share-buttons-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+    .share-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 9px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; color: #ffffff !important; border: none; cursor: pointer; transition: transform 0.15s ease, opacity 0.15s ease; }
+    .share-btn svg { width: 15px; height: 15px; fill: currentColor; display: block; flex-shrink: 0; }
+    .share-btn:hover { transform: translateY(-2px); opacity: 0.95; }
+    .share-btn.whatsapp { background-color: #25D366; }
+    .share-btn.telegram { background-color: #229ED9; }
+    .share-btn.pinterest { background-color: #E60023; }
+    .share-btn.x-twitter { background-color: #000000; }
+    .share-btn.facebook { background-color: #1877F2; }
+    .share-btn.linkedin { background-color: #0A66C2; }
+    .share-btn.copylink { background-color: #475569; }
+    .share-btn.native-share { background-color: #0f172a; }
+
+    /* Embed Generator Box */
+    .embed-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-top: 24px; }
+    .embed-box h3 { margin: 0 0 6px; font-size: 16px; }
+    .embed-code-wrap { display: flex; gap: 8px; margin-top: 10px; }
+    .embed-code-wrap input { font-family: monospace; font-size: 12.5px; background: var(--card-bg); }
+    .copy-embed-btn { padding: 10px 16px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+
+    /* SEO Article & FAQ Section */
+    .seo-section { background: var(--card-bg); padding: 28px 22px; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 24px; }
+    .seo-section h2 { font-size: 21px; margin-top: 0; color: var(--text); }
+    .seo-section h3 { font-size: 17px; margin-top: 20px; color: var(--primary); }
+    .seo-section p, .seo-section li { font-size: 14.5px; color: var(--muted); }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-weight: 700; color: var(--text); font-size: 15px; margin-bottom: 4px; }
+
+    /* Related Image & Design Tools Section */
+    .related-tools-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin-bottom: 24px; }
+    .related-tools-box h3 { font-size: 16px; font-weight: 700; margin: 0 0 14px 0; color: var(--text); }
+    .related-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .related-pill { padding: 8px 14px; background: rgba(16, 185, 129, 0.08); color: #059669; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; }
+    .related-pill:hover { background: rgba(16, 185, 129, 0.18); }
+    .related-pill.all-btn { background: #059669; color: #ffffff; }
+
+    /* Footer */
+    footer { text-align: center; padding: 20px 10px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 20px; }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-bottom: 10px; }
+    .footer-links a { color: var(--text); text-decoration: none; font-weight: 600; }
+    .footer-links a:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Top Navigation & Preset Manager -->
+  <div class="top-bar">
+    <a href="index.html" class="brand-link">⚡ The AI Hub Tools</a>
+    <div class="nav-actions">
+      <button type="button" class="nav-pill" onclick="saveUserPreset()" title="Save your current settings in browser">💾 Save Preset</button>
+      <button type="button" class="nav-pill" onclick="loadUserPreset(true)" title="Restore saved settings">📂 Load Preset</button>
+      <a href="index.html" class="nav-pill">🏠 All Tools</a>
+      <button type="button" class="nav-pill" onclick="toggleTheme()" id="themeBtn">🌓 Dark Mode</button>
+    </div>
+  </div>
+
+  <!-- Main Bulk Resizer Studio Card -->
+  <main class="tool-card">
+    <h1>Bulk Image Resizer Pro</h1>
+    <p class="sub-title">Enterprise Client-Side Batch Image Studio — Resize, Compress (300 DPI), Remove Backgrounds, Watermark, PDF & ZIP</p>
+
+    <!-- Multi-File, Folder & Ctrl+V Paste Drop Zone -->
+    <div class="drop-zone" id="dropZone" onclick="if(event.target.tagName !== 'BUTTON') document.getElementById('bulkInput').click()">
+      <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+      <strong>Drag & Drop Photos, Paste (Ctrl+V), or Choose Below</strong>
+      <p>Supports JPG, PNG, WebP, BMP, GIF — 100% Local RAM Processing</p>
+      <div class="upload-btn-group">
+        <button type="button" class="upload-sub-btn" onclick="document.getElementById('bulkInput').click()">🖼️ Select Files</button>
+        <button type="button" class="upload-sub-btn" onclick="document.getElementById('folderInput').click()">📁 Select Entire Folder</button>
+      </div>
+      <input type="file" id="bulkInput" accept="image/*" multiple>
+      <input type="file" id="folderInput" webkitdirectory directory multiple>
+    </div>
+
+    <div class="trust-badge">
+      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      <span>Zero-Upload Security & Auto EXIF/GPS Stripping: Your photos never leave your device.</span>
+    </div>
+
+    <!-- Individual File Queue Strip -->
+    <div id="queueWrapper">
+      <div class="queue-top">
+        <span id="queueText">0 images queued</span>
+        <div class="queue-actions">
+          <button type="button" class="add-more-btn" onclick="document.getElementById('bulkInput').click()">+ Add More</button>
+          <button type="button" class="clear-btn" onclick="clearQueue()">✕ Clear All</button>
+        </div>
+      </div>
+      <div class="queue-strip" id="queueStrip"></div>
+    </div>
+
+    <!-- Step 1: 7 Resize & Export Modes -->
+    <div class="control-group">
+      <label class="control-label">1. Choose Batch Mode:</label>
+      <div class="mode-tabs">
+        <button type="button" class="mode-tab active" id="tab-pixels" onclick="switchMode('pixels', this)">📐 Pixels (W×H)</button>
+        <button type="button" class="mode-tab" id="tab-percent" onclick="switchMode('percent', this)">📊 Percent (%)</button>
+        <button type="button" class="mode-tab" id="tab-kb" onclick="switchMode('kb', this)">⚖️ Exact KB</button>
+        <button type="button" class="mode-tab" id="tab-social" onclick="switchMode('social', this)">📱 Social Kit</button>
+        <button type="button" class="mode-tab" id="tab-icons" onclick="switchMode('icons', this)">🚀 Icon Pack</button>
+        <button type="button" class="mode-tab" id="tab-catalog" onclick="switchMode('catalog', this)">🗂️ A4 Catalog</button>
+        <button type="button" class="mode-tab" id="tab-dual" onclick="switchMode('dual', this)">📦 WebP+JPG</button>
+      </div>
+
+      <!-- Mode A: Pixels + Smart Fit Mode (Includes Center Auto-Crop Cover) -->
+      <div id="modePixels">
+        <div class="presets-row">
+          <button type="button" class="preset-btn" onclick="setPixelPreset(1920, 1080)">1920×1080 (HD)</button>
+          <button type="button" class="preset-btn" onclick="setPixelPreset(1200, 630)">1200×630 (Blog)</button>
+          <button type="button" class="preset-btn" onclick="setPixelPreset(1080, 1080)">1080×1080 (Square)</button>
+          <button type="button" class="preset-btn" onclick="setPixelPreset(800, 0)">800px Width</button>
+        </div>
+        <div class="grid-3">
+          <div class="input-box">
+            <label>Target Width (px) — 0 for auto</label>
+            <input type="number" id="targetWidth" value="1200" min="0" max="15000" placeholder="e.g. 1200">
+          </div>
+          <div class="input-box">
+            <label>Target Height (px) — 0 for auto</label>
+            <input type="number" id="targetHeight" value="0" min="0" max="15000" placeholder="Auto">
+          </div>
+          <div class="input-box">
+            <label>Smart Fit & Crop Mode:</label>
+            <select id="fitMode" onchange="document.getElementById('padColorWrap').style.display = this.value === 'solid-pad' ? 'block' : 'none'">
+              <option value="contain">Keep Aspect Ratio (No Crop)</option>
+              <option value="cover">Center Auto-Crop (Exact Fill, No Bars)</option>
+              <option value="blur-pad">Blur Background Fill (No Crop)</option>
+              <option value="solid-pad">Solid Color Pad Fill (No Crop)</option>
+              <option value="stretch">Exact Stretch (Fill W × H)</option>
+            </select>
+          </div>
+        </div>
+        <div id="padColorWrap" style="display: none; max-width: 220px; margin-bottom: 10px;">
+          <div class="input-box">
+            <label>Padding Background Color:</label>
+            <input type="color" id="padColor" value="#ffffff">
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode B: Percentage -->
+      <div id="modePercent" style="display: none;">
+        <div class="slider-wrap">
+          <div class="slider-header">
+            <span>Scale Percentage:</span>
+            <span id="percentVal" style="color: var(--primary);">50%</span>
+          </div>
+          <input type="range" id="percentSlider" min="5" max="300" value="50" oninput="document.getElementById('percentVal').innerText = this.value + '%'">
+        </div>
+      </div>
+
+      <!-- Mode C: Exact KB -->
+      <div id="modeKb" style="display: none;">
+        <div class="presets-row">
+          <button type="button" class="preset-btn" onclick="document.getElementById('targetKb').value=20">20 KB</button>
+          <button type="button" class="preset-btn" onclick="document.getElementById('targetKb').value=50">50 KB</button>
+          <button type="button" class="preset-btn" onclick="document.getElementById('targetKb').value=100">100 KB</button>
+          <button type="button" class="preset-btn" onclick="document.getElementById('targetKb').value=250">250 KB</button>
+        </div>
+        <div class="input-box">
+          <label>Target Maximum Size per Image (KB):</label>
+          <input type="number" id="targetKb" value="100" min="5" max="20000" placeholder="e.g. 100">
+        </div>
+      </div>
+
+      <!-- Mode D: Social Media Multi-Kit -->
+      <div id="modeSocial" style="display: none;">
+        <div class="info-pill-box">
+          <strong>📱 1 Photo → 4 Social Sizes Automatically:</strong> Converts each photo into <strong>Instagram Square (1080×1080)</strong>, <strong>Story/Reel (1080×1920)</strong>, <strong>YouTube Thumbnail (1280×720)</strong>, and <strong>Blog Banner (1200×630)</strong> using Blur-Background Fit.
+        </div>
+      </div>
+
+      <!-- Mode E: Web & App Favicon Pack -->
+      <div id="modeIcons" style="display: none;">
+        <div class="info-pill-box">
+          <strong>🚀 Developer Favicon & App Icon Pack:</strong> Generates crisp PNG icons in <strong>16×16</strong>, <strong>32×32</strong>, <strong>48×48</strong>, <strong>180×180 (Apple)</strong>, <strong>192×192 (Android)</strong>, and <strong>512×512</strong> sizes in one ZIP.
+        </div>
+      </div>
+
+      <!-- Mode F: A4 Catalog / Contact Sheet Grid -->
+      <div id="modeCatalog" style="display: none;">
+        <div class="info-pill-box">
+          <strong>🗂️ A4 Contact Sheet / Product Catalog Grid:</strong> Combines all uploaded photos onto high-resolution A4 catalog pages (12 photos per sheet) with filenames and dimensions printed underneath—ready to share on WhatsApp or print!
+        </div>
+      </div>
+
+      <!-- Mode G: Dual Format WebP + JPG Fallback -->
+      <div id="modeDual" style="display: none;">
+        <div class="info-pill-box">
+          <strong>📦 Developer Dual-Format Bundle (WebP + JPG):</strong> Exports every image in both modern <strong>.webp</strong> and fallback <strong>.jpg</strong> formats simultaneously, plus generates ready-to-copy HTML <code>&lt;picture&gt;</code> code!
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Format, Filters, Auto-Trim, Rotation & Smart Naming -->
+    <div class="control-group">
+      <label class="control-label">2. Format, Studio Filter, Auto-Trim & Smart Naming:</label>
+      <div class="grid-3">
+        <div class="input-box">
+          <label>Output Format:</label>
+          <select id="outputFormat">
+            <option value="image/jpeg">JPG / JPEG (300 DPI JFIF)</option>
+            <option value="image/webp">WebP (Modern Ultra-Light)</option>
+            <option value="image/png">PNG (Lossless / Transparent)</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <label>Studio Image Filter:</label>
+          <select id="studioFilter">
+            <option value="none">Original (No Filter)</option>
+            <option value="sharpen">✨ AI-Style Auto-Crisp / Sharpen</option>
+            <option value="enhance">☀️ Studio Auto-Enhance (Contrast+)</option>
+            <option value="grayscale">🎞️ Pure B&W / Grayscale</option>
+            <option value="black-ink">✒️ Black-Ink Signature / Doc Cleaner</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <label>Batch Rotation:</label>
+          <select id="batchRotate">
+            <option value="0">No Rotation (0°)</option>
+            <option value="90">Rotate Right (90°)</option>
+            <option value="-90">Rotate Left (-90°)</option>
+            <option value="180">Flip Upside Down (180°)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="input-box">
+          <label>Smart Filename Pattern ({name}, {n}, {w}, {h}, {date}):</label>
+          <input type="text" id="namePattern" value="resized-{name}" placeholder="e.g. item-{n}-{w}x{h}">
+        </div>
+        <div class="slider-wrap" id="qualitySliderBox" style="margin-bottom: 0;">
+          <div class="slider-header">
+            <span>Compression Quality:</span>
+            <span id="qualityVal" style="color: var(--primary);">85%</span>
+          </div>
+          <input type="range" id="qualitySlider" min="10" max="100" value="85" oninput="document.getElementById('qualityVal').innerText = this.value + '%'">
+        </div>
+      </div>
+
+      <label class="checkbox-container">
+        <input type="checkbox" id="autoTrimBorders">
+        <span>✂️ Smart Auto-Trim Empty Whitespace / Transparent Borders Before Resize</span>
+      </label>
+    </div>
+
+    <!-- Step 3: Pro Studio Add-ons (Background Remover, Privacy Blur, Mockups, Watermarks) -->
+    <div class="pro-panel">
+      <!-- 3A: Magic Solid Background Remover -->
+      <label class="checkbox-container" style="margin-top: 0;">
+        <input type="checkbox" id="enableBgRemove" onchange="document.getElementById('bgRemoveControls').style.display = this.checked ? 'grid' : 'none'">
+        <span>🪄 Magic Background Remover (Convert Solid Background to Transparent PNG/WebP)</span>
+      </label>
+      <div class="grid-2" id="bgRemoveControls" style="display: none; margin-top: 10px;">
+        <div class="input-box">
+          <label>Background Color to Remove (Auto-samples corner or pick):</label>
+          <select id="bgRemoveMode" onchange="document.getElementById('bgCustomColorBox').style.display = this.value === 'custom' ? 'block' : 'none'">
+            <option value="auto">Auto-Detect Top-Left Corner Color</option>
+            <option value="white">Pure White Background (#FFFFFF)</option>
+            <option value="black">Pure Black Background (#000000)</option>
+            <option value="custom">Custom Color Picker</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <label>Color Tolerance (10 - 120):</label>
+          <input type="number" id="bgTolerance" value="35" min="5" max="150">
+        </div>
+        <div class="input-box" id="bgCustomColorBox" style="display:none;">
+          <label>Pick Target Background Color:</label>
+          <input type="color" id="bgTargetColor" value="#00ff00">
+        </div>
+      </div>
+
+      <!-- 3B: Bulk Privacy Blur / Redact Zone -->
+      <label class="checkbox-container" style="margin-top: 12px;">
+        <input type="checkbox" id="enablePrivacyBlur" onchange="document.getElementById('privacyBlurControls').style.display = this.checked ? 'grid' : 'none'">
+        <span>🔒 Bulk Privacy Blur Zone (Hide Sensitive Header/Footer Bars in Screenshots)</span>
+      </label>
+      <div class="grid-2" id="privacyBlurControls" style="display: none; margin-top: 10px;">
+        <div class="input-box">
+          <label>Zone to Blur:</label>
+          <select id="blurZonePos">
+            <option value="bottom">Bottom Bar (Hide Phone/Nav Bar)</option>
+            <option value="top">Top Bar (Hide Status/URL Bar)</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <label>Zone Height (% of Image Height):</label>
+          <input type="number" id="blurZonePct" value="12" min="3" max="50">
+        </div>
+      </div>
+
+      <!-- 3C: Design Studio & Device Mockup Frame -->
+      <label class="checkbox-container" style="margin-top: 12px;">
+        <input type="checkbox" id="enableDesign" onchange="document.getElementById('designControls').style.display = this.checked ? 'grid' : 'none'">
+        <span>🎨 Rounded Corners, Border Frame & macOS Browser Window Mockup</span>
+      </label>
+      <div class="grid-4" id="designControls" style="display: none; margin-top: 10px;">
+        <div class="input-box">
+          <label>Corner Radius (px):</label>
+          <input type="number" id="cornerRadius" value="18" min="0" max="500">
+        </div>
+        <div class="input-box">
+          <label>Border Width (px):</label>
+          <input type="number" id="borderWidth" value="0" min="0" max="50">
+        </div>
+        <div class="input-box">
+          <label>Border Color:</label>
+          <input type="color" id="borderColor" value="#1d4ed8">
+        </div>
+        <div class="input-box">
+          <label>Device Frame:</label>
+          <select id="mockupFrame">
+            <option value="none">No Frame</option>
+            <option value="browser">🖥️ macOS Browser Window</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 3D: Text & Image Logo Watermark + Diagonal Tiled Grid -->
+      <label class="checkbox-container" style="margin-top: 12px;">
+        <input type="checkbox" id="enableWatermark" onchange="document.getElementById('watermarkControls').style.display = this.checked ? 'block' : 'none'">
+        <span>© Bulk Watermark Studio (Text, Dynamic Variables, PNG Logo & Anti-Theft Tiled Grid)</span>
+      </label>
+      <div id="watermarkControls" style="display: none; margin-top: 10px;">
+        <div class="grid-3">
+          <div class="input-box">
+            <label>Watermark Text ({name}, {n}, {date}):</label>
+            <input type="text" id="wmText" value="© The AI Hub Tools • {date}" placeholder="Brand or {name}">
+          </div>
+          <div class="input-box">
+            <label>Placement Style:</label>
+            <select id="wmPosition">
+              <option value="bottom-right">Bottom Right</option>
+              <option value="bottom-left">Bottom Left</option>
+              <option value="center">Center</option>
+              <option value="top-right">Top Right</option>
+              <option value="tiled">🛡️ Diagonal Tiled Grid (Anti-Theft)</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <label>Opacity (10% - 100%):</label>
+            <input type="number" id="wmOpacity" value="40" min="10" max="100">
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <button type="button" class="upload-sub-btn" onclick="document.getElementById('wmLogoInput').click()">🖼️ Upload PNG Logo Watermark (Optional)</button>
+          <span id="wmLogoStatus" style="font-size:12px; color:var(--muted);">No logo uploaded (using text)</span>
+          <input type="file" id="wmLogoInput" accept="image/*">
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Button (Press Enter also triggers) -->
+    <button type="button" class="btn-action" id="processBtn" onclick="startBulkResize()" disabled>⚡ Process All Images Now</button>
+
+    <!-- Progress Bar -->
+    <div id="progressWrap">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">Processing 0 / 0...</div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultSection">
+      <div class="bulk-header">
+        <div>
+          <h3 style="margin: 0; color: var(--success);">✓ Batch Processing Complete!</h3>
+          <span id="totalSavingsText" style="font-size: 13px; color: var(--muted);">Saved 0% total space</span>
+        </div>
+        <div class="bulk-header-actions">
+          <button type="button" class="btn-story" onclick="downloadResultStoryCard()">📸 Story Card</button>
+          <button type="button" class="btn-pdf" id="downloadPdfBtn" onclick="downloadAllAsPdf()">📄 Download PDF</button>
+          <button type="button" class="btn-zip" id="downloadZipBtn" onclick="downloadAllAsZip()">📦 Download ZIP</button>
+        </div>
+      </div>
+
+      <div class="results-grid" id="resultsGrid"></div>
+
+      <!-- Developer Responsive HTML <picture> / srcset Generator -->
+      <div id="devCodeBox">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:13.5px;">💻 Developer Responsive HTML <code>&lt;picture&gt;</code> &amp; <code>srcset</code> Snippet:</strong>
+          <button type="button" class="copy-embed-btn" style="padding:6px 12px; font-size:12px;" onclick="copyDevHtml()">Copy HTML</button>
+        </div>
+        <textarea id="devHtmlOutput" readonly></textarea>
+      </div>
+    </div>
+
+    <!-- Upgraded Social Share & Save Bar (With UTM Campaign Tracking) -->
+    <div class="share-box-container" id="mainShareBox">
+      <p class="share-title" id="shareDynamicTitle">⚡ Share this free tool with friends or save it to Pinterest:</p>
+      <div class="share-buttons-grid">
+        <a href="#" id="share-whatsapp" target="_blank" rel="noopener noreferrer" class="share-btn whatsapp" title="Share on WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.772.82 2.791.82 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.376-.452-4.801-1.242l-5.2 1.362 1.39-5.078c-.902-1.488-1.389-3.21-1.389-5.042 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+        <a href="#" id="share-telegram" target="_blank" rel="noopener noreferrer" class="share-btn telegram" title="Share on Telegram">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.916z"/></svg>
+          <span>Telegram</span>
+        </a>
+        <a href="#" id="share-pinterest" target="_blank" rel="noopener noreferrer" class="share-btn pinterest" title="Save to Pinterest">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.365-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.535.535 6.627 0 12-5.373 12-12C24 5.372 18.627 0 12 0z"/></svg>
+          <span>Pinterest</span>
+        </a>
+        <a href="#" id="share-x" target="_blank" rel="noopener noreferrer" class="share-btn x-twitter" title="Share on X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <span>X</span>
+        </a>
+        <a href="#" id="share-facebook" target="_blank" rel="noopener noreferrer" class="share-btn facebook" title="Share on Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>Facebook</span>
+        </a>
+        <a href="#" id="share-linkedin" target="_blank" rel="noopener noreferrer" class="share-btn linkedin" title="Share on LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <button type="button" id="share-native" class="share-btn native-share" title="More Options" style="display: none;">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+          <span>More</span>
+        </button>
+        <button type="button" id="share-copylink" class="share-btn copylink" title="Copy Tool Link">
+          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          <span id="copy-text">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Embed Generator Box (Dofollow Backlink Engine with UTM) -->
+    <div class="embed-box">
+      <h3>🔗 Embed This Free Bulk Image Resizer on Your Website</h3>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Copy and paste the HTML snippet below to add this client-side studio to your blog or website:</p>
+      <div class="embed-code-wrap">
+        <input type="text" id="embedCodeInput" readonly value='<iframe src="https://theaihub-tools.github.io/all-tools/bulk-image-resizer.html?utm_source=embed&utm_medium=iframe" width="100%" height="740" frameborder="0"></iframe><p>Powered by <a href="https://theaihub-tools.github.io/all-tools/bulk-image-resizer.html?utm_source=embed&utm_medium=backlink" target="_blank" rel="dofollow">The AI Hub Tools</a></p>'>
+        <button type="button" class="copy-embed-btn" onclick="copyEmbedCode()">1-Click Copy</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 500 Words SEO Guide + How To Use + 5 FAQs -->
+  <section class="seo-section">
+    <h2>Free Bulk Image Resizer Pro — Complete Client-Side Batch Image Studio</h2>
+    <p>Resizing, compressing, and formatting dozens or hundreds of images for e-commerce stores, websites, social media campaigns, or developer workflows shouldn't require paid desktop software or risky server uploads. <strong>The AI Hub Tools Bulk Image Resizer Pro</strong> combines batch resizing, exact KB compression (300 DPI), magic solid background removal, logo/tiled watermarking, A4 catalog creation, and PDF/ZIP export inside a single zero-upload browser studio.</p>
+
+    <h3>How to Use Bulk Image Resizer Pro in 3 Simple Steps</h3>
+    <ol>
+      <li><strong>Select Files, Drop a Folder, or Paste (`Ctrl+V`):</strong> Upload individual images, choose an entire directory of photos, or paste directly from your clipboard.</li>
+      <li><strong>Configure Resize Mode & Studio Tools:</strong> Choose from <em>Pixels</em> (with Center Auto-Crop or Blur Fill), <em>Percentage</em>, <em>Exact KB</em>, <em>Social Multi-Kit</em>, <em>App Icon Pack</em>, <em>A4 Contact Sheet</em>, or <em>Dual WebP+JPG</em>. Apply optional auto-trim, solid background removal, privacy blur zones, browser window mockups, or diagonal tiled watermarks.</li>
+      <li><strong>Inspect & Export:</strong> Click any thumbnail to test quality with our interactive <strong>Split-Curtain Before/After Slider</strong>, copy dominant hex colors or responsive HTML <code>&lt;picture&gt;</code> code, and download everything as a <strong>ZIP</strong> or <strong>PDF</strong>.</li>
+    </ol>
+
+    <h3>Built for Privacy, Speed & Global Accessibility</h3>
+    <p>All pixel operations run directly inside your browser RAM using HTML5 Canvas kernels. Sensitive GPS and camera EXIF metadata are stripped automatically while preserving 300 DPI JFIF headers for print compliance.</p>
+
+    <h3>Frequently Asked Questions (FAQs)</h3>
+    <div class="faq-item">
+      <div class="faq-q">1. Are my photos uploaded to any server?</div>
+      <p>No. Every single operation runs 100% locally in your browser. Zero images ever leave your computer or smartphone.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">2. How does the Magic Background Remover work?</div>
+      <p>Enable <em>Magic Background Remover</em> and select PNG or WebP output. The engine samples your corner background color (or white/black/custom) and makes matching pixels transparent based on your tolerance setting.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">3. Can I combine all my resized photos into a single PDF or A4 Catalog?</div>
+      <p>Yes! Click <strong>Download PDF</strong> after processing to export a multi-page PDF album, or choose the <strong>A4 Catalog</strong> tab to arrange 12 labeled product thumbnails per sheet.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">4. Can I add a PNG logo or anti-theft tiled watermark across all photos?</div>
+      <p>Yes. Open the Watermark Studio to upload a transparent PNG logo or apply a diagonal repeating text grid across every image in your batch.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">5. Does it generate responsive HTML srcset code for developers?</div>
+      <p>Yes! Whenever you process images or use the Dual WebP+JPG bundle, the tool generates copy-ready HTML <code>&lt;picture&gt;</code> and <code>srcset</code> snippets automatically.</p>
+    </div>
+  </section>
+
+  <!-- Related Image & Design Tools Section -->
+  <div class="related-tools-box">
+    <h3>🎨 Related Image & Design Tools:</h3>
+    <div class="related-pills">
+      <a href="image-resizer.html" class="related-pill">🖼️ Single Image Resizer</a>
+      <a href="qr-generator.html" class="related-pill">📱 QR Generator</a>
+      <a href="exif-data-remover.html" class="related-pill">🛡️ EXIF Remover</a>
+      <a href="glassmorphism-generator.html" class="related-pill">✨ Glassmorphism Generator</a>
+      <a href="svg-to-png.html" class="related-pill">🖼️ SVG to PNG</a>
+      <a href="index.html" class="related-pill all-btn">← All Tools</a>
+    </div>
+  </div>
+
+  <!-- Legal Pages Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <div>© 2026 The AI Hub Tools. Built for Speed & 100% Client-Side Privacy.</div>
+  </footer>
+
+</div>
+
+<!-- Interactive Split-Curtain Before vs After Modal -->
+<div class="modal-backdrop" id="compareModal" onclick="if(event.target===this) closeCompareModal()">
+  <div class="modal-card">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <strong style="font-size:16px;">🔍 Interactive Split-Curtain Inspector (Drag Slider)</strong>
+      <button type="button" class="clear-btn" onclick="closeCompareModal()">✕ Close</button>
+    </div>
+    <div class="split-labels" style="margin-top:10px;">
+      <span style="color:var(--muted);">◀ ORIGINAL (<span id="cmpOrigMeta"></span>)</span>
+      <span style="color:var(--success);">PROCESSED (<span id="cmpNewMeta"></span>) ▶</span>
+    </div>
+    <div class="split-stage" id="splitStage">
+      <img id="cmpNewImg" src="" alt="Processed">
+      <div class="split-overlay" id="splitOverlay" style="clip-path: inset(0 50% 0 0);">
+        <img id="cmpOrigImg" src="" alt="Original">
+      </div>
+      <div class="split-divider" id="splitDivider" style="left: 50%;"></div>
+    </div>
+    <input type="range" id="splitRange" min="0" max="100" value="50" oninput="updateSplitCurtain(this.value)">
+  </div>
+</div>
+
+<!-- Structured Data Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Bulk Image Resizer Pro",
+  "url": "https://theaihub-tools.github.io/all-tools/bulk-image-resizer.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Enterprise client-side Bulk Image Resizer Pro to batch resize, compress to exact KB, remove solid backgrounds, add logo/tiled watermarks, create A4 catalogs, and export ZIP/PDF."
+}
+</script>
+
+<!-- Common External Scripts -->
+<script src="translator.js"></script>
+<script src="share-buttons.js"></script>
+<script src="schema.js"></script>
+<script src="iframe.js"></script>
+
+<script>
+  // PWA Offline Manifest & Service Worker Registration
+  (function(){
+    try {
+      const manifestData = {
+        name: "Bulk Image Resizer Pro - The AI Hub Tools",
+        short_name: "Bulk Resizer",
+        start_url: window.location.href,
+        display: "standalone",
+        background_color: "#0f172a",
+        theme_color: "#1d4ed8"
+      };
+      const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+      const manifestLink = document.createElement('link');
+      manifestLink.rel = 'manifest';
+      manifestLink.href = URL.createObjectURL(manifestBlob);
+      document.head.appendChild(manifestLink);
+
+      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+        const swCode = `
+          const CACHE = 'aihub-bulk-resizer-v2';
+          self.addEventListener('install', e => {
+            e.waitUntil(caches.open(CACHE).then(c => c.addAll([self.location.href]).catch(()=>{})));
+          });
+          self.addEventListener('fetch', e => {
+            e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match(self.location.href))));
+          });
+        `;
+        const swBlob = new Blob([swCode], { type: 'application/javascript' });
+        navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
+      }
+    } catch (e) {}
+  })();
+
+  // Domain Guard & Anti-Tamper Security
+  (function(){
+    const allowedHosts = ['theaihub-tools.github.io', 'theaihubtools.com', 'localhost', '127.0.0.1', ''];
+    const currentHost = window.location.hostname;
+    if (!allowedHosts.some(h => currentHost === h || currentHost.endsWith('.' + h))) {
+      document.body.innerHTML = '<div style="padding:40px;text-align:center;font-family:sans-serif;"><h2>Unauthorized Domain</h2><p>This tool is licensed exclusively for The AI Hub Tools.</p></div>';
+    }
+  })();
+
+  // Right-Click & DevTools Protection Code
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key.toLowerCase() === 'u')) {
+      e.preventDefault();
+    }
+    if (e.key === 'Enter' && document.activeElement.tagName !== 'BUTTON' && document.activeElement.tagName !== 'TEXTAREA' && !document.getElementById('processBtn').disabled) {
+      startBulkResize();
+    }
+  });
+
+  // Theme Toggle
+  function toggleTheme() {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeBtn').innerText = isDark ? '🌓 Dark Mode' : '☀️ Light Mode';
+  }
+
+  let selectedFiles = [];
+  let queueThumbUrls = [];
+  let processedItems = [];
+  let currentMode = 'pixels';
+  let wmLogoImage = null;
+  let lastBatchStats = { count: 0, origKB: 0, newKB: 0, savedPct: 0 };
+
+  const dropZone = document.getElementById('dropZone');
+  const bulkInput = document.getElementById('bulkInput');
+  const folderInput = document.getElementById('folderInput');
+  const queueWrapper = document.getElementById('queueWrapper');
+  const queueStrip = document.getElementById('queueStrip');
+  const queueText = document.getElementById('queueText');
+  const processBtn = document.getElementById('processBtn');
+
+  // Drag & Drop Events
+  dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+
+  bulkInput.addEventListener('change', (e) => { handleFiles(e.target.files); bulkInput.value = ''; });
+  folderInput.addEventListener('change', (e) => { handleFiles(e.target.files); folderInput.value = ''; });
+
+  // Clipboard Ctrl+V Paste Support
+  document.addEventListener('paste', (e) => {
+    if (!e.clipboardData || !e.clipboardData.items) return;
+    const pastedFiles = [];
+    for (const item of e.clipboardData.items) {
+      if (item.type.startsWith('image/')) {
+        const blob = item.getAsFile();
+        if (blob) {
+          const namedFile = new File([blob], `pasted-image-${Date.now()}.png`, { type: blob.type });
+          pastedFiles.push(namedFile);
+        }
+      }
+    }
+    if (pastedFiles.length > 0) handleFiles(pastedFiles);
+  });
+
+  // PNG Logo Watermark Upload
+  document.getElementById('wmLogoInput').addEventListener('change', (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    const url = URL.createObjectURL(f);
+    const img = new Image();
+    img.onload = () => {
+      wmLogoImage = img;
+      document.getElementById('wmLogoStatus').innerText = `✓ Loaded: ${f.name}`;
+      document.getElementById('wmLogoStatus').style.color = 'var(--success)';
+    };
+    img.src = url;
+  });
+
+  function handleFiles(fileList) {
+    const validFiles = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+    if (validFiles.length === 0) return;
+    selectedFiles = selectedFiles.concat(validFiles);
+    renderQueueStrip();
+  }
+
+  function renderQueueStrip() {
+    queueThumbUrls.forEach(u => URL.revokeObjectURL(u));
+    queueThumbUrls = [];
+    queueStrip.innerHTML = '';
+
+    if (selectedFiles.length === 0) {
+      queueWrapper.style.display = 'none';
+      processBtn.disabled = true;
+      return;
+    }
+
+    const totalMB = (selectedFiles.reduce((acc, f) => acc + f.size, 0) / (1024 * 1024)).toFixed(2);
+    queueWrapper.style.display = 'block';
+    queueText.innerText = `📸 ${selectedFiles.length} image(s) queued (${totalMB} MB total)`;
+    processBtn.disabled = false;
+
+    // Render up to 60 visual chips smoothly
+    const maxPreview = Math.min(selectedFiles.length, 60);
+    for (let i = 0; i < maxPreview; i++) {
+      const f = selectedFiles[i];
+      const u = URL.createObjectURL(f);
+      queueThumbUrls.push(u);
+      const chip = document.createElement('div');
+      chip.className = 'queue-chip';
+      chip.innerHTML = `
+        <button type="button" class="chip-del" onclick="removeSingleQueued(${i})" title="Remove">✕</button>
+        <img src="${u}" alt="">
+        <span title="${f.name}">${f.name}</span>
+      `;
+      queueStrip.appendChild(chip);
+    }
+  }
+
+  function removeSingleQueued(idx) {
+    selectedFiles.splice(idx, 1);
+    renderQueueStrip();
+  }
+
+  function clearQueue() {
+    processedItems.forEach(item => {
+      if (item.url) URL.revokeObjectURL(item.url);
+      if (item.origUrl) URL.revokeObjectURL(item.origUrl);
+    });
+    selectedFiles = [];
+    processedItems = [];
+    renderQueueStrip();
+    document.getElementById('resultSection').style.display = 'none';
+    document.getElementById('progressWrap').style.display = 'none';
+  }
+
+  function switchMode(mode, btn) {
+    currentMode = mode;
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    ['pixels', 'percent', 'kb', 'social', 'icons', 'catalog', 'dual'].forEach(m => {
+      const el = document.getElementById('mode' + m.charAt(0).toUpperCase() + m.slice(1));
+      if (el) el.style.display = (mode === m) ? 'block' : 'none';
+    });
+    document.getElementById('qualitySliderBox').style.display = (mode === 'kb' || mode === 'icons') ? 'none' : 'block';
+
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('mode', mode);
+      window.history.replaceState({}, '', url);
+    } catch (e) {}
+  }
+
+  function setPixelPreset(w, h) {
+    document.getElementById('targetWidth').value = w;
+    document.getElementById('targetHeight').value = h;
+  }
+
+  // Save & Load Custom User Preset (localStorage)
+  function saveUserPreset() {
+    const preset = {
+      width: document.getElementById('targetWidth').value,
+      height: document.getElementById('targetHeight').value,
+      fitMode: document.getElementById('fitMode').value,
+      format: document.getElementById('outputFormat').value,
+      filter: document.getElementById('studioFilter').value,
+      quality: document.getElementById('qualitySlider').value,
+      pattern: document.getElementById('namePattern').value,
+      wmEnabled: document.getElementById('enableWatermark').checked,
+      wmText: document.getElementById('wmText').value,
+      wmPos: document.getElementById('wmPosition').value
+    };
+    localStorage.setItem('aihub_bulk_resizer_preset', JSON.stringify(preset));
+    alert('Preset saved! Your settings will load automatically next time.');
+  }
+
+  function loadUserPreset(notify = false) {
+    const raw = localStorage.getItem('aihub_bulk_resizer_preset');
+    if (!raw) { if (notify) alert('No saved preset found yet.'); return; }
+    try {
+      const p = JSON.parse(raw);
+      if (p.width !== undefined) document.getElementById('targetWidth').value = p.width;
+      if (p.height !== undefined) document.getElementById('targetHeight').value = p.height;
+      if (p.fitMode) document.getElementById('fitMode').value = p.fitMode;
+      if (p.format) document.getElementById('outputFormat').value = p.format;
+      if (p.filter) document.getElementById('studioFilter').value = p.filter;
+      if (p.quality) {
+        document.getElementById('qualitySlider').value = p.quality;
+        document.getElementById('qualityVal').innerText = p.quality + '%';
+      }
+      if (p.pattern) document.getElementById('namePattern').value = p.pattern;
+      if (p.wmEnabled !== undefined) {
+        document.getElementById('enableWatermark').checked = p.wmEnabled;
+        document.getElementById('watermarkControls').style.display = p.wmEnabled ? 'block' : 'none';
+      }
+      if (p.wmText) document.getElementById('wmText').value = p.wmText;
+      if (p.wmPos) document.getElementById('wmPosition').value = p.wmPos;
+      if (notify) alert('Saved preset restored!');
+    } catch (e) {}
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    loadUserPreset(false);
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const urlMode = params.get('mode');
+      const validModes = ['pixels', 'percent', 'kb', 'social', 'icons', 'catalog', 'dual'];
+      if (urlMode && validModes.includes(urlMode)) {
+        switchMode(urlMode, document.getElementById('tab-' + urlMode));
+      }
+      if (params.get('kb')) document.getElementById('targetKb').value = params.get('kb');
+      if (params.get('w')) document.getElementById('targetWidth').value = params.get('w');
+      if (params.get('h')) document.getElementById('targetHeight').value = params.get('h');
+    } catch (e) {}
+  });
+
+  function loadImageFromFile(file) {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => resolve({ img, url });
+      img.onerror = (err) => { URL.revokeObjectURL(url); reject(err); };
+      img.src = url;
+    });
+  }
+
+  function canvasToBlobAsync(canvas, mime, quality) {
+    return new Promise(resolve => canvas.toBlob(resolve, mime, quality));
+  }
+
+  // Safe 300 DPI JFIF Metadata Injector
+  function inject300DPI(blob) {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const view = new DataView(e.target.result);
+          if (view.byteLength > 20 && view.getUint16(0, false) === 0xFFD8) {
+            let app0Offset = 2;
+            while (app0Offset + 16 < view.byteLength) {
+              const marker = view.getUint16(app0Offset, false);
+              if (marker === 0xFFE0) {
+                view.setUint8(app0Offset + 11, 1);
+                view.setUint16(app0Offset + 12, 300, false);
+                view.setUint16(app0Offset + 14, 300, false);
+                break;
+              }
+              const segLen = view.getUint16(app0Offset + 2, false);
+              if (segLen < 2) break;
+              app0Offset += 2 + segLen;
+            }
+          }
+          resolve(new Blob([view.buffer], { type: 'image/jpeg' }));
+        } catch (err) { resolve(blob); }
+      };
+      reader.onerror = () => resolve(blob);
+      reader.readAsArrayBuffer(blob);
+    });
+  }
+
+  // Smart Auto-Trim Empty Whitespace / Transparent Borders
+  function autoTrimCanvas(img) {
+    const c = document.createElement('canvas');
+    c.width = img.width;
+    c.height = img.height;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const { data, width, height } = ctx.getImageData(0, 0, c.width, c.height);
+
+    const bgR = data[0], bgG = data[1], bgB = data[2], bgA = data[3];
+    const isBg = (i) => {
+      if (bgA < 15) return data[i + 3] < 15;
+      return Math.abs(data[i] - bgR) < 18 && Math.abs(data[i + 1] - bgG) < 18 && Math.abs(data[i + 2] - bgB) < 18;
+    };
+
+    let top = 0, bottom = height - 1, left = 0, right = width - 1;
+    while (top < bottom) {
+      let rowEmpty = true;
+      for (let x = 0; x < width; x++) { if (!isBg((top * width + x) * 4)) { rowEmpty = false; break; } }
+      if (!rowEmpty) break;
+      top++;
+    }
+    while (bottom > top) {
+      let rowEmpty = true;
+      for (let x = 0; x < width; x++) { if (!isBg((bottom * width + x) * 4)) { rowEmpty = false; break; } }
+      if (!rowEmpty) break;
+      bottom--;
+    }
+    while (left < right) {
+      let colEmpty = true;
+      for (let y = top; y <= bottom; y++) { if (!isBg((y * width + left) * 4)) { colEmpty = false; break; } }
+      if (!colEmpty) break;
+      left++;
+    }
+    while (right > left) {
+      let colEmpty = true;
+      for (let y = top; y <= bottom; y++) { if (!isBg((y * width + right) * 4)) { colEmpty = false; break; } }
+      if (!colEmpty) break;
+      right--;
+    }
+
+    const trimW = Math.max(1, right - left + 1);
+    const trimH = Math.max(1, bottom - top + 1);
+    const out = document.createElement('canvas');
+    out.width = trimW;
+    out.height = trimH;
+    out.getContext('2d').drawImage(c, left, top, trimW, trimH, 0, 0, trimW, trimH);
+    return out;
+  }
+
+  // Extract Top 3 Dominant Hex Colors
+  function extractPalette(ctx, w, h) {
+    const sample = ctx.getImageData(0, 0, w, h).data;
+    const counts = {};
+    const step = Math.max(4, Math.floor(sample.length / 4000) * 4);
+    for (let i = 0; i < sample.length; i += step) {
+      if (sample[i + 3] < 128) continue;
+      const r = Math.round(sample[i] / 32) * 32;
+      const g = Math.round(sample[i + 1] / 32) * 32;
+      const b = Math.round(sample[i + 2] / 32) * 32;
+      const key = `${Math.min(255,r)},${Math.min(255,g)},${Math.min(255,b)}`;
+      counts[key] = (counts[key] || 0) + 1;
+    }
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    if (sorted.length === 0) return ['#1d4ed8', '#0f172a', '#ffffff'];
+    return sorted.map(([rgb]) => {
+      const [r, g, b] = rgb.split(',').map(Number);
+      return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
+    });
+  }
+
+  // Convolution Sharpen Kernel
+  function applySharpenFilter(ctx, w, h) {
+    const imgData = ctx.getImageData(0, 0, w, h);
+    const src = imgData.data;
+    const out = ctx.createImageData(w, h);
+    const dst = out.data;
+    const kernel = [0, -0.4, 0, -0.4, 2.6, -0.4, 0, -0.4, 0];
+
+    for (let y = 1; y < h - 1; y++) {
+      for (let x = 1; x < w - 1; x++) {
+        const idx = (y * w + x) * 4;
+        for (let c = 0; c < 3; c++) {
+          let sum = 0, k = 0;
+          for (let ky = -1; ky <= 1; ky++) {
+            for (let kx = -1; kx <= 1; kx++) {
+              sum += src[((y + ky) * w + (x + kx)) * 4 + c] * kernel[k++];
+            }
+          }
+          dst[idx + c] = Math.min(255, Math.max(0, sum));
+        }
+        dst[idx + 3] = src[idx + 3];
+      }
+    }
+    ctx.putImageData(out, 0, 0);
+  }
+
+  // Core Single Render Pipeline
+  async function renderVariant(rawImg, file, index, overrideW = null, overrideH = null, overrideFit = null, overrideFormat = null, tagSuffix = '') {
+    const sourceDrawable = document.getElementById('autoTrimBorders').checked ? autoTrimCanvas(rawImg) : rawImg;
+    const rotDeg = parseInt(document.getElementById('batchRotate').value) || 0;
+    const isSwapped = Math.abs(rotDeg) === 90;
+    const srcW = isSwapped ? sourceDrawable.height : sourceDrawable.width;
+    const srcH = isSwapped ? sourceDrawable.width : sourceDrawable.height;
+
+    let newW = srcW;
+    let newH = srcH;
+    let fitMode = overrideFit || document.getElementById('fitMode').value;
+
+    if (overrideW && overrideH) {
+      newW = overrideW;
+      newH = overrideH;
+    } else if (currentMode === 'pixels' || currentMode === 'dual') {
+      const reqW = parseInt(document.getElementById('targetWidth').value) || 0;
+      const reqH = parseInt(document.getElementById('targetHeight').value) || 0;
+
+      if (reqW > 0 && reqH > 0) {
+        if (fitMode === 'contain') {
+          const ratio = Math.min(reqW / srcW, reqH / srcH);
+          newW = Math.max(1, Math.round(srcW * ratio));
+          newH = Math.max(1, Math.round(srcH * ratio));
+        } else {
+          newW = reqW;
+          newH = reqH;
+        }
+      } else if (reqW > 0) {
+        newW = reqW;
+        newH = Math.max(1, Math.round((srcH / srcW) * reqW));
+        fitMode = 'contain';
+      } else if (reqH > 0) {
+        newH = reqH;
+        newW = Math.max(1, Math.round((srcW / srcH) * reqH));
+        fitMode = 'contain';
+      }
+    } else if (currentMode === 'percent') {
+      const scale = (parseInt(document.getElementById('percentSlider').value) || 50) / 100;
+      newW = Math.max(1, Math.round(srcW * scale));
+      newH = Math.max(1, Math.round(srcH * scale));
+      fitMode = 'contain';
+    } else {
+      fitMode = 'contain';
+    }
+
+    const designEnabled = document.getElementById('enableDesign').checked && currentMode !== 'icons';
+    const useBrowserFrame = designEnabled && document.getElementById('mockupFrame').value === 'browser';
+    const headerBarH = useBrowserFrame ? Math.max(28, Math.round(newH * 0.065)) : 0;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = newW;
+    canvas.height = newH + headerBarH;
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    const format = overrideFormat || document.getElementById('outputFormat').value;
+    const radius = designEnabled ? Math.min(parseInt(document.getElementById('cornerRadius').value) || 0, Math.min(canvas.width, canvas.height) / 2) : 0;
+
+    if (radius > 0) {
+      ctx.beginPath();
+      ctx.roundRect(0, 0, canvas.width, canvas.height, radius);
+      ctx.clip();
+    }
+
+    if (format === 'image/jpeg') {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Draw macOS Browser Window Header if Enabled
+    if (useBrowserFrame) {
+      ctx.fillStyle = '#e2e8f0';
+      ctx.fillRect(0, 0, newW, headerBarH);
+      const dotR = Math.max(4, Math.round(headerBarH * 0.18));
+      const dotY = headerBarH / 2;
+      ['#ef4444', '#f59e0b', '#22c55e'].forEach((col, idx) => {
+        ctx.fillStyle = col;
+        ctx.beginPath();
+        ctx.arc(headerBarH * 0.6 + idx * (dotR * 3.2), dotY, dotR, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    ctx.save();
+    ctx.translate(0, headerBarH);
+
+    // Background / Cover / Pad Modes
+    if (fitMode === 'solid-pad') {
+      ctx.fillStyle = document.getElementById('padColor').value || '#ffffff';
+      ctx.fillRect(0, 0, newW, newH);
+    } else if (fitMode === 'blur-pad') {
+      ctx.save();
+      ctx.filter = 'blur(18px) brightness(0.85)';
+      const coverRatio = Math.max(newW / srcW, newH / srcH);
+      const bgW = srcW * coverRatio * 1.1, bgH = srcH * coverRatio * 1.1;
+      ctx.translate(newW / 2, newH / 2);
+      ctx.rotate((rotDeg * Math.PI) / 180);
+      if (isSwapped) ctx.drawImage(sourceDrawable, -bgH / 2, -bgW / 2, bgH, bgW);
+      else ctx.drawImage(sourceDrawable, -bgW / 2, -bgH / 2, bgW, bgH);
+      ctx.restore();
+    }
+
+    let drawW = newW, drawH = newH;
+    if (fitMode === 'blur-pad' || fitMode === 'solid-pad') {
+      const containRatio = Math.min(newW / srcW, newH / srcH);
+      drawW = Math.round(srcW * containRatio);
+      drawH = Math.round(srcH * containRatio);
+    } else if (fitMode === 'cover') {
+      const coverRatio = Math.max(newW / srcW, newH / srcH);
+      drawW = Math.round(srcW * coverRatio);
+      drawH = Math.round(srcH * coverRatio);
+    }
+
+    const studioFilter = document.getElementById('studioFilter').value;
+    if (studioFilter === 'enhance') ctx.filter = 'contrast(1.12) saturate(1.12) brightness(1.03)';
+    else if (studioFilter === 'grayscale') ctx.filter = 'grayscale(100%) contrast(1.08)';
+
+    ctx.save();
+    ctx.translate(newW / 2, newH / 2);
+    ctx.rotate((rotDeg * Math.PI) / 180);
+    if (isSwapped) ctx.drawImage(sourceDrawable, -drawH / 2, -drawW / 2, drawH, drawW);
+    else ctx.drawImage(sourceDrawable, -drawW / 2, -drawH / 2, drawW, drawH);
+    ctx.restore();
+    ctx.filter = 'none';
+
+    // Pixel Filters: Sharpen / Black-Ink / Magic Background Removal
+    if (studioFilter === 'sharpen' && newW > 20 && newH > 20) {
+      applySharpenFilter(ctx, newW, newH);
+    } else if (studioFilter === 'black-ink') {
+      const imgData = ctx.getImageData(0, 0, newW, newH);
+      const d = imgData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const avg = (d[i] + d[i + 1] + d[i + 2]) / 3;
+        if (avg < 155) { d[i] = 0; d[i + 1] = 0; d[i + 2] = 0; }
+        else { d[i] = 255; d[i + 1] = 255; d[i + 2] = 255; }
+      }
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    if (document.getElementById('enableBgRemove').checked) {
+      const imgData = ctx.getImageData(0, 0, newW, newH);
+      const d = imgData.data;
+      const mode = document.getElementById('bgRemoveMode').value;
+      const tol = parseInt(document.getElementById('bgTolerance').value) || 35;
+      let tr = d[0], tg = d[1], tb = d[2];
+      if (mode === 'white') { tr = 255; tg = 255; tb = 255; }
+      else if (mode === 'black') { tr = 0; tg = 0; tb = 0; }
+      else if (mode === 'custom') {
+        const hex = document.getElementById('bgTargetColor').value;
+        tr = parseInt(hex.slice(1, 3), 16);
+        tg = parseInt(hex.slice(3, 5), 16);
+        tb = parseInt(hex.slice(5, 7), 16);
+      }
+      for (let i = 0; i < d.length; i += 4) {
+        const dist = Math.sqrt((d[i]-tr)**2 + (d[i+1]-tg)**2 + (d[i+2]-tb)**2);
+        if (dist <= tol) d[i + 3] = 0;
+      }
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    // Bulk Privacy Blur Zone
+    if (document.getElementById('enablePrivacyBlur').checked) {
+      const zonePos = document.getElementById('blurZonePos').value;
+      const zonePct = Math.min(50, Math.max(3, parseInt(document.getElementById('blurZonePct').value) || 12)) / 100;
+      const zh = Math.round(newH * zonePct);
+      const zy = zonePos === 'top' ? 0 : newH - zh;
+      ctx.save();
+      ctx.filter = 'blur(12px)';
+      ctx.drawImage(canvas, 0, headerBarH + zy, newW, zh, 0, zy, newW, zh);
+      ctx.restore();
+    }
+
+    ctx.restore(); // Restore headerBarH offset
+
+    // Border Frame
+    if (designEnabled) {
+      const bw = parseInt(document.getElementById('borderWidth').value) || 0;
+      if (bw > 0) {
+        ctx.save();
+        ctx.strokeStyle = document.getElementById('borderColor').value || '#1d4ed8';
+        ctx.lineWidth = bw * 2;
+        ctx.beginPath();
+        if (radius > 0) ctx.roundRect(0, 0, canvas.width, canvas.height, radius);
+        else ctx.rect(0, 0, canvas.width, canvas.height);
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
+
+    // Watermark Studio (PNG Logo OR Dynamic Text / Diagonal Tiled Grid)
+    if (document.getElementById('enableWatermark').checked && currentMode !== 'icons') {
+      const wmOp = Math.min(100, Math.max(10, parseInt(document.getElementById('wmOpacity').value) || 40)) / 100;
+      const wmPos = document.getElementById('wmPosition').value;
+      const todayStr = new Date().toISOString().split('T')[0];
+      const baseName = file.name.replace(/\.[^/.]+$/, "");
+      const rawWm = document.getElementById('wmText').value.trim();
+      const wmText = rawWm.replace(/\{name\}/gi, baseName).replace(/\{n\}/gi, index + 1).replace(/\{date\}/gi, todayStr);
+
+      ctx.save();
+      ctx.globalAlpha = wmOp;
+
+      if (wmLogoImage) {
+        const logoW = Math.max(32, Math.round(canvas.width * 0.16));
+        const logoH = Math.round((wmLogoImage.height / wmLogoImage.width) * logoW);
+        const pad = Math.round(logoW * 0.15);
+        if (wmPos === 'tiled') {
+          for (let y = pad; y < canvas.height; y += logoH * 2.5) {
+            for (let x = pad; x < canvas.width; x += logoW * 2) {
+              ctx.drawImage(wmLogoImage, x, y, logoW, logoH);
+            }
+          }
+        } else {
+          let lx = canvas.width - logoW - pad, ly = canvas.height - logoH - pad;
+          if (wmPos === 'bottom-left') lx = pad;
+          else if (wmPos === 'top-right') ly = headerBarH + pad;
+          else if (wmPos === 'center') { lx = (canvas.width - logoW) / 2; ly = (canvas.height - logoH) / 2; }
+          ctx.drawImage(wmLogoImage, lx, ly, logoW, logoH);
+        }
+      } else if (wmText) {
+        const fontSize = Math.max(13, Math.round(Math.min(canvas.width, canvas.height) * 0.04));
+        ctx.font = `bold ${fontSize}px sans-serif`;
+        if (wmPos === 'tiled') {
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+          ctx.rotate((-25 * Math.PI) / 180);
+          ctx.textAlign = 'center';
+          const stepX = Math.max(220, ctx.measureText(wmText).width + 90);
+          const stepY = fontSize * 4;
+          for (let y = -canvas.height; y < canvas.height; y += stepY) {
+            for (let x = -canvas.width; x < canvas.width; x += stepX) {
+              ctx.fillStyle = '#000000'; ctx.fillText(wmText, x + 1, y + 1);
+              ctx.fillStyle = '#ffffff'; ctx.fillText(wmText, x, y);
+            }
+          }
+        } else {
+          const pad = Math.round(fontSize * 0.8);
+          let x = canvas.width - pad, y = canvas.height - pad;
+          ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+          if (wmPos === 'bottom-left') { x = pad; ctx.textAlign = 'left'; }
+          else if (wmPos === 'top-right') { y = headerBarH + pad; ctx.textBaseline = 'top'; }
+          else if (wmPos === 'center') { x = canvas.width / 2; y = canvas.height / 2; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; }
+          ctx.fillStyle = '#000000'; ctx.fillText(wmText, x + 1, y + 1);
+          ctx.fillStyle = '#ffffff'; ctx.fillText(wmText, x, y);
+        }
+      }
+      ctx.restore();
+    }
+
+    const palette = extractPalette(ctx, canvas.width, canvas.height);
+
+    // Encode Output Blob
+    let finalBlob = null;
+    if (currentMode === 'kb') {
+      const targetBytes = (parseFloat(document.getElementById('targetKb').value) || 100) * 1024;
+      const targetMime = format === 'image/png' ? 'image/jpeg' : format;
+      let minQ = 0.05, maxQ = 0.98, bestBlob = null;
+      for (let i = 0; i < 8; i++) {
+        let midQ = (minQ + maxQ) / 2;
+        let testBlob = await canvasToBlobAsync(canvas, targetMime, midQ);
+        if (testBlob.size <= targetBytes) { bestBlob = testBlob; minQ = midQ; }
+        else { maxQ = midQ; }
+      }
+      finalBlob = bestBlob || await canvasToBlobAsync(canvas, targetMime, 0.08);
+    } else if (currentMode === 'icons') {
+      finalBlob = await canvasToBlobAsync(canvas, 'image/png', 1.0);
+    } else {
+      const quality = (parseInt(document.getElementById('qualitySlider').value) || 85) / 100;
+      finalBlob = await canvasToBlobAsync(canvas, format, quality);
+    }
+
+    if (finalBlob.type === 'image/jpeg') {
+      finalBlob = await inject300DPI(finalBlob);
+    }
+
+    const ext = finalBlob.type === 'image/png' ? 'png' : (finalBlob.type === 'image/webp' ? 'webp' : 'jpg');
+    const pattern = document.getElementById('namePattern').value.trim() || 'resized-{name}';
+    const baseName = file.name.replace(/\.[^/.]+$/, "");
+    const todayStr = new Date().toISOString().split('T')[0];
+    let formattedName = tagSuffix
+      ? `${baseName}-${tagSuffix}`
+      : pattern.replace(/\{name\}/gi, baseName).replace(/\{n\}/gi, index + 1).replace(/\{w\}/gi, canvas.width).replace(/\{h\}/gi, canvas.height).replace(/\{date\}/gi, todayStr);
+    const outName = `${formattedName}.${ext}`;
+
+    return {
+      name: outName,
+      origSize: file.size,
+      origWidth: rawImg.width,
+      origHeight: rawImg.height,
+      newSize: finalBlob.size,
+      width: canvas.width,
+      height: canvas.height,
+      palette: palette,
+      blob: finalBlob,
+      url: URL.createObjectURL(finalBlob)
+    };
+  }
+
+  // Generate A4 Contact Sheet / Catalog Pages
+  async function generateCatalogSheets(files) {
+    const sheets = [];
+    const perPage = 12; // 3 cols x 4 rows
+    const pageW = 1240, pageH = 1754; // 150 DPI A4
+    const cols = 3, rows = 4;
+    const margin = 50, gap = 25;
+    const cellW = Math.floor((pageW - margin * 2 - gap * (cols - 1)) / cols);
+    const cellH = Math.floor((pageH - margin * 2 - 70 - gap * (rows - 1)) / rows);
+
+    for (let p = 0; p < files.length; p += perPage) {
+      const slice = files.slice(p, p + perPage);
+      const c = document.createElement('canvas');
+      c.width = pageW;
+      c.height = pageH;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, pageW, pageH);
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 26px sans-serif';
+      ctx.fillText(`Product Catalog Sheet #${Math.floor(p / perPage) + 1} • The AI Hub Tools`, margin, 48);
+
+      for (let idx = 0; idx < slice.length; idx++) {
+        const { img, url } = await loadImageFromFile(slice[idx]);
+        const r = Math.floor(idx / cols);
+        const col = idx % cols;
+        const x = margin + col * (cellW + gap);
+        const y = 75 + r * (cellH + gap);
+
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.strokeRect(x, y, cellW, cellH);
+
+        const imgAreaH = cellH - 34;
+        const ratio = Math.min((cellW - 16) / img.width, (imgAreaH - 12) / img.height);
+        const dw = img.width * ratio, dh = img.height * ratio;
+        ctx.drawImage(img, x + (cellW - dw) / 2, y + 6 + (imgAreaH - dh) / 2, dw, dh);
+        URL.revokeObjectURL(url);
+
+        ctx.fillStyle = '#334155';
+        ctx.font = 'bold 14px sans-serif';
+        const label = `#${p + idx + 1} ${slice[idx].name.slice(0, 26)}`;
+        ctx.fillText(label, x + 8, y + cellH - 12);
+      }
+
+      const blob = await canvasToBlobAsync(c, 'image/jpeg', 0.9);
+      const sheetNum = Math.floor(p / perPage) + 1;
+      sheets.push({
+        name: `catalog-sheet-${sheetNum}.jpg`,
+        origSize: slice.reduce((a, b) => a + b.size, 0),
+        origWidth: pageW,
+        origHeight: pageH,
+        newSize: blob.size,
+        width: pageW,
+        height: pageH,
+        palette: ['#0f172a', '#1d4ed8', '#ffffff'],
+        blob: blob,
+        url: URL.createObjectURL(blob),
+        origUrl: URL.createObjectURL(blob)
+      });
+    }
+    return sheets;
+  }
+
+  async function startBulkResize() {
+    if (selectedFiles.length === 0) return;
+
+    processedItems.forEach(item => {
+      if (item.url) URL.revokeObjectURL(item.url);
+      if (item.origUrl) URL.revokeObjectURL(item.origUrl);
+    });
+    processedItems = [];
+
+    processBtn.disabled = true;
+    const resultsGrid = document.getElementById('resultsGrid');
+    resultsGrid.innerHTML = '';
+
+    const progressWrap = document.getElementById('progressWrap');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    progressWrap.style.display = 'block';
+
+    let totalOrig = selectedFiles.reduce((a, b) => a + b.size, 0);
+    let totalNew = 0;
+
+    if (currentMode === 'catalog') {
+      progressText.innerText = 'Generating A4 Contact Sheet Catalog...';
+      progressFill.style.width = '75%';
+      const sheets = await generateCatalogSheets(selectedFiles);
+      sheets.forEach(res => {
+        processedItems.push(res);
+        totalNew += res.newSize;
+        appendResultCard(res, processedItems.length - 1);
+      });
+      progressFill.style.width = '100%';
+    } else {
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
+        progressText.innerText = `Processing ${i + 1} of ${selectedFiles.length}: ${file.name}`;
+        progressFill.style.width = `${Math.round(((i + 1) / selectedFiles.length) * 100)}%`;
+
+        await new Promise(r => setTimeout(r, 10));
+        const { img, url: origUrl } = await loadImageFromFile(file);
+
+        let variants = [];
+        if (currentMode === 'social') {
+          variants = [
+            await renderVariant(img, file, i, 1080, 1080, 'blur-pad', null, 'ig-post-1080x1080'),
+            await renderVariant(img, file, i, 1080, 1920, 'blur-pad', null, 'story-reel-1080x1920'),
+            await renderVariant(img, file, i, 1280, 720, 'blur-pad', null, 'yt-thumb-1280x720'),
+            await renderVariant(img, file, i, 1200, 630, 'blur-pad', null, 'og-banner-1200x630')
+          ];
+        } else if (currentMode === 'icons') {
+          for (const sz of [16, 32, 48, 180, 192, 512]) {
+            variants.push(await renderVariant(img, file, i, sz, sz, 'contain', 'image/png', `icon-${sz}x${sz}`));
+          }
+        } else if (currentMode === 'dual') {
+          variants = [
+            await renderVariant(img, file, i, null, null, null, 'image/webp', ''),
+            await renderVariant(img, file, i, null, null, null, 'image/jpeg', '')
+          ];
+        } else {
+          variants = [await renderVariant(img, file, i)];
+        }
+
+        variants.forEach((res) => {
+          res.origUrl = origUrl;
+          const itemIdx = processedItems.length;
+          processedItems.push(res);
+          totalNew += res.newSize;
+          appendResultCard(res, itemIdx);
+        });
+      }
+    }
+
+    const savedPct = totalNew <= totalOrig ? Math.round(((totalOrig - totalNew) / totalOrig) * 100) : 0;
+    lastBatchStats = { count: processedItems.length, origKB: Math.round(totalOrig / 1024), newKB: Math.round(totalNew / 1024), savedPct };
+
+    const diffText = savedPct > 0 ? `Saved ${savedPct}% space` : `Generated ${processedItems.length} optimized assets`;
+    document.getElementById('totalSavingsText').innerText = `${processedItems.length} files ready • ${diffText} (${lastBatchStats.origKB} KB → ${lastBatchStats.newKB} KB)`;
+    
+    // Build Responsive Developer <picture> / srcset snippet
+    const devBox = document.getElementById('devCodeBox');
+    const firstItem = processedItems[0];
+    if (firstItem) {
+      devBox.style.display = 'block';
+      const baseSlug = firstItem.name.replace(/\.[^/.]+$/, "");
+      document.getElementById('devHtmlOutput').value = `<picture>\n  <source srcset="${baseSlug}.webp" type="image/webp">\n  <img src="${baseSlug}.jpg" alt="${baseSlug}" width="${firstItem.width}" height="${firstItem.height}" loading="lazy" decoding="async">\n</picture>`;
+    }
+
+    const resSec = document.getElementById('resultSection');
+    resSec.style.display = 'block';
+    
+    const titleElem = document.getElementById('shareDynamicTitle');
+    if (titleElem) {
+      titleElem.innerHTML = "✅ All images are ready! Share this tool with friends or save to Pinterest:";
+      titleElem.style.color = "var(--success)";
+    }
+
+    processBtn.disabled = false;
+    resSec.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function appendResultCard(res, itemIdx) {
+    const swatchesHtml = (res.palette || []).map(hex =>
+      `<span class="swatch-dot" style="background:${hex};" title="Copy ${hex}" onclick="navigator.clipboard.writeText('${hex}'); alert('Copied color: ${hex}')"></span>`
+    ).join('');
+
+    const card = document.createElement('div');
+    card.className = 'result-item';
+    card.innerHTML = `
+      <div class="result-thumb-wrap" onclick="openCompareModal(${itemIdx})" title="Click to Compare Before vs After">
+        <img src="${res.url}" alt="${res.name}" loading="lazy">
+        <span class="inspect-badge">🔍 Split Compare</span>
+      </div>
+      <div class="item-name" title="${res.name}">${res.name}</div>
+      <div class="item-meta">${res.width}×${res.height}px • <span>${(res.newSize / 1024).toFixed(1)} KB</span></div>
+      <div class="palette-row">${swatchesHtml}</div>
+      <div class="card-btn-row">
+        <a href="${res.url}" download="${res.name}" class="btn-single-dl">⬇ Save</a>
+        <button type="button" class="btn-b64" onclick="copyBase64(${itemIdx}, this)">📋 Base64</button>
+      </div>
+    `;
+    document.getElementById('resultsGrid').appendChild(card);
+  }
+
+  // Export All Processed Images as Multi-Page PDF
+  async function downloadAllAsPdf() {
+    if (processedItems.length === 0 || !window.jspdf) return;
+    const btn = document.getElementById('downloadPdfBtn');
+    const prev = btn.innerText;
+    btn.innerText = '⏳ Building PDF...';
+    btn.disabled = true;
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+
+    for (let i = 0; i < processedItems.length; i++) {
+      if (i > 0) pdf.addPage();
+      const item = processedItems[i];
+      const dataUrl = await new Promise(resolve => {
+        const r = new FileReader();
+        r.onloadend = () => resolve(r.result);
+        r.readAsDataURL(item.blob);
+      });
+
+      const margin = 10;
+      const maxW = pageW - margin * 2;
+      const maxH = pageH - margin * 2;
+      const ratio = Math.min(maxW / item.width, maxH / item.height);
+      const w = item.width * ratio;
+      const h = item.height * ratio;
+      const x = (pageW - w) / 2;
+      const y = (pageH - h) / 2;
+
+      const fmt = item.blob.type === 'image/png' ? 'PNG' : 'JPEG';
+      pdf.addImage(dataUrl, fmt, x, y, w, h);
+    }
+
+    pdf.save('theaihubtools-bulk-images.pdf');
+    btn.innerText = prev;
+    btn.disabled = false;
+  }
+
+  // Canvas Image Story Generator (1080x1920 Shareable Result Card)
+  function downloadResultStoryCard() {
+    if (processedItems.length === 0) return;
+    const c = document.createElement('canvas');
+    c.width = 1080;
+    c.height = 1920;
+    const ctx = c.getContext('2d');
+
+    const grad = ctx.createLinearGradient(0, 0, 1080, 1920);
+    grad.addColorStop(0, '#0f172a');
+    grad.addColorStop(0.5, '#1e3a8a');
+    grad.addColorStop(1, '#0f172a');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1080, 1920);
+
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.beginPath();
+    ctx.roundRect(90, 340, 900, 1180, 48);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#60a5fa';
+    ctx.font = 'bold 42px sans-serif';
+    ctx.fillText('⚡ THE AI HUB TOOLS', 540, 460);
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '800 68px sans-serif';
+    ctx.fillText('Batch Image Optimization', 540, 570);
+
+    ctx.fillStyle = '#22c55e';
+    ctx.font = '900 160px sans-serif';
+    const bigStat = lastBatchStats.savedPct > 0 ? `${lastBatchStats.savedPct}% SAVED` : `${lastBatchStats.count} FILES`;
+    ctx.fillText(bigStat, 540, 820);
+
+    ctx.fillStyle = '#e2e8f0';
+    ctx.font = '600 44px sans-serif';
+    ctx.fillText(`${lastBatchStats.count} Images Processed Locally`, 540, 950);
+    ctx.fillText(`${lastBatchStats.origKB} KB  →  ${lastBatchStats.newKB} KB`, 540, 1030);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '500 34px sans-serif';
+    ctx.fillText('100% Client-Side • Zero Uploads • 300 DPI Ready', 540, 1220);
+
+    ctx.fillStyle = '#38bdf8';
+    ctx.font = 'bold 36px sans-serif';
+    ctx.fillText('theaihub-tools.github.io/all-tools/', 540, 1380);
+
+    c.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'theaihubtools-result-story.png';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    }, 'image/png');
+  }
+
+  // Interactive Split-Curtain Inspector Functions
+  function openCompareModal(idx) {
+    const item = processedItems[idx];
+    if (!item) return;
+    document.getElementById('cmpOrigImg').src = item.origUrl;
+    document.getElementById('cmpOrigMeta').innerText = `${item.origWidth}×${item.origHeight}px • ${(item.origSize/1024).toFixed(1)} KB`;
+    document.getElementById('cmpNewImg').src = item.url;
+    document.getElementById('cmpNewMeta').innerText = `${item.width}×${item.height}px • ${(item.newSize/1024).toFixed(1)} KB`;
+    document.getElementById('splitRange').value = 50;
+    updateSplitCurtain(50);
+    document.getElementById('compareModal').style.display = 'flex';
+  }
+  function updateSplitCurtain(val) {
+    const rightInset = 100 - val;
+    document.getElementById('splitOverlay').style.clipPath = `inset(0 ${rightInset}% 0 0)`;
+    document.getElementById('splitDivider').style.left = `${val}%`;
+  }
+  function closeCompareModal() {
+    document.getElementById('compareModal').style.display = 'none';
+  }
+
+  // Copy Base64 Data URL
+  function copyBase64(idx, btn) {
+    const item = processedItems[idx];
+    if (!item) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      navigator.clipboard.writeText(reader.result);
+      const prev = btn.innerText;
+      btn.innerText = '✓ Copied!';
+      setTimeout(() => btn.innerText = prev, 1800);
+    };
+    reader.readAsDataURL(item.blob);
+  }
+
+  function copyDevHtml() {
+    const ta = document.getElementById('devHtmlOutput');
+    ta.select();
+    navigator.clipboard.writeText(ta.value);
+    alert('Responsive HTML <picture> snippet copied!');
+  }
+
+  async function downloadAllAsZip() {
+    if (processedItems.length === 0) return;
+    const btn = document.getElementById('downloadZipBtn');
+    const origLabel = btn.innerText;
+    btn.innerText = '⏳ Creating ZIP...';
+    btn.disabled = true;
+
+    const zip = new JSZip();
+    const usedNames = new Set();
+
+    processedItems.forEach((item, idx) => {
+      let safeName = item.name;
+      if (usedNames.has(safeName)) safeName = `${idx + 1}-${safeName}`;
+      usedNames.add(safeName);
+      zip.file(safeName, item.blob);
+    });
+
+    const content = await zip.generateAsync({ type: 'blob' });
+    const zipUrl = URL.createObjectURL(content);
+    const link = document.createElement('a');
+    link.href = zipUrl;
+    link.download = 'theaihubtools-bulk-pro.zip';
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(zipUrl), 5000);
+
+    btn.innerText = origLabel;
+    btn.disabled = false;
+  }
+
+  function copyEmbedCode() {
+    const input = document.getElementById('embedCodeInput');
+    input.select();
+    input.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(input.value);
+    const btn = document.querySelector('.copy-embed-btn');
+    btn.innerText = '✓ Copied!';
+    setTimeout(() => btn.innerText = '1-Click Copy', 2000);
+  }
+
+  // Social Share Bar Logic with UTM Campaign Tracking
+  (function () {
+    const baseCleanUrl = window.location.origin + window.location.pathname;
+    const rawTitle = "Bulk Image Resizer Pro - Enterprise Client-Side Batch Image Studio | The AI Hub Tools";
+    const pageTitle = encodeURIComponent(rawTitle);
+
+    function getUtmUrl(source) {
+      return encodeURIComponent(`${baseCleanUrl}?utm_source=${source}&utm_medium=social&utm_campaign=bulk_image_resizer`);
+    }
+
+    function trackShare(platform) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'share', {
+          method: platform,
+          content_type: 'web_tool',
+          item_id: 'bulk_image_resizer_pro'
+        });
+      }
+    }
+
+    const shareLinks = {
+      "share-whatsapp": [`https://api.whatsapp.com/send?text=${pageTitle}%20${getUtmUrl('whatsapp')}`, "WhatsApp"],
+      "share-telegram": [`https://t.me/share/url?url=${getUtmUrl('telegram')}&text=${pageTitle}`, "Telegram"],
+      "share-pinterest": [`https://pinterest.com/pin/create/button/?url=${getUtmUrl('pinterest')}&description=${pageTitle}`, "Pinterest"],
+      "share-x": [`https://twitter.com/intent/tweet?text=${pageTitle}&url=${getUtmUrl('twitter_x')}`, "X_Twitter"],
+      "share-facebook": [`https://www.facebook.com/sharer/sharer.php?u=${getUtmUrl('facebook')}`, "Facebook"],
+      "share-linkedin": [`https://www.linkedin.com/sharing/share-offsite/?url=${getUtmUrl('linkedin')}`, "LinkedIn"]
+    };
+
+    Object.keys(shareLinks).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.href = shareLinks[id][0];
+        el.addEventListener("click", () => trackShare(shareLinks[id][1]));
+      }
+    });
+
+    const nativeBtn = document.getElementById("share-native");
+    if (navigator.share && nativeBtn) {
+      nativeBtn.style.display = "inline-flex";
+      nativeBtn.addEventListener("click", async () => {
+        trackShare("Native_Mobile_Menu");
+        try {
+          await navigator.share({
+            title: rawTitle,
+            url: `${baseCleanUrl}?utm_source=native_share&utm_medium=social&utm_campaign=bulk_image_resizer`
+          });
+        } catch (err) {}
+      });
+    }
+
+    const copyBtn = document.getElementById("share-copylink");
+    const copyText = document.getElementById("copy-text");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        trackShare("Copy_Link");
+        navigator.clipboard.writeText(`${baseCleanUrl}?utm_source=copy_link&utm_medium=social&utm_campaign=bulk_image_resizer`).then(() => {
+          copyText.innerText = "Copied!";
+          setTimeout(() => { copyText.innerText = "Copy Link"; }, 2000);
+        });
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
