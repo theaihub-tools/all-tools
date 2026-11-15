@@ -12,11 +12,11 @@
   const CONFIG = Object.freeze({
     allowedDomains: Object.freeze(['theaihub-tools.github.io', 'theaihubtools.com', 'localhost', '127.0.0.1', '']),
     brandName: 'The AI Hub Tools',
-    buttonText: 'Support Free Tools',
+    buttonText: 'Buy Me a Coffee',
     modalTitle: '☕ Keep These Tools 100% Free & Ad-Free',
     modalSubtitle: 'Every tool here runs 100% locally in your browser with zero server uploads or tracking. If this saved your time, support our independent development!',
-    gumroadBaseUrl: 'https://panchal127.gumroad.com',
-    globalButtonLabel: '☕ Support on Gumroad',
+    gumroadBaseUrl: 'https://panchal127.gumroad.com/coffee',
+    globalButtonLabel: '☕ Buy Me a Coffee ($3)',
     position: 'bottom-right', // 'bottom-right' or 'bottom-left'
     dismissHours: 24,
     hostId: 'aihub-support-widget-host'
