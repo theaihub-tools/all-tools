@@ -47,7 +47,7 @@
     }
   }, false);
 
-  // 4. यूनिवर्सल प्रोटेक्शन CSS
+  // 4. यूनिवर्सल प्रोटेक्शन CSS (पुराना सब सुरक्षित + height: auto जोड़ा गया)
   var style = doc.createElement("style");
   style.textContent =
     "* { box-sizing: border-box; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }" +
@@ -57,7 +57,7 @@
       "-ms-user-select: text !important; " +
       "user-select: text !important; " +
     "}" +
-    "html.in-iframe-mode body { overflow: hidden !important; margin: 0 !important; padding-top: 4px !important; }" +
+    "html.in-iframe-mode, html.in-iframe-mode body { height: auto !important; min-height: 0 !important; overflow: hidden !important; margin: 0 !important; padding-top: 4px !important; padding-bottom: 10px !important; }" +
     "html.in-iframe-mode .hide-in-embed { display: none !important; }";
   (doc.head || doc.documentElement).appendChild(style);
 
@@ -85,7 +85,7 @@
       }
     }, false);
 
-    // सटीक ऊंचाई मापने और पैरेंट (iframe.js) को भेजने का इंजन
+    // सटीक ऊंचाई मापने और पैरेंट (iframe.js) को भेजने का इंजन (पुराना + नया दोनों मिलाकर)
     var lastSentHeight = 0;
     var resizeTimer = null;
 
@@ -96,11 +96,17 @@
         var mainBox = doc.querySelector(".main-container, .tool-container, .container, .card") || doc.body;
         if (!mainBox) return;
 
-        var height = Math.ceil(Math.max(
+        var boxHeight = Math.max(
           mainBox.scrollHeight,
           mainBox.offsetHeight,
           mainBox.getBoundingClientRect().height
-        ));
+        );
+        var docHeight = Math.max(
+          doc.body ? doc.body.scrollHeight : 0,
+          doc.documentElement ? doc.documentElement.scrollHeight : 0
+        );
+
+        var height = Math.ceil(Math.max(boxHeight, docHeight));
 
         if (height > 50 && height !== lastSentHeight) {
           lastSentHeight = height;
@@ -139,6 +145,8 @@
       });
 
       win.__sendHeightToParent();
+      setTimeout(win.__sendHeightToParent, 250);
+      setTimeout(win.__sendHeightToParent, 800);
 
       if (win.ResizeObserver && doc.body) {
         new ResizeObserver(win.__sendHeightToParent).observe(doc.body);
