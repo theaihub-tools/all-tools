@@ -2,12 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://theaihub-tools.github.io/all-tools/</loc>
-    <lastmod>2026-10-27</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/index.html</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
@@ -36,6 +31,11 @@
     <priority>0.90</priority>
   </url>
   <url>
+    <loc>https://theaihub-tools.github.io/all-tools/base64-converter.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://theaihub-tools.github.io/all-tools/case-word-counter.html</loc>
     <lastmod>2026-10-05</lastmod>
     <priority>0.90</priority>
@@ -51,6 +51,16 @@
     <priority>0.90</priority>
   </url>
   <url>
+    <loc>https://theaihub-tools.github.io/all-tools/diff-checker.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/exif-data-remover.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://theaihub-tools.github.io/all-tools/font-generator.html</loc>
     <lastmod>2026-10-05</lastmod>
     <priority>0.90</priority>
@@ -61,62 +71,7 @@
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://theaihub-tools.github.io/all-tools/password-generator.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/qr-generator.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/resizer.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/speech-to-text.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/svg-to-png.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/unit-converter.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/word-counter.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.90</priority>
-  </url> 
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/json-formatter.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/base64-converter.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/prompt-generator.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/diff-checker.html</loc>
-    <lastmod>2026-10-27</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/regex-tester.html</loc>
+    <loc>https://theaihub-tools.github.io/all-tools/glassmorphism-generator.html</loc>
     <lastmod>2026-10-27</lastmod>
     <priority>0.90</priority>
   </url>
@@ -126,24 +81,63 @@
     <priority>0.90</priority>
   </url>
   <url>
+    <loc>https://theaihub-tools.github.io/all-tools/json-formatter.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/password-generator.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/prompt-generator.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/qr-generator.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/regex-tester.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/resizer.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/sip-calculator.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/speech-to-text.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/svg-to-png.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://theaihub-tools.github.io/all-tools/unit-converter.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://theaihub-tools.github.io/all-tools/url-encoder-decoder.html</loc>
     <lastmod>2026-10-27</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://theaihub-tools.github.io/all-tools/exif-data-remover.html</loc>
-    <lastmod>2026-10-27</lastmod>
+    <loc>https://theaihub-tools.github.io/all-tools/word-counter.html</loc>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.90</priority>
   </url>
-  <url>
-    <loc>https://theaihub-tools.github.io/all-tools/glassmorphism-generator.html</loc>
-    <lastmod>2026-10-27</lastmod>
-    <priority>0.90</priority>
-  </url> 
-    <url>
-    <loc>https://theaihub-tools.github.io/all-tools/sip-calculator.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <priority>0.90</priority>
-  </url>
-
 </urlset>
