@@ -12,9 +12,10 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>The AI Hub Tools | Free Online Web Tools Platform</title>
-    <meta name="description" content="Free collection of online web tools including Image Resizer, QR Code Generator, Age Calculator, Word Counter, Password Generator, and Color Picker. Fast, private and free.">
-    <meta name="keywords" content="free online tools, image resizer online, qr code generator, age calculator, word counter, password generator, color picker, palette generator, the ai hub tools">
+    <meta name="description" content="Free collection of 22+ online web tools including Image Resizer, SVG to PNG Converter, QR Code Generator, Age Calculator, SIP Calculator, Word Counter, JSON Formatter, EXIF Remover, and Color Picker. Fast, private and 100% free.">
+    <meta name="keywords" content="free online tools, image resizer online, svg to png converter, qr code generator, age calculator, sip calculator, word counter, password generator, color picker, exif remover, json formatter, the ai hub tools">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://theaihub-tools.github.io/all-tools/" />
@@ -26,7 +27,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/">
     <meta property="og:title" content="The AI Hub Tools - All in One Online Web Tools">
-    <meta property="og:description" content="Free online collection of Image Resizer, Color Picker, QR Code Generator, Age Calculator, and 20+ utility tools in one place.">
+    <meta property="og:description" content="Free online collection of Image Resizer, SVG to PNG Converter, Color Picker, QR Code Generator, Age Calculator, SIP Calculator, and 22+ utility tools in one place.">
     <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/1794114249737.png">
     <meta property="og:image:secure_url" content="https://theaihub-tools.github.io/all-tools/1794114249737.png">
     <meta property="og:image:type" content="image/png">
@@ -39,13 +40,59 @@
     <!-- Twitter / X Large Card Preview -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The AI Hub Tools - All in One Online Web Tools">
-    <meta name="twitter:description" content="Free online collection of Image Resizer, Color Picker, QR Code Generator, Age Calculator, and 20+ utility tools in one place.">
+    <meta name="twitter:description" content="Free online collection of Image Resizer, SVG to PNG Converter, Color Picker, QR Code Generator, Age Calculator, and 22+ utility tools in one place.">
     <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/1794114249737.png">
 
     <!-- Google Site Verification Tag -->
     <meta name="google-site-verification" content="zUxRmWQ6XkicpxdpZvDyP-_nFVCCobj8sgqF_XFJQ" />
 
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "The AI Hub Tools",
+      "url": "https://theaihub-tools.github.io/all-tools/",
+      "description": "Free, fast, and 100% browser-based collection of 22+ online utility tools for images, text, calculators, and developers.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://theaihub-tools.github.io/all-tools/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --border-color: #edf2f7;
+            --accent-color: #3182ce;
+            --badge-bg: #ebf8ff;
+            --badge-border: #bee3f8;
+            --input-bg: #ffffff;
+            --footer-bg: #f8f9fa;
+            --shadow: 0 3px 10px rgba(0,0,0,0.06);
+        }
+
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --accent-color: #60a5fa;
+            --badge-bg: #1e3a8a;
+            --badge-border: #2563eb;
+            --input-bg: #1e293b;
+            --footer-bg: #1e293b;
+            --shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
         *, *::before, *::after { 
             box-sizing: border-box; 
             margin: 0;
@@ -57,7 +104,9 @@
             width: 100%;
             min-height: 100%;
             overflow-x: hidden !important;
-            background: #f0f2f5;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            transition: background 0.25s ease, color 0.25s ease;
         }
 
         body { 
@@ -74,37 +123,151 @@
             text-align: center; 
             position: relative;
         }
+
+        /* Top Bar with Theme Toggle */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+        }
         
         .header { 
-            margin-bottom: 25px; 
-            padding: 10px 0;
+            margin-bottom: 20px; 
+            padding: 5px 0;
         }
 
         .badge { 
             display: inline-block; 
-            background: #ebf8ff; 
-            color: #3182ce; 
+            background: var(--badge-bg); 
+            color: var(--accent-color); 
             font-size: 12px; 
             font-weight: bold; 
             padding: 6px 14px; 
             border-radius: 20px; 
-            margin-bottom: 12px; 
-            border: 1px solid #bee3f8; 
+            border: 1px solid var(--badge-border); 
         }
 
         h1 { 
             font-size: 26px; 
-            color: #1a202c; 
+            color: var(--text-primary); 
             margin: 0 0 8px 0; 
             word-wrap: break-word;
         }
 
         p.subtitle { 
-            color: #4a5568; 
+            color: var(--text-secondary); 
             font-size: 14px; 
             line-height: 1.5;
             margin: 0 auto; 
             max-width: 500px;
+        }
+
+        /* Search Box with Clear Button */
+        .search-wrapper {
+            position: relative;
+            max-width: 520px;
+            margin: 0 auto 14px auto;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 68px 12px 16px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+            box-shadow: var(--shadow);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 38px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 4px 6px;
+            display: none;
+        }
+
+        .clear-search:hover {
+            color: var(--text-primary);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* Category Filter Pills */
+        .category-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .cat-btn {
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cat-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .cat-btn.active {
+            background: #3182ce;
+            color: #ffffff;
+            border-color: #3182ce;
         }
 
         .tools-grid { 
@@ -112,17 +275,17 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 15px; 
             width: 100%;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         
         .tool-card { 
-            background: #ffffff; 
+            background: var(--card-bg); 
             border-radius: 12px; 
             padding: 18px; 
             text-decoration: none; 
             color: inherit; 
-            box-shadow: 0 3px 10px rgba(0,0,0,0.06); 
-            border: 1px solid #edf2f7; 
+            box-shadow: var(--shadow); 
+            border: 1px solid var(--border-color); 
             transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; 
             display: flex; 
             flex-direction: column; 
@@ -133,8 +296,8 @@
 
         .tool-card:hover { 
             transform: translateY(-3px); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
-            border-color: #3182ce; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); 
+            border-color: var(--accent-color); 
         }
 
         .tool-icon { 
@@ -145,13 +308,13 @@
         .tool-title { 
             font-size: 16px; 
             font-weight: bold; 
-            color: #2d3748; 
+            color: var(--text-primary); 
             margin-bottom: 6px; 
         }
 
         .tool-desc { 
             font-size: 13px; 
-            color: #718096; 
+            color: var(--text-muted); 
             line-height: 1.4; 
             margin-bottom: 14px; 
             flex-grow: 1; 
@@ -160,7 +323,7 @@
         .tool-link-text { 
             font-size: 13px; 
             font-weight: bold; 
-            color: #3182ce; 
+            color: var(--accent-color); 
             display: inline-flex; 
             align-items: center; 
         }
@@ -169,25 +332,68 @@
             text-decoration: underline; 
         }
 
+        .no-results {
+            display: none;
+            padding: 30px 15px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* SEO Trust Box */
+        .seo-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 28px;
+            text-align: left;
+            box-shadow: var(--shadow);
+        }
+
+        .seo-box h2 {
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .seo-box p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
         footer { 
             text-align: center; 
             padding: 22px 12px; 
-            border-top: 1px solid #e0e0e0; 
-            margin-top: 40px; 
-            background-color: #f8f9fa; 
+            border-top: 1px solid var(--border-color); 
+            margin-top: 25px; 
+            background-color: var(--footer-bg); 
             font-size: 13px; 
             line-height: 1.8; 
             border-radius: 12px;
             width: 100%;
+            color: var(--text-secondary);
         }
 
-        /* Widgets hard constrain to stop horizontal shifting */
+        /* Widgets hard constrain & Dark Mode compatibility */
         .skiptranslate, 
         .goog-te-banner-frame, 
         #google_translate_element, 
         .share-buttons-container {
             max-width: 100% !important;
             overflow: hidden !important;
+        }
+
+        body.dark-mode #google_translate_element select {
+            background-color: var(--card-bg) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 6px;
+            padding: 4px;
         }
 
         @media (max-width: 600px) {
@@ -207,25 +413,54 @@
     </style>
 </head>
 <body>
+<!-- Instant Anti-Flash Dark Mode Check -->
+<script>
+    if (localStorage.getItem('aihub_theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+</script>
 
 <div class="container">
-    <div class="header">
-        <div><span class="badge">100% Free & Secure Tools</span></div>
-        <h1>The AI Hub Tools</h1>
-        <p class="subtitle">Fast, free, and secure online tools for your everyday digital needs</p>
+    <!-- Top Bar: Badge + Dark Mode Toggle -->
+    <div class="top-bar">
+        <span class="badge">100% Free &amp; Secure</span>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+            <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+        </button>
     </div>
 
-    <div class="tools-grid">
+    <div class="header">
+        <h1>The AI Hub Tools</h1>
+        <p class="subtitle">Fast, free, and 100% client-side online tools for your everyday digital needs</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-wrapper">
+        <input type="text" id="toolSearch" class="search-input" placeholder="Search tools (e.g., Image, QR, SIP, JSON, Age)..." autocomplete="off">
+        <button type="button" id="clearSearch" class="clear-search" aria-label="Clear search">✕</button>
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <!-- Category Filter Buttons -->
+    <div class="category-bar" id="categoryBar">
+        <button class="cat-btn active" data-category="all" id="allCatBtn">All (22)</button>
+        <button class="cat-btn" data-category="image">🖼️ Image &amp; Design</button>
+        <button class="cat-btn" data-category="text">📝 Text &amp; AI</button>
+        <button class="cat-btn" data-category="calculator">📊 Calculators</button>
+        <button class="cat-btn" data-category="developer">🛠️ Developer &amp; Security</button>
+    </div>
+
+    <div class="tools-grid" id="toolsGrid">
         <!-- Tool 1: Image Resizer -->
-        <a href="resizer.html" class="tool-card">
+        <a href="resizer.html" class="tool-card" data-category="image">
             <div class="tool-icon">🖼️</div>
-            <div class="tool-title">Image Resizer & Compressor</div>
+            <div class="tool-title">Image Resizer &amp; Compressor</div>
             <div class="tool-desc">Compress image file sizes in KB and set custom pixel dimensions easily.</div>
             <span class="tool-link-text">Open Tool →</span>
         </a>
 
         <!-- Tool 2: QR Code Generator -->
-        <a href="qr-generator.html" class="tool-card">
+        <a href="qr-generator.html" class="tool-card" data-category="image">
             <div class="tool-icon">📱</div>
             <div class="tool-title">QR Code Generator</div>
             <div class="tool-desc">Generate instant downloadable QR codes for links, text, and phone numbers.</div>
@@ -233,7 +468,7 @@
         </a>
 
         <!-- Tool 3: Age Calculator -->
-        <a href="age-calculator.html" class="tool-card">
+        <a href="age-calculator.html" class="tool-card" data-category="calculator">
             <div class="tool-icon">🎂</div>
             <div class="tool-title">Age Calculator</div>
             <div class="tool-desc">Calculate exact age in years, months, and days from date of birth.</div>
@@ -241,15 +476,15 @@
         </a>
 
         <!-- Tool 4: Word & Character Counter -->
-        <a href="word-counter.html" class="tool-card">
+        <a href="word-counter.html" class="tool-card" data-category="text">
             <div class="tool-icon">📝</div>
-            <div class="tool-title">Word & Character Counter</div>
+            <div class="tool-title">Word &amp; Character Counter</div>
             <div class="tool-desc">Count words, characters, sentences, and reading time in real-time.</div>
             <span class="tool-link-text">Open Tool →</span>
         </a>
 
         <!-- Tool 5: Password Generator -->
-        <a href="password-generator.html" class="tool-card">
+        <a href="password-generator.html" class="tool-card" data-category="developer">
             <div class="tool-icon">🔐</div>
             <div class="tool-title">Strong Password Generator</div>
             <div class="tool-desc">Create highly secure, randomized passwords for all your online accounts.</div>
@@ -257,7 +492,7 @@
         </a>    
       
         <!-- Tool 6: Unit Converter -->
-        <a href="unit-converter.html" class="tool-card">
+        <a href="unit-converter.html" class="tool-card" data-category="calculator">
             <div class="tool-icon">⚖️</div>
             <div class="tool-title">Unit Converter</div>
             <div class="tool-desc">Convert length, weight, temperature, and standard measurement units.</div>
@@ -265,15 +500,15 @@
         </a>
 
         <!-- Tool 7: Days Calculator -->
-        <a href="days-calculator.html" class="tool-card">
+        <a href="days-calculator.html" class="tool-card" data-category="calculator">
             <div class="tool-icon">📅</div>
-            <div class="tool-title">Days & Date Calculator</div>
+            <div class="tool-title">Days &amp; Date Calculator</div>
             <div class="tool-desc">Calculate remaining days, weeks, and duration between two calendar dates.</div>
             <span class="tool-link-text">Open Tool →</span>
         </a>
 
         <!-- Tool 8: Case Converter -->
-        <a href="case-converter.html" class="tool-card">
+        <a href="case-converter.html" class="tool-card" data-category="text">
             <div class="tool-icon">📝</div>
             <div class="tool-title">Case Converter</div>
             <div class="tool-desc">Convert text easily to UPPERCASE, lowercase, Title Case, and Sentence case.</div>
@@ -281,7 +516,7 @@
         </a>
 
         <!-- Tool 9: Stylish Font Generator -->
-        <a href="font-generator.html" class="tool-card">
+        <a href="font-generator.html" class="tool-card" data-category="text">
             <div class="tool-icon">✨</div>
             <div class="tool-title">Stylish Font Generator</div>
             <div class="tool-desc">Generate fancy Unicode fonts and symbols for social media bios and posts.</div>
@@ -289,7 +524,7 @@
         </a>
 
         <!-- Tool 10: Speech to Text -->
-        <a href="speech-to-text.html" class="tool-card">
+        <a href="speech-to-text.html" class="tool-card" data-category="text">
             <div class="tool-icon">🎙️</div>
             <div class="tool-title">Speech to Text (Voice Typing)</div>
             <div class="tool-desc">Speak into your microphone to convert voice into written text instantly.</div>
@@ -297,15 +532,15 @@
         </a>
 
         <!-- Tool 11: JSON Formatter & Validator -->
-        <a href="json-formatter.html" class="tool-card">
+        <a href="json-formatter.html" class="tool-card" data-category="developer">
             <div class="tool-icon">🛠️</div>
-            <div class="tool-title">JSON Formatter & Validator</div>
+            <div class="tool-title">JSON Formatter &amp; Validator</div>
             <div class="tool-desc">Format, validate, prettify, and minify raw JSON data effortlessly.</div>
             <span class="tool-link-text">Open Tool →</span>
         </a>
 
         <!-- Tool 12: Base64 Encoder / Decoder -->
-        <a href="base64-converter.html" class="tool-card">
+        <a href="base64-converter.html" class="tool-card" data-category="developer">
             <div class="tool-icon">🔐</div>
             <div class="tool-title">Base64 Encoder / Decoder</div>
             <div class="tool-desc">Quickly encode text strings and files into Base64 format or decode them back.</div>
@@ -313,7 +548,7 @@
         </a>
 
         <!-- Tool 13: AI Image Prompt Enhancer -->
-        <a href="prompt-generator.html" class="tool-card">
+        <a href="prompt-generator.html" class="tool-card" data-category="text">
             <div class="tool-icon">🎨</div>
             <div class="tool-title">AI Image Prompt Enhancer</div>
             <div class="tool-desc">Upgrade simple concepts into 8K cinematic prompts for Midjourney and Flux.</div>
@@ -321,7 +556,7 @@
         </a>
 
         <!-- Tool 14: Diff Checker (Text Compare) -->
-        <a href="diff-checker.html" class="tool-card">
+        <a href="diff-checker.html" class="tool-card" data-category="developer">
             <div class="tool-icon">🔍</div>
             <div class="tool-title">Diff Checker (Text Compare)</div>
             <div class="tool-desc">Compare two pieces of text or source code side-by-side to find differences.</div>
@@ -329,7 +564,7 @@
         </a>
 
         <!-- Tool 15: Regex Tester -->
-        <a href="regex-tester.html" class="tool-card">
+        <a href="regex-tester.html" class="tool-card" data-category="developer">
             <div class="tool-icon">⚡</div>
             <div class="tool-title">Regex Tester</div>
             <div class="tool-desc">Test and validate regular expression patterns live with highlighted matches.</div>
@@ -337,7 +572,7 @@
         </a>
 
         <!-- Tool 16: Hash Generator -->
-        <a href="hash-generator.html" class="tool-card">
+        <a href="hash-generator.html" class="tool-card" data-category="developer">
             <div class="tool-icon">🔒</div>
             <div class="tool-title">Hash Generator (MD5, SHA)</div>
             <div class="tool-desc">Generate secure cryptographic MD5, SHA-256, and SHA-512 hashes online.</div>
@@ -345,7 +580,7 @@
         </a>
 
         <!-- Tool 17: URL Encoder / Decoder -->
-        <a href="url-encoder-decoder.html" class="tool-card">
+        <a href="url-encoder-decoder.html" class="tool-card" data-category="developer">
             <div class="tool-icon">🔗</div>
             <div class="tool-title">URL Encoder / Decoder</div>
             <div class="tool-desc">Encode special characters in URLs or decode percent-encoded query strings.</div>
@@ -353,7 +588,7 @@
         </a>
 
         <!-- Tool 18: EXIF Data Remover -->
-        <a href="exif-data-remover.html" class="tool-card">
+        <a href="exif-data-remover.html" class="tool-card" data-category="image">
             <div class="tool-icon">🛡️</div>
             <div class="tool-title">EXIF Data Remover</div>
             <div class="tool-desc">Strip GPS location and camera metadata from photos to protect privacy.</div>
@@ -361,7 +596,7 @@
         </a>
 
         <!-- Tool 19: CSS Glassmorphism Generator -->
-        <a href="glassmorphism-generator.html" class="tool-card">
+        <a href="glassmorphism-generator.html" class="tool-card" data-category="image">
             <div class="tool-icon">💎</div>
             <div class="tool-title">CSS Glassmorphism Generator</div>
             <div class="tool-desc">Create modern frosted glass UI components and copy ready-to-use CSS code.</div>
@@ -369,35 +604,153 @@
         </a>
 
         <!-- Tool 20: Color Picker & Palette Generator -->
-        <a href="color-picker-palette.html" class="tool-card">
+        <a href="color-picker-palette.html" class="tool-card" data-category="image">
             <div class="tool-icon">🎨</div>
-            <div class="tool-title">Color Picker & Palette Generator</div>
+            <div class="tool-title">Color Picker &amp; Palette Generator</div>
             <div class="tool-desc">Pick colors, use screen eyedropper, test WCAG contrast, and build palettes.</div>
             <span class="tool-link-text">Open Tool →</span>
         </a> 
-              <!-- Tool 21: SIP Calculator -->
-      <a href="sip-calculator.html" class="tool-card">
-        <div class="tool-icon">📈</div>
-        <div class="tool-title">SIP Calculator</div>
-        <div class="tool-desc">Calculate mutual fund returns, Step-Up SIP growth & LTCG tax</div>
-        <span class="tool-link-text">Open Tool →</span>
-      </a>
 
+        <!-- Tool 21: SIP Calculator -->
+        <a href="sip-calculator.html" class="tool-card" data-category="calculator">
+            <div class="tool-icon">📈</div>
+            <div class="tool-title">SIP Calculator</div>
+            <div class="tool-desc">Calculate mutual fund returns, Step-Up SIP growth &amp; LTCG tax</div>
+            <span class="tool-link-text">Open Tool →</span>
+        </a>
+
+        <!-- Tool 22: SVG to PNG Converter -->
+        <a href="svg-to-png.html" class="tool-card" data-category="image">
+            <div class="tool-icon">🔄</div>
+            <div class="tool-title">SVG to PNG Converter</div>
+            <div class="tool-desc">Convert SVG vector files into high-resolution transparent PNG images instantly.</div>
+            <span class="tool-link-text">Open Tool →</span>
+        </a>
     </div>
 
+    <!-- No Search Results Message -->
+    <div id="noResults" class="no-results">
+        No matching tools found. Try searching with another keyword!
+    </div>
+
+    <!-- SEO & Privacy Info Section -->
+    <section class="seo-box">
+        <h2>Why Use The AI Hub Tools?</h2>
+        <p>
+            Every utility on <strong>The AI Hub Tools</strong> runs 100% locally inside your web browser. Whether you are compressing images, converting SVG to PNG, removing GPS EXIF metadata, calculating mutual fund SIP returns, or formatting JSON code, your files and text are never uploaded to any external server—ensuring instant speed and complete privacy without sign-up.
+        </p>
+    </section>
+
     <footer>
-        <p style="margin: 0 0 10px 0; color: #555;">
+        <p style="margin: 0 0 10px 0;">
             &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
         </p>
         <p style="margin: 0;">
-            <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-            <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-            <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-            <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-            <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+            <a href="index.html" style="color: var(--accent-color); text-decoration: none; margin: 0 8px;">Home</a> | 
+            <a href="about.html" style="color: var(--accent-color); text-decoration: none; margin: 0 8px;">About Us</a> | 
+            <a href="contact.html" style="color: var(--accent-color); text-decoration: none; margin: 0 8px;">Contact Us</a> | 
+            <a href="privacy-policy.html" style="color: var(--accent-color); text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+            <a href="terms.html" style="color: var(--accent-color); text-decoration: none; margin: 0 8px;">Terms &amp; Conditions</a>
         </p>
     </footer>
 </div>
+
+<!-- Search, Category Filter, Auto-Count & Dark Mode Script -->
+<script>
+    (function() {
+        // 1. Dark Mode Toggle Sync
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+
+        function applyTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Sync button text with current dark-mode state
+        applyTheme(document.body.classList.contains('dark-mode'));
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = !document.body.classList.contains('dark-mode');
+            applyTheme(isDark);
+            localStorage.setItem('aihub_theme', isDark ? 'dark' : 'light');
+        });
+
+        // 2. Live Search, Auto-Count, URL Query (?q=) & Category Filter
+        const searchInput = document.getElementById('toolSearch');
+        const clearSearchBtn = document.getElementById('clearSearch');
+        const catButtons = document.querySelectorAll('.cat-btn');
+        const allCatBtn = document.getElementById('allCatBtn');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const noResults = document.getElementById('noResults');
+
+        // Auto-update total tool count dynamically
+        const totalTools = toolCards.length;
+        allCatBtn.textContent = `All (${totalTools})`;
+        searchInput.placeholder = `Search ${totalTools} tools (e.g., Image, QR, SIP, JSON, SVG)...`;
+
+        let currentCategory = 'all';
+
+        function filterTools() {
+            const rawValue = searchInput.value;
+            const query = rawValue.toLowerCase().trim();
+            clearSearchBtn.style.display = rawValue.length > 0 ? 'block' : 'none';
+
+            let visibleCount = 0;
+
+            toolCards.forEach(card => {
+                const title = card.querySelector('.tool-title').textContent.toLowerCase();
+                const desc = card.querySelector('.tool-desc').textContent.toLowerCase();
+                const category = card.getAttribute('data-category');
+
+                const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+                const matchesSearch = (title.includes(query) || desc.includes(query));
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        searchInput.addEventListener('input', filterTools);
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            filterTools();
+            searchInput.focus();
+        });
+
+        catButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.getAttribute('data-category');
+                filterTools();
+            });
+        });
+
+        // Support direct URL search query e.g. ?q=sip
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialQuery = urlParams.get('q');
+        if (initialQuery) {
+            searchInput.value = initialQuery;
+            filterTools();
+        }
+    })();
+</script>
 
 <!-- Language Translator Widget -->
 <script src="translator.js"></script>
