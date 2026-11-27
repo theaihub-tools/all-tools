@@ -169,4 +169,65 @@
     win.addEventListener("load", win.__sendHeightToParent);
     win.addEventListener("resize", win.__sendHeightToParent);
   }
+
+  // 6. Universal Automatic Embed Code Box Generator (सभी टूल्स के लिए नया जोड़ा गया)
+  function initAutoEmbedBox() {
+    if (isIframe) return; // iFrame में एम्बेड होने पर बॉक्स छुपा रहेगा
+
+    var target = doc.getElementById("auto-embed-generator");
+    if (!target) {
+      var cardContainer = doc.querySelector(".card, .tool-card, .main-container, .container");
+      if (!cardContainer) return;
+      target = doc.createElement("div");
+      target.id = "auto-embed-generator";
+      cardContainer.appendChild(target);
+    }
+
+    if (target.innerHTML.trim() !== "") return; // डुप्लीकेट बॉक्स बनने से रोकें
+
+    var currentUrl = win.location.href.split('?')[0];
+    var domainUrl = win.location.origin;
+    var basePath = win.location.href.substring(0, win.location.href.lastIndexOf('/') + 1);
+    var pageH1 = doc.querySelector("h1");
+    var brandName = (pageH1 ? pageH1.textContent.trim() : doc.title.split('|')[0].trim()) + " — The AI Hub Tools";
+
+    var embedSnippet = '<div class="tool-embed-box" data-tool-url="' + currentUrl + '" data-height="540px" data-brand-name="' + brandName + '" data-brand-url="' + domainUrl + '"></div>\n' +
+                       '<script src="' + basePath + 'iframe.js" defer><\/script>';
+
+    target.innerHTML = 
+      '<div style="margin-top: 25px; padding: 14px; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; font-family: inherit; text-align: left;">' +
+        '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">' +
+          '<strong style="font-size: 13px; color: #334155;">💻 Embed this tool on your website:</strong>' +
+          '<button type="button" id="autoCopyBtn" style="padding: 6px 12px; background: #3182ce; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s;">Copy Embed Code</button>' +
+        '</div>' +
+        '<textarea id="autoEmbedText" readonly style="width: 100%; height: 65px; font-size: 12px; font-family: monospace; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; resize: none; background: #fff; box-sizing: border-box; color: #475569;">' + 
+          embedSnippet + 
+        '</textarea>' +
+      '</div>';
+
+    var copyBtn = doc.getElementById("autoCopyBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function() {
+        var textArea = doc.getElementById("autoEmbedText");
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+
+        var btn = this;
+        btn.innerText = "Copied! ✓";
+        btn.style.background = "#38a169";
+
+        setTimeout(function() {
+          btn.innerText = "Copy Embed Code";
+          btn.style.background = "#3182ce";
+        }, 2200);
+      });
+    }
+  }
+
+  if (doc.readyState === "loading") {
+    doc.addEventListener("DOMContentLoaded", initAutoEmbedBox);
+  } else {
+    initAutoEmbedBox();
+  }
 })(window, document);
