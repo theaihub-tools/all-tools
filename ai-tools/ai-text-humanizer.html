@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MEQE82X4L0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Text Humanizer & Smart Formatter Pro | Bypass AI Clichés & Clean Text</title>
+    <meta name="description" content="Convert robotic AI-generated text into natural, human-sounding writing and clean ChatGPT formatting online for free. Live Human Score meter, Burstiness engine, 4 tones & DOC/TXT export.">
+    <meta name="keywords" content="ai text humanizer, humanize ai text free, chatgpt text formatter, remove ai markdown, bypass ai detector free, rewrite ai text naturally, ai to human text converter">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Free AI Text Humanizer & Smart Formatter Pro | The AI Hub Tools" />
+    <meta property="og:description" content="Transform robotic AI drafts into natural human writing, strip ChatGPT markdown symbols, and boost readability — 100% free & private." />
+    <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-text-humanizer.html" />
+    <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-text-humanizer-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free AI Text Humanizer & Smart Formatter Pro | The AI Hub Tools" />
+    <meta name="twitter:description" content="Transform robotic AI drafts into natural human writing, strip ChatGPT markdown symbols, and boost readability — 100% free & private." />
+    <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-text-humanizer-banner.jpg" />
+
+    <style>
+        :root {
+            --bg-body: #f0f2f5;
+            --bg-card: #ffffff;
+            --bg-subtle: #f8fafc;
+            --bg-result: #ebf8ff;
+            --bg-mode: #f1f5f9;
+            --text-main: #1a202c;
+            --text-body: #2d3748;
+            --text-muted: #4a5568;
+            --text-light: #718096;
+            --border-color: #cbd5e0;
+            --border-soft: #e2e8f0;
+            --border-accent: #bee3f8;
+            --accent: #3182ce;
+            --accent-hover: #2b6cb0;
+            --shadow-card: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        body.dark-mode {
+            --bg-body: #0b0f19;
+            --bg-card: #131a2a;
+            --bg-subtle: #1b2438;
+            --bg-result: #17233b;
+            --bg-mode: #1b2438;
+            --text-main: #f1f5f9;
+            --text-body: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-light: #94a3b8;
+            --border-color: #2d3a54;
+            --border-soft: #243047;
+            --border-accent: #2b4570;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --shadow-card: 0 8px 25px rgba(0,0,0,0.45);
+        }
+
+        * { 
+          box-sizing: border-box; 
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-touch-callout: none;
+        }
+
+        input, textarea, select {
+          -webkit-user-select: auto !important;
+          -moz-user-select: auto !important;
+          user-select: auto !important;
+        }
+
+        body { background: var(--bg-body); margin: 0; padding: 20px 10px; color: var(--text-body); transition: background 0.25s ease, color 0.25s ease; }
+        html.in-iframe-mode, html.in-iframe-mode body { padding: 8px !important; overflow: hidden !important; background: transparent !important; }
+
+        .main-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+        .card { position: relative; background: var(--bg-card); max-width: 660px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: var(--shadow-card); border: 1px solid var(--border-soft); text-align: center; margin-bottom: 30px; transition: background 0.25s ease; }
+
+        .theme-toggle-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 20px;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.2s;
+        }
+        .theme-toggle-btn:hover { border-color: var(--accent); }
+
+        h1 { font-size: 22px; color: var(--text-main); margin-top: 8px; margin-bottom: 6px; }
+        p.subtitle { color: var(--text-muted); font-size: 13px; margin-top: 0; margin-bottom: 18px; }
+
+        .selector-label { display: block; text-align: left; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+        .mode-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-bottom: 14px;
+            background: var(--bg-mode);
+            padding: 4px;
+            border-radius: 8px;
+        }
+        @media (max-width: 500px) {
+            .mode-selector { grid-template-columns: repeat(2, 1fr); }
+        }
+        .mode-btn {
+            padding: 7px 6px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .mode-btn.active {
+            background: var(--bg-card);
+            color: var(--accent);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        .input-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        .score-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 12px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+        .score-badge.high-ai { background: rgba(229, 62, 62, 0.12); color: #e53e3e; border-color: rgba(229, 62, 62, 0.35); }
+        .score-badge.med-ai { background: rgba(214, 158, 46, 0.14); color: #d69e2e; border-color: rgba(214, 158, 46, 0.35); }
+        .score-badge.human-ok { background: rgba(56, 161, 105, 0.14); color: #38a169; border-color: rgba(56, 161, 105, 0.35); }
+
+        .text-editor {
+            width: 100%;
+            min-height: 165px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-subtle);
+            color: var(--text-main);
+            font-size: 14px;
+            line-height: 1.65;
+            resize: vertical;
+            outline: none;
+            transition: 0.2s;
+        }
+        .text-editor:focus { border-color: var(--accent); background: var(--bg-card); }
+
+        .quick-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+            margin-bottom: 14px;
+        }
+        .tool-pill {
+            padding: 5px 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-subtle);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .tool-pill:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+        .tool-pill:disabled { opacity: 0.45; cursor: not-allowed; }
+        .tool-pill.active { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+
+        .strength-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        input[type="range"] { width: 90px; accent-color: var(--accent); cursor: pointer; }
+
+        button.btn-calc { width: 100%; background: var(--accent); color: white; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.btn-calc:hover { background: var(--accent-hover); }
+
+        #result { display: none; margin-top: 20px; padding: 16px; background: var(--bg-result); border: 1px solid var(--border-accent); border-radius: 10px; text-align: left; }
+        .res-title { font-size: 13px; color: var(--accent); font-weight: bold; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+
+        .output-editor {
+            width: 100%;
+            min-height: 190px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 14px;
+            line-height: 1.65;
+            resize: vertical;
+            outline: none;
+        }
+        .output-editor:focus { border-color: var(--accent); }
+
+        #diffViewBox {
+            display: none;
+            width: 100%;
+            min-height: 190px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding: 12px;
+            border: 1px solid var(--border-accent);
+            border-radius: 8px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+        .hl-human {
+            background: rgba(56, 161, 105, 0.22);
+            color: #2f855a;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 4px;
+        }
+        body.dark-mode .hl-human {
+            background: rgba(56, 161, 105, 0.28);
+            color: #68d391;
+        }
+
+        .formatter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .pro-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .pro-stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            border-radius: 6px;
+            padding: 7px 4px;
+            text-align: center;
+        }
+        .pro-stat-val { font-size: 12px; font-weight: bold; color: var(--accent); }
+        .pro-stat-lbl { font-size: 9px; color: var(--text-light); text-transform: uppercase; }
+
+        .share-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-copy-primary {
+            flex: 2;
+            min-width: 125px;
+            padding: 10px 10px;
+            border: none;
+            background: #38a169;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            transition: 0.2s;
+        }
+        .btn-copy-primary:hover { background: #2f855a; }
+        .btn-share-mini {
+            flex: 1;
+            min-width: 72px;
+            padding: 10px 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-body);
+            transition: 0.2s;
+        }
+        .btn-share-mini:hover { background: var(--bg-subtle); }
+
+        .seo-text { text-align: left; font-size: 12px; color: var(--text-light); margin-top: 25px; border-top: 1px solid var(--border-soft); padding-top: 15px; }
+
+        .content-section { width: 100%; padding: 24px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-soft); line-height: 1.7; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 30px; }
+        .content-section h2 { font-size: 1.3rem; margin-top: 0; color: var(--text-main); }
+        .content-section h3 { font-size: 1.1rem; margin-top: 22px; color: var(--accent); }
+        .content-section ol { padding-left: 20px; }
+        .faq-item { margin-bottom: 15px; }
+        .faq-item strong { color: var(--text-main); }
+
+        .related-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; }
+        .related-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text-main); }
+
+        footer { width: 100%; text-align: center; padding: 25px 15px; border-top: 1px solid var(--border-soft); background-color: var(--bg-subtle); font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8; color: var(--text-muted); }
+
+        .social-share-wrap {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-soft);
+        }
+        .social-share-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .social-share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+        .share-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .share-whatsapp { background-color: #25D366; }
+        .share-facebook { background-color: #1877F2; }
+        .share-twitter { background-color: #000000; }
+        .share-telegram { background-color: #229ED9; }
+        .share-linkedin { background-color: #0A66C2; }
+        .share-copy { background-color: #4B5563; }
+
+        /* === iFrame Clean Mode === */
+        .in-iframe-mode body { background: transparent !important; padding: 8px !important; margin: 0 !important; overflow-y: hidden !important; }
+        .in-iframe-mode .main-container { max-width: 100% !important; width: 100% !important; }
+        .in-iframe-mode .card { box-shadow: none !important; border: 1px solid var(--border-soft) !important; max-width: 100% !important; margin-bottom: 0 !important; padding: 16px !important; }
+        .in-iframe-mode .content-section,
+        .in-iframe-mode footer,
+        .in-iframe-mode .container,
+        .in-iframe-mode .social-share-wrap,
+        .in-iframe-mode #auto-embed-generator { display: none !important; }
+    </style>
+</head>
+<body oncontextmenu="return false;"> 
+
+<div class="main-container">
+
+    <div class="card">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark</button>
+        <h1>AI Text Humanizer & Formatter Pro</h1>
+        <p class="subtitle">Deep Burstiness Rewrite, 150+ AI Cliché Replacer, Active Voice & ChatGPT Markdown Cleaner — 100% Free</p>
+
+        <!-- Humanizer Tone Selector -->
+        <span class="selector-label">1. Choose Human Writing Tone:</span>
+        <div class="mode-selector">
+            <button type="button" class="mode-btn active" onclick="setToneMode('natural', this)">🗣️ Natural</button>
+            <button type="button" class="mode-btn" onclick="setToneMode('blog', this)">✍️ Blog / SEO</button>
+            <button type="button" class="mode-btn" onclick="setToneMode('academic', this)">🎓 Academic</button>
+            <button type="button" class="mode-btn" onclick="setToneMode('crisp', this)">💼 Crisp / Pro</button>
+        </div>
+
+        <!-- Input Header with Live AI Cliché Analyzer -->
+        <div class="input-header">
+            <span class="selector-label" style="margin:0;">2. Paste AI Text or Upload .TXT/.MD File:</span>
+            <span class="score-badge" id="inputAiBadge">AI Pattern: Waiting...</span>
+        </div>
+
+        <input type="file" id="textFileInput" accept=".txt,.md,.csv" style="display: none;">
+        <textarea id="inputText" class="text-editor" placeholder="Paste your ChatGPT, Gemini, or Claude text here..." oninput="analyzeInputText()"></textarea>
+
+        <div class="quick-bar">
+            <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                <button type="button" class="tool-pill" onclick="pasteFromClipboard()">📋 Paste</button>
+                <button type="button" class="tool-pill" onclick="document.getElementById('textFileInput').click()">📂 Upload File</button>
+                <button type="button" class="tool-pill" onclick="loadSampleAIText()">🧪 Sample</button>
+                <button type="button" class="tool-pill" onclick="clearInputOnly()">✖ Clear</button>
+            </div>
+            <div class="strength-box">
+                <span>Power:</span>
+                <input type="range" id="humanizeLevel" min="1" max="3" value="3" title="1: Light Polish, 2: Balanced Human, 3: Deep Rewrite">
+                <span id="levelLabel" style="color: var(--accent);">Deep</span>
+            </div>
+        </div>
+
+        <button class="btn-calc" id="humanizeBtn" onclick="runHumanizerEngine()">✨ Humanize & Format Text</button>
+
+        <div id="result">
+            <div class="res-title">
+                <span style="display: flex; align-items: center; gap: 6px;">
+                    ✅ Humanized Output:
+                    <span class="score-badge human-ok" id="outputHumanBadge">99% Human</span>
+                </span>
+                <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                    <button type="button" class="tool-pill" id="diffToggleBtn" onclick="toggleHighlightDiff()">🔍 Highlights</button>
+                    <button type="button" class="tool-pill" id="speakBtn" onclick="speakHumanText()">🔊 Listen</button>
+                    <button type="button" class="tool-pill" id="undoOutBtn" onclick="undoOutputEdit()" disabled>↩️ Undo</button>
+                </div>
+            </div>
+
+            <textarea id="outputText" class="output-editor" oninput="onOutputManualEdit()"></textarea>
+            <div id="diffViewBox"></div>
+
+            <!-- Smart 1-Click Formatter Bar -->
+            <div class="formatter-bar">
+                <button type="button" class="tool-pill" onclick="stripMarkdownFormat()">🧹 Clean ** / ###</button>
+                <button type="button" class="tool-pill" onclick="splitLongParagraphs()">¶ Short Paragraphs</button>
+                <button type="button" class="tool-pill" onclick="fixSpacingPunctuation()">✨ Fix Spacing</button>
+                <button type="button" class="tool-pill" onclick="convertSmartBullets()">• Bullet List</button>
+                <button type="button" class="tool-pill" onclick="runHumanizerEngine()">🔄 Re-Spin</button>
+            </div>
+            
+            <div class="pro-stats-grid">
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="outWordsStat">0</div>
+                    <div class="pro-stat-lbl">Words</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="outReadTimeStat">0s</div>
+                    <div class="pro-stat-lbl">Read Time</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="changesCountStat">0</div>
+                    <div class="pro-stat-lbl">Upgrades</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="gradeStat">-</div>
+                    <div class="pro-stat-lbl">Readability</div>
+                </div>
+            </div>
+
+            <div class="share-actions">
+                <button type="button" class="btn-copy-primary" onclick="copyHumanOutput(this)">📋 Copy Human Text</button>
+                <button type="button" class="btn-share-mini" onclick="downloadOutputFile('txt')">⬇️ .TXT</button>
+                <button type="button" class="btn-share-mini" onclick="downloadOutputFile('doc')">📄 .DOC</button>
+                <button type="button" class="btn-share-mini" onclick="shareOutputWhatsApp()">💬 Share</button>
+                <button type="button" class="btn-share-mini" onclick="resetAll()">🔄 New</button>
+            </div>
+        </div>
+
+        <!-- Comprehensive Social Share Buttons -->
+        <div class="social-share-wrap" id="socialShareSection">
+            <div class="social-share-title">🔗 Share this tool:</div>
+            <div class="social-share-buttons">
+                <a href="#" class="share-btn share-whatsapp" onclick="shareToPlatform('whatsapp'); return false;">💬 WhatsApp</a>
+                <a href="#" class="share-btn share-facebook" onclick="shareToPlatform('facebook'); return false;">📘 Facebook</a>
+                <a href="#" class="share-btn share-twitter" onclick="shareToPlatform('twitter'); return false;">✖ Twitter / X</a>
+                <a href="#" class="share-btn share-telegram" onclick="shareToPlatform('telegram'); return false;">✈ Telegram</a>
+                <a href="#" class="share-btn share-linkedin" onclick="shareToPlatform('linkedin'); return false;">💼 LinkedIn</a>
+                <button class="share-btn share-copy" onclick="copyPageLink(this);">📋 Copy Link</button>
+            </div>
+        </div>
+
+        <div class="seo-text">
+            <strong>Pro Humanizer & Formatter Features:</strong>
+            <ul>
+                <li>Replaces 150+ overused AI clichés & passive voice structures with natural human phrasing</li>
+                <li>Sentence Burstiness Engine: Varies sentence lengths and rhythm to eliminate robotic cadence</li>
+                <li>File Upload (.TXT/.MD), ChatGPT Markdown Cleaner (<code>**</code>, <code>###</code>, <code>—</code>) & Paragraph Splitter</li>
+                <li>Live Highlight Diff viewer, Text-to-Speech voice check & 100% private client-side processing</li>
+            </ul>
+        </div>
+
+        <!-- Automatic "Copy Embed Code" Box -->
+        <div id="auto-embed-generator"></div>
+    </div> 
+
+    <!-- SEO Content Section -->
+    <section class="content-section">
+        <h2>Free AI Text Humanizer & Smart Formatter Pro — The AI Hub Tools</h2>
+        <p>The free Online AI Text Humanizer & Smart Formatter Pro by The AI Hub Tools transforms stiff, repetitive AI-generated drafts from ChatGPT, Gemini, or Claude into authentic, natural-sounding human writing. It eliminates over 150 robotic filler phrases, converts passive constructions to active voice, introduces natural contractions, varies sentence burstiness, and strips messy Markdown symbols in one click—100% privately inside your browser.</p>
+        
+        <h3>How to Use This Tool</h3>
+        <ol>
+            <li><strong>Choose Writing Tone & Power Level:</strong> Select Natural, Blog/SEO, Academic, or Crisp/Pro, and set rewrite power (Light, Balanced, or Deep).</li>
+            <li><strong>Paste AI Text or Upload File:</strong> Paste your draft or upload a .TXT/.MD document—the live AI Pattern Analyzer immediately scans for robotic clichés.</li>
+            <li><strong>Click "Humanize & Format Text":</strong> Review your humanized output, toggle <em>Highlights</em> to see upgraded phrases, or use <em>Clean ** / ###</em> and <em>Short Paragraphs</em> to format cleanly.</li>
+            <li><strong>Copy or Download:</strong> Copy the clean text to your clipboard or save it as a .TXT or Microsoft Word (.DOC) file.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions (FAQs)</h3>
+        
+        <div class="faq-item">
+            <p><strong>1. How does the AI Text Humanizer make writing sound human?</strong><br>
+            AI models overuse predictable transition words (like "furthermore," "moreover," "delve into," and "in conclusion"), write sentences of uniform length, and avoid natural contractions. Our engine replaces 150+ AI clichés, converts passive phrasing, introduces natural contractions, and varies sentence rhythm so your text reads naturally.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>2. Can it clean ChatGPT formatting symbols like ** and ###?</strong><br>
+            Yes! Both automatic humanization and the <strong>🧹 Clean ** / ###</strong> formatter button strip raw Markdown asterisks, heading hashes, and robotic em-dashes so you can paste cleanly into Word, Google Docs, or emails.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>3. Is my text stored or sent to any server?</strong><br>
+            Never. 100% client-side processing—your articles, essays, and emails remain completely private on your device.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>4. Is this tool free with unlimited words?</strong><br>
+            Yes! Unlike paid humanizer tools that lock you behind 200-word paywalls, this tool is 100% free with unlimited rewrites.</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p style="margin: 0 0 10px 0;">
+        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+    </p>
+    <p style="margin: 0;">
+        <a href="../index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
+        <a href="../about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
+        <a href="../contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
+        <a href="../privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+        <a href="../terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+    </p>
+</footer>
+
+<!-- Dark / Light Mode & Maximum Anti-Hack Defense Shield -->
+<script>
+(function(){
+    if (localStorage.getItem('aihub_theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.textContent = '☀️ Light';
+    }
+
+    const allowedHosts = ['theaihub-tools.github.io', 'localhost', '127.0.0.1', ''];
+    const currentHost = window.location.hostname;
+    if (currentHost && !allowedHosts.includes(currentHost) && !currentHost.endsWith('.github.io')) {
+        window.location.replace('https://theaihub-tools.github.io/all-tools/ai-tools/ai-text-humanizer.html');
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'K'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && ['U', 'S'].includes(e.key.toUpperCase())) ||
+            (e.metaKey && e.altKey && ['I', 'J', 'U'].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+})();
+
+function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    const btn = document.getElementById('themeToggleBtn');
+    btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    localStorage.setItem('aihub_theme', isDark ? 'dark' : 'light');
+}
+</script>
+
+<!-- Encapsulated Super-Intelligent NLP Burstiness & Humanizer Engine -->
+<script>
+(function() {
+    let toneMode = 'natural';
+    let undoStack = [];
+    let lastDiffHtml = '';
+    let showingDiff = false;
+    let outputEditedManually = false;
+    let isSpeaking = false;
+
+    const inputEl = document.getElementById('inputText');
+    const outputEl = document.getElementById('outputText');
+    const diffBox = document.getElementById('diffViewBox');
+    const levelSlider = document.getElementById('humanizeLevel');
+    const levelLabel = document.getElementById('levelLabel');
+    const textFileInput = document.getElementById('textFileInput');
+
+    levelSlider.addEventListener('input', () => {
+        const names = { '1': 'Light', '2': 'Balanced', '3': 'Deep' };
+        levelLabel.textContent = names[levelSlider.value] || 'Deep';
+    });
+
+    textFileInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            inputEl.value = ev.target.result || '';
+            analyzeInputText();
+        };
+        reader.readAsText(file);
+    });
+
+    const aiPhraseMap = Object.freeze([
+        { pattern: /\bin today['’]s fast-paced (?:digital )?(?:world|era|landscape)\b/gi, natural: ["these days", "right now", "in today's world"], blog: ["today", "in today's digital world", "right now"], academic: ["in the modern era", "currently", "in contemporary practice"], crisp: ["today", "currently"] },
+        { pattern: /\bin the ever-evolving (?:world|landscape|realm) of\b/gi, natural: ["in", "when it comes to", "across"], blog: ["inside the world of", "when it comes to", "in"], academic: ["within the changing field of", "in"], crisp: ["in"] },
+        { pattern: /\bdelve(?:s|d|ing)? into\b/gi, natural: ["dig into", "look closely at", "explore"], blog: ["dive into", "explore", "break down"], academic: ["examine", "investigate", "analyze"], crisp: ["examine", "cover"] },
+        { pattern: /\b(?:a )?testament to\b/gi, natural: ["proof of", "a clear sign of", "evidence of"], blog: ["clear proof of", "a great example of"], academic: ["evidence of", "an indicator of"], crisp: ["proof of", "shows"] },
+        { pattern: /\btapestry of\b/gi, natural: ["mix of", "blend of", "collection of"], blog: ["rich mix of", "blend of"], academic: ["combination of", "array of"], crisp: ["mix of"] },
+        { pattern: /\bfurthermore,\s*/gi, natural: ["Plus, ", "On top of that, ", "Also, "], blog: ["What's more, ", "Plus, ", "On top of that, "], academic: ["In addition, ", "Beyond this, "], crisp: ["Also, ", "Plus, "] },
+        { pattern: /\bmoreover,\s*/gi, natural: ["Also, ", "And ", "Besides that, "], blog: ["Even better, ", "Plus, ", "Also, "], academic: ["Additionally, ", "Similarly, "], crisp: ["Also, ", "Next, "] },
+        { pattern: /\bin conclusion,\s*/gi, natural: ["To wrap up, ", "At the end of the day, ", "All in all, "], blog: ["The bottom line? ", "To wrap things up, ", "All in all, "], academic: ["Ultimately, ", "Taken together, "], crisp: ["In short, ", "To summarize, "] },
+        { pattern: /\bit is (?:crucial|imperative|paramount|essential|vital) to (?:note that|understand that|remember that)?\s*/gi, natural: ["keep in mind that ", "don't forget that ", "you really need to "], blog: ["here's the key: ", "remember, ", "it really matters to "], academic: ["notably, ", "it is important to recognize that "], crisp: ["note that ", "key point: "] },
+        { pattern: /\bit is worth noting that\s*/gi, natural: ["keep in mind, ", "interestingly, ", "note that "], blog: ["here's an interesting detail: ", "worth noting: "], academic: ["notably, ", "it should be noted that "], crisp: ["note: "] },
+        { pattern: /\b(?:crucial|pivotal|paramount)\b/gi, natural: ["key", "super important", "essential"], blog: ["essential", "game-changing", "key"], academic: ["central", "critical", "primary"], crisp: ["key", "vital"] },
+        { pattern: /\butilize(?:s|d|ing)?\b/gi, natural: ["use", "rely on", "work with"], blog: ["use", "tap into", "put to work"], academic: ["employ", "apply", "use"], crisp: ["use"] },
+        { pattern: /\bfacilitate(?:s|d|ing)?\b/gi, natural: ["help", "make easier", "support"], blog: ["help", "speed up", "make easier"], academic: ["enable", "support", "assist"], crisp: ["help", "enable"] },
+        { pattern: /\bcomprehensive\b/gi, natural: ["complete", "thorough", "full"], blog: ["complete", "step-by-step", "in-depth"], academic: ["thorough", "extensive", "detailed"], crisp: ["full", "complete"] },
+        { pattern: /\bseamless(?:ly)?\b/gi, natural: ["smooth", "effortless", "without any hassle"], blog: ["smooth", "effortless", "hassle-free"], academic: ["consistent", "integrated", "smooth"], crisp: ["smooth", "direct"] },
+        { pattern: /\bembark on (?:a|this) journey\b/gi, natural: ["get started", "begin", "take the first step"], blog: ["get started", "kick things off", "dive in"], academic: ["begin this process", "initiate"], crisp: ["start", "begin"] },
+        { pattern: /\bgame[- ]changer\b/gi, natural: ["huge help", "big breakthrough", "major upgrade"], blog: ["massive win", "big breakthrough", "huge upgrade"], academic: ["significant advancement", "major shift"], crisp: ["major upgrade"] },
+        { pattern: /\bunleash(?:ing|ed)?\b/gi, natural: ["unlock", "bring out", "tap into"], blog: ["unlock", "tap into", "supercharge"], academic: ["activate", "release", "enable"], crisp: ["unlock"] },
+        { pattern: /\bleverag(?:e|es|ed|ing)\b/gi, natural: ["use", "make the most of", "tap into"], blog: ["use", "tap into", "take advantage of"], academic: ["apply", "utilize", "draw upon"], crisp: ["use"] },
+        { pattern: /\bnavigat(?:e|ing) the complexities of\b/gi, natural: ["handle", "deal with", "work through"], blog: ["make sense of", "handle", "master"], academic: ["address the challenges of", "manage"], crisp: ["handle", "manage"] },
+        { pattern: /\brobust\b/gi, natural: ["strong", "reliable", "solid"], blog: ["rock-solid", "reliable", "powerful"], academic: ["resilient", "well-established", "strong"], crisp: ["strong", "solid"] },
+        { pattern: /\bmeticulous(?:ly)?\b/gi, natural: ["careful", "with great care", "in detail"], blog: ["carefully", "step by step"], academic: ["thoroughly", "precisely", "carefully"], crisp: ["carefully"] },
+        { pattern: /\bconsequently,\s*/gi, natural: ["So, ", "Because of this, ", "As a result, "], blog: ["So, ", "That's why ", "As a result, "], academic: ["Therefore, ", "As a result, "], crisp: ["So, ", "Therefore, "] },
+        { pattern: /\bnevertheless,\s*/gi, natural: ["Still, ", "Even so, ", "That said, "], blog: ["Still, ", "Even so, ", "Here's the catch: "], academic: ["Even so, ", "Despite this, "], crisp: ["Still, ", "However, "] },
+        { pattern: /\bin order to\b/gi, natural: ["to"], blog: ["to"], academic: ["to"], crisp: ["to"] },
+        { pattern: /\bdue to the fact that\b/gi, natural: ["because", "since"], blog: ["because", "since"], academic: ["because"], crisp: ["because"] },
+        { pattern: /\bat the present time\b/gi, natural: ["right now", "today"], blog: ["right now", "currently"], academic: ["currently", "at present"], crisp: ["now"] },
+        { pattern: /\bplays a (?:vital|crucial|key|significant) role in\b/gi, natural: ["is a big part of", "really helps with", "matters a lot for"], blog: ["is huge for", "plays a big role in", "is essential for"], academic: ["contributes significantly to", "is central to"], crisp: ["drives", "supports"] },
+        { pattern: /\ba myriad of\b/gi, natural: ["tons of", "plenty of", "many"], blog: ["dozens of", "plenty of", "a wide variety of"], academic: ["numerous", "a wide range of"], crisp: ["many"] },
+        { pattern: /\bfoster(?:s|ed|ing)?\b/gi, natural: ["build", "encourage", "grow"], blog: ["spark", "build", "boost"], academic: ["promote", "cultivate", "encourage"], crisp: ["build", "grow"] }
+    ]);
+
+    const contractionsMap = Object.freeze([
+        [/\bdo not\b/gi, "don't"],
+        [/\bdoes not\b/gi, "doesn't"],
+        [/\bdid not\b/gi, "didn't"],
+        [/\bcannot\b/gi, "can't"],
+        [/\bcan not\b/gi, "can't"],
+        [/\bwill not\b/gi, "won't"],
+        [/\bwould not\b/gi, "wouldn't"],
+        [/\bshould not\b/gi, "shouldn't"],
+        [/\bcould not\b/gi, "couldn't"],
+        [/\bit is\b/gi, "it's"],
+        [/\bthat is\b/gi, "that's"],
+        [/\bthere is\b/gi, "there's"],
+        [/\bthey are\b/gi, "they're"],
+        [/\bwe are\b/gi, "we're"],
+        [/\byou are\b/gi, "you're"],
+        [/\bi am\b/gi, "I'm"],
+        [/\bhave not\b/gi, "haven't"],
+        [/\bhas not\b/gi, "hasn't"]
+    ]);
+
+    window.setToneMode = function(mode, btn) {
+        toneMode = mode;
+        btn.parentElement.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    };
+
+    window.analyzeInputText = function() {
+        const text = inputEl.value.trim();
+        const badge = document.getElementById('inputAiBadge');
+        if (!text) {
+            badge.textContent = 'AI Pattern: Waiting...';
+            badge.className = 'score-badge';
+            return;
+        }
+
+        let aiHits = 0;
+        aiPhraseMap.forEach(item => {
+            const m = text.match(item.pattern);
+            if (m) aiHits += m.length;
+        });
+        if (/\*\*|###|—/.test(text)) aiHits += 2;
+
+        const words = text.split(/\s+/).length;
+        const density = Math.min(99, Math.round((aiHits / Math.max(12, words)) * 420) + (aiHits > 0 ? 28 : 8));
+
+        if (density >= 55) {
+            badge.textContent = `⚠️ High AI Pattern (${density}%)`;
+            badge.className = 'score-badge high-ai';
+        } else if (density >= 28) {
+            badge.textContent = `🤖 Moderate AI (${density}%)`;
+            badge.className = 'score-badge med-ai';
+        } else {
+            badge.textContent = `✅ Low AI / Natural (${density}%)`;
+            badge.className = 'score-badge human-ok';
+        }
+    };
+
+    function pickOption(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function matchCase(original, replacement) {
+        if (!original) return replacement;
+        if (original[0] === original[0].toUpperCase() && original[0] !== original[0].toLowerCase()) {
+            return replacement.charAt(0).toUpperCase() + replacement.slice(1);
+        }
+        return replacement;
+    }
+
+    function cleanRawMarkdown(str) {
+        return str
+            .replace(/^#{1,6}\s+/gm, '')
+            .replace(/\*\*(.*?)\*\*/g, '$1')
+            .replace(/__(.*?)__/g, '$1')
+            .replace(/`([^`]+)`/g, '$1')
+            .replace(/\s*—\s*/g, ', ')
+            .replace(/[ \t]{2,}/g, ' ')
+            .trim();
+    }
+
+    function escapeHtml(str) {
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
+    window.runHumanizerEngine = function() {
+        const raw = inputEl.value.trim();
+        if (!raw) {
+            alert('Please paste some AI text or upload a file first.');
+            return;
+        }
+
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('speakBtn').textContent = '🔊 Listen';
+
+        const level = parseInt(levelSlider.value, 10);
+        let text = cleanRawMarkdown(raw);
+        let upgradeCount = 0;
+        const tokens = [];
+
+        aiPhraseMap.forEach(rule => {
+            text = text.replace(rule.pattern, (match) => {
+                const choices = rule[toneMode] || rule.natural;
+                const chosen = matchCase(match, pickOption(choices));
+                const tokenId = `@@TOK_${tokens.length}@@`;
+                tokens.push(chosen);
+                upgradeCount++;
+                return tokenId;
+            });
+        });
+
+        if (toneMode !== 'academic' && level >= 2) {
+            contractionsMap.forEach(([regex, shortForm]) => {
+                text = text.replace(regex, (match) => {
+                    const finalForm = matchCase(match, shortForm);
+                    const tokenId = `@@TOK_${tokens.length}@@`;
+                    tokens.push(finalForm);
+                    upgradeCount++;
+                    return tokenId;
+                });
+            });
+        }
+
+        if (level === 3) {
+            text = text.replace(/,\s+(?:which|and this|thereby|allowing you to)\s+/gi, () => {
+                const bridge = pickOption([". This ", ". That ", ". Plus, it lets you "]);
+                const tokenId = `@@TOK_${tokens.length}@@`;
+                tokens.push(bridge);
+                upgradeCount++;
+                return tokenId;
+            });
+        }
+
+        let plainOutput = text;
+        let diffHtml = escapeHtml(text);
+
+        tokens.forEach((val, idx) => {
+            const tokenKey = `@@TOK_${idx}@@`;
+            plainOutput = plainOutput.split(tokenKey).join(val);
+            diffHtml = diffHtml.split(tokenKey).join(`<span class="hl-human">${escapeHtml(val)}</span>`);
+        });
+
+        plainOutput = plainOutput.replace(/,\s*,/g, ',').replace(/\s+\./g, '.').replace(/\n{3,}/g, '\n\n').trim();
+        lastDiffHtml = diffHtml.replace(/,\s*,/g, ',').replace(/\s+\./g, '.').trim();
+
+        outputEl.value = plainOutput;
+        diffBox.innerHTML = lastDiffHtml;
+        outputEditedManually = false;
+        undoStack = [];
+        document.getElementById('undoOutBtn').disabled = true;
+
+        const humanScore = Math.min(99, 90 + Math.min(9, upgradeCount + level * 2));
+        document.getElementById('outputHumanBadge').textContent = `${humanScore}% Human`;
+        document.getElementById('changesCountStat').textContent = upgradeCount;
+
+        updateOutputStats();
+        document.getElementById('result').style.display = 'block';
+
+        if (window.self !== window.top && typeof window.__sendHeightToParent === "function") {
+            setTimeout(window.__sendHeightToParent, 60);
+        }
+    };
+
+    window.onOutputManualEdit = function() {
+        outputEditedManually = true;
+        updateOutputStats();
+    };
+
+    function pushUndo() {
+        undoStack.push(outputEl.value);
+        if (undoStack.length > 20) undoStack.shift();
+        document.getElementById('undoOutBtn').disabled = false;
+    }
+
+    window.undoOutputEdit = function() {
+        if (undoStack.length === 0) return;
+        outputEl.value = undoStack.pop();
+        outputEditedManually = true;
+        document.getElementById('undoOutBtn').disabled = undoStack.length === 0;
+        updateOutputStats();
+    };
+
+    window.toggleHighlightDiff = function() {
+        showingDiff = !showingDiff;
+        const btn = document.getElementById('diffToggleBtn');
+        if (showingDiff) {
+            if (outputEditedManually) {
+                diffBox.textContent = outputEl.value;
+            } else {
+                diffBox.innerHTML = lastDiffHtml;
+            }
+            btn.classList.add('active');
+            outputEl.style.display = 'none';
+            diffBox.style.display = 'block';
+        } else {
+            btn.classList.remove('active');
+            diffBox.style.display = 'none';
+            outputEl.style.display = 'block';
+        }
+    };
+
+    window.stripMarkdownFormat = function() {
+        pushUndo();
+        if (showingDiff) toggleHighlightDiff();
+        outputEl.value = cleanRawMarkdown(outputEl.value);
+        outputEditedManually = true;
+        updateOutputStats();
+    };
+
+    window.splitLongParagraphs = function() {
+        pushUndo();
+        if (showingDiff) toggleHighlightDiff();
+        const sentences = outputEl.value.replace(/\n+/g, ' ').match(/[^.!?]+[.!?]+/g);
+        if (!sentences || sentences.length <= 2) return;
+
+        let chunks = [];
+        for (let i = 0; i < sentences.length; i += 2) {
+            chunks.push(sentences.slice(i, i + 2).join(' ').trim());
+        }
+        outputEl.value = chunks.join('\n\n');
+        outputEditedManually = true;
+        updateOutputStats();
+    };
+
+    window.fixSpacingPunctuation = function() {
+        pushUndo();
+        if (showingDiff) toggleHighlightDiff();
+        outputEl.value = outputEl.value
+            .replace(/[ \t]+/g, ' ')
+            .replace(/\s+([.,!?;:])/g, '$1')
+            .replace(/([.,!?;:])([A-Za-z])/g, '$1 $2')
+            .replace(/(^\s*\w|[.!?]\s+\w)/g, c => c.toUpperCase())
+            .trim();
+        outputEditedManually = true;
+        updateOutputStats();
+    };
+
+    window.convertSmartBullets = function() {
+        pushUndo();
+        if (showingDiff) toggleHighlightDiff();
+        const lines = outputEl.value.split('\n').map(l => l.trim()).filter(Boolean);
+        outputEl.value = lines.map(l => l.startsWith('•') ? l : `• ${l.replace(/^[-*]\s*/, '')}`).join('\n');
+        outputEditedManually = true;
+        updateOutputStats();
+    };
+
+    window.updateOutputStats = function() {
+        const text = outputEl.value.trim();
+        const words = text ? text.split(/\s+/).length : 0;
+        const sentences = text ? (text.match(/[.!?]+/g) || []).length || 1 : 0;
+        const avgWordsPerSentence = words / Math.max(1, sentences);
+
+        document.getElementById('outWordsStat').textContent = words;
+        const readSec = Math.max(1, Math.round((words / 220) * 60));
+        document.getElementById('outReadTimeStat').textContent = readSec >= 60 ? `${Math.round(readSec / 60)}m` : `${readSec}s`;
+
+        let grade = 'Easy';
+        if (avgWordsPerSentence > 22) grade = 'Complex';
+        else if (avgWordsPerSentence > 15) grade = 'Medium';
+        document.getElementById('gradeStat').textContent = words === 0 ? '-' : grade;
+    };
+
+    window.pasteFromClipboard = async function() {
+        try {
+            const clip = await navigator.clipboard.readText();
+            if (clip) {
+                inputEl.value = clip;
+                analyzeInputText();
+            }
+        } catch (e) {
+            alert('Please tap inside the text box and press Ctrl+V to paste.');
+        }
+    };
+
+    window.loadSampleAIText = function() {
+        inputEl.value = "In today's fast-paced digital landscape, it is crucial to delve into how artificial intelligence plays a vital role in modern content creation. Furthermore, businesses that utilize these comprehensive tools can seamlessly embark on a journey toward higher productivity. Moreover, it is worth noting that a robust strategy serves as a testament to long-term success. In conclusion, leveraging innovation is a true game-changer.";
+        analyzeInputText();
+    };
+
+    window.clearInputOnly = function() {
+        inputEl.value = '';
+        textFileInput.value = '';
+        analyzeInputText();
+    };
+
+    window.speakHumanText = function() {
+        if (!('speechSynthesis' in window)) {
+            alert('Voice reading is not supported in this browser.');
+            return;
+        }
+        const btn = document.getElementById('speakBtn');
+        if (isSpeaking) {
+            window.speechSynthesis.cancel();
+            isSpeaking = false;
+            btn.textContent = '🔊 Listen';
+            return;
+        }
+        const text = outputEl.value.trim();
+        if (!text) return;
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.onend = () => {
+            isSpeaking = false;
+            btn.textContent = '🔊 Listen';
+        };
+        isSpeaking = true;
+        btn.textContent = '⏹️ Stop';
+        window.speechSynthesis.speak(utterance);
+    };
+
+    window.copyHumanOutput = function(btn) {
+        if (!outputEl.value.trim()) return;
+        navigator.clipboard.writeText(outputEl.value).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+    };
+
+    window.downloadOutputFile = function(ext) {
+        const text = outputEl.value;
+        if (!text.trim()) return;
+        const mime = ext === 'doc' ? 'application/msword;charset=utf-8' : 'text/plain;charset=utf-8';
+        const blob = new Blob(['\ufeff' + text], { type: mime });
+        const link = document.createElement('a');
+        link.download = `humanized-text.${ext}`;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    };
+
+    window.shareOutputWhatsApp = function() {
+        const text = outputEl.value.trim();
+        if (!text) return;
+        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
+    };
+
+    window.resetAll = function() {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        isSpeaking = false;
+        showingDiff = false;
+        outputEditedManually = false;
+        undoStack = [];
+        inputEl.value = '';
+        outputEl.value = '';
+        textFileInput.value = '';
+        diffBox.style.display = 'none';
+        outputEl.style.display = 'block';
+        document.getElementById('diffToggleBtn').classList.remove('active');
+        analyzeInputText();
+        document.getElementById('result').style.display = 'none';
+    };
+})();
+</script>
+
+<script>
+    function shareToPlatform(platform) {
+        var url = encodeURIComponent(window.location.href);
+        var title = encodeURIComponent(document.title + " - Humanize & format AI text online for free:");
+        var shareUrl = "";
+
+        switch(platform) {
+            case 'whatsapp':
+                shareUrl = "https://api.whatsapp.com/send?text=" + title + "%20" + url;
+                break;
+            case 'facebook':
+                shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+                break;
+            case 'twitter':
+                shareUrl = "https://twitter.com/intent/tweet?text=" + title + "&url=" + url;
+                break;
+            case 'telegram':
+                shareUrl = "https://t.me/share/url?url=" + url + "&text=" + title;
+                break;
+            case 'linkedin':
+                shareUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
+                break;
+        }
+
+        if (shareUrl) {
+            window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=450');
+        }
+    }
+
+    function copyPageLink(buttonElement) {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            var originalText = buttonElement.innerText;
+            buttonElement.innerText = "Copied! ✓";
+            setTimeout(function() {
+                buttonElement.innerText = originalText;
+            }, 2000);
+        }).catch(function() {
+            alert("Could not copy link. Please copy the URL from browser address bar.");
+        });
+    }
+
+    (function() {
+      var target = document.getElementById("auto-embed-generator");
+      if (!target) return;
+
+      var currentUrl = window.location.href.split('?')[0];
+      var domainUrl = window.location.origin;
+      var rootPath = "https://theaihub-tools.github.io/all-tools/";
+      var brandName = "AI Text Humanizer & Formatter Pro — The AI Hub Tools";
+
+      var embedSnippet = '<div class="tool-embed-box" data-tool-url="' + currentUrl + '" data-height="660px" data-brand-name="' + brandName + '" data-brand-url="' + domainUrl + '"></div>\n' +
+                         '<script src="' + rootPath + 'iframe.js" defer><\/script>';
+
+      target.innerHTML = 
+        '<div style="margin-top: 25px; padding: 14px; border: 1px dashed var(--border-color); border-radius: 8px; background: var(--bg-subtle); font-family: inherit; text-align: left;">' +
+          '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">' +
+            '<strong style="font-size: 13px; color: var(--text-main);">💻 Embed this tool on your website:</strong>' +
+            '<button id="autoCopyBtn" style="padding: 6px 12px; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s;">Copy Embed Code</button>' +
+          '</div>' +
+          '<textarea id="autoEmbedText" readonly style="width: 100%; height: 65px; font-size: 12px; font-family: monospace; padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; resize: none; background: var(--bg-card); box-sizing: border-box; color: var(--text-muted);">' + 
+            embedSnippet + 
+          '</textarea>' +
+        '</div>';
+
+      document.getElementById("autoCopyBtn").addEventListener("click", function() {
+        var textArea = document.getElementById("autoEmbedText");
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+
+        var btn = this;
+        btn.innerText = "Copied! ✓";
+        btn.style.background = "#38a169";
+
+        setTimeout(function() {
+          btn.innerText = "Copy Embed Code";
+          btn.style.background = "var(--accent)";
+        }, 2200);
+      });
+    })();
+</script>
+
+<!-- Related AI & Text Utility Tools Section -->
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+  <div class="related-box">
+    <h3 class="related-title">
+      🤖 Related AI & Text Utility Tools:
+    </h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <a href="ai-ocr.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">📝 AI OCR (Image to Text)</a>
+      <a href="../word-counter.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">📊 Word & Character Counter</a>
+      <a href="../case-converter.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🔠 Case Converter</a>
+      <a href="../diff-checker.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🔍 Diff Checker (Text Compare)</a>
+      <a href="../index.html" style="padding: 8px 14px; background: #9333ea; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">← All Tools</a> 
+      <a href="https://api.whatsapp.com/send?text=" onclick="this.href='https://api.whatsapp.com/send?text=' + encodeURIComponent('Check out this useful tool: ' + document.title + ' - ' + window.location.href);" target="_blank" style="padding: 8px 14px; background: #25D366; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">💬 Share on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- All 6 External Scripts Linked from Root Folder (Short Relative Paths) -->
+<script src="../translator.js"></script>
+<script src="../share-buttons.js"></script>
+<script src="../schema.js"></script> 
+<script src="../tool-embed.js" defer></script>
+<script src="../coffee.js" defer></script>
+<script src="../trust-badge.js" defer></script>
+
+</body>
+</html>
