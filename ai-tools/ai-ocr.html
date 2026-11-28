@@ -1,1 +1,1476 @@
-hhjk
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MEQE82X4L0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI OCR Image to Text Pro | 35+ Global Languages, Batch Scan & Crop</title>
+    <meta name="description" content="Convert images, scanned documents, receipts, and notes into editable text online for free. Supports 35+ languages including English, Hindi, Chinese, Japanese, Russian, French, German & Arabic.">
+    <meta name="keywords" content="ai ocr online, image to text converter, hindi ocr online, chinese ocr, japanese ocr, russian ocr, french ocr, batch ocr scanner, photo to text extractor">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Free AI OCR Image to Text Pro | The AI Hub Tools" />
+    <meta property="og:description" content="Batch extract editable text from images, bills & documents in 35+ global languages — 100% free & private." />
+    <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-ocr.html" />
+    <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-ocr-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free AI OCR Image to Text Pro | The AI Hub Tools" />
+    <meta name="twitter:description" content="Batch extract editable text from images, bills & documents in 35+ global languages — 100% free & private." />
+    <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-ocr-banner.jpg" />
+
+    <!-- Tesseract.js v5 Stable CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+    <style>
+        :root {
+            --bg-body: #f0f2f5;
+            --bg-card: #ffffff;
+            --bg-subtle: #f8fafc;
+            --bg-result: #ebf8ff;
+            --bg-mode: #f1f5f9;
+            --text-main: #1a202c;
+            --text-body: #2d3748;
+            --text-muted: #4a5568;
+            --text-light: #718096;
+            --border-color: #cbd5e0;
+            --border-soft: #e2e8f0;
+            --border-accent: #bee3f8;
+            --accent: #3182ce;
+            --accent-hover: #2b6cb0;
+            --shadow-card: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        body.dark-mode {
+            --bg-body: #0b0f19;
+            --bg-card: #131a2a;
+            --bg-subtle: #1b2438;
+            --bg-result: #17233b;
+            --bg-mode: #1b2438;
+            --text-main: #f1f5f9;
+            --text-body: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-light: #94a3b8;
+            --border-color: #2d3a54;
+            --border-soft: #243047;
+            --border-accent: #2b4570;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --shadow-card: 0 8px 25px rgba(0,0,0,0.45);
+        }
+
+        * { 
+          box-sizing: border-box; 
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-touch-callout: none;
+        }
+
+        input, textarea, select {
+          -webkit-user-select: auto !important;
+          -moz-user-select: auto !important;
+          user-select: auto !important;
+        }
+
+        body { background: var(--bg-body); margin: 0; padding: 20px 10px; color: var(--text-body); transition: background 0.25s ease, color 0.25s ease; }
+        html.in-iframe-mode, html.in-iframe-mode body { padding: 8px !important; overflow: hidden !important; background: transparent !important; }
+
+        .main-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+        .card { position: relative; background: var(--bg-card); max-width: 650px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: var(--shadow-card); border: 1px solid var(--border-soft); text-align: center; margin-bottom: 30px; transition: background 0.25s ease; }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 20px;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.2s;
+        }
+        .theme-toggle-btn:hover { border-color: var(--accent); }
+
+        h1 { font-size: 22px; color: var(--text-main); margin-top: 8px; margin-bottom: 6px; }
+        p.subtitle { color: var(--text-muted); font-size: 13px; margin-top: 0; margin-bottom: 18px; }
+
+        /* 3-Column Intelligent Config Grid */
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 14px;
+            text-align: left;
+        }
+        @media (max-width: 540px) {
+            .config-grid { grid-template-columns: 1fr; }
+        }
+        .config-label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+        .config-select {
+            width: 100%;
+            padding: 8px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-subtle);
+            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+        .config-select:focus { border-color: var(--accent); }
+
+        /* Upload Dropzone */
+        .upload-box {
+            border: 2px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 24px 16px;
+            background: var(--bg-subtle);
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 12px;
+        }
+        .upload-box:hover, .upload-box.dragover {
+            border-color: var(--accent);
+            background: var(--bg-result);
+        }
+        .upload-icon { font-size: 32px; margin-bottom: 6px; }
+        .upload-text { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+        .upload-hint { font-size: 12px; color: var(--text-light); }
+
+        /* Batch Queue Strip */
+        #batchStrip {
+            display: none;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 6px;
+            margin-bottom: 10px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .batch-thumb {
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-body);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .batch-thumb.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        /* Image Preview & Rotate/Crop Bar before OCR */
+        #previewBox {
+            display: none;
+            margin-bottom: 14px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .preview-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .preview-img-wrap {
+            position: relative;
+            max-height: 280px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            background: #0f172a;
+            touch-action: none;
+        }
+        .preview-img-wrap canvas {
+            max-width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+            display: block;
+        }
+
+        button.btn-calc { width: 100%; background: var(--accent); color: white; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.btn-calc:hover { background: var(--accent-hover); }
+        button.btn-calc:disabled { background: #64748b; cursor: not-allowed; }
+
+        /* Progress Bar */
+        #progressWrap { display: none; margin-top: 15px; text-align: left; }
+        .progress-label { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 6px; display: flex; justify-content: space-between; }
+        .progress-bar-bg { width: 100%; height: 8px; background: var(--border-soft); border-radius: 6px; overflow: hidden; }
+        .progress-bar-fill { width: 0%; height: 100%; background: var(--accent); transition: width 0.2s ease; }
+
+        /* Result Section */
+        #result { display: none; margin-top: 20px; padding: 16px; background: var(--bg-result); border: 1px solid var(--border-accent); border-radius: 10px; text-align: left; }
+        .res-title { font-size: 13px; color: var(--accent); font-weight: bold; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+
+        .ocr-textarea {
+            width: 100%;
+            min-height: 205px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            outline: none;
+        }
+        .ocr-textarea:focus { border-color: var(--accent); }
+
+        /* Smart Data Extractor Bar */
+        .smart-tools-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .tool-pill {
+            padding: 5px 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .tool-pill:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+        .tool-pill:disabled { opacity: 0.45; cursor: not-allowed; }
+        .tool-pill.active { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+
+        /* Find & Replace Mini Bar */
+        #findReplaceBar {
+            display: none;
+            margin-top: 8px;
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .mini-input {
+            flex: 1;
+            min-width: 100px;
+            padding: 6px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-subtle);
+            color: var(--text-main);
+            font-size: 12px;
+            outline: none;
+        }
+
+        .pro-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .pro-stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            border-radius: 6px;
+            padding: 7px 4px;
+            text-align: center;
+        }
+        .pro-stat-val { font-size: 12px; font-weight: bold; color: var(--accent); }
+        .pro-stat-lbl { font-size: 9px; color: var(--text-light); text-transform: uppercase; }
+
+        .share-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-copy-primary {
+            flex: 2;
+            min-width: 120px;
+            padding: 10px 10px;
+            border: none;
+            background: #38a169;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            transition: 0.2s;
+        }
+        .btn-copy-primary:hover { background: #2f855a; }
+        .btn-share-mini {
+            flex: 1;
+            min-width: 66px;
+            padding: 10px 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-body);
+            transition: 0.2s;
+        }
+        .btn-share-mini:hover { background: var(--bg-subtle); }
+
+        .seo-text { text-align: left; font-size: 12px; color: var(--text-light); margin-top: 25px; border-top: 1px solid var(--border-soft); padding-top: 15px; }
+
+        .content-section { width: 100%; padding: 24px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-soft); line-height: 1.7; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 30px; }
+        .content-section h2 { font-size: 1.3rem; margin-top: 0; color: var(--text-main); }
+        .content-section h3 { font-size: 1.1rem; margin-top: 22px; color: var(--accent); }
+        .content-section ol { padding-left: 20px; }
+        .faq-item { margin-bottom: 15px; }
+        .faq-item strong { color: var(--text-main); }
+
+        .related-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; }
+        .related-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text-main); }
+
+        footer { width: 100%; text-align: center; padding: 25px 15px; border-top: 1px solid var(--border-soft); background-color: var(--bg-subtle); font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8; color: var(--text-muted); }
+
+        /* Social Share Buttons Styles */
+        .social-share-wrap {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-soft);
+        }
+        .social-share-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .social-share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+        .share-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .share-whatsapp { background-color: #25D366; }
+        .share-facebook { background-color: #1877F2; }
+        .share-twitter { background-color: #000000; }
+        .share-telegram { background-color: #229ED9; }
+        .share-linkedin { background-color: #0A66C2; }
+        .share-copy { background-color: #4B5563; }
+
+        /* === iFrame Clean Mode === */
+        .in-iframe-mode body { background: transparent !important; padding: 8px !important; margin: 0 !important; overflow-y: hidden !important; }
+        .in-iframe-mode .main-container { max-width: 100% !important; width: 100% !important; }
+        .in-iframe-mode .card { box-shadow: none !important; border: 1px solid var(--border-soft) !important; max-width: 100% !important; margin-bottom: 0 !important; padding: 16px !important; }
+        .in-iframe-mode .content-section,
+        .in-iframe-mode footer,
+        .in-iframe-mode .container,
+        .in-iframe-mode .social-share-wrap,
+        .in-iframe-mode #auto-embed-generator { display: none !important; }
+    </style>
+</head>
+<body oncontextmenu="return false;"> 
+
+<div class="main-container">
+
+    <div class="card">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark</button>
+        <h1>AI OCR Image to Text Pro</h1>
+        <p class="subtitle">35+ Global Languages, Batch Multi-Page Scan, Otsu Binarization & Per-Page Crop — 100% Free</p>
+
+        <!-- 3-Column Intelligent Config Grid -->
+        <div class="config-grid">
+            <div>
+                <label class="config-label" for="ocrLang">1. Language (35+):</label>
+                <select id="ocrLang" class="config-select">
+                    <optgroup label="Popular & Global">
+                        <option value="eng">🇬🇧 English (US/UK)</option>
+                        <option value="hin">🇮🇳 Hindi (हिन्दी)</option>
+                        <option value="eng+hin">🇮🇳 English + Hindi</option>
+                        <option value="chi_sim">🇨🇳 Chinese Simplified (简体中文)</option>
+                        <option value="chi_tra">🇹🇼 Chinese Traditional (繁體中文)</option>
+                        <option value="jpn">🇯🇵 Japanese (日本語)</option>
+                        <option value="kor">🇰🇷 Korean (한국어)</option>
+                        <option value="rus">🇷🇺 Russian (Русский)</option>
+                        <option value="fra">🇫🇷 French (Français)</option>
+                        <option value="deu">🇩🇪 German (Deutsch)</option>
+                        <option value="spa">🇪🇸 Spanish (Español)</option>
+                        <option value="por">🇧🇷 Portuguese (Português)</option>
+                        <option value="ara">🇸🇦 Arabic (العربية)</option>
+                    </optgroup>
+                    <optgroup label="More Foreign Languages">
+                        <option value="ita">🇮🇹 Italian (Italiano)</option>
+                        <option value="nld">🇳🇱 Dutch (Nederlands)</option>
+                        <option value="pol">🇵🇱 Polish (Polski)</option>
+                        <option value="tur">🇹🇷 Turkish (Türkçe)</option>
+                        <option value="ukr">🇺🇦 Ukrainian (Українська)</option>
+                        <option value="vie">🇻🇳 Vietnamese (Tiếng Việt)</option>
+                        <option value="tha">🇹🇭 Thai (ไทย)</option>
+                        <option value="ind">🇮🇩 Indonesian (Bahasa)</option>
+                        <option value="msa">🇲🇾 Malay (Melayu)</option>
+                        <option value="fas">🇮🇷 Persian / Farsi (فارسی)</option>
+                        <option value="ell">🇬🇷 Greek (Ελληνικά)</option>
+                        <option value="swe">🇸🇪 Swedish (Svenska)</option>
+                    </optgroup>
+                    <optgroup label="Indian Languages">
+                        <option value="san">🕉️ Sanskrit (संस्कृत)</option>
+                        <option value="mar">🇮🇳 Marathi (मराठी)</option>
+                        <option value="guj">🇮🇳 Gujarati (ગુજરાતી)</option>
+                        <option value="ben">🇮🇳 Bengali (বাংলা)</option>
+                        <option value="tam">🇮🇳 Tamil (தமிழ்)</option>
+                        <option value="tel">🇮🇳 Telugu (తెలుగు)</option>
+                        <option value="kan">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                        <option value="mal">🇮🇳 Malayalam (മലയാളം)</option>
+                        <option value="pan">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+                        <option value="urd">🇵🇰 Urdu (اردو)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div>
+                <label class="config-label" for="scanFilter">2. AI Vision Filter:</label>
+                <select id="scanFilter" class="config-select" onchange="renderScanPreview()">
+                    <option value="otsu">🧠 Otsu Smart Document</option>
+                    <option value="adaptive">✨ High-Contrast Scan</option>
+                    <option value="grayscale">📄 Clean Grayscale</option>
+                    <option value="invert">🌙 Dark Mode / White Text</option>
+                    <option value="original">🖼️ Original Colors</option>
+                </select>
+            </div>
+            <div>
+                <label class="config-label" for="psmMode">3. Layout Mode:</label>
+                <select id="psmMode" class="config-select">
+                    <option value="3">📄 Full Document / Book</option>
+                    <option value="6">🧾 Receipt / Block / Table</option>
+                    <option value="7">🔤 Single Line / Code / ID</option>
+                </select>
+            </div>
+        </div>
+
+        <input type="file" id="imageInput" accept="image/png, image/jpeg, image/webp, image/bmp" multiple style="display: none;">
+        
+        <div class="upload-box" id="dropZone" onclick="document.getElementById('imageInput').click()">
+            <div class="upload-icon">📝</div>
+            <div class="upload-text" id="uploadLabel">Click to Upload (Single or Multiple Images)</div>
+            <div class="upload-hint">Supports Batch Pages, Screenshots, Receipts, Books • Ctrl+V Paste</div>
+        </div>
+
+        <!-- Multi-Image Batch Strip -->
+        <div id="batchStrip"></div>
+
+        <!-- Pre-OCR Image Preview, Rotate & Per-Page Region Crop -->
+        <div id="previewBox">
+            <div class="preview-toolbar">
+                <span style="font-size: 11px; font-weight: 700; color: var(--text-muted);" id="cropHintText">📐 Rotate or Crop Area:</span>
+                <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                    <button type="button" class="tool-pill" id="cropToggleBtn" onclick="toggleCropMode()">✂️ Crop Area</button>
+                    <button type="button" class="tool-pill" id="clearCropBtn" onclick="clearCropSelection()" style="display:none;">✖ Full Image</button>
+                    <button type="button" class="tool-pill" onclick="rotateImage(-90)">↺ Left</button>
+                    <button type="button" class="tool-pill" onclick="rotateImage(90)">↻ Right</button>
+                </div>
+            </div>
+            <div class="preview-img-wrap" id="previewWrap">
+                <canvas id="scanCanvas"></canvas>
+            </div>
+        </div>
+
+        <button class="btn-calc" id="extractBtn" onclick="runAIOCR()" disabled>✨ Extract Text from Image</button>
+
+        <div id="progressWrap">
+            <div class="progress-label">
+                <span id="statusText">Initializing AI OCR Engine...</span>
+                <span id="percentText">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div id="result">
+            <div class="res-title">
+                <span>✅ Extracted Editable Text:</span>
+                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                    <button type="button" class="tool-pill" id="speakBtn" onclick="speakExtractedText()">🔊 Listen</button>
+                    <button type="button" class="tool-pill" onclick="toggleFindReplace()">🔍 Replace</button>
+                    <button type="button" class="tool-pill" onclick="undoTextEdit()" id="undoTextBtn" disabled>↩️ Undo</button>
+                </div>
+            </div>
+
+            <!-- Find & Replace Bar -->
+            <div id="findReplaceBar">
+                <input type="text" id="findInput" class="mini-input" placeholder="Find word...">
+                <input type="text" id="replaceInput" class="mini-input" placeholder="Replace with...">
+                <button type="button" class="tool-pill active" onclick="executeFindReplace()">Replace All</button>
+            </div>
+
+            <textarea id="extractedOutput" class="ocr-textarea" placeholder="Extracted text will appear here..." oninput="updateTextStats()"></textarea>
+
+            <!-- Smart Data Parsers -->
+            <div class="smart-tools-bar">
+                <button type="button" class="tool-pill" onclick="cleanFormatting()">🧹 Clean</button>
+                <button type="button" class="tool-pill" onclick="removeDuplicateLines()">📑 Unique Lines</button>
+                <button type="button" class="tool-pill" onclick="extractEmails()">📧 Emails</button>
+                <button type="button" class="tool-pill" onclick="extractPhones()">📞 Phones</button>
+                <button type="button" class="tool-pill" onclick="extractAmounts()">💰 Amounts</button>
+                <button type="button" class="tool-pill" onclick="extractLinks()">🔗 Links</button>
+                <button type="button" class="tool-pill" onclick="toggleCase()">🔠 Aa Case</button>
+            </div>
+            
+            <div class="pro-stats-grid">
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="wordCountStat">0</div>
+                    <div class="pro-stat-lbl">Words</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="charCountStat">0</div>
+                    <div class="pro-stat-lbl">Characters</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="confidenceStat">-</div>
+                    <div class="pro-stat-lbl">AI Accuracy</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="speedStat">-</div>
+                    <div class="pro-stat-lbl">Scan Time</div>
+                </div>
+            </div>
+
+            <div class="share-actions">
+                <button type="button" class="btn-copy-primary" onclick="copyExtractedText(this)">📋 Copy Text</button>
+                <button type="button" class="btn-share-mini" onclick="downloadTextFile('txt')">⬇️ .TXT</button>
+                <button type="button" class="btn-share-mini" onclick="downloadTextFile('doc')">📄 .DOC</button>
+                <button type="button" class="btn-share-mini" onclick="downloadTextFile('csv')">📊 .CSV</button>
+                <button type="button" class="btn-share-mini" onclick="shareTextWhatsApp()">💬 Share</button>
+                <button type="button" class="btn-share-mini" onclick="resetTool()">🔄 New</button>
+            </div>
+        </div>
+
+        <!-- Comprehensive Social Share Buttons -->
+        <div class="social-share-wrap" id="socialShareSection">
+            <div class="social-share-title">🔗 Share this tool:</div>
+            <div class="social-share-buttons">
+                <a href="#" class="share-btn share-whatsapp" onclick="shareToPlatform('whatsapp'); return false;">💬 WhatsApp</a>
+                <a href="#" class="share-btn share-facebook" onclick="shareToPlatform('facebook'); return false;">📘 Facebook</a>
+                <a href="#" class="share-btn share-twitter" onclick="shareToPlatform('twitter'); return false;">✖ Twitter / X</a>
+                <a href="#" class="share-btn share-telegram" onclick="shareToPlatform('telegram'); return false;">✈ Telegram</a>
+                <a href="#" class="share-btn share-linkedin" onclick="shareToPlatform('linkedin'); return false;">💼 LinkedIn</a>
+                <button class="share-btn share-copy" onclick="copyPageLink(this);">📋 Copy Link</button>
+            </div>
+        </div>
+
+        <div class="seo-text">
+            <strong>Pro AI OCR Features:</strong>
+            <ul>
+                <li>Supports 35+ Global & Indian Languages (English, Hindi, Chinese, Japanese, Korean, Russian, French, German, Spanish, Arabic & more)</li>
+                <li>Multi-Page Batch OCR with Per-Page Region Crop, Otsu Binarization & Layout Segmentation</li>
+                <li>Smart Data Extractors: Emails, Phone Numbers, Amounts, Links, Unique Lines & Find/Replace</li>
+                <li>Export to MS Word (.DOC), Excel (.CSV), or .TXT with 100% browser privacy</li>
+            </ul>
+        </div>
+
+        <!-- Automatic "Copy Embed Code" Box -->
+        <div id="auto-embed-generator"></div>
+    </div> 
+
+    <!-- SEO Content Section -->
+    <section class="content-section">
+        <h2>Free AI OCR Image to Text Pro — The AI Hub Tools</h2>
+        <p>The free Online AI OCR (Optical Character Recognition) Pro tool by The AI Hub Tools converts single or multiple screenshots, book pages, scanned PDFs, receipts, and handwritten notes into editable digital text within seconds. Supporting over 35 international and regional languages—including English, Hindi, Chinese (Simplified & Traditional), Japanese, Korean, Russian, French, German, Spanish, Portuguese, and Arabic—it processes everything locally inside your browser without uploading your private files to any server.</p>
+        
+        <h3>How to Use This Tool</h3>
+        <ol>
+            <li><strong>Select Language, Vision Filter & Layout:</strong> Choose from 35+ languages, keep "Otsu Smart Document" enabled for low-light or shadowed photos, and select Book, Receipt, or Single Line layout.</li>
+            <li><strong>Upload Single or Multiple Images:</strong> Click the upload box, drag & drop multiple pages, or press <strong>Ctrl+V</strong> to paste a screenshot directly.</li>
+            <li><strong>Crop Specific Area (Optional) & Extract:</strong> Use <em>Crop Area</em> to select only a specific box of text on any page, or scan full pages in batch mode.</li>
+            <li><strong>Edit, Parse & Export:</strong> Extract emails, phone numbers, or invoice amounts with one click, use Find & Replace, listen via native voice, or download as .TXT, .DOC, or .CSV.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions (FAQs)</h3>
+        
+        <div class="faq-item">
+            <p><strong>1. Which international languages are supported?</strong><br>
+            Our AI OCR supports 35+ global languages including English, Chinese (Simplified & Traditional), Japanese, Korean, Russian, French, German, Spanish, Portuguese, Italian, Arabic, Turkish, Indonesian, Vietnamese, Thai, and 10+ Indian languages like Hindi, Sanskrit, Marathi, Gujarati, Bengali, Tamil, and Telugu.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>2. Can I scan multiple book pages or receipts at once?</strong><br>
+            Yes! Select multiple images while uploading—our Batch OCR engine will scan all pages automatically and combine the extracted text page-by-page.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>3. What is Otsu Smart Document mode?</strong><br>
+            Otsu Binarization automatically calculates the optimal brightness threshold of your photo to turn shadowed or colored paper into crisp black text on a pure white background, dramatically boosting accuracy.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>4. Are my documents and screenshots kept private?</strong><br>
+            100% private. All text recognition runs locally inside your web browser—your images are never uploaded to any external server.</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p style="margin: 0 0 10px 0;">
+        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+    </p>
+    <p style="margin: 0;">
+        <a href="../index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
+        <a href="../about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
+        <a href="../contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
+        <a href="../privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+        <a href="../terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+    </p>
+</footer>
+
+<!-- Dark / Light Mode & Maximum Anti-Hack Defense Shield -->
+<script>
+(function(){
+    if (localStorage.getItem('aihub_theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.textContent = '☀️ Light';
+    }
+
+    const allowedHosts = ['theaihub-tools.github.io', 'localhost', '127.0.0.1', ''];
+    const currentHost = window.location.hostname;
+    if (currentHost && !allowedHosts.includes(currentHost) && !currentHost.endsWith('.github.io')) {
+        window.location.replace('https://theaihub-tools.github.io/all-tools/ai-tools/ai-ocr.html');
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'K'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && ['U', 'S'].includes(e.key.toUpperCase())) ||
+            (e.metaKey && e.altKey && ['I', 'J', 'U'].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG' || e.target.tagName === 'CANVAS') {
+            e.preventDefault();
+        }
+    });
+})();
+
+function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    const btn = document.getElementById('themeToggleBtn');
+    btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    localStorage.setItem('aihub_theme', isDark ? 'dark' : 'light');
+}
+</script>
+
+<!-- Super-Intelligent Batch Neural OCR, 35+ Languages & Otsu Binarization Engine -->
+<script>
+(function() {
+    let batchItems = []; // [{ file, img, rotation, cropBox }]
+    let activeIndex = 0;
+    let textUndoStack = [];
+    let isSpeaking = false;
+    let upperToggle = false;
+
+    let cropMode = false;
+    let isSelectingCrop = false;
+    let cropStart = null;
+
+    const ttsLangMap = Object.freeze({
+        eng: 'en-US', hin: 'hi-IN', 'eng+hin': 'hi-IN', chi_sim: 'zh-CN', chi_tra: 'zh-TW',
+        jpn: 'ja-JP', kor: 'ko-KR', rus: 'ru-RU', fra: 'fr-FR', deu: 'de-DE',
+        spa: 'es-ES', por: 'pt-BR', ara: 'ar-SA', ita: 'it-IT', nld: 'nl-NL',
+        pol: 'pl-PL', tur: 'tr-TR', ukr: 'uk-UA', vie: 'vi-VN', tha: 'th-TH',
+        ind: 'id-ID', msa: 'ms-MY', fas: 'fa-IR', ell: 'el-GR', swe: 'sv-SE',
+        san: 'hi-IN', mar: 'mr-IN', guj: 'gu-IN', ben: 'bn-IN', tam: 'ta-IN',
+        tel: 'te-IN', kan: 'kn-IN', mal: 'ml-IN', pan: 'pa-IN', urd: 'ur-PK'
+    });
+
+    const imageInput = document.getElementById('imageInput');
+    const dropZone = document.getElementById('dropZone');
+    const extractBtn = document.getElementById('extractBtn');
+    const uploadLabel = document.getElementById('uploadLabel');
+    const scanCanvas = document.getElementById('scanCanvas');
+    const outputArea = document.getElementById('extractedOutput');
+
+    imageInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) handleFilesSelect(e.target.files);
+    });
+
+    window.addEventListener('paste', (e) => {
+        const items = e.clipboardData && e.clipboardData.items;
+        if (!items) return;
+        const pastedFiles = [];
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf('image') !== -1) {
+                const file = items[i].getAsFile();
+                if (file) pastedFiles.push(file);
+            }
+        }
+        if (pastedFiles.length > 0) handleFilesSelect(pastedFiles);
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) handleFilesSelect(e.dataTransfer.files);
+    });
+
+    function loadFileAsImage(file) {
+        return new Promise((resolve, reject) => {
+            if (!file.type.startsWith('image/')) return reject();
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                const img = new Image();
+                img.onload = () => resolve({ file, img, rotation: 0, cropBox: null });
+                img.onerror = reject;
+                img.src = ev.target.result;
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function handleFilesSelect(fileList) {
+        const validFiles = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+        if (validFiles.length === 0) {
+            alert('Please upload valid image files (JPG, PNG, WEBP, or BMP).');
+            return;
+        }
+
+        const loaded = await Promise.all(validFiles.map(loadFileAsImage));
+        batchItems = loaded;
+        activeIndex = 0;
+        cropMode = false;
+        document.getElementById('cropToggleBtn').classList.remove('active');
+        document.getElementById('clearCropBtn').style.display = 'none';
+
+        if (batchItems.length > 1) {
+            uploadLabel.textContent = `Selected: ${batchItems.length} Images (Batch Mode Ready)`;
+            extractBtn.textContent = `✨ Extract Text from All ${batchItems.length} Images`;
+            renderBatchStrip();
+        } else {
+            uploadLabel.textContent = `Selected: ${batchItems[0].file.name || 'Pasted Screenshot'}`;
+            extractBtn.textContent = '✨ Extract Text from Image';
+            document.getElementById('batchStrip').style.display = 'none';
+        }
+
+        extractBtn.disabled = false;
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('previewBox').style.display = 'block';
+        renderScanPreview();
+    }
+
+    function renderBatchStrip() {
+        const strip = document.getElementById('batchStrip');
+        strip.innerHTML = '';
+        strip.style.display = 'flex';
+        batchItems.forEach((item, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'batch-thumb' + (idx === activeIndex ? ' active' : '');
+            btn.textContent = item.cropBox ? `Page ${idx + 1} ✂️` : `Page ${idx + 1}`;
+            btn.onclick = () => {
+                activeIndex = idx;
+                const hasCrop = Boolean(batchItems[activeIndex] && batchItems[activeIndex].cropBox);
+                document.getElementById('clearCropBtn').style.display = hasCrop ? 'inline-block' : 'none';
+                renderBatchStrip();
+                renderScanPreview();
+            };
+            strip.appendChild(btn);
+        });
+    }
+
+    window.rotateImage = function(deg) {
+        const item = batchItems[activeIndex];
+        if (!item) return;
+        item.rotation = (item.rotation + deg + 360) % 360;
+        item.cropBox = null;
+        document.getElementById('clearCropBtn').style.display = 'none';
+        if (batchItems.length > 1) renderBatchStrip();
+        renderScanPreview();
+    };
+
+    window.toggleCropMode = function() {
+        cropMode = !cropMode;
+        const btn = document.getElementById('cropToggleBtn');
+        const hint = document.getElementById('cropHintText');
+        if (cropMode) {
+            btn.classList.add('active');
+            scanCanvas.style.cursor = 'crosshair';
+            hint.textContent = '✂️ Drag box on image to select text area:';
+        } else {
+            btn.classList.remove('active');
+            scanCanvas.style.cursor = 'default';
+            hint.textContent = '📐 Rotate or Crop Area:';
+        }
+    };
+
+    window.clearCropSelection = function() {
+        const item = batchItems[activeIndex];
+        if (!item) return;
+        item.cropBox = null;
+        document.getElementById('clearCropBtn').style.display = 'none';
+        if (batchItems.length > 1) renderBatchStrip();
+        renderScanPreview();
+    };
+
+    function computeOtsuThreshold(grayArray) {
+        const hist = new Uint32Array(256);
+        for (let i = 0; i < grayArray.length; i++) hist[grayArray[i]]++;
+
+        const total = grayArray.length;
+        let sum = 0;
+        for (let t = 0; t < 256; t++) sum += t * hist[t];
+
+        let sumB = 0, wB = 0, wF = 0, varMax = 0, threshold = 128;
+        for (let t = 0; t < 256; t++) {
+            wB += hist[t];
+            if (wB === 0) continue;
+            wF = total - wB;
+            if (wF === 0) break;
+
+            sumB += t * hist[t];
+            const mB = sumB / wB;
+            const mF = (sum - sumB) / wF;
+            const varBetween = wB * wF * (mB - mF) * (mB - mF);
+
+            if (varBetween > varMax) {
+                varMax = varBetween;
+                threshold = t;
+            }
+        }
+        return threshold;
+    }
+
+    function buildProcessedCanvas(item, applyCrop) {
+        const img = item.img;
+        const rot = item.rotation;
+        const isRotated = (rot === 90 || rot === 270);
+        let w = isRotated ? img.height : img.width;
+        let h = isRotated ? img.width : img.height;
+
+        const minTarget = 1300;
+        if (Math.max(w, h) < minTarget) {
+            const scale = Math.min(2.5, minTarget / Math.max(w, h));
+            w = Math.round(w * scale);
+            h = Math.round(h * scale);
+        }
+
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = w;
+        tempCanvas.height = h;
+        const ctx = tempCanvas.getContext('2d', { willReadFrequently: true });
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        ctx.save();
+        ctx.translate(w / 2, h / 2);
+        ctx.rotate((rot * Math.PI) / 180);
+        const drawW = isRotated ? h : w;
+        const drawH = isRotated ? w : h;
+        ctx.drawImage(img, -drawW / 2, -drawH / 2, drawW, drawH);
+        ctx.restore();
+
+        const mode = document.getElementById('scanFilter').value;
+        if (mode !== 'original') {
+            const imgData = ctx.getImageData(0, 0, w, h);
+            const data = imgData.data;
+            const pixelCount = w * h;
+            const gray = new Uint8Array(pixelCount);
+
+            for (let p = 0, i = 0; p < pixelCount; p++, i += 4) {
+                let lum = Math.round(0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]);
+                if (mode === 'invert') lum = 255 - lum;
+                gray[p] = lum;
+            }
+
+            if (mode === 'otsu') {
+                const thresh = computeOtsuThreshold(gray);
+                for (let p = 0, i = 0; p < pixelCount; p++, i += 4) {
+                    let val = gray[p];
+                    if (val < thresh - 18) val = 0;
+                    else if (val > thresh + 18) val = 255;
+                    else val = Math.round(((val - (thresh - 18)) / 36) * 255);
+                    data[i] = data[i + 1] = data[i + 2] = val;
+                }
+            } else {
+                for (let p = 0, i = 0; p < pixelCount; p++, i += 4) {
+                    let lum = gray[p];
+                    if (mode === 'adaptive' || mode === 'invert') {
+                        lum = ((lum - 128) * 1.5) + 128;
+                        lum = Math.min(255, Math.max(0, lum));
+                    }
+                    data[i] = data[i + 1] = data[i + 2] = lum;
+                }
+            }
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        const cBox = item.cropBox;
+        if (applyCrop && cBox && cBox.w > 0.02 && cBox.h > 0.02) {
+            const sx = Math.round(cBox.x * w);
+            const sy = Math.round(cBox.y * h);
+            const sw = Math.max(10, Math.round(cBox.w * w));
+            const sh = Math.max(10, Math.round(cBox.h * h));
+            const cropped = document.createElement('canvas');
+            cropped.width = sw;
+            cropped.height = sh;
+            cropped.getContext('2d').drawImage(tempCanvas, sx, sy, sw, sh, 0, 0, sw, sh);
+            return cropped;
+        }
+        return tempCanvas;
+    }
+
+    window.renderScanPreview = function() {
+        const item = batchItems[activeIndex];
+        if (!item) return;
+        const processed = buildProcessedCanvas(item, false);
+        scanCanvas.width = processed.width;
+        scanCanvas.height = processed.height;
+        const ctx = scanCanvas.getContext('2d');
+        ctx.drawImage(processed, 0, 0);
+
+        const cBox = item.cropBox;
+        if (cBox && cBox.w > 0.01 && cBox.h > 0.01) {
+            const rx = cBox.x * scanCanvas.width;
+            const ry = cBox.y * scanCanvas.height;
+            const rw = cBox.w * scanCanvas.width;
+            const rh = cBox.h * scanCanvas.height;
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+            ctx.fillRect(0, 0, scanCanvas.width, scanCanvas.height);
+            ctx.clearRect(rx, ry, rw, rh);
+            ctx.drawImage(processed, rx, ry, rw, rh, rx, ry, rw, rh);
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = Math.max(3, Math.round(scanCanvas.width * 0.004));
+            ctx.strokeRect(rx, ry, rw, rh);
+            ctx.restore();
+        }
+    };
+
+    function getNormalizedPointer(e) {
+        const rect = scanCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+            x: Math.max(0, Math.min(1, (clientX - rect.left) / rect.width)),
+            y: Math.max(0, Math.min(1, (clientY - rect.top) / rect.height))
+        };
+    }
+
+    function startCropDrag(e) {
+        const item = batchItems[activeIndex];
+        if (!cropMode || !item) return;
+        if (e.touches) e.preventDefault();
+        isSelectingCrop = true;
+        cropStart = getNormalizedPointer(e);
+        item.cropBox = { x: cropStart.x, y: cropStart.y, w: 0, h: 0 };
+    }
+
+    function moveCropDrag(e) {
+        const item = batchItems[activeIndex];
+        if (!cropMode || !isSelectingCrop || !cropStart || !item) return;
+        if (e.touches) e.preventDefault();
+        const cur = getNormalizedPointer(e);
+        item.cropBox = {
+            x: Math.min(cropStart.x, cur.x),
+            y: Math.min(cropStart.y, cur.y),
+            w: Math.abs(cur.x - cropStart.x),
+            h: Math.abs(cur.y - cropStart.y)
+        };
+        renderScanPreview();
+    }
+
+    function endCropDrag() {
+        if (!isSelectingCrop) return;
+        isSelectingCrop = false;
+        const item = batchItems[activeIndex];
+        if (item && item.cropBox && item.cropBox.w > 0.02 && item.cropBox.h > 0.02) {
+            document.getElementById('clearCropBtn').style.display = 'inline-block';
+            if (batchItems.length > 1) renderBatchStrip();
+        }
+    }
+
+    scanCanvas.addEventListener('mousedown', startCropDrag);
+    scanCanvas.addEventListener('mousemove', moveCropDrag);
+    window.addEventListener('mouseup', endCropDrag);
+
+    scanCanvas.addEventListener('touchstart', startCropDrag, { passive: false });
+    scanCanvas.addEventListener('touchmove', moveCropDrag, { passive: false });
+    window.addEventListener('touchend', endCropDrag);
+
+    function sanitizeOCRText(raw) {
+        return raw
+            .split('\n')
+            .map(line => line.trim())
+            .filter(line => {
+                if (!line) return true;
+                if (/^[|_~=\-\\\/.]{3,}$/.test(line)) return false;
+                return true;
+            })
+            .join('\n')
+            .replace(/\n{3,}/g, '\n\n')
+            .trim();
+    }
+
+    window.runAIOCR = async function() {
+        if (batchItems.length === 0 || typeof Tesseract === 'undefined') {
+            alert('OCR Engine is still initializing. Please wait 2 seconds and try again.');
+            return;
+        }
+
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('speakBtn').textContent = '🔊 Listen';
+
+        const lang = document.getElementById('ocrLang').value;
+        const psm = document.getElementById('psmMode').value;
+        const progressWrap = document.getElementById('progressWrap');
+        const progressBar = document.getElementById('progressBar');
+        const statusText = document.getElementById('statusText');
+        const percentText = document.getElementById('percentText');
+        const startTime = performance.now();
+
+        extractBtn.disabled = true;
+        progressWrap.style.display = 'block';
+        progressBar.style.width = '5%';
+        statusText.textContent = 'Downloading Neural Language Pack...';
+        percentText.textContent = '5%';
+
+        let worker = null;
+        try {
+            const totalPages = batchItems.length;
+            let currentPageIdx = 0;
+
+            worker = await Tesseract.createWorker(lang, 1, {
+                logger: (m) => {
+                    if (m.status === 'recognizing text') {
+                        const pageBase = (currentPageIdx / totalPages) * 100;
+                        const pageSpan = (1 / totalPages) * 100;
+                        const pct = Math.min(99, Math.max(10, Math.round(pageBase + m.progress * pageSpan)));
+                        progressBar.style.width = pct + '%';
+                        percentText.textContent = pct + '%';
+                        statusText.textContent = totalPages > 1
+                            ? `Scanning Page ${currentPageIdx + 1} of ${totalPages}...`
+                            : 'Recognizing Characters...';
+                    } else if (m.status) {
+                        statusText.textContent = m.status.charAt(0).toUpperCase() + m.status.slice(1) + '...';
+                    }
+                }
+            });
+
+            await worker.setParameters({
+                tessedit_pageseg_mode: psm
+            });
+
+            let combinedTexts = [];
+            let totalConf = 0;
+            let confCount = 0;
+
+            for (let i = 0; i < totalPages; i++) {
+                currentPageIdx = i;
+                const targetCanvas = buildProcessedCanvas(batchItems[i], true);
+                const ret = await worker.recognize(targetCanvas);
+
+                const rawText = (ret.data && ret.data.text) ? ret.data.text : '';
+                const pageText = sanitizeOCRText(rawText);
+
+                if (totalPages > 1) {
+                    combinedTexts.push(`--- Page ${i + 1} (${batchItems[i].file.name}) ---\n${pageText}`);
+                } else {
+                    combinedTexts.push(pageText);
+                }
+
+                if (ret.data && typeof ret.data.confidence === 'number' && ret.data.confidence > 0) {
+                    totalConf += ret.data.confidence;
+                    confCount++;
+                }
+            }
+
+            await worker.terminate();
+            worker = null;
+
+            const finalOutput = combinedTexts.join('\n\n').trim();
+            const avgConfidence = confCount > 0 ? Math.round(totalConf / confCount) : 0;
+            const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
+
+            outputArea.value = finalOutput || 'No readable text detected. Try rotating the image or switching the AI Vision Filter.';
+            textUndoStack = [];
+            document.getElementById('undoTextBtn').disabled = true;
+
+            updateTextStats();
+            document.getElementById('confidenceStat').textContent = avgConfidence > 0 ? `${avgConfidence}%` : 'N/A';
+            document.getElementById('speedStat').textContent = `${elapsed}s`;
+
+            progressWrap.style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            extractBtn.disabled = false;
+
+            if (window.self !== window.top && typeof window.__sendHeightToParent === "function") {
+                setTimeout(window.__sendHeightToParent, 60);
+            }
+        } catch (err) {
+            console.error(err);
+            if (worker) { try { await worker.terminate(); } catch(e){} }
+            alert('Error scanning image. Please check your internet connection for first-time language model download.');
+            progressWrap.style.display = 'none';
+            extractBtn.disabled = false;
+        }
+    };
+
+    function pushTextUndo() {
+        textUndoStack.push(outputArea.value);
+        if (textUndoStack.length > 20) textUndoStack.shift();
+        document.getElementById('undoTextBtn').disabled = false;
+    }
+
+    window.undoTextEdit = function() {
+        if (textUndoStack.length === 0) return;
+        outputArea.value = textUndoStack.pop();
+        document.getElementById('undoTextBtn').disabled = textUndoStack.length === 0;
+        updateTextStats();
+    };
+
+    window.updateTextStats = function() {
+        const val = outputArea.value.trim();
+        const words = val ? val.split(/\s+/).length : 0;
+        const chars = outputArea.value.length;
+        document.getElementById('wordCountStat').textContent = words;
+        document.getElementById('charCountStat').textContent = chars;
+    };
+
+    window.toggleFindReplace = function() {
+        const bar = document.getElementById('findReplaceBar');
+        bar.style.display = (bar.style.display === 'flex') ? 'none' : 'flex';
+    };
+
+    window.executeFindReplace = function() {
+        const findVal = document.getElementById('findInput').value;
+        const replaceVal = document.getElementById('replaceInput').value;
+        if (!findVal) return;
+        pushTextUndo();
+        outputArea.value = outputArea.value.split(findVal).join(replaceVal);
+        updateTextStats();
+    };
+
+    window.cleanFormatting = function() {
+        pushTextUndo();
+        outputArea.value = outputArea.value
+            .replace(/[ \t]+/g, ' ')
+            .replace(/\n{3,}/g, '\n\n')
+            .trim();
+        updateTextStats();
+    };
+
+    window.removeDuplicateLines = function() {
+        pushTextUndo();
+        const lines = outputArea.value.split('\n').map(l => l.trim()).filter(Boolean);
+        outputArea.value = [...new Set(lines)].join('\n');
+        updateTextStats();
+    };
+
+    window.extractEmails = function() {
+        const matches = outputArea.value.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g);
+        if (!matches || matches.length === 0) {
+            alert('No email addresses found in the extracted text.');
+            return;
+        }
+        pushTextUndo();
+        outputArea.value = [...new Set(matches)].join('\n');
+        updateTextStats();
+    };
+
+    window.extractPhones = function() {
+        const matches = outputArea.value.match(/(?:\+?\d{1,3}[-.\s]?)?\(?\d{3,5}\)?[-.\s]?\d{3,5}[-.\s]?\d{3,5}/g);
+        const filtered = matches ? matches.map(m => m.trim()).filter(m => m.replace(/\D/g, '').length >= 8) : [];
+        if (filtered.length === 0) {
+            alert('No phone numbers found in the extracted text.');
+            return;
+        }
+        pushTextUndo();
+        outputArea.value = [...new Set(filtered)].join('\n');
+        updateTextStats();
+    };
+
+    window.extractAmounts = function() {
+        const matches = outputArea.value.match(/(?:₹|Rs\.?|INR|\$|€|£|¥|₽)\s*\d+(?:[.,]\d+)*|\d+(?:[.,]\d+)*\s*(?:₹|Rs\.?|INR|\$|€|£|¥|₽)/gi);
+        if (!matches || matches.length === 0) {
+            alert('No currency amounts found in the extracted text.');
+            return;
+        }
+        pushTextUndo();
+        outputArea.value = [...new Set(matches.map(m => m.trim()))].join('\n');
+        updateTextStats();
+    };
+
+    window.extractLinks = function() {
+        const matches = outputArea.value.match(/(https?:\/\/[^\s]+|www\.[^\s]+)/gi);
+        if (!matches || matches.length === 0) {
+            alert('No website links/URLs found in the extracted text.');
+            return;
+        }
+        pushTextUndo();
+        outputArea.value = [...new Set(matches)].join('\n');
+        updateTextStats();
+    };
+
+    window.toggleCase = function() {
+        pushTextUndo();
+        upperToggle = !upperToggle;
+        outputArea.value = upperToggle ? outputArea.value.toUpperCase() : outputArea.value.toLowerCase();
+        updateTextStats();
+    };
+
+    window.speakExtractedText = function() {
+        if (!('speechSynthesis' in window)) {
+            alert('Voice reading is not supported in this browser.');
+            return;
+        }
+        const btn = document.getElementById('speakBtn');
+        if (isSpeaking) {
+            window.speechSynthesis.cancel();
+            isSpeaking = false;
+            btn.textContent = '🔊 Listen';
+            return;
+        }
+        const text = outputArea.value.trim();
+        if (!text) return;
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        const lang = document.getElementById('ocrLang').value;
+        utterance.lang = ttsLangMap[lang] || 'en-US';
+
+        utterance.onend = () => {
+            isSpeaking = false;
+            btn.textContent = '🔊 Listen';
+        };
+        isSpeaking = true;
+        btn.textContent = '⏹️ Stop';
+        window.speechSynthesis.speak(utterance);
+    };
+
+    window.copyExtractedText = function(btn) {
+        if (!outputArea.value.trim()) return;
+        navigator.clipboard.writeText(outputArea.value).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+    };
+
+    window.downloadTextFile = function(ext) {
+        const text = outputArea.value;
+        if (!text.trim()) return;
+
+        let content = text;
+        let mime = 'text/plain;charset=utf-8';
+
+        if (ext === 'doc') {
+            mime = 'application/msword;charset=utf-8';
+        } else if (ext === 'csv') {
+            mime = 'text/csv;charset=utf-8';
+            content = text
+                .split('\n')
+                .map(line => line.trim().split(/\s{2,}|\t/).map(cell => `"${cell.replace(/"/g, '""')}"`).join(','))
+                .join('\n');
+        }
+
+        const blob = new Blob(['\ufeff' + content], { type: mime });
+        const link = document.createElement('a');
+        const firstFile = batchItems[0] && batchItems[0].file;
+        const baseName = firstFile && firstFile.name ? firstFile.name.replace(/\.[^/.]+$/, "") : "extracted-text";
+        link.download = `${baseName}-ocr.${ext}`;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    };
+
+    window.shareTextWhatsApp = function() {
+        const text = outputArea.value.trim();
+        if (!text) return;
+        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
+    };
+
+    window.resetTool = function() {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('speakBtn').textContent = '🔊 Listen';
+        batchItems = [];
+        activeIndex = 0;
+        cropMode = false;
+        textUndoStack = [];
+        imageInput.value = '';
+        uploadLabel.textContent = 'Click to Upload (Single or Multiple Images)';
+        extractBtn.textContent = '✨ Extract Text from Image';
+        extractBtn.disabled = true;
+        document.getElementById('batchStrip').style.display = 'none';
+        document.getElementById('previewBox').style.display = 'none';
+        document.getElementById('result').style.display = 'none';
+    };
+})();
+</script>
+
+<script>
+    // Social Sharing Functions
+    function shareToPlatform(platform) {
+        var url = encodeURIComponent(window.location.href);
+        var title = encodeURIComponent(document.title + " - Extract text from images online for free:");
+        var shareUrl = "";
+
+        switch(platform) {
+            case 'whatsapp':
+                shareUrl = "https://api.whatsapp.com/send?text=" + title + "%20" + url;
+                break;
+            case 'facebook':
+                shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+                break;
+            case 'twitter':
+                shareUrl = "https://twitter.com/intent/tweet?text=" + title + "&url=" + url;
+                break;
+            case 'telegram':
+                shareUrl = "https://t.me/share/url?url=" + url + "&text=" + title;
+                break;
+            case 'linkedin':
+                shareUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
+                break;
+        }
+
+        if (shareUrl) {
+            window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=450');
+        }
+    }
+
+    function copyPageLink(buttonElement) {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            var originalText = buttonElement.innerText;
+            buttonElement.innerText = "Copied! ✓";
+            setTimeout(function() {
+                buttonElement.innerText = originalText;
+            }, 2000);
+        }).catch(function() {
+            alert("Could not copy link. Please copy the URL from browser address bar.");
+        });
+    }
+
+    // Automatic embed code box generator
+    (function() {
+      var target = document.getElementById("auto-embed-generator");
+      if (!target) return;
+
+      var currentUrl = window.location.href.split('?')[0];
+      var domainUrl = window.location.origin;
+      var rootPath = "https://theaihub-tools.github.io/all-tools/";
+      var brandName = "AI OCR Image to Text Pro — The AI Hub Tools";
+
+      var embedSnippet = '<div class="tool-embed-box" data-tool-url="' + currentUrl + '" data-height="660px" data-brand-name="' + brandName + '" data-brand-url="' + domainUrl + '"></div>\n' +
+                         '<script src="' + rootPath + 'iframe.js" defer><\/script>';
+
+      target.innerHTML = 
+        '<div style="margin-top: 25px; padding: 14px; border: 1px dashed var(--border-color); border-radius: 8px; background: var(--bg-subtle); font-family: inherit; text-align: left;">' +
+          '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">' +
+            '<strong style="font-size: 13px; color: var(--text-main);">💻 Embed this tool on your website:</strong>' +
+            '<button id="autoCopyBtn" style="padding: 6px 12px; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s;">Copy Embed Code</button>' +
+          '</div>' +
+          '<textarea id="autoEmbedText" readonly style="width: 100%; height: 65px; font-size: 12px; font-family: monospace; padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; resize: none; background: var(--bg-card); box-sizing: border-box; color: var(--text-muted);">' + 
+            embedSnippet + 
+          '</textarea>' +
+        '</div>';
+
+      document.getElementById("autoCopyBtn").addEventListener("click", function() {
+        var textArea = document.getElementById("autoEmbedText");
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+
+        var btn = this;
+        btn.innerText = "Copied! ✓";
+        btn.style.background = "#38a169";
+
+        setTimeout(function() {
+          btn.innerText = "Copy Embed Code";
+          btn.style.background = "var(--accent)";
+        }, 2200);
+      });
+    })();
+</script>
+
+<!-- Related AI & Image Utility Tools Section -->
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+  <div class="related-box">
+    <h3 class="related-title">
+      🤖 Related AI & Image Utility Tools:
+    </h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <a href="ai-background-remover.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">✂️ AI Background Remover</a>
+      <a href="ai-image-upscaler.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🔍 AI Image Upscaler</a>
+      <a href="../word-counter.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">📊 Word Counter</a>
+      <a href="../index.html" style="padding: 8px 14px; background: #9333ea; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">← All Tools</a> 
+      <a href="https://api.whatsapp.com/send?text=" onclick="this.href='https://api.whatsapp.com/send?text=' + encodeURIComponent('Check out this useful tool: ' + document.title + ' - ' + window.location.href);" target="_blank" style="padding: 8px 14px; background: #25D366; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">💬 Share on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- All 6 External Scripts Linked from Root Folder (Short Relative Paths) -->
+<script src="../translator.js"></script>
+<script src="../share-buttons.js"></script>
+<script src="../schema.js"></script> 
+<script src="../tool-embed.js" defer></script>
+<script src="../coffee.js" defer></script>
+<script src="../trust-badge.js" defer></script>
+
+</body>
+</html>
