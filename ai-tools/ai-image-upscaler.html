@@ -1,1 +1,1189 @@
-<!DOCT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MEQE82X4L0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Image Upscaler Pro Online | Enhance & Unblur Photos to 4K/8K HD</title>
+    <meta name="description" content="Upscale and enhance low-resolution, blurry images up to 2x, 4x, and 8x Ultra HD online for free. Edge-adaptive AI photo enhancer, smart denoise, split compare & lossless export.">
+    <meta name="keywords" content="ai image upscaler, upscale image online free, unblur image ai, photo enhancer 4k, increase image resolution, image quality enhancer, anime upscaler">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Free AI Image Upscaler Pro Online | The AI Hub Tools" />
+    <meta property="og:description" content="Upscale blurry photos up to 2x, 4x & 8x Ultra HD with Edge-Adaptive AI detail sharpening and smart denoise — 100% free." />
+    <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-image-upscaler.html" />
+    <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-image-upscaler-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free AI Image Upscaler Pro Online | The AI Hub Tools" />
+    <meta name="twitter:description" content="Upscale blurry photos up to 2x, 4x & 8x Ultra HD with Edge-Adaptive AI detail sharpening and smart denoise — 100% free." />
+    <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-image-upscaler-banner.jpg" />
+
+    <style>
+        :root {
+            --bg-body: #f0f2f5;
+            --bg-card: #ffffff;
+            --bg-subtle: #f8fafc;
+            --bg-result: #ebf8ff;
+            --bg-mode: #f1f5f9;
+            --text-main: #1a202c;
+            --text-body: #2d3748;
+            --text-muted: #4a5568;
+            --text-light: #718096;
+            --border-color: #cbd5e0;
+            --border-soft: #e2e8f0;
+            --border-accent: #bee3f8;
+            --accent: #3182ce;
+            --accent-hover: #2b6cb0;
+            --shadow-card: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        body.dark-mode {
+            --bg-body: #0b0f19;
+            --bg-card: #131a2a;
+            --bg-subtle: #1b2438;
+            --bg-result: #17233b;
+            --bg-mode: #1b2438;
+            --text-main: #f1f5f9;
+            --text-body: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-light: #94a3b8;
+            --border-color: #2d3a54;
+            --border-soft: #243047;
+            --border-accent: #2b4570;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --shadow-card: 0 8px 25px rgba(0,0,0,0.45);
+        }
+
+        * { 
+          box-sizing: border-box; 
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-touch-callout: none;
+        }
+
+        input, textarea, select {
+          -webkit-user-select: auto !important;
+          -moz-user-select: auto !important;
+          user-select: auto !important;
+        }
+
+        body { background: var(--bg-body); margin: 0; padding: 20px 10px; color: var(--text-body); transition: background 0.25s ease, color 0.25s ease; }
+        html.in-iframe-mode, html.in-iframe-mode body { padding: 8px !important; overflow: hidden !important; background: transparent !important; }
+
+        .main-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+        .card { position: relative; background: var(--bg-card); max-width: 640px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: var(--shadow-card); border: 1px solid var(--border-soft); text-align: center; margin-bottom: 30px; transition: background 0.25s ease; }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 20px;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.2s;
+        }
+        .theme-toggle-btn:hover { border-color: var(--accent); }
+
+        h1 { font-size: 22px; color: var(--text-main); margin-top: 8px; margin-bottom: 6px; }
+        p.subtitle { color: var(--text-muted); font-size: 13px; margin-top: 0; margin-bottom: 18px; }
+
+        /* Scale & Mode Selectors */
+        .selector-label { display: block; text-align: left; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+        .mode-selector {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+            background: var(--bg-mode);
+            padding: 4px;
+            border-radius: 8px;
+        }
+        .mode-btn {
+            flex: 1;
+            padding: 7px 8px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .mode-btn.active {
+            background: var(--bg-card);
+            color: var(--accent);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Upload Dropzone */
+        .upload-box {
+            border: 2px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 26px 16px;
+            background: var(--bg-subtle);
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 15px;
+        }
+        .upload-box:hover, .upload-box.dragover {
+            border-color: var(--accent);
+            background: var(--bg-result);
+        }
+        .upload-icon { font-size: 34px; margin-bottom: 8px; }
+        .upload-text { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+        .upload-hint { font-size: 12px; color: var(--text-light); }
+
+        button.btn-calc { width: 100%; background: var(--accent); color: white; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.btn-calc:hover { background: var(--accent-hover); }
+        button.btn-calc:disabled { background: #64748b; cursor: not-allowed; }
+
+        /* Progress Bar */
+        #progressWrap { display: none; margin-top: 15px; text-align: left; }
+        .progress-label { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 6px; display: flex; justify-content: space-between; }
+        .progress-bar-bg { width: 100%; height: 8px; background: var(--border-soft); border-radius: 6px; overflow: hidden; }
+        .progress-bar-fill { width: 0%; height: 100%; background: var(--accent); transition: width 0.2s ease; }
+
+        /* Result Section */
+        #result { display: none; margin-top: 20px; padding: 16px; background: var(--bg-result); border: 1px solid var(--border-accent); border-radius: 10px; text-align: left; }
+        .res-title { font-size: 13px; color: var(--accent); font-weight: bold; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+
+        .preview-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: #ffffff;
+            background-image: linear-gradient(45deg, #e2e8f0 25%, transparent 25%),
+                              linear-gradient(-45deg, #e2e8f0 25%, transparent 25%),
+                              linear-gradient(45deg, transparent 75%, #e2e8f0 75%),
+                              linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 420px;
+            touch-action: pan-y;
+        }
+        body.dark-mode .preview-wrapper {
+            background-color: #1e293b;
+            background-image: linear-gradient(45deg, #334155 25%, transparent 25%),
+                              linear-gradient(-45deg, #334155 25%, transparent 25%),
+                              linear-gradient(45deg, transparent 75%, #334155 75%),
+                              linear-gradient(-45deg, transparent 75%, #334155 75%);
+        }
+        .canvas-zoom-box {
+            transition: transform 0.2s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .preview-wrapper canvas {
+            max-width: 100%;
+            max-height: 420px;
+            display: block;
+            object-fit: contain;
+        }
+
+        #splitRange {
+            width: 100%;
+            margin-top: 8px;
+            accent-color: var(--accent);
+            cursor: ew-resize;
+        }
+        .split-hint {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Fine-Tune Controls Box */
+        .studio-panel {
+            margin-top: 12px;
+            background: var(--bg-card);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-accent);
+        }
+        .control-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .control-row:last-child { margin-bottom: 0; }
+        .control-label { font-size: 12px; font-weight: 600; color: var(--text-body); }
+        input[type="range"] { width: 145px; accent-color: var(--accent); cursor: pointer; }
+
+        .tool-pill {
+            padding: 5px 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-subtle);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .tool-pill:hover { opacity: 0.88; }
+        .tool-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .pro-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .pro-stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            border-radius: 6px;
+            padding: 7px 4px;
+            text-align: center;
+        }
+        .pro-stat-val { font-size: 11px; font-weight: bold; color: var(--accent); }
+        .pro-stat-lbl { font-size: 9px; color: var(--text-light); text-transform: uppercase; }
+
+        .share-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .format-select {
+            padding: 9px 7px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--bg-card);
+            color: var(--text-body);
+            cursor: pointer;
+        }
+        .btn-download {
+            flex: 2;
+            min-width: 135px;
+            padding: 10px 10px;
+            border: none;
+            background: #38a169;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            transition: 0.2s;
+        }
+        .btn-download:hover { background: #2f855a; }
+        .btn-share-mini {
+            flex: 1;
+            min-width: 75px;
+            padding: 10px 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-body);
+            transition: 0.2s;
+        }
+        .btn-share-mini:hover { background: var(--bg-subtle); }
+
+        .seo-text { text-align: left; font-size: 12px; color: var(--text-light); margin-top: 25px; border-top: 1px solid var(--border-soft); padding-top: 15px; }
+
+        .content-section { width: 100%; padding: 24px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-soft); line-height: 1.7; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 30px; }
+        .content-section h2 { font-size: 1.3rem; margin-top: 0; color: var(--text-main); }
+        .content-section h3 { font-size: 1.1rem; margin-top: 22px; color: var(--accent); }
+        .content-section ol { padding-left: 20px; }
+        .faq-item { margin-bottom: 15px; }
+        .faq-item strong { color: var(--text-main); }
+
+        .related-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; }
+        .related-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text-main); }
+
+        footer { width: 100%; text-align: center; padding: 25px 15px; border-top: 1px solid var(--border-soft); background-color: var(--bg-subtle); font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8; color: var(--text-muted); }
+
+        /* Social Share Buttons Styles */
+        .social-share-wrap {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-soft);
+        }
+        .social-share-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .social-share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+        .share-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .share-whatsapp { background-color: #25D366; }
+        .share-facebook { background-color: #1877F2; }
+        .share-twitter { background-color: #000000; }
+        .share-telegram { background-color: #229ED9; }
+        .share-linkedin { background-color: #0A66C2; }
+        .share-copy { background-color: #4B5563; }
+
+        /* === iFrame Clean Mode === */
+        .in-iframe-mode body { background: transparent !important; padding: 8px !important; margin: 0 !important; overflow-y: hidden !important; }
+        .in-iframe-mode .main-container { max-width: 100% !important; width: 100% !important; }
+        .in-iframe-mode .card { box-shadow: none !important; border: 1px solid var(--border-soft) !important; max-width: 100% !important; margin-bottom: 0 !important; padding: 16px !important; }
+        .in-iframe-mode .content-section,
+        .in-iframe-mode footer,
+        .in-iframe-mode .container,
+        .in-iframe-mode .social-share-wrap,
+        .in-iframe-mode #auto-embed-generator { display: none !important; }
+    </style>
+</head>
+<body oncontextmenu="return false;"> 
+
+<div class="main-container">
+
+    <div class="card">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark</button>
+        <h1>AI Image Upscaler Pro</h1>
+        <p class="subtitle">Edge-Adaptive Super Resolution 2x, 4x & 8x, Halo-Free Sharpen & Smart Denoise — 100% Free</p>
+
+        <!-- Upscale Factor -->
+        <span class="selector-label">1. Select Upscale Resolution:</span>
+        <div class="mode-selector">
+            <button type="button" class="mode-btn active" onclick="setScaleFactor(2, this)">⚡ 2x HD (Fast)</button>
+            <button type="button" class="mode-btn" onclick="setScaleFactor(4, this)">💎 4x Ultra HD</button>
+            <button type="button" class="mode-btn" onclick="setScaleFactor(8, this)">🚀 8x Max (Super Res)</button>
+        </div>
+
+        <!-- AI Enhancement Preset -->
+        <span class="selector-label">2. Image Enhancement Mode:</span>
+        <div class="mode-selector">
+            <button type="button" class="mode-btn active" onclick="setEnhancePreset('photo', this)">📷 Photo / Portrait</button>
+            <button type="button" class="mode-btn" onclick="setEnhancePreset('art', this)">🎨 Logo / Anime / Art</button>
+            <button type="button" class="mode-btn" onclick="setEnhancePreset('restore', this)">🕰️ Denoise / Restore</button>
+        </div>
+
+        <input type="file" id="imageInput" accept="image/png, image/jpeg, image/webp" style="display: none;">
+        
+        <div class="upload-box" id="dropZone" onclick="document.getElementById('imageInput').click()">
+            <div class="upload-icon">🔍</div>
+            <div class="upload-text" id="uploadLabel">Click to Upload or Drag & Drop Low-Res Image</div>
+            <div class="upload-hint">Supports JPG, PNG, WEBP • Ctrl+V Paste Supported</div>
+        </div>
+
+        <button class="btn-calc" id="upscaleBtn" onclick="upscaleImage()" disabled>✨ Upscale & Enhance Image</button>
+
+        <div id="progressWrap">
+            <div class="progress-label">
+                <span id="statusText">Analyzing Pixels...</span>
+                <span id="percentText">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div id="result">
+            <div class="res-title">
+                <span>✅ Upscaled HD Ready:</span>
+                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                    <button type="button" onclick="toggleZoom()" id="zoomBtn" class="tool-pill" title="Zoom to inspect sharpness">🔍 1x</button>
+                    <button type="button" onclick="toggleSplitCompare()" id="splitBtn" class="tool-pill active" style="border-color: var(--accent); color: var(--accent);">🌗 Split Compare</button>
+                </div>
+            </div>
+
+            <div class="preview-wrapper" id="previewWrapper">
+                <div class="canvas-zoom-box" id="zoomBox">
+                    <canvas id="outputCanvas"></canvas>
+                </div>
+            </div>
+            <div id="splitControls">
+                <input type="range" id="splitRange" min="0" max="100" value="50" oninput="renderFinalView()">
+                <div class="split-hint">
+                    <span>◀ Original Blurry</span>
+                    <span>Drag Preview or Slider</span>
+                    <span>AI Enhanced HD ▶</span>
+                </div>
+            </div>
+
+            <!-- Fine-Tuning Sliders -->
+            <div class="studio-panel">
+                <div class="control-row">
+                    <span class="control-label">🔪 Edge-Adaptive Sharpen:</span>
+                    <input type="range" id="sharpenSlider" min="0" max="100" value="45" onchange="reprocessFilters()">
+                </div>
+                <div class="control-row">
+                    <span class="control-label">✨ Clarity & Contrast:</span>
+                    <input type="range" id="claritySlider" min="90" max="140" value="106" oninput="renderFinalView()">
+                </div>
+                <div class="control-row">
+                    <span class="control-label">🌈 Color Vibrance:</span>
+                    <input type="range" id="vibranceSlider" min="80" max="150" value="105" oninput="renderFinalView()">
+                    <button type="button" class="tool-pill" onclick="resetEnhanceSliders()">↩️ Reset</button>
+                </div>
+            </div>
+            
+            <div class="pro-stats-grid">
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="origDimensions">-</div>
+                    <div class="pro-stat-lbl">Original</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="newDimensions">-</div>
+                    <div class="pro-stat-lbl">Upscaled HD</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="speedStat">-</div>
+                    <div class="pro-stat-lbl">AI Speed</div>
+                </div>
+                <div class="pro-stat-item">
+                    <div class="pro-stat-val" id="estFileSize">-</div>
+                    <div class="pro-stat-lbl">Est. File</div>
+                </div>
+            </div>
+
+            <div class="share-actions">
+                <select id="downloadFormat" class="format-select" onchange="scheduleSizeEstimate()" title="Choose File Format">
+                    <option value="image/png">PNG (Lossless)</option>
+                    <option value="image/jpeg">JPG (High Quality)</option>
+                    <option value="image/webp">WEBP (Web HD)</option>
+                </select>
+                <button type="button" class="btn-download" onclick="downloadResult()">⬇️ Download HD</button>
+                <button type="button" class="btn-share-mini" onclick="copyImageClipboard(this)">📋 Copy</button>
+                <button type="button" class="btn-share-mini" onclick="resetTool()">🔄 New</button>
+            </div>
+        </div>
+
+        <!-- Comprehensive Social Share Buttons -->
+        <div class="social-share-wrap" id="socialShareSection">
+            <div class="social-share-title">🔗 Share this tool:</div>
+            <div class="social-share-buttons">
+                <a href="#" class="share-btn share-whatsapp" onclick="shareToPlatform('whatsapp'); return false;">💬 WhatsApp</a>
+                <a href="#" class="share-btn share-facebook" onclick="shareToPlatform('facebook'); return false;">📘 Facebook</a>
+                <a href="#" class="share-btn share-twitter" onclick="shareToPlatform('twitter'); return false;">✖ Twitter / X</a>
+                <a href="#" class="share-btn share-telegram" onclick="shareToPlatform('telegram'); return false;">✈ Telegram</a>
+                <a href="#" class="share-btn share-linkedin" onclick="shareToPlatform('linkedin'); return false;">💼 LinkedIn</a>
+                <button class="share-btn share-copy" onclick="copyPageLink(this);">📋 Copy Link</button>
+            </div>
+        </div>
+
+        <div class="seo-text">
+            <strong>Pro Upscaler Features:</strong>
+            <ul>
+                <li>Multi-step super-resolution upscaling up to 2x, 4x, and 8x HD with Alpha Transparency preservation</li>
+                <li>Edge-Adaptive Halo-Free Sharpening & Smart Denoise for portraits, logos, and old photos</li>
+                <li>Interactive Touch/Drag Split-Screen Compare with 2x/4x Zoom inspection</li>
+                <li>Dark & Light Theme Support with 100% private client-side processing</li>
+            </ul>
+        </div>
+
+        <!-- Automatic "Copy Embed Code" Box -->
+        <div id="auto-embed-generator"></div>
+    </div> 
+
+    <!-- SEO Content Section -->
+    <section class="content-section">
+        <h2>Free AI Image Upscaler Pro — The AI Hub Tools</h2>
+        <p>The free Online AI Image Upscaler Pro by The AI Hub Tools increases image resolution up to 2x, 4x, and 8x while sharpening edges, reducing grain, and preserving transparent backgrounds—directly inside your browser. Whether you want to fix low-resolution social media downloads, sharpen product photos, upscale transparent logos or anime art, or restore old family pictures, this tool delivers crystal-clear HD downloads with zero watermarks.</p>
+        
+        <h3>How to Use This Tool</h3>
+        <ol>
+            <li><strong>Select Upscale Factor & Mode:</strong> Choose 2x, 4x, or 8x resolution and select Photo, Art/Logo, or Denoise mode.</li>
+            <li><strong>Upload or Paste Image:</strong> Click the upload box, drag & drop any JPG/PNG/WEBP image, or press <strong>Ctrl+V</strong> to paste.</li>
+            <li><strong>Inspect & Fine-Tune:</strong> Drag directly across the preview or use the Split Compare slider and Zoom button to compare before/after sharpness.</li>
+            <li><strong>Download HD Image:</strong> Save your upscaled image in lossless PNG, high-quality JPG, or WEBP format.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions (FAQs)</h3>
+        
+        <div class="faq-item">
+            <p><strong>1. Are my photos uploaded to any server?</strong><br>
+            No! 100% private. All upscaling and sharpening algorithms run directly in your browser's memory, so your photos never leave your device.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>2. Does it keep transparent backgrounds on PNG logos?</strong><br>
+            Yes! Our Alpha-Safe sharpening engine preserves 100% of transparent pixels without adding black or white borders.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>3. Which upscale factor should I choose (2x, 4x, or 8x)?</strong><br>
+            Use <strong>2x</strong> for fast social media or web enhancement, <strong>4x</strong> for printing or large screens, and <strong>8x</strong> for very small icons, logos, or thumbnails.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>4. Is this AI Image Upscaler completely free?</strong><br>
+            Yes, completely free forever with unlimited upscales, no account login, and zero watermarks.</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p style="margin: 0 0 10px 0;">
+        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+    </p>
+    <p style="margin: 0;">
+        <a href="../index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
+        <a href="../about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
+        <a href="../contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
+        <a href="../privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+        <a href="../terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+    </p>
+</footer>
+
+<!-- Dark / Light Mode & Maximum Anti-Hack Defense Shield -->
+<script>
+(function(){
+    if (localStorage.getItem('aihub_theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.textContent = '☀️ Light';
+    }
+
+    // Strict Domain & Anti-Cloning Protection
+    const allowedHosts = ['theaihub-tools.github.io', 'localhost', '127.0.0.1', ''];
+    const currentHost = window.location.hostname;
+    if (currentHost && !allowedHosts.includes(currentHost) && !currentHost.endsWith('.github.io')) {
+        window.location.replace('https://theaihub-tools.github.io/all-tools/ai-tools/ai-image-upscaler.html');
+    }
+
+    // Block DevTools, Source View & Save Shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'K'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && ['U', 'S'].includes(e.key.toUpperCase())) ||
+            (e.metaKey && e.altKey && ['I', 'J', 'U'].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Block Image/Canvas Drag Theft
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG' || e.target.tagName === 'CANVAS') {
+            e.preventDefault();
+        }
+    });
+})();
+
+function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    const btn = document.getElementById('themeToggleBtn');
+    btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    localStorage.setItem('aihub_theme', isDark ? 'dark' : 'light');
+}
+</script>
+
+<!-- Super-Intelligent Edge-Adaptive & Alpha-Safe AI Upscaling Engine -->
+<script>
+(function() {
+    let selectedFile = null;
+    let originalImageObj = null;
+    let baseUpscaledCanvas = null;
+    let sharpenedCanvas = null;
+
+    let scaleFactor = 2;
+    let enhancePreset = 'photo';
+    let zoomLevel = 1;
+    let splitActive = true;
+    let isDraggingSplit = false;
+    let sizeCalcTimer = null;
+
+    const presetDefaults = Object.freeze({
+        photo:   { sharpen: 45, clarity: 106, vibrance: 105 },
+        art:     { sharpen: 72, clarity: 112, vibrance: 110 },
+        restore: { sharpen: 38, clarity: 114, vibrance: 102 }
+    });
+
+    const imageInput = document.getElementById('imageInput');
+    const dropZone = document.getElementById('dropZone');
+    const upscaleBtn = document.getElementById('upscaleBtn');
+    const uploadLabel = document.getElementById('uploadLabel');
+    const outputCanvas = document.getElementById('outputCanvas');
+    const previewWrapper = document.getElementById('previewWrapper');
+
+    window.setScaleFactor = function(factor, btn) {
+        scaleFactor = factor;
+        btn.parentElement.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    };
+
+    window.setEnhancePreset = function(preset, btn) {
+        enhancePreset = preset;
+        btn.parentElement.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const def = presetDefaults[preset] || presetDefaults.photo;
+        document.getElementById('sharpenSlider').value = def.sharpen;
+        document.getElementById('claritySlider').value = def.clarity;
+        document.getElementById('vibranceSlider').value = def.vibrance;
+    };
+
+    imageInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) handleFileSelect(e.target.files[0]);
+    });
+
+    window.addEventListener('paste', (e) => {
+        const items = e.clipboardData && e.clipboardData.items;
+        if (!items) return;
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf('image') !== -1) {
+                const file = items[i].getAsFile();
+                if (file) handleFileSelect(file);
+                break;
+            }
+        }
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFileSelect(e.dataTransfer.files[0]);
+    });
+
+    function handleFileSelect(file) {
+        if (!file.type.startsWith('image/')) {
+            alert('Please upload a valid image file (JPG, PNG, or WEBP).');
+            return;
+        }
+        selectedFile = file;
+        uploadLabel.textContent = `Selected: ${file.name || 'Pasted Image'}`;
+        upscaleBtn.disabled = false;
+        document.getElementById('result').style.display = 'none';
+
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            const img = new Image();
+            img.onload = () => { originalImageObj = img; };
+            img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Smart Noise-Reduction Filter for 'restore' mode (Preserves Alpha)
+    function applySmartDenoise(ctx, w, h) {
+        const imgData = ctx.getImageData(0, 0, w, h);
+        const data = imgData.data;
+        const copy = new Uint8ClampedArray(data);
+        const threshold = 28; // Edge threshold to avoid blurring sharp details
+
+        for (let y = 1; y < h - 1; y++) {
+            for (let x = 1; x < w - 1; x++) {
+                const idx = (y * w + x) * 4;
+                if (copy[idx + 3] === 0) continue;
+
+                for (let c = 0; c < 3; c++) {
+                    const centerVal = copy[idx + c];
+                    let sum = centerVal * 2;
+                    let weight = 2;
+
+                    const offsets = [
+                        ((y - 1) * w + x) * 4 + c,
+                        ((y + 1) * w + x) * 4 + c,
+                        (y * w + (x - 1)) * 4 + c,
+                        (y * w + (x + 1)) * 4 + c
+                    ];
+
+                    for (let k = 0; k < 4; k++) {
+                        const nVal = copy[offsets[k]];
+                        if (Math.abs(nVal - centerVal) < threshold) {
+                            sum += nVal;
+                            weight += 1;
+                        }
+                    }
+                    data[idx + c] = Math.round(sum / weight);
+                }
+            }
+        }
+        ctx.putImageData(imgData, 0, 0);
+    }
+
+    // Progressive Multi-Step Super Resolution (Prevents Jagged Aliasing)
+    function progressiveUpscale(img, targetW, targetH) {
+        let curCanvas = document.createElement('canvas');
+        curCanvas.width = img.width;
+        curCanvas.height = img.height;
+        let curCtx = curCanvas.getContext('2d', { willReadFrequently: true });
+        curCtx.imageSmoothingEnabled = true;
+        curCtx.imageSmoothingQuality = 'high';
+        curCtx.drawImage(img, 0, 0);
+
+        if (enhancePreset === 'restore') {
+            applySmartDenoise(curCtx, img.width, img.height);
+        }
+
+        while (curCanvas.width * 1.45 < targetW) {
+            const nextW = Math.round(curCanvas.width * 1.45);
+            const nextH = Math.round(curCanvas.height * 1.45);
+            const nextCanvas = document.createElement('canvas');
+            nextCanvas.width = nextW;
+            nextCanvas.height = nextH;
+            const nCtx = nextCanvas.getContext('2d');
+            nCtx.imageSmoothingEnabled = true;
+            nCtx.imageSmoothingQuality = 'high';
+            nCtx.drawImage(curCanvas, 0, 0, nextW, nextH);
+            curCanvas = nextCanvas;
+        }
+
+        const finalCanvas = document.createElement('canvas');
+        finalCanvas.width = targetW;
+        finalCanvas.height = targetH;
+        const fCtx = finalCanvas.getContext('2d', { willReadFrequently: true });
+        fCtx.imageSmoothingEnabled = true;
+        fCtx.imageSmoothingQuality = 'high';
+        fCtx.drawImage(curCanvas, 0, 0, targetW, targetH);
+        return finalCanvas;
+    }
+
+    // Edge-Adaptive Halo-Free & Alpha-Safe Unsharp Mask
+    function applyEdgeAdaptiveSharpen(srcCanvas, amountPct) {
+        const w = srcCanvas.width;
+        const h = srcCanvas.height;
+        const out = document.createElement('canvas');
+        out.width = w;
+        out.height = h;
+        const oCtx = out.getContext('2d', { willReadFrequently: true });
+        oCtx.drawImage(srcCanvas, 0, 0);
+
+        if (amountPct <= 0) return out;
+
+        const imgData = oCtx.getImageData(0, 0, w, h);
+        const data = imgData.data;
+        const copy = new Uint8ClampedArray(data);
+        const strength = (amountPct / 100) * 0.9;
+        const haloClamp = 38; // Prevents white ringing/halos around high-contrast edges
+
+        for (let y = 1; y < h - 1; y++) {
+            for (let x = 1; x < w - 1; x++) {
+                const idx = (y * w + x) * 4;
+                // Preserve 100% transparent pixels untouched
+                if (copy[idx + 3] === 0) continue;
+
+                for (let c = 0; c < 3; c++) {
+                    const orig = copy[idx + c];
+                    const avgNeighbors = (
+                        copy[((y - 1) * w + x) * 4 + c] +
+                        copy[((y + 1) * w + x) * 4 + c] +
+                        copy[(y * w + (x - 1)) * 4 + c] +
+                        copy[(y * w + (x + 1)) * 4 + c]
+                    ) * 0.25;
+
+                    let detail = (orig - avgNeighbors) * strength;
+                    // Clamp overshoot to avoid edge ringing artifacts
+                    if (detail > haloClamp) detail = haloClamp;
+                    else if (detail < -haloClamp) detail = -haloClamp;
+
+                    data[idx + c] = Math.min(255, Math.max(0, Math.round(orig + detail)));
+                }
+            }
+        }
+        oCtx.putImageData(imgData, 0, 0);
+        return out;
+    }
+
+    window.upscaleImage = function() {
+        if (!originalImageObj) return;
+
+        const maxDim = 6000;
+        let targetW = originalImageObj.width * scaleFactor;
+        let targetH = originalImageObj.height * scaleFactor;
+        if (targetW > maxDim || targetH > maxDim) {
+            const ratio = Math.min(maxDim / targetW, maxDim / targetH);
+            targetW = Math.round(targetW * ratio);
+            targetH = Math.round(targetH * ratio);
+        }
+
+        const progressWrap = document.getElementById('progressWrap');
+        const progressBar = document.getElementById('progressBar');
+        const statusText = document.getElementById('statusText');
+        const percentText = document.getElementById('percentText');
+        const startTime = performance.now();
+
+        upscaleBtn.disabled = true;
+        progressWrap.style.display = 'block';
+        progressBar.style.width = '20%';
+        statusText.textContent = 'Running Multi-Step Super Resolution...';
+        percentText.textContent = '20%';
+
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                baseUpscaledCanvas = progressiveUpscale(originalImageObj, targetW, targetH);
+                progressBar.style.width = '68%';
+                statusText.textContent = 'Applying Edge-Adaptive AI Sharpening...';
+                percentText.textContent = '68%';
+
+                setTimeout(() => {
+                    const sharpAmt = parseInt(document.getElementById('sharpenSlider').value, 10);
+                    sharpenedCanvas = applyEdgeAdaptiveSharpen(baseUpscaledCanvas, sharpAmt);
+
+                    progressBar.style.width = '100%';
+                    statusText.textContent = 'Completed!';
+                    percentText.textContent = '100%';
+
+                    const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
+                    document.getElementById('origDimensions').textContent = `${originalImageObj.width}×${originalImageObj.height}`;
+                    document.getElementById('newDimensions').textContent = `${targetW}×${targetH}`;
+                    document.getElementById('speedStat').textContent = `${elapsed}s`;
+
+                    zoomLevel = 1;
+                    document.getElementById('zoomBox').style.transform = 'scale(1)';
+                    document.getElementById('zoomBtn').textContent = '🔍 1x';
+                    renderFinalView();
+
+                    setTimeout(() => {
+                        progressWrap.style.display = 'none';
+                        document.getElementById('result').style.display = 'block';
+                        upscaleBtn.disabled = false;
+
+                        if (window.self !== window.top && typeof window.__sendHeightToParent === "function") {
+                            setTimeout(window.__sendHeightToParent, 60);
+                        }
+                    }, 220);
+                }, 40);
+            }, 40);
+        });
+    };
+
+    window.reprocessFilters = function() {
+        if (!baseUpscaledCanvas) return;
+        const sharpAmt = parseInt(document.getElementById('sharpenSlider').value, 10);
+        sharpenedCanvas = applyEdgeAdaptiveSharpen(baseUpscaledCanvas, sharpAmt);
+        renderFinalView();
+    };
+
+    function buildCleanExportCanvas() {
+        const w = sharpenedCanvas.width;
+        const h = sharpenedCanvas.height;
+        const cleanCanvas = document.createElement('canvas');
+        cleanCanvas.width = w;
+        cleanCanvas.height = h;
+        const cCtx = cleanCanvas.getContext('2d');
+
+        const format = document.getElementById('downloadFormat').value;
+        if (format === 'image/jpeg') {
+            cCtx.fillStyle = '#ffffff';
+            cCtx.fillRect(0, 0, w, h);
+        }
+
+        const clarity = document.getElementById('claritySlider').value;
+        const vibrance = document.getElementById('vibranceSlider').value;
+        cCtx.filter = `contrast(${clarity}%) saturate(${vibrance}%)`;
+        cCtx.drawImage(sharpenedCanvas, 0, 0);
+        cCtx.filter = 'none';
+        return cleanCanvas;
+    }
+
+    window.renderFinalView = function() {
+        if (!sharpenedCanvas) return;
+        const w = sharpenedCanvas.width;
+        const h = sharpenedCanvas.height;
+        outputCanvas.width = w;
+        outputCanvas.height = h;
+        const ctx = outputCanvas.getContext('2d');
+
+        const clarity = document.getElementById('claritySlider').value;
+        const vibrance = document.getElementById('vibranceSlider').value;
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.save();
+        ctx.filter = `contrast(${clarity}%) saturate(${vibrance}%)`;
+        ctx.drawImage(sharpenedCanvas, 0, 0);
+        ctx.restore();
+
+        // Interactive Split Compare Overlay
+        if (splitActive && originalImageObj) {
+            const splitPct = parseInt(document.getElementById('splitRange').value, 10) / 100;
+            const splitX = Math.round(w * splitPct);
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(0, 0, splitX, h);
+            ctx.clip();
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(originalImageObj, 0, 0, w, h);
+            ctx.restore();
+
+            ctx.save();
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = Math.max(3, Math.round(w * 0.004));
+            ctx.beginPath();
+            ctx.moveTo(splitX, 0);
+            ctx.lineTo(splitX, h);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        scheduleSizeEstimate();
+    };
+
+    window.scheduleSizeEstimate = function() {
+        if (!sharpenedCanvas) return;
+        clearTimeout(sizeCalcTimer);
+        sizeCalcTimer = setTimeout(() => {
+            const format = document.getElementById('downloadFormat').value;
+            const cleanCanvas = buildCleanExportCanvas();
+            cleanCanvas.toBlob((blob) => {
+                if (!blob) return;
+                const kb = Math.round(blob.size / 1024);
+                document.getElementById('estFileSize').textContent = kb > 1024 ? (kb / 1024).toFixed(1) + ' MB' : kb + ' KB';
+            }, format, 0.96);
+        }, 180);
+    };
+
+    // Direct Touch/Mouse Drag on Preview for Split Compare
+    function updateSplitFromPointer(e) {
+        if (!splitActive || !isDraggingSplit) return;
+        const rect = outputCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const pct = Math.max(0, Math.min(100, Math.round(((clientX - rect.left) / rect.width) * 100)));
+        document.getElementById('splitRange').value = pct;
+        renderFinalView();
+    }
+
+    previewWrapper.addEventListener('mousedown', (e) => { isDraggingSplit = true; updateSplitFromPointer(e); });
+    window.addEventListener('mousemove', updateSplitFromPointer);
+    window.addEventListener('mouseup', () => { isDraggingSplit = false; });
+
+    previewWrapper.addEventListener('touchstart', (e) => { isDraggingSplit = true; updateSplitFromPointer(e); }, { passive: true });
+    previewWrapper.addEventListener('touchmove', updateSplitFromPointer, { passive: true });
+    window.addEventListener('touchend', () => { isDraggingSplit = false; });
+
+    window.resetEnhanceSliders = function() {
+        const def = presetDefaults[enhancePreset] || presetDefaults.photo;
+        document.getElementById('sharpenSlider').value = def.sharpen;
+        document.getElementById('claritySlider').value = def.clarity;
+        document.getElementById('vibranceSlider').value = def.vibrance;
+        reprocessFilters();
+    };
+
+    window.toggleZoom = function() {
+        zoomLevel = zoomLevel === 1 ? 2 : (zoomLevel === 2 ? 4 : 1);
+        document.getElementById('zoomBox').style.transform = `scale(${zoomLevel})`;
+        document.getElementById('zoomBtn').textContent = `🔍 ${zoomLevel}x`;
+    };
+
+    window.toggleSplitCompare = function() {
+        splitActive = !splitActive;
+        const controls = document.getElementById('splitControls');
+        const btn = document.getElementById('splitBtn');
+
+        if (splitActive) {
+            controls.style.display = 'block';
+            btn.classList.add('active');
+        } else {
+            controls.style.display = 'none';
+            btn.classList.remove('active');
+        }
+        renderFinalView();
+    };
+
+    window.copyImageClipboard = function(btn) {
+        if (!sharpenedCanvas) return;
+        const cleanCanvas = buildCleanExportCanvas();
+        cleanCanvas.toBlob(async (blob) => {
+            try {
+                await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                const orig = btn.textContent;
+                btn.textContent = '✓ Copied';
+                setTimeout(() => { btn.textContent = orig; }, 2000);
+            } catch (err) {
+                alert('Clipboard image copy not supported in this browser. Please click Download.');
+            }
+        }, 'image/png');
+    };
+
+    window.downloadResult = function() {
+        if (!sharpenedCanvas) return;
+        const format = document.getElementById('downloadFormat').value;
+        const ext = format.split('/')[1];
+        const cleanCanvas = buildCleanExportCanvas();
+
+        const link = document.createElement('a');
+        const baseName = selectedFile && selectedFile.name ? selectedFile.name.replace(/\.[^/.]+$/, "") : "upscaled-image";
+        link.download = `${baseName}-${scaleFactor}x-HD.${ext}`;
+        link.href = cleanCanvas.toDataURL(format, 0.96);
+        link.click();
+    };
+
+    window.resetTool = function() {
+        selectedFile = null;
+        originalImageObj = null;
+        baseUpscaledCanvas = null;
+        sharpenedCanvas = null;
+        imageInput.value = '';
+        uploadLabel.textContent = 'Click to Upload or Drag & Drop Low-Res Image';
+        upscaleBtn.disabled = true;
+        document.getElementById('result').style.display = 'none';
+    };
+})();
+</script>
+
+<script>
+    // Social Sharing Functions
+    function shareToPlatform(platform) {
+        var url = encodeURIComponent(window.location.href);
+        var title = encodeURIComponent(document.title + " - Upscale & enhance images to HD online for free:");
+        var shareUrl = "";
+
+        switch(platform) {
+            case 'whatsapp':
+                shareUrl = "https://api.whatsapp.com/send?text=" + title + "%20" + url;
+                break;
+            case 'facebook':
+                shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+                break;
+            case 'twitter':
+                shareUrl = "https://twitter.com/intent/tweet?text=" + title + "&url=" + url;
+                break;
+            case 'telegram':
+                shareUrl = "https://t.me/share/url?url=" + url + "&text=" + title;
+                break;
+            case 'linkedin':
+                shareUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
+                break;
+        }
+
+        if (shareUrl) {
+            window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=450');
+        }
+    }
+
+    function copyPageLink(buttonElement) {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            var originalText = buttonElement.innerText;
+            buttonElement.innerText = "Copied! ✓";
+            setTimeout(function() {
+                buttonElement.innerText = originalText;
+            }, 2000);
+        }).catch(function() {
+            alert("Could not copy link. Please copy the URL from browser address bar.");
+        });
+    }
+
+    // Automatic embed code box generator
+    (function() {
+      var target = document.getElementById("auto-embed-generator");
+      if (!target) return;
+
+      var currentUrl = window.location.href.split('?')[0];
+      var domainUrl = window.location.origin;
+      var rootPath = "https://theaihub-tools.github.io/all-tools/";
+      var brandName = "AI Image Upscaler Pro — The AI Hub Tools";
+
+      var embedSnippet = '<div class="tool-embed-box" data-tool-url="' + currentUrl + '" data-height="660px" data-brand-name="' + brandName + '" data-brand-url="' + domainUrl + '"></div>\n' +
+                         '<script src="' + rootPath + 'iframe.js" defer><\/script>';
+
+      target.innerHTML = 
+        '<div style="margin-top: 25px; padding: 14px; border: 1px dashed var(--border-color); border-radius: 8px; background: var(--bg-subtle); font-family: inherit; text-align: left;">' +
+          '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">' +
+            '<strong style="font-size: 13px; color: var(--text-main);">💻 Embed this tool on your website:</strong>' +
+            '<button id="autoCopyBtn" style="padding: 6px 12px; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s;">Copy Embed Code</button>' +
+          '</div>' +
+          '<textarea id="autoEmbedText" readonly style="width: 100%; height: 65px; font-size: 12px; font-family: monospace; padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; resize: none; background: var(--bg-card); box-sizing: border-box; color: var(--text-muted);">' + 
+            embedSnippet + 
+          '</textarea>' +
+        '</div>';
+
+      document.getElementById("autoCopyBtn").addEventListener("click", function() {
+        var textArea = document.getElementById("autoEmbedText");
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+
+        var btn = this;
+        btn.innerText = "Copied! ✓";
+        btn.style.background = "#38a169";
+
+        setTimeout(function() {
+          btn.innerText = "Copy Embed Code";
+          btn.style.background = "var(--accent)";
+        }, 2200);
+      });
+    })();
+</script>
+
+<!-- Related AI & Image Utility Tools Section -->
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+  <div class="related-box">
+    <h3 class="related-title">
+      🤖 Related AI & Image Utility Tools:
+    </h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <a href="ai-background-remover.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">✂️ AI Background Remover</a>
+      <a href="../image-compressor.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🗜️ Image Compressor</a>
+      <a href="../image-resizer.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">📐 Image Resizer</a>
+      <a href="../index.html" style="padding: 8px 14px; background: #9333ea; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">← All Tools</a> 
+      <a href="https://api.whatsapp.com/send?text=" onclick="this.href='https://api.whatsapp.com/send?text=' + encodeURIComponent('Check out this useful tool: ' + document.title + ' - ' + window.location.href);" target="_blank" style="padding: 8px 14px; background: #25D366; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">💬 Share on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- All 6 External Scripts Linked from Root Folder (Short Relative Paths) -->
+<script src="../translator.js"></script>
+<script src="../share-buttons.js"></script>
+<script src="../schema.js"></script> 
+<script src="../tool-embed.js" defer></script>
+<script src="../coffee.js" defer></script>
+<script src="../trust-badge.js" defer></script>
+
+</body>
+</html>
