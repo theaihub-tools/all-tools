@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MEQE82X4L0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Prompt Builder Pro | Image & Video Prompts for Midjourney, Veo, Flux & Sora</title>
+    <meta name="description" content="Build high-detail AI image and video prompts online for free. Customize art styles, camera lenses, lighting, drone motion, aspect ratios & negative prompts for Midjourney, Flux, Veo & Sora.">
+    <meta name="keywords" content="ai prompt builder, ai image prompt generator, ai video prompt generator, midjourney prompt builder, veo prompt generator, flux prompt maker, negative prompt generator">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Free AI Prompt Builder Pro (Image & Video) | The AI Hub Tools" />
+    <meta property="og:description" content="Craft pro AI image and video prompts with camera motion, lighting, styles, aspect ratios & negative prompts — 100% free & private." />
+    <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-prompt-builder.html" />
+    <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-prompt-builder-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free AI Prompt Builder Pro (Image & Video) | The AI Hub Tools" />
+    <meta name="twitter:description" content="Craft pro AI image and video prompts with camera motion, lighting, styles, aspect ratios & negative prompts — 100% free & private." />
+    <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/ai-tools/ai-prompt-builder-banner.jpg" />
+
+    <style>
+        :root {
+            --bg-body: #f0f2f5;
+            --bg-card: #ffffff;
+            --bg-subtle: #f8fafc;
+            --bg-result: #ebf8ff;
+            --bg-mode: #f1f5f9;
+            --text-main: #1a202c;
+            --text-body: #2d3748;
+            --text-muted: #4a5568;
+            --text-light: #718096;
+            --border-color: #cbd5e0;
+            --border-soft: #e2e8f0;
+            --border-accent: #bee3f8;
+            --accent: #3182ce;
+            --accent-hover: #2b6cb0;
+            --shadow-card: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        body.dark-mode {
+            --bg-body: #0b0f19;
+            --bg-card: #131a2a;
+            --bg-subtle: #1b2438;
+            --bg-result: #17233b;
+            --bg-mode: #1b2438;
+            --text-main: #f1f5f9;
+            --text-body: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-light: #94a3b8;
+            --border-color: #2d3a54;
+            --border-soft: #243047;
+            --border-accent: #2b4570;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --shadow-card: 0 8px 25px rgba(0,0,0,0.45);
+        }
+
+        * { 
+          box-sizing: border-box; 
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-touch-callout: none;
+        }
+
+        input, textarea, select {
+          -webkit-user-select: auto !important;
+          -moz-user-select: auto !important;
+          user-select: auto !important;
+        }
+
+        body { background: var(--bg-body); margin: 0; padding: 20px 10px; color: var(--text-body); transition: background 0.25s ease, color 0.25s ease; }
+        html.in-iframe-mode, html.in-iframe-mode body { padding: 8px !important; overflow: hidden !important; background: transparent !important; }
+
+        .main-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+        .card { position: relative; background: var(--bg-card); max-width: 680px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: var(--shadow-card); border: 1px solid var(--border-soft); text-align: center; margin-bottom: 30px; transition: background 0.25s ease; }
+
+        .theme-toggle-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 20px;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.2s;
+        }
+        .theme-toggle-btn:hover { border-color: var(--accent); }
+
+        h1 { font-size: 22px; color: var(--text-main); margin-top: 8px; margin-bottom: 6px; }
+        p.subtitle { color: var(--text-muted); font-size: 13px; margin-top: 0; margin-bottom: 18px; }
+
+        .selector-label { display: block; text-align: left; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px; }
+
+        .media-switch {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 14px;
+            background: var(--bg-mode);
+            padding: 4px;
+            border-radius: 8px;
+        }
+        .media-btn {
+            padding: 9px 8px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .media-btn.active {
+            background: var(--bg-card);
+            color: var(--accent);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        .engine-row {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .subject-input {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-subtle);
+            color: var(--text-main);
+            font-size: 14px;
+            margin-bottom: 8px;
+            outline: none;
+        }
+        .subject-input:focus { border-color: var(--accent); background: var(--bg-card); }
+
+        .quick-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 14px;
+        }
+        .tool-pill {
+            padding: 5px 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-subtle);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .tool-pill:hover { border-color: var(--accent); color: var(--accent); }
+        .tool-pill.active { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+
+        .attr-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        @media (max-width: 520px) {
+            .attr-grid { grid-template-columns: 1fr; }
+        }
+        .attr-select {
+            width: 100%;
+            padding: 9px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-subtle);
+            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 600;
+            outline: none;
+        }
+        .attr-select:focus { border-color: var(--accent); }
+
+        button.btn-calc { width: 100%; background: var(--accent); color: white; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.btn-calc:hover { background: var(--accent-hover); }
+
+        #result { display: none; margin-top: 20px; padding: 16px; background: var(--bg-result); border: 1px solid var(--border-accent); border-radius: 10px; text-align: left; }
+        .res-title { font-size: 13px; color: var(--accent); font-weight: bold; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+
+        .depth-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .prompt-out {
+            width: 100%;
+            min-height: 135px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 13.5px;
+            line-height: 1.65;
+            resize: vertical;
+            outline: none;
+            margin-bottom: 10px;
+        }
+        .prompt-out:focus { border-color: var(--accent); }
+
+        .meta-mini-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .neg-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            padding: 9px 11px;
+            margin-bottom: 10px;
+        }
+        .neg-label { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .neg-input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: var(--text-body);
+            font-size: 12px;
+            outline: none;
+        }
+
+        .share-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-copy-primary {
+            flex: 2;
+            min-width: 130px;
+            padding: 10px 10px;
+            border: none;
+            background: #38a169;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            transition: 0.2s;
+        }
+        .btn-copy-primary:hover { background: #2f855a; }
+        .btn-share-mini {
+            flex: 1;
+            min-width: 72px;
+            padding: 10px 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-body);
+            transition: 0.2s;
+        }
+        .btn-share-mini:hover { background: var(--bg-subtle); }
+
+        .seo-text { text-align: left; font-size: 12px; color: var(--text-light); margin-top: 25px; border-top: 1px solid var(--border-soft); padding-top: 15px; }
+
+        .content-section { width: 100%; padding: 24px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-soft); line-height: 1.7; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 30px; }
+        .content-section h2 { font-size: 1.3rem; margin-top: 0; color: var(--text-main); }
+        .content-section h3 { font-size: 1.1rem; margin-top: 22px; color: var(--accent); }
+        .content-section ol { padding-left: 20px; }
+        .faq-item { margin-bottom: 15px; }
+        .faq-item strong { color: var(--text-main); }
+
+        .related-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; }
+        .related-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text-main); }
+
+        footer { width: 100%; text-align: center; padding: 25px 15px; border-top: 1px solid var(--border-soft); background-color: var(--bg-subtle); font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8; color: var(--text-muted); }
+
+        .social-share-wrap {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-soft);
+        }
+        .social-share-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .social-share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+        .share-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .share-whatsapp { background-color: #25D366; }
+        .share-facebook { background-color: #1877F2; }
+        .share-twitter { background-color: #000000; }
+        .share-telegram { background-color: #229ED9; }
+        .share-linkedin { background-color: #0A66C2; }
+        .share-copy { background-color: #4B5563; }
+
+        /* === iFrame Clean Mode === */
+        .in-iframe-mode body { background: transparent !important; padding: 8px !important; margin: 0 !important; overflow-y: hidden !important; }
+        .in-iframe-mode .main-container { max-width: 100% !important; width: 100% !important; }
+        .in-iframe-mode .card { box-shadow: none !important; border: 1px solid var(--border-soft) !important; max-width: 100% !important; margin-bottom: 0 !important; padding: 16px !important; }
+        .in-iframe-mode .content-section,
+        .in-iframe-mode footer,
+        .in-iframe-mode .container,
+        .in-iframe-mode .social-share-wrap,
+        .in-iframe-mode #auto-embed-generator { display: none !important; }
+    </style>
+</head>
+<body oncontextmenu="return false;"> 
+
+<div class="main-container">
+
+    <div class="card">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark</button>
+        <h1>AI Prompt Builder Pro (Image & Video)</h1>
+        <p class="subtitle">Craft Studio-Grade Image & Video Prompts with Engine Syntax Tuning, Hinglish Boost, Styles, Motion & Negative Prompts — 100% Free</p>
+
+        <!-- Image vs Video Mode Switch -->
+        <div class="media-switch">
+            <button type="button" class="media-btn active" id="modeImageBtn" onclick="setMediaMode('image')">🖼️ AI Image Prompt Builder</button>
+            <button type="button" class="media-btn" id="modeVideoBtn" onclick="setMediaMode('video')">🎬 AI Video Prompt Builder</button>
+        </div>
+
+        <!-- Target AI Engine Syntax Selector -->
+        <div class="engine-row">
+            <label class="selector-label" for="targetEngineSelect">Target AI Generator Syntax:</label>
+            <select id="targetEngineSelect" class="attr-select" onchange="if(document.getElementById('subjectInput').value.trim()) buildPromptNow()">
+                <option value="universal" selected>🌐 Universal (Midjourney / Flux / Imagen / Veo / Sora)</option>
+                <option value="midjourney">🎨 Midjourney (--ar & --no parameters)</option>
+                <option value="flux">⚡ Flux / Imagen (Natural descriptive phrasing)</option>
+                <option value="video_ai">🎥 Veo / Sora / Runway (Motion & camera flow)</option>
+            </select>
+        </div>
+
+        <label class="selector-label" for="subjectInput">1. Enter Your Idea / Subject (English or Hinglish):</label>
+        <input type="text" id="subjectInput" class="subject-input" placeholder="e.g., futuristic cyber city at night with rain / barish me raat ko bike..." onkeydown="if(event.key==='Enter') buildPromptNow()">
+
+        <div class="quick-bar">
+            <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                <button type="button" class="tool-pill" onclick="applyPreset('cyber')">🌃 Cyberpunk</button>
+                <button type="button" class="tool-pill" onclick="applyPreset('portrait')">📸 Portrait</button>
+                <button type="button" class="tool-pill" onclick="applyPreset('drone')">🚁 Aerial Drone</button>
+                <button type="button" class="tool-pill" onclick="applyPreset('3d')">🧸 3D Toy</button>
+                <button type="button" class="tool-pill" onclick="surpriseRandomPrompt()">🎲 Surprise Me</button>
+                <button type="button" class="tool-pill" onclick="document.getElementById('subjectInput').value=''">✖ Clear</button>
+            </div>
+            <label style="font-size: 11px; font-weight: 700; color: var(--accent); cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                <input type="checkbox" id="hinglishBoostChk" checked style="accent-color: var(--accent);"> 🇮🇳 Hinglish Boost
+            </label>
+        </div>
+
+        <!-- Image Builder Attributes -->
+        <div class="attr-grid" id="imageAttrGrid">
+            <div>
+                <label class="selector-label" for="imgStyle">Art & Render Style:</label>
+                <select id="imgStyle" class="attr-select">
+                    <option value="photorealistic editorial photography, crisp natural textures">📷 Photorealistic Editorial</option>
+                    <option value="hyper-detailed 3D CGI render, Octane render, studio subsurface scattering">🧊 3D CGI / Octane Render</option>
+                    <option value="cinematic film still, 35mm movie frame, rich color grading">🎬 Cinematic Movie Still</option>
+                    <option value="anime key visual illustration, vibrant cel shading, detailed background">🌸 Anime / Manga Art</option>
+                    <option value="architectural concept art, ultra-clean lines, dramatic depth">🏛️ Concept & Arch Viz</option>
+                </select>
+            </div>
+            <div>
+                <label class="selector-label" for="imgLighting">Lighting & Mood:</label>
+                <select id="imgLighting" class="attr-select">
+                    <option value="golden hour rim lighting, warm highlights, soft shadows">🌅 Golden Hour & Warm Rim</option>
+                    <option value="moody neon street reflections, cyan and magenta glow, atmospheric mist">🌃 Neon & Moody Night</option>
+                    <option value="soft diffused studio key light, clean catchlights, balanced exposure">💡 Soft Studio Lighting</option>
+                    <option value="dramatic chiaroscuro shadows, volumetric sunbeams through dust">🌤️ Volumetric Sunbeams</option>
+                </select>
+            </div>
+            <div>
+                <label class="selector-label" for="imgCamera">Camera & Lens:</label>
+                <select id="imgCamera" class="attr-select">
+                    <option value="85mm f/1.4 portrait lens, creamy bokeh background">🔍 85mm Portrait (Shallow DOF)</option>
+                    <option value="24mm wide-angle lens, expansive depth of field, sharp foreground">📐 24mm Wide Angle</option>
+                    <option value="50mm prime lens, natural eye-level perspective">🎯 50mm Natural Prime</option>
+                    <option value="macro lens, extreme fine detail, crisp focus">🔬 Macro Close-Up</option>
+                </select>
+            </div>
+            <div>
+                <label class="selector-label" for="imgAspect">Aspect Ratio:</label>
+                <select id="imgAspect" class="attr-select">
+                    <option value="--ar 16:9">🖥️ 16:9 (Landscape / Banner)</option>
+                    <option value="--ar 9:16">📱 9:16 (Reels / Shorts / Story)</option>
+                    <option value="--ar 1:1">🟦 1:1 (Square Post)</option>
+                    <option value="--ar 4:5">🖼️ 4:5 (Instagram Portrait)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Video Builder Attributes -->
+        <div class="attr-grid" id="videoAttrGrid" style="display: none;">
+            <div>
+                <label class="selector-label" for="vidMotion">Camera Movement:</label>
+                <select id="vidMotion" class="attr-select">
+                    <option value="smooth slow dolly-in toward subject, stabilized gimbal movement">🎥 Smooth Dolly-In</option>
+                    <option value="sweeping aerial drone orbit shot, gradual elevation gain">🚁 Drone Aerial Orbit</option>
+                    <option value="dynamic tracking pan following subject motion, crisp focus">🏃 Dynamic Tracking Shot</option>
+                    <option value="slow-motion push-in with subtle handheld realism">🎞️ Slow-Motion Push-In</option>
+                </select>
+            </div>
+            <div>
+                <label class="selector-label" for="vidAction">Action & Environment Motion:</label>
+                <select id="vidAction" class="attr-select">
+                    <option value="gentle wind moving hair and fabric, subtle ambient motion, natural pacing">🌬️ Gentle Wind & Ambient</option>
+                    <option value="rain ripples on wet pavement, reflections shimmering, cars passing in soft blur">🌧️ Rain & City Reflections</option>
+                    <option value="particles floating in light beams, smooth deliberate action">✨ Floating Light & Motion</option>
+                    <option value="high-energy fast-paced action with dynamic depth shifts">⚡ High-Energy Action</option>
+                </select>
+            </div>
+            <div>
+                <label class="selector-label" for="vidStyle">Visual Look & Grading:</label>
+                <select id="vidStyle" class="attr-select">
+                    <option value="cinematic film grain, anamorphic lens flare, teal and orange grade">🎬 Anamorphic Cinema</option>
+                    <option value="ultra-realistic documentary footage, natural daylight, authentic colors">📹 Realistic Documentary</option>
+                    <option value="stylized 3D animation, smooth frame interpolation, vibrant lighting">🧊 Stylized 3D Animation</option>
+                </select>
+            </div>
+            <div>
+                <label class="selector-label" for="vidAspect">Frame Ratio & Pacing:</label>
+                <select id="vidAspect" class="attr-select">
+                    <option value="16:9 widescreen, 24fps cinematic pacing">🖥️ 16:9 Widescreen (24fps)</option>
+                    <option value="9:16 vertical short-form, 30fps smooth pacing">📱 9:16 Vertical (Reels/Shorts)</option>
+                    <option value="21:9 ultrawide cinema frame, slow contemplative pace">🎞️ 21:9 Ultrawide Cinema</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn-calc" onclick="buildPromptNow()">✨ Generate Master AI Prompt</button>
+
+        <div id="result">
+            <div class="res-title">
+                <span id="resultHeaderLabel">✅ Master AI Prompt:</span>
+                <button type="button" class="tool-pill" onclick="buildPromptNow()">🔄 Shuffle Variation</button>
+            </div>
+
+            <!-- 3 Instant Detail Depth Tabs -->
+            <div class="depth-tabs">
+                <button type="button" class="tool-pill active" id="depthUltraBtn" onclick="setDetailDepth('ultra')">🔥 Ultra-Detailed</button>
+                <button type="button" class="tool-pill" id="depthBalancedBtn" onclick="setDetailDepth('balanced')">⚖️ Balanced</button>
+                <button type="button" class="tool-pill" id="depthCleanBtn" onclick="setDetailDepth('clean')">✨ Clean Minimal</button>
+            </div>
+
+            <textarea id="promptOutput" class="prompt-out" oninput="updatePromptStats()"></textarea>
+
+            <div class="meta-mini-bar">
+                <span id="promptScoreTag">Prompt Quality: 98/100 (Studio Ready)</span>
+                <span id="promptTokenTag">Est. Tokens: ~0</span>
+            </div>
+
+            <div class="neg-box">
+                <div class="neg-label">
+                    <span>🚫 Negative Prompt / Avoid List:</span>
+                    <button type="button" class="tool-pill" style="padding:2px 6px; font-size:10px;" onclick="copyNegativeOnly(this)">Copy Negative</button>
+                </div>
+                <input type="text" id="negativeOutput" class="neg-input" value="blurry, low resolution, deformed hands, extra limbs, watermark, text overlay, distorted face, oversaturated">
+            </div>
+
+            <div class="share-actions">
+                <button type="button" class="btn-copy-primary" onclick="copyMasterPrompt(this)">📋 Copy Prompt</button>
+                <button type="button" class="btn-share-mini" onclick="downloadPromptFile('txt')">⬇️ .TXT</button>
+                <button type="button" class="btn-share-mini" onclick="downloadPromptFile('doc')">📄 .DOC</button>
+                <button type="button" class="btn-share-mini" onclick="sharePromptWhatsApp()">💬 Share</button>
+                <button type="button" class="btn-share-mini" onclick="resetBuilder()">🔄 New</button>
+            </div>
+        </div>
+
+        <!-- Comprehensive Social Share Buttons -->
+        <div class="social-share-wrap" id="socialShareSection">
+            <div class="social-share-title">🔗 Share this tool:</div>
+            <div class="social-share-buttons">
+                <a href="#" class="share-btn share-whatsapp" onclick="shareToPlatform('whatsapp'); return false;">💬 WhatsApp</a>
+                <a href="#" class="share-btn share-facebook" onclick="shareToPlatform('facebook'); return false;">📘 Facebook</a>
+                <a href="#" class="share-btn share-twitter" onclick="shareToPlatform('twitter'); return false;">✖ Twitter / X</a>
+                <a href="#" class="share-btn share-telegram" onclick="shareToPlatform('telegram'); return false;">✈ Telegram</a>
+                <a href="#" class="share-btn share-linkedin" onclick="shareToPlatform('linkedin'); return false;">💼 LinkedIn</a>
+                <button class="share-btn share-copy" onclick="copyPageLink(this);">📋 Copy Link</button>
+            </div>
+        </div>
+
+        <div class="seo-text">
+            <strong>Pro AI Prompt Builder Features:</strong>
+            <ul>
+                <li>Dual Image & Video Prompt Builder tailored for Midjourney, Flux, Imagen, Veo, Sora & Runway</li>
+                <li>Target AI Engine Syntax Tuning + Hinglish Smart Boost + 3 Detail Depths + Random Inspiration</li>
+                <li>1-click presets for Cyberpunk, Portraits, Drone & 3D + Camera Lens/Motion, Lighting & Aspect Ratios</li>
+                <li>Export prompts as .TXT or .DOC or share directly with 100% browser privacy</li>
+            </ul>
+        </div>
+
+        <!-- Automatic "Copy Embed Code" Box -->
+        <div id="auto-embed-generator"></div>
+    </div> 
+
+    <!-- SEO Content Section -->
+    <section class="content-section">
+        <h2>Free AI Prompt Builder Pro (Image & Video) — The AI Hub Tools</h2>
+        <p>The free Online AI Prompt Builder Pro by The AI Hub Tools helps creators worldwide craft clear, detailed prompts for AI image and video generators. Switch between Image Mode and Video Mode, choose target engine syntax (Universal, Midjourney, Flux, or Veo/Sora), enter your subject in English or Hinglish, select visual style, lighting, and camera motion, and copy ready-to-use prompts plus negative prompts in seconds.</p>
+        
+        <h3>How to Use This Tool</h3>
+        <ol>
+            <li><strong>Choose Image or Video Mode & Target Engine:</strong> Select Image or Video mode and pick your preferred generator syntax.</li>
+            <li><strong>Enter Subject, Pick a Preset, or Tap Surprise Me:</strong> Type your idea or generate a fresh creative idea automatically.</li>
+            <li><strong>Customize Style, Lighting & Ratio:</strong> Pick your preferred art style, lighting mood, camera lens/motion, aspect ratio, and detail depth.</li>
+            <li><strong>Copy or Export:</strong> Copy the main prompt or negative prompt with one click, or download as .TXT or .DOC.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions (FAQs)</h3>
+        
+        <div class="faq-item">
+            <p><strong>1. Can international users in English-speaking countries use this tool easily?</strong><br>
+            Yes! The entire interface, presets, lighting/camera options, and SEO descriptions are written in clear English and built around global AI image and video generators.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>2. What is the difference between Image Prompt Mode and Video Prompt Mode?</strong><br>
+            Image Mode focuses on still composition, lens focal length, lighting mood, and aspect ratio tags, while Video Mode emphasizes camera movement (dolly-in, drone orbit, tracking) and motion/pacing cues.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>3. What is a Negative Prompt?</strong><br>
+            A Negative Prompt tells the AI generator what to avoid—such as blurry textures, watermarks, extra limbs, or distorted faces—helping keep outputs cleaner.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>4. Is this tool free to use?</strong><br>
+            Yes, 100% free directly in your browser with no sign-up required.</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p style="margin: 0 0 10px 0;">
+        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+    </p>
+    <p style="margin: 0;">
+        <a href="../index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
+        <a href="../about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
+        <a href="../contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
+        <a href="../privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+        <a href="../terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+    </p>
+</footer>
+
+<!-- Dark / Light Mode & Bulletproof Anti-Hack Defense Shield -->
+<script>
+(function(){
+    if (localStorage.getItem('aihub_theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.textContent = '☀️ Light';
+    }
+
+    const allowedHosts = ['theaihub-tools.github.io', 'localhost', '127.0.0.1', ''];
+    const currentHost = window.location.hostname;
+    if (currentHost && !allowedHosts.includes(currentHost) && !currentHost.endsWith('.github.io')) {
+        window.location.replace('https://theaihub-tools.github.io/all-tools/ai-tools/ai-prompt-builder.html');
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'K'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && ['U', 'S'].includes(e.key.toUpperCase())) ||
+            (e.metaKey && e.altKey && ['I', 'J', 'U'].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+})();
+
+function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    localStorage.setItem('aihub_theme', isDark ? 'dark' : 'light');
+}
+</script>
+
+<!-- Encapsulated Super-Intelligent Image & Video Prompt Builder Engine -->
+<script>
+(function() {
+    let currentMediaMode = 'image'; // 'image' | 'video'
+    let detailDepth = 'ultra';      // 'ultra' | 'balanced' | 'clean'
+
+    const polishSuffixes = Object.freeze([
+        "intricate surface detail, balanced composition, high dynamic range",
+        "sharp focal clarity, natural depth, clean framing",
+        "rich material textures, cohesive color harmony, studio polish"
+    ]);
+
+    const randomIdeas = Object.freeze([
+        "futuristic glass greenhouse inside a snowy alpine valley at dawn",
+        "vintage sports car parked outside a sunlit Mediterranean coastal villa",
+        "astronaut standing on a glowing bioluminescent alien shore at twilight",
+        "artisan coffee pour-over in a minimalist Scandinavian wooden kitchen",
+        "ancient stone archway surrounded by autumn maple trees and soft mist"
+    ]);
+
+    const hinglishMap = Object.freeze([
+        [/\bbarish\b/gi, "rain"],
+        [/\braat\b/gi, "night"],
+        [/\bsubah\b/gi, "morning"],
+        [/\bshaam\b/gi, "evening"],
+        [/\bladka\b/gi, "young man"],
+        [/\bladki\b/gi, "young woman"],
+        [/\bbike\b/gi, "motorcycle"],
+        [/\bgadi\b|\bcar\b/gi, "car"],
+        [/\bmandir\b/gi, "traditional temple"],
+        [/\bpahad\b/gi, "mountain"],
+        [/\bnadi\b/gi, "river"],
+        [/\bsahar\b|\bshehar\b|\bshaher\b/gi, "city"],
+        [/\bchamakta\b|\bchamak\b/gi, "glowing"],
+        [/\bandhera\b/gi, "dark moody shadows"],
+        [/\broshni\b/gi, "light rays"]
+    ]);
+
+    function enhanceSubject(rawText, useHinglishBoost) {
+        let out = rawText.trim();
+        if (!useHinglishBoost) return out;
+        hinglishMap.forEach(([rx, eng]) => {
+            out = out.replace(rx, eng);
+        });
+        return out;
+    }
+
+    window.setMediaMode = function(mode) {
+        currentMediaMode = mode;
+        document.getElementById('modeImageBtn').classList.toggle('active', mode === 'image');
+        document.getElementById('modeVideoBtn').classList.toggle('active', mode === 'video');
+        document.getElementById('imageAttrGrid').style.display = (mode === 'image') ? 'grid' : 'none';
+        document.getElementById('videoAttrGrid').style.display = (mode === 'video') ? 'grid' : 'none';
+        document.getElementById('resultHeaderLabel').textContent = (mode === 'image')
+            ? '✅ Master AI Image Prompt:'
+            : '✅ Master AI Video Prompt:';
+    };
+
+    window.setDetailDepth = function(depth) {
+        detailDepth = depth;
+        document.getElementById('depthUltraBtn').classList.toggle('active', depth === 'ultra');
+        document.getElementById('depthBalancedBtn').classList.toggle('active', depth === 'balanced');
+        document.getElementById('depthCleanBtn').classList.toggle('active', depth === 'clean');
+        if (document.getElementById('subjectInput').value.trim()) {
+            buildPromptNow();
+        }
+    };
+
+    window.surpriseRandomPrompt = function() {
+        const subj = document.getElementById('subjectInput');
+        subj.value = randomIdeas[Math.floor(Math.random() * randomIdeas.length)];
+        buildPromptNow();
+    };
+
+    window.applyPreset = function(key) {
+        const subj = document.getElementById('subjectInput');
+        if (key === 'cyber') {
+            subj.value = 'futuristic cyberpunk city alley at night with glowing signs and wet reflections';
+            if (currentMediaMode === 'image') {
+                document.getElementById('imgStyle').value = 'cinematic film still, 35mm movie frame, rich color grading';
+                document.getElementById('imgLighting').value = 'moody neon street reflections, cyan and magenta glow, atmospheric mist';
+                document.getElementById('imgCamera').value = '24mm wide-angle lens, expansive depth of field, sharp foreground';
+            } else {
+                document.getElementById('vidMotion').value = 'smooth slow dolly-in toward subject, stabilized gimbal movement';
+                document.getElementById('vidAction').value = 'rain ripples on wet pavement, reflections shimmering, cars passing in soft blur';
+            }
+        } else if (key === 'portrait') {
+            subj.value = 'person in tailored dark blazer standing near a sunlit window in a modern cafe';
+            if (currentMediaMode === 'image') {
+                document.getElementById('imgStyle').value = 'photorealistic editorial photography, crisp natural textures';
+                document.getElementById('imgLighting').value = 'golden hour rim lighting, warm highlights, soft shadows';
+                document.getElementById('imgCamera').value = '85mm f/1.4 portrait lens, creamy bokeh background';
+            }
+        } else if (key === 'drone') {
+            subj.value = 'misty mountain valley and winding river at sunrise';
+            if (currentMediaMode === 'video') {
+                setMediaMode('video');
+                document.getElementById('vidMotion').value = 'sweeping aerial drone orbit shot, gradual elevation gain';
+                document.getElementById('vidAction').value = 'gentle wind moving hair and fabric, subtle ambient motion, natural pacing';
+            }
+        } else if (key === '3d') {
+            subj.value = 'cute stylized character collectible toy standing on a clean desk';
+            if (currentMediaMode === 'image') {
+                document.getElementById('imgStyle').value = 'hyper-detailed 3D CGI render, Octane render, studio subsurface scattering';
+                document.getElementById('imgLighting').value = 'soft diffused studio key light, clean catchlights, balanced exposure';
+            }
+        }
+        buildPromptNow();
+    };
+
+    window.updatePromptStats = function() {
+        const txt = document.getElementById('promptOutput').value.trim();
+        const estTok = txt ? Math.max(1, Math.round(txt.length / 4)) : 0;
+        const score = txt ? Math.min(99, 84 + Math.min(15, Math.floor(txt.length / 18))) : 0;
+        document.getElementById('promptTokenTag').textContent = `Est. Tokens: ~${estTok}`;
+        document.getElementById('promptScoreTag').textContent = `Prompt Quality: ${score}/100 (${score >= 92 ? 'Studio Ready' : 'Good'})`;
+    };
+
+    window.buildPromptNow = function() {
+        const rawSubj = document.getElementById('subjectInput').value.trim();
+        if (!rawSubj) {
+            alert('Please enter a subject or pick a preset first!');
+            document.getElementById('subjectInput').focus();
+            return;
+        }
+
+        const useBoost = document.getElementById('hinglishBoostChk').checked;
+        const subj = enhanceSubject(rawSubj, useBoost);
+        const polish = polishSuffixes[Math.floor(Math.random() * polishSuffixes.length)];
+        const engine = document.getElementById('targetEngineSelect').value;
+        const negVal = document.getElementById('negativeOutput').value.trim();
+        let finalPrompt = '';
+
+        if (currentMediaMode === 'image') {
+            const style = document.getElementById('imgStyle').value;
+            const lighting = document.getElementById('imgLighting').value;
+            const camera = document.getElementById('imgCamera').value;
+            const ar = document.getElementById('imgAspect').value;
+
+            if (detailDepth === 'clean') {
+                finalPrompt = `${subj}, ${style}, ${lighting} ${ar}`;
+            } else if (detailDepth === 'balanced') {
+                finalPrompt = `${subj}, ${style}, ${lighting}, ${camera} ${ar}`;
+            } else {
+                finalPrompt = `${subj}, ${style}, ${lighting}, ${camera}, ${polish} ${ar}`;
+            }
+
+            if (engine === 'flux') {
+                finalPrompt = finalPrompt.replace(/--ar\s+16:9/g, 'widescreen 16:9 composition')
+                                         .replace(/--ar\s+9:16/g, 'vertical 9:16 composition')
+                                         .replace(/--ar\s+1:1/g, 'square 1:1 composition')
+                                         .replace(/--ar\s+4:5/g, 'portrait 4:5 composition');
+            } else if (engine === 'midjourney' && negVal) {
+                finalPrompt = `${finalPrompt} --no ${negVal.replace(/,\s*/g, ', ')}`;
+            }
+        } else {
+            const motion = document.getElementById('vidMotion').value;
+            const action = document.getElementById('vidAction').value;
+            const vStyle = document.getElementById('vidStyle').value;
+            const vAspect = document.getElementById('vidAspect').value;
+
+            if (detailDepth === 'clean') {
+                finalPrompt = `${subj}, ${motion}, ${vStyle}, ${vAspect}`;
+            } else if (detailDepth === 'balanced') {
+                finalPrompt = `${subj}, ${motion}, ${action}, ${vStyle}, ${vAspect}`;
+            } else {
+                finalPrompt = `${subj}, ${motion}, ${action}, ${vStyle}, ${polish}, ${vAspect}`;
+            }
+        }
+
+        document.getElementById('promptOutput').value = finalPrompt.trim();
+        updatePromptStats();
+        document.getElementById('result').style.display = 'block';
+
+        if (window.self !== window.top && typeof window.__sendHeightToParent === "function") {
+            setTimeout(window.__sendHeightToParent, 60);
+        }
+    };
+
+    window.copyMasterPrompt = function(btn) {
+        const val = document.getElementById('promptOutput').value.trim();
+        if (!val) return;
+        navigator.clipboard.writeText(val).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+    };
+
+    window.copyNegativeOnly = function(btn) {
+        const val = document.getElementById('negativeOutput').value.trim();
+        if (!val) return;
+        navigator.clipboard.writeText(val).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = 'Copied ✓';
+            setTimeout(() => { btn.textContent = orig; }, 1800);
+        });
+    };
+
+    window.downloadPromptFile = function(ext) {
+        const mainP = document.getElementById('promptOutput').value.trim();
+        const negP = document.getElementById('negativeOutput').value.trim();
+        if (!mainP) return;
+        const fullContent = `PROMPT:\n${mainP}\n\nNEGATIVE PROMPT:\n${negP}`;
+        const mime = ext === 'doc' ? 'application/msword;charset=utf-8' : 'text/plain;charset=utf-8';
+        const blob = new Blob(['\ufeff' + fullContent], { type: mime });
+        const link = document.createElement('a');
+        link.download = `ai-prompt.${ext}`;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    };
+
+    window.sharePromptWhatsApp = function() {
+        const val = document.getElementById('promptOutput').value.trim();
+        if (!val) return;
+        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(val), '_blank');
+    };
+
+    window.resetBuilder = function() {
+        document.getElementById('subjectInput').value = '';
+        document.getElementById('promptOutput').value = '';
+        document.getElementById('result').style.display = 'none';
+    };
+})();
+</script>
+
+<script>
+    function shareToPlatform(platform) {
+        var url = encodeURIComponent(window.location.href);
+        var title = encodeURIComponent(document.title + " - Build AI image & video prompts online for free:");
+        var shareUrl = "";
+
+        switch(platform) {
+            case 'whatsapp':
+                shareUrl = "https://api.whatsapp.com/send?text=" + title + "%20" + url;
+                break;
+            case 'facebook':
+                shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+                break;
+            case 'twitter':
+                shareUrl = "https://twitter.com/intent/tweet?text=" + title + "&url=" + url;
+                break;
+            case 'telegram':
+                shareUrl = "https://t.me/share/url?url=" + url + "&text=" + title;
+                break;
+            case 'linkedin':
+                shareUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
+                break;
+        }
+
+        if (shareUrl) {
+            window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=450');
+        }
+    }
+
+    function copyPageLink(buttonElement) {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            var originalText = buttonElement.innerText;
+            buttonElement.innerText = "Copied! ✓";
+            setTimeout(function() {
+                buttonElement.innerText = originalText;
+            }, 2000);
+        }).catch(function() {
+            alert("Could not copy link. Please copy the URL from browser address bar.");
+        });
+    }
+
+    (function() {
+      var target = document.getElementById("auto-embed-generator");
+      if (!target) return;
+
+      var currentUrl = window.location.href.split('?')[0];
+      var domainUrl = window.location.origin;
+      var rootPath = "https://theaihub-tools.github.io/all-tools/";
+      var brandName = "AI Prompt Builder Pro (Image & Video) — The AI Hub Tools";
+
+      var embedSnippet = '<div class="tool-embed-box" data-tool-url="' + currentUrl + '" data-height="660px" data-brand-name="' + brandName + '" data-brand-url="' + domainUrl + '"></div>\n' +
+                         '<script src="' + rootPath + 'iframe.js" defer><\/script>';
+
+      target.innerHTML = 
+        '<div style="margin-top: 25px; padding: 14px; border: 1px dashed var(--border-color); border-radius: 8px; background: var(--bg-subtle); font-family: inherit; text-align: left;">' +
+          '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">' +
+            '<strong style="font-size: 13px; color: var(--text-main);">💻 Embed this tool on your website:</strong>' +
+            '<button id="autoCopyBtn" style="padding: 6px 12px; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s;">Copy Embed Code</button>' +
+          '</div>' +
+          '<textarea id="autoEmbedText" readonly style="width: 100%; height: 65px; font-size: 12px; font-family: monospace; padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; resize: none; background: var(--bg-card); box-sizing: border-box; color: var(--text-muted);">' + 
+            embedSnippet + 
+          '</textarea>' +
+        '</div>';
+
+      document.getElementById("autoCopyBtn").addEventListener("click", function() {
+        var textArea = document.getElementById("autoEmbedText");
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+
+        var btn = this;
+        btn.innerText = "Copied! ✓";
+        btn.style.background = "#38a169";
+
+        setTimeout(function() {
+          btn.innerText = "Copy Embed Code";
+          btn.style.background = "var(--accent)";
+        }, 2200);
+      });
+    })();
+</script>
+
+<!-- Related AI & Creative Utility Tools Section -->
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+  <div class="related-box">
+    <h3 class="related-title">
+      🤖 Related AI & Creative Utility Tools:
+    </h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <a href="ai-video-script-generator.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🎬 AI Video Script & Hook Generator</a>
+      <a href="ai-image-upscaler.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🔍 AI Image Upscaler</a>
+      <a href="ai-background-remover.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">✂️ AI Background Remover</a>
+      <a href="../ai-prompt-enhancer.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.12); color: #a855f7; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🎨 AI Image Prompt Enhancer</a>
+      <a href="../index.html" style="padding: 8px 14px; background: #9333ea; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">← All Tools</a> 
+      <a href="https://api.whatsapp.com/send?text=" onclick="this.href='https://api.whatsapp.com/send?text=' + encodeURIComponent('Check out this useful tool: ' + document.title + ' - ' + window.location.href);" target="_blank" style="padding: 8px 14px; background: #25D366; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">💬 Share on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- All 6 External Scripts Linked from Root Folder (Short Relative Paths) -->
+<script src="../translator.js"></script>
+<script src="../share-buttons.js"></script>
+<script src="../schema.js"></script> 
+<script src="../tool-embed.js" defer></script>
+<script src="../coffee.js" defer></script>
+<script src="../trust-badge.js" defer></script>
+
+</body>
+</html>
